@@ -1,0 +1,75 @@
+$clr:black;
+$move:550px;
+$leftImg:730px;
+$leftLink:750px;
+.dealer-main-page-img{
+    width: 800px;
+    margin-left: 350px;
+    margin-top: -170px;
+}
+.view-profile-dealer-main-page{
+    width: 80px;
+    margin-top: 600px;
+    margin-left: -600px;
+}
+.Link-to-profile-page{
+    margin-left:$move;
+    margin-top: 30px;
+    color:$clr
+
+}
+.update-profile-dealer{
+  margin-left: $leftImg;
+  margin-top: -260px;
+}
+.link-to-update-profile{
+    margin-left:$leftLink;
+    margin-top: -60px;
+    color:$clr
+
+}
+.add-services-dealer-page{
+    width: 110px;
+    margin-left: 920px;
+    margin-top: -290px;
+}
+.Link-to-add-services-page{
+    color:$clr;
+    margin-left: 945px;
+    margin-top: -60px;
+
+}
+.Link-to-view-services-page{
+    margin-left: 550px;
+    margin-top: 40px;
+    color:$clr;
+
+}
+.view-services-dealer{
+    width: 110px;
+    margin-left: 530px;
+    margin-top: 40px;
+}
+.orderviewimg{
+    width: 110px;
+    margin-left: 940px;
+    margin-top: -250px;
+
+}
+.link-to-dealers-order{
+    color:$clr;
+    margin-left: 950px;
+    margin-top: -60px;
+
+}
+.updateServiceimg{
+    width: 110px;
+    margin-left: 730px;
+    margin-top: -240px;
+}
+.update-services-link{
+    color:$clr;
+    margin-left: 730px;
+    margin-top: -56px;
+
+}

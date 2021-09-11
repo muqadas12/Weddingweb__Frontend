@@ -1,0 +1,63 @@
+$Imgwidth:100px;
+$text:black;
+$cusProfile:790px;
+.customer-main-page-img{
+    width:670px;
+    margin-left: 450px;
+}
+.Card-customer{
+    width: 90%;
+    height: 300px;
+    margin-left: 80px;
+    margin-top: 30px;
+}
+.CustomerIcon{
+    width: 150px;
+}
+.h1-welcome-heading{
+    margin-left: 790px;
+    margin-top: -250px;
+    font-size: 30px;
+}
+.customer-page-info{
+    margin-left: 40%;
+
+}
+.view-customer-profile{
+    color:$text;
+    margin-top: 10px;
+    margin-left: 550px;
+}
+.customer-profile-img{
+    width: $Imgwidth;
+    margin-left: 570px;
+    margin-top: 60px;
+}
+.update-profile-img{
+    width:$Imgwidth;
+    margin-top: -200px;
+    margin-left: $cusProfile;
+}
+.update-cus-profile{
+    color: $text;
+    margin-left: $cusProfile;
+    margin-top: -60px;
+
+}
+.viewOrder{
+    width:$Imgwidth;
+    margin-left: 690px;
+    margin-top: 20px;
+
+}
+.view-orders-cus{
+    color: $text;
+    margin-top: 10px;
+    margin-left: 710px;
+
+}
+.logout-icon-customer{
+    width:70px;
+    margin-left: 40px;
+
+}
