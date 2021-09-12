@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import hallSearch from "../../Assets/images/weddingHallsearch.jpg"
+import "./Hall.scss"
+ import { Form, Input, Button, Checkbox,Select } from 'antd';
+import { Link } from "react-router-dom";
 
 const CaseStatusLaw= () => {
 
@@ -47,74 +50,60 @@ const CaseStatusLaw= () => {
     <div>
      
 <img src={hallSearch} alt="weddinghall"/>
-<h1>Select </h1>
-      <form className="d-flex flex-column justify-content-center align-items-center">
-
-        <label className="judge-name-case-no">Hall Type:</label>
-        <select className="option-judge-case-no"
+<h1 className="wedding-hall-h1">Welcome!Here You can Serach hall according to your need </h1>
+<form>
+        <label className="label-hall-type">Select Hall Type:</label>
+        <select 
+        className="dropdown-hall"
          
           onChange={handleChangeVenueType}>
-          <option 
-          name="select judge name" disabled>Select HallType</option>
-          {data.length > 0 ? <>
+          <option style={{marginTop:'990px'}}
+          name="select hall type" disabled>Select HallType</option>
+          
             {data.map(el => (
               <option name={el.VenueType}>{el.VenueType}</option>
             ))}
-          </> : null}
+         
 
         </select>
-        <label className="party-name-case-year">Select  VenueType:</label>
-        <select
+        <label className="label-city">Select City:</label>
+        <select className="dropdown-city" 
           onChange={handleChangecity}
-          className="option-party-c-year">
-          <option name="select party name" disabled>Select city</option>
-          {data.length > 0 ? <>
+         >
+          <option name="select city" disabled>Select city</option>
+        
             {data.map(el => (
               <option name={el.city}>{el.city}</option>
             ))}
-          </> : "No Record to display"}
+        
 
         </select>
 
       </form>
-      <button onClick={handleSubmit} className="status-search-btn-case-status" > Search </ button>
+      <button className="search-button" onClick={handleSubmit} > Search </ button>
       <br/>
       <br/>
       {show ? (
         <>
 
-          <div className="row">
-            <div className="col-md-12 mb-3 d-flex">
+          {/* <div className="labels" >
+           
              
 
-              <div >
-                <span>Name</span>
-              </div>
+             <p >Name:</p>
+            <p>Hall:</p>
+            <p>MaximumCapacity:</p>
+            <p>MinimumGuest:</p>
+            <p>VenueType:</p>
+            <p>City:</p>
+            <p>Description:</p>
+            <p>Image</p>
 
-              <div >
-                <span >Hall</span>
-              </div>
-
-              <div >
-                <span  >MaximumCapacity</span>
-              </div>
-              <div >
-                <span  >MinimumGuest</span>
-              </div>
-              <div >
-                <span  >VenueType</span>
-              </div>
-              <div >
-                <span  >City</span>
-              </div>
-              <div >
-                <span  >description</span>
-              </div>
-              <div >
-                <span  >Img</span>
-              </div>
+           
               
-            </div>
+            
+              
+            </div> */}
             <div >
 
               {searchData.map((list) => {
@@ -144,43 +133,42 @@ const CaseStatusLaw= () => {
 
 
                   
-<div>
-                      <span>
+
                      
-                          <img src={img} alt="asd"/>
+                     
+                          {/* <img src={img} alt="asd"/> */}
                           
-                        </span>
-                    </div>
-                    <div>
-                      <span>{name}</span>
-                    </div>
-
-                    <div >
                         
-                      <span >{Hall}</span>
-                    </div>
+                    <p className="label-name">Name:</p>
+                      <p className="hall-name">{name}</p>
+                   
 
-                    <div >
-                      <span >{MaximumCapacity}</span>
-                    </div>
-                   
-                   
-                    <div >
-                    <span >{MinimumGuest}</span>
-                    </div>
-                    <div >
-                    <span >{Services}</span>
-                    </div>
-                    <div >
-                    <span >{VenueType}</span>
-                    </div>
-                    <div >
-                    <span >{city}</span>
-                    </div>
-                    <div >
-                    <span >{description}</span>
-                    </div>
+                      <p className="label-hall">Hall:</p>
+                      <p className="avb-hall">{Hall}</p>
+
+                   <p className="label-hall">Maximum Capacity:</p>
+                      <p className="max-cap">{MaximumCapacity}</p>
                   
+                   
+                   
+                   <p className="label-hall">Minimum Guest:</p>
+                    <p className="min-guest">{MinimumGuest}</p>
+                   
+                <p className="label-hall">Services:</p>
+                    <p className="services">{Services}</p>
+                  
+                   <p className="label-hall">VenueType</p>
+                    <p className="ven-type">{VenueType}</p>
+                   <p className="label-hall">City:</p>
+                    <p className="city">{city}</p>
+                   
+                   <p  className="label-hall">Description</p>
+                    <p className="description">{description}</p>
+                    <img className="img-hall" src={img} alt="imghall"/>
+                 
+                 <br/>
+                 <br/>
+                    <button  className="book-now"><Link to="/booking-sign-up">Book Now</Link></button>
 
 
 
@@ -189,8 +177,8 @@ const CaseStatusLaw= () => {
                 )
               })}
             </div>
-          </div>
         </>) : null}
+        <br/>
     </div>
 
   )

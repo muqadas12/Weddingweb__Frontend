@@ -26,6 +26,9 @@ import viewServices from "../pages/Dealer/Dealer-Dashboard/ViewServices"
  import CustomerOrdersView from "../pages/Customer/CustomerOrders";
  import ViewCustomerProfile from "../pages/Customer/ViewProfile";
  import CustomerMainPage from "../pages/Customer/Customer-main/Customer-main"
+ import BookingSignup from "../pages/HallSearch/BookingSignup";
+ import BookingSignin from "../pages/HallSearch/BookingSignin"
+ import Booking from "../pages/HallSearch/Booking"
 const { SubMenu } = Menu;
 
 
@@ -91,7 +94,9 @@ function header2() {
         <Route path="/customer-profile" component={ViewCustomerProfile}/>
         <Route path="/customer-update-profile" component={UpdateCustomerProfile}/>
         <Route path="/customer-orders" component={CustomerOrdersView}/>
-
+        <Route path="/booking-sign-up" component={BookingSignup}/>
+        <Route path="/booking-sign-in" component={BookingSignin}/>
+        <Route path="/booking" component={Booking}/>
 
 
 

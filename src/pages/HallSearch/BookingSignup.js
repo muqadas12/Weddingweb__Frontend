@@ -37,7 +37,7 @@ function Signup() {
       
     }).then(res => {
       alert(`You are signUp as ${data.name}`)
-      window.location = "http://localhost:3000/sign-in";
+      window.location = "http://localhost:3000/booking-sign-in";
 
       console.log(res);
     }).catch((err) => {
@@ -53,9 +53,9 @@ function Signup() {
   }
   const responseGoogle = (response) => {
     localStorage.setItem("token",JSON.stringify(response))
-     {response.data.role==="Dealer"? history.push("/dealer-main"): history.push("/about")}
+     {response.data.role==="Dealer"? history.push("/dealer-main"): history.push("/booking")}
 
-     window.location="http://localhost:3000/about"
+    //  window.location="http://localhost:3000/about"
     console.log(response);
       
     
@@ -72,7 +72,7 @@ function Signup() {
     }).then(res => {
      // alert(`You are signUp as ${data.name}`)
      // window.location = "http://localhost:3000/sign-in";
-     {res.data.role==="Dealer"? history.push("/dealer-main"): history.push("/customer-main")}
+     {res.data.role==="Dealer"? history.push("/dealer-main"): history.push("/booking")}
 
       console.log(res,"from auto sign in response");
     }).catch((err) => {
@@ -108,7 +108,6 @@ function Signup() {
     autoComplete="off"
   >
     <Form.Item
-    style={{marginTop:'-30px'}}
       label="Username"
       name="name"
       id="name"
@@ -202,7 +201,7 @@ function Signup() {
           SignIn
         </Link> */}
         </span>
-        <Link  to="/sign-in"  onClick={autosigninHandler}>signIn</Link>
+        <Link  to="/booking-sign-in"  onClick={autosigninHandler}>signIn</Link>
     </Form.Item>
    
   </Form>
@@ -214,30 +213,3 @@ function Signup() {
 
 export default Signup
 
-
-// import React,{useState} from 'react'
-// import {signupUser} from "../../redux/Reducers/authReducers"
-// import {useDispatch} from "react-redux"
-
-// function Signup() {
-//   const[name,setName]=useState();
-//   const[email,setemail]=useState();
-//   const[password,setpassword]=useState();
-//   const dispatch=useDispatch();
-//   const authenticate=()=>{
-//     dispatch(signupUser({name,email,password}))
-
-//   }
-//   return (
-//     <div>
-//       <input type="text" value={name} placeholder="name" onChange={(e)=>setName(e.target.value)}/>
-//       <input type="text" value={email} placeholder="email" onChange={(e)=>setemail(e.target.value)}/>
-//       <input type="text" value={password} placeholder="pswd" onChange={(e)=>setpassword(e.target.value)}/>
-//       <button onClick={()=>authenticate()}>Signup</button>
-
-      
-//     </div>
-//   )
-// }
-
-// export default Signup
