@@ -17,17 +17,23 @@ function cards(props) {
     <Row gutter={16}>
       <Col span={8}>
         <Card  className="card-title"  title="Photographer" bordered={false}>
+          <NavLink to="/photography">
          <img  className="cards-img" src={photographer} alt="photographer"/>
+         </NavLink>
         </Card>
       </Col>
       <Col span={8}>
         <Card className="card-title" title="Car Rental" bordered={false}>
+          <NavLink to="/car-rental-services">
           <img className="cards-img"  src={car} alt="saloon"/>
+          </NavLink>
         </Card>
       </Col>
       <Col span={8}>
         <Card className="card-title" title="Saloon" bordered={false}>
+        <NavLink to="/saloon-services">
         <img className="cards-img"  src={saloon} alt="saloon"/>
+        </NavLink>
 
         </Card>
       </Col>
@@ -42,8 +48,12 @@ function cards(props) {
         </Card>
       </Col>
       <Col style={{marginLeft:'50px'}} span={8}>
+        
       <Card className="card-title" title="Catering" bordered={false}>
-        <img className="cards-img"  src={food} alt="saloon"/>
+      <NavLink to="/cateringservices">
+        <img className="cards-img"  src={food} alt="food"/>
+        </NavLink>
+       
         </Card>
       </Col>
     </Row>

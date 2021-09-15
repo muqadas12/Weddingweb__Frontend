@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Customermainpic from "../../../Assets/images/customerdashboard.jpg";
 import CustomerIcon from "../../../Assets/images/customerIcon.jpg";
 import viewCustomerProfile from "../../../Assets/images/viewCustomerProfile.PNG"
@@ -7,9 +7,9 @@ import viewOrder from "../../../Assets/images/viewOrders.PNG"
 import logoutCustomer from "../../../Assets/images/logoutCustomer.PNG"
 import "./Customer-main.scss"
 import { Link } from 'react-router-dom';
-import LogoutOutlined from "@ant-design/icons"
 
 import { Card } from 'antd';
+
 
 
 function Customermain() {
@@ -17,6 +17,8 @@ function Customermain() {
         localStorage.clear();
         window.location.href = '/sign-in';
       }
+
+
     return (
         <div>
            <img  className="customer-main-page-img"   src={Customermainpic} alt="customer-main-page-img"/>

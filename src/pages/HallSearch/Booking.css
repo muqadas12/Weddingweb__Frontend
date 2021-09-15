@@ -1,0 +1,36 @@
+.card-booking {
+  margin-top: 40px;
+  background-color: #f7d954;
+  width: 540px;
+  height: 590px;
+  margin-left: 450px;
+}
+
+.h1-booking {
+  font-family: cursive;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.date-picker-booking {
+  margin-top: 20px;
+  margin-left: 3px;
+}
+
+.label-date-picker {
+  font-family: cursive;
+  margin-left: 200px;
+}
+
+.function-time {
+  margin-top: 20px;
+}
+
+.book-now-buuton {
+  margin-left: 200px;
+  color: white;
+  background-color: #252523;
+  font-family: sans-serif;
+  font-weight: bold;
+}/*# sourceMappingURL=Booking.css.map */

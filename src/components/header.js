@@ -29,6 +29,10 @@ import viewServices from "../pages/Dealer/Dealer-Dashboard/ViewServices"
  import BookingSignup from "../pages/HallSearch/BookingSignup";
  import BookingSignin from "../pages/HallSearch/BookingSignin"
  import Booking from "../pages/HallSearch/Booking"
+ import SaloonDealer from "../pages/SaloonDealer/SaloonDealer";
+ import CarRental from "../pages/CarRental/CarRental";
+ import cateringService from "../pages/CateringDealer/CateringDealer"
+ import photographyService from '../pages/PhotographyDealer/PhotographerDealer'
 const { SubMenu } = Menu;
 
 
@@ -42,16 +46,16 @@ function header2() {
         <Header className="header">
           <div className="logo" />
             
-          <Menu theme="dark" className="main-navbar"    mode="horizontal" defaultSelectedKeys={['2']} >
+          <Menu theme="dark" className="main-navbar"    mode="horizontal" defaultSelectedKeys={['1']} >
           <Menu.Item key="0"> <img className="logo-navbar"    src={logo} alt="abc"/></Menu.Item>
             <Menu.Item key="1"><Link to="/home"><span className="page"> Home</span></Link></Menu.Item>
             <Menu.Item key="2"><Link to="/about"><span className="page">About</span></Link></Menu.Item>
             <Menu.Item key="3"><Link to="/contact"><span className="page">Contact Us</span></Link></Menu.Item>
             <SubMenu key="sub1" className="page"  title="Dealers" icon={<CaretDownOutlined /> }>
           <Menu.ItemGroup key="g1" >
-            <Menu.Item key="5"><Link to="/photographer"><span className="photographerpage">Photographer</span></Link></Menu.Item>
-            <Menu.Item key="6"><Link to="/saloon"><span className="saloonpage">Saloon</span></Link></Menu.Item>
-            <Menu.Item key="4"><Link to="/cateringDealer"><span >Catering</span></Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/photography"><span className="photographerpage">Photographer</span></Link></Menu.Item>
+            <Menu.Item key="6"><Link to="/saloon-services"><span className="saloonpage">Saloon</span></Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/cateringservices"><span >Catering</span></Link></Menu.Item>
           </Menu.ItemGroup>
          
         </SubMenu>
@@ -73,37 +77,45 @@ function header2() {
            
           <Content   className="site-layout-background" style={{height:'1200px'}}>
         <Switch>
-        <Route path="/contact" component={Contactus}/>
-        <Route path="/about" component={About}/>
+        <Route path="/contact"  component={Contactus}/>
+        <Route path="/about"  component={About}/>
         
-        <Route path="/cardDesigning" component={CardDesign}/>
-        <Route path="/hall-search" component={hallSearch}/>
-        <Route path="/sign-up" component={Signup}/>
+        <Route path="/cardDesigning"  component={CardDesign}/>
+        <Route path="/hall-search"  component={hallSearch}/>
+        <Route path="/sign-up"  component={Signup}/>
         
-        <Route path="/sign-In" component={SignIn}/>
-<Route path="/dealers" component={Dealer}/>
-        <ProtectiveRoute path="/dealer-main" component={DealerMain}/>
+        <Route path="/sign-In"  component={SignIn}/>
+<Route path="/dealers"  component={Dealer}/>
+        <ProtectiveRoute path="/dealer-main"  component={DealerMain}/>
         <Route path="/dealer-update-profile" component={UpdateProfile}/>
         <Route path="/dealer-view-profile"  component={ViewProfile}/>
-        <Route path="/dealer-add-services" component={AddServices}/>
-        <Route path="/dealer-update-services" component={UpdateServices}/>
-        <Route path="/dealer-view-orders" component={Orders}/>
-        <Route path="/dealer-view-services" component={viewServices}/>
+        <Route path="/dealer-add-services"  component={AddServices}/>
+        <Route path="/dealer-update-services"  component={UpdateServices}/>
+        <Route path="/dealer-view-orders"  component={Orders}/>
+        <Route path="/dealer-view-services"  component={viewServices}/>
         <Route path="/customer-main" component={CustomerMainPage}/>
 
-        <Route path="/customer-profile" component={ViewCustomerProfile}/>
-        <Route path="/customer-update-profile" component={UpdateCustomerProfile}/>
-        <Route path="/customer-orders" component={CustomerOrdersView}/>
-        <Route path="/booking-sign-up" component={BookingSignup}/>
-        <Route path="/booking-sign-in" component={BookingSignin}/>
-        <Route path="/booking" component={Booking}/>
+        <Route path="/customer-profile"  component={ViewCustomerProfile}/>
+        <Route path="/customer-update-profile"  component={UpdateCustomerProfile}/>
+        <Route path="/customer-orders"  component={CustomerOrdersView}/>
+        <Route path="/booking-sign-up"  component={BookingSignup}/>
+        <Route path="/booking-sign-in"  component={BookingSignin}/>
+        <Route path="/booking"  component={Booking}/>
+
+        {/* saloon services */}
+        <Route path="/saloon-services"  component={SaloonDealer}/>
+        <Route path="/car-rental-services"  component={CarRental}/>
+        <Route path="/cateringservices"  component={cateringService}/>
+        <Route path="/photography"  component={photographyService} />
 
 
 
 
 
 
-        <Route path="/" excat component={Home}/>
+
+
+        <Route path={["/", "/home"]}  component={Home}/>
 </Switch>
 </Content>
           </Layout>

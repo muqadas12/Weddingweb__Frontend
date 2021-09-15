@@ -1,0 +1,132 @@
+.wedding-hall-h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  text-align: center;
+}
+
+.label-hall-type {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 350px;
+}
+
+.dropdown-hall {
+  margin-left: 60px;
+  width: 13%;
+  height: 30px;
+}
+
+.dropdown-city {
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 13%;
+  height: 30px;
+}
+
+.label-city {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 110px;
+}
+
+.search-button {
+  margin-left: 740px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 40px;
+  width: 130px;
+  height: 30px;
+  color: white;
+  background-color: #ee5f1d;
+  border: #ee5f1d;
+  font-weight: bold;
+}
+
+.labels {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.hall-name {
+  margin-left: 180px;
+  margin-top: -39px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+}
+
+.label-name {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.label-hall {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 30px;
+}
+
+.avb-hall {
+  margin-left: 180px;
+  margin-top: -39px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+}
+
+.max-cap {
+  margin-left: 190px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-top: -39px;
+}
+
+.min-guest {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 190px;
+  margin-top: -39px;
+}
+
+.services {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 180px;
+  margin-top: -39px;
+}
+
+.ven-type {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 180px;
+  margin-top: -39px;
+}
+
+.city {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 180px;
+  margin-top: -39px;
+}
+
+.description {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  margin-left: 180px;
+  margin-top: -39px;
+}
+
+.img-hall {
+  width: 270px;
+  margin-left: 680px;
+}
+
+.book-now {
+  margin-left: 51%;
+  background-color: #fda257;
+  border: none;
+  color: white;
+  width: 130px;
+  height: 30px;
+}/*# sourceMappingURL=Hall.css.map */

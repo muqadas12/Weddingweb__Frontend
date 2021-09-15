@@ -8,7 +8,6 @@ import CardForm from "../../components/Card-Forms"
 import cardImgOne from "../../Assets/images/cardImgone.jpg"
 import GoogleLogin from "react-google-login";
 import { useHistory } from "react-router-dom";
-import { signupUser } from '../../redux/Reducers/authReducers';
 import { useDispatch } from 'react-redux';
 const { Option } = Select;
 
@@ -23,7 +22,9 @@ function Signup() {
     email:"",
     password:"",
     role:"",
-    token:""
+    token:"",
+    phoneNumber:"",
+    address:""
 
   })
   function submit(e){
@@ -33,7 +34,9 @@ function Signup() {
       email:data.email,
       password:data.password,
       role:data.role,
-      token:data.token
+      token:data.token,
+      phoneNumber:data.phoneNumber,
+      address:data.address
       
     }).then(res => {
       alert(`You are signUp as ${data.name}`)
@@ -70,8 +73,8 @@ function Signup() {
       email:localStorage.getItem("email")
       
     }).then(res => {
-     // alert(`You are signUp as ${data.name}`)
-     // window.location = "http://localhost:3000/sign-in";
+    
+     
      {res.data.role==="Dealer"? history.push("/dealer-main"): history.push("/customer-main")}
 
       console.log(res,"from auto sign in response");
@@ -138,6 +141,36 @@ function Signup() {
     </Form.Item>
 
     <Form.Item
+      label="phoneNumber"
+      id="phoneNumber"
+      name="phoneNumber"onChange={(e)=>handleChange(e)}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your phoneNumber!',
+        },
+      ]}
+    >
+      <Input />
+      </Form.Item>
+      <Form.Item
+      label="address"
+      id="address"
+      name="address"onChange={(e)=>handleChange(e)}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your address!',
+        },
+      ]}
+    >
+      <Input />
+      </Form.Item>
+
+
+
+
+      <Form.Item
       label="password"
       id="password"
       name="password"onChange={(e)=>handleChange(e)}
@@ -170,7 +203,7 @@ function Signup() {
         span: 16,
       }}
     >
-      <Checkbox>Remember me</Checkbox>
+      <Checkbox style={{marginTop:'-160px',marginLeft:'-40px'}}>Remember me</Checkbox>
    
       
     </Form.Item>
@@ -182,27 +215,32 @@ function Signup() {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit">
+      <div className="btn-signup">
+      <Button type="primary" htmlType="submit" >
         SignUp
       </Button>
+      </div>
      
       <p>Or</p>
       <div style={{marginTop:'-10px'}}>
-        <GoogleLogin 
+        {/* <GoogleLogin 
         
     clientId="1059632853515-5f2nns82qfhhrc195rpnen9b6vel8h15.apps.googleusercontent.com"
     buttonText="Login With Google"
     onSuccess={responseGoogle}
     cookiePolicy={'single_host_origin'}
-  />
+  /> */}
   </div>
   <br/>
-      <span style={{marginLeft:'-90px'}} >  Already Register?Click here to 
-      {/* <Link style={{marginLeft:'20px'}} className="login-form-forgot" to="/sign-in">
-          SignIn
-        </Link> */}
+  <div className="already-reg">
+      <span >  Already Register?Click here to 
+     
         </span>
-        <Link  to="/sign-in"  onClick={autosigninHandler}>signIn</Link>
+        </div>
+        <div className="signin-link-with-signup">
+
+        <Link   to="/sign-in"  onClick={autosigninHandler}>signIn</Link>
+        </div>
     </Form.Item>
    
   </Form>
@@ -215,29 +253,3 @@ function Signup() {
 export default Signup
 
 
-// import React,{useState} from 'react'
-// import {signupUser} from "../../redux/Reducers/authReducers"
-// import {useDispatch} from "react-redux"
-
-// function Signup() {
-//   const[name,setName]=useState();
-//   const[email,setemail]=useState();
-//   const[password,setpassword]=useState();
-//   const dispatch=useDispatch();
-//   const authenticate=()=>{
-//     dispatch(signupUser({name,email,password}))
-
-//   }
-//   return (
-//     <div>
-//       <input type="text" value={name} placeholder="name" onChange={(e)=>setName(e.target.value)}/>
-//       <input type="text" value={email} placeholder="email" onChange={(e)=>setemail(e.target.value)}/>
-//       <input type="text" value={password} placeholder="pswd" onChange={(e)=>setpassword(e.target.value)}/>
-//       <button onClick={()=>authenticate()}>Signup</button>
-
-      
-//     </div>
-//   )
-// }
-
-// export default Signup

@@ -1,0 +1,76 @@
+.dealer-main-page-img {
+  width: 800px;
+  margin-left: 350px;
+  margin-top: -170px;
+}
+
+.view-profile-dealer-main-page {
+  width: 80px;
+  margin-top: 600px;
+  margin-left: -600px;
+}
+
+.Link-to-profile-page {
+  margin-left: 550px;
+  margin-top: 30px;
+  color: black;
+}
+
+.update-profile-dealer {
+  margin-left: 730px;
+  margin-top: -260px;
+}
+
+.link-to-update-profile {
+  margin-left: 750px;
+  margin-top: -60px;
+  color: black;
+}
+
+.add-services-dealer-page {
+  width: 110px;
+  margin-left: 920px;
+  margin-top: -290px;
+}
+
+.Link-to-add-services-page {
+  color: black;
+  margin-left: 945px;
+  margin-top: -60px;
+}
+
+.Link-to-view-services-page {
+  margin-left: 550px;
+  margin-top: 40px;
+  color: black;
+}
+
+.view-services-dealer {
+  width: 110px;
+  margin-left: 530px;
+  margin-top: 40px;
+}
+
+.orderviewimg {
+  width: 110px;
+  margin-left: 940px;
+  margin-top: -250px;
+}
+
+.link-to-dealers-order {
+  color: black;
+  margin-left: 950px;
+  margin-top: -60px;
+}
+
+.updateServiceimg {
+  width: 110px;
+  margin-left: 730px;
+  margin-top: -240px;
+}
+
+.update-services-link {
+  color: black;
+  margin-left: 730px;
+  margin-top: -56px;
+}/*# sourceMappingURL=Dealer-main.css.map */

@@ -76,11 +76,11 @@ function AddServices() {
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your servicename!',
           },
         ]}
       >
-        <Input className="service-name" onChange={event=>{
+        <Input style={{marginLeft:'10px'}} className="service-name" onChange={event=>{
                   const {value}=event.target;
                   setService(value)
               }}/>
@@ -103,8 +103,8 @@ function AddServices() {
 
             
         
-              <Form.Item name='' label="Description">
-        <Input.TextArea className="service-name" onChange={event=>{
+              <Form.Item name=''   label="Description">
+        <Input.TextArea className="service-name" style={{marginLeft:'10px'}} onChange={event=>{
     const {value}=event.target;
     setDescription(value)
 }} />
@@ -123,7 +123,7 @@ function AddServices() {
           },
         ]}
       >
-        <Input className="service-name"  onChange={event=>{
+        <Input style={{marginLeft:'10px'}} className="service-name"  onChange={event=>{
                   const {value}=event.target;
                   setPrice(value)
               }}/>

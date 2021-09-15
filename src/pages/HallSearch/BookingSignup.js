@@ -8,7 +8,6 @@ import CardForm from "../../components/Card-Forms"
 import cardImgOne from "../../Assets/images/cardImgone.jpg"
 import GoogleLogin from "react-google-login";
 import { useHistory } from "react-router-dom";
-import { signupUser } from '../../redux/Reducers/authReducers';
 import { useDispatch } from 'react-redux';
 const { Option } = Select;
 

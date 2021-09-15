@@ -1,0 +1,66 @@
+.customer-main-page-img {
+  width: 670px;
+  margin-left: 450px;
+}
+
+.Card-customer {
+  width: 90%;
+  height: 300px;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+.CustomerIcon {
+  width: 150px;
+}
+
+.h1-welcome-heading {
+  margin-left: 790px;
+  margin-top: -250px;
+  font-size: 30px;
+}
+
+.customer-page-info {
+  margin-left: 40%;
+}
+
+.view-customer-profile {
+  color: black;
+  margin-top: 10px;
+  margin-left: 550px;
+}
+
+.customer-profile-img {
+  width: 100px;
+  margin-left: 570px;
+  margin-top: 60px;
+}
+
+.update-profile-img {
+  width: 100px;
+  margin-top: -200px;
+  margin-left: 790px;
+}
+
+.update-cus-profile {
+  color: black;
+  margin-left: 790px;
+  margin-top: -60px;
+}
+
+.viewOrder {
+  width: 100px;
+  margin-left: 690px;
+  margin-top: 20px;
+}
+
+.view-orders-cus {
+  color: black;
+  margin-top: 10px;
+  margin-left: 710px;
+}
+
+.logout-icon-customer {
+  width: 70px;
+  margin-left: 40px;
+}/*# sourceMappingURL=Customer-main.css.map */

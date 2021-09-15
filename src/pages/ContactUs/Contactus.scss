@@ -9,14 +9,29 @@
 }
 .contact-card{
     margin-top: 40px;
-    background-color: rgb(252, 217, 61);
-    width: 540px;
-    height: 590px;
-    margin-left: 470px;
+    background-color: orange;
+    width: 500px;
+    height: 500px;
+    margin-left: 530px;
 }
 .label-form{
     margin-top: -90px;
-    margin-left: 190px;
+    margin-left: 200px;
     font-family: cursive;
     font-size: 40px;
+}
+.inputs-form{
+    margin-top: 20px;
+}
+.icons{
+   width: 32px;
+   font-size: 25px;
+}
+.btn-submit-contact-us{
+    margin-left: 200px;
+    width: 90px;
+    height: 50px;
+    background-color: rgb(22, 16, 3);
+    color: white;
+    border-color: rgb(22, 16, 3);
 }

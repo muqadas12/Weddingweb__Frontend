@@ -1,0 +1,37 @@
+.car-rental {
+  margin-left: 500px;
+}
+
+.service-name-dealer {
+  font-family: cursive;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 690px;
+}
+
+.service-name-car {
+  font-family: cursive;
+  margin-left: 670px;
+}
+
+.desc-car {
+  font-family: cursive;
+  margin-left: 450px;
+}
+
+.price-img {
+  font-family: cursive;
+  margin-left: 670px;
+}
+
+.car-rental-img {
+  width: 190px;
+  margin-left: 670px;
+}
+
+.btn-booking-car {
+  background-color: #f75ff7;
+  margin-left: 730px;
+  color: white;
+  border: #f75ff7;
+}/*# sourceMappingURL=CarRental.css.map */
