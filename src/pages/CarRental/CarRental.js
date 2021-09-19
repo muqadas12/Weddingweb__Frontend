@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import {connect} from 'react-redux';
 import {fetchCarRental} from "../../ReduxApi/CarRental/CarActions"
 import carRental from "../../Assets/images/carRental.jpg";
+import {Link} from 'react-router-dom'
 import "./CarRental.scss"
 import {Button} from "antd"
 function CarRental({userData,fetchCarRental}) {
@@ -26,7 +27,9 @@ function CarRental({userData,fetchCarRental}) {
                 <p className="desc-car">{user.description}</p>
                 <p className="price-img">Bring this for only Rs{user.price}</p>
                <p> <img className="car-rental-img" src={user.pathImg} alt="imgcar"/></p>
+<Link to="/car-booking">
                <Button className="btn-booking-car">Book Now</Button>
+               </Link>
                 </div>
 
             )}

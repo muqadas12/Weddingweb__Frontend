@@ -1,0 +1,26 @@
+.dealer-profile{
+    width: 500px;
+    height: auto;
+    margin-left: 500px;
+    
+}
+.view-profile-dealer{
+    font-family: cursive;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+@media screen and (max-width: 800px) {
+    .dealer-profile{
+        width: 250px;
+        height: auto;
+        margin-left: 170px;
+        
+    }
+    .view-profile-dealer{
+        font-family: cursive;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 70px;
+    }
+}

@@ -4,6 +4,7 @@ import {fetchCatering} from "../../ReduxApi/Catering/CateringAction"
 import cateringImg from '../../Assets/images/catering.jpg'
 import './CateringDealer.scss'
 import {Card,Space} from 'antd'
+import {Link} from 'react-router-dom'
 function CateringDealer ({ userData, fetchCatering}) {
   useEffect(() => {
     fetchCatering()
@@ -22,15 +23,17 @@ function CateringDealer ({ userData, fetchCatering}) {
           userData.cateringser.map(user => 
           <div >
             <Space style={{padding:'20px'}}>
-            <Card className="card-catering" style={{width:'500px',height:'500px'}} >
+            <Card className="card-catering"  >
             <p className="dealer-services">{user.dealerservice}</p>
             <p className="service-name-catering">{user.serviceName}</p>
             <p className="service-name-catering">{user.description}</p>
-            <p className="service-name-catering">{user.price}</p>
+            <p className="service-name-catering">For only Rupees {user.price}</p>
             <p>
-              <img style={{width:'250px',marginLeft:'90px'}} src={user.pathImg} alt='img'/>
+              <img className='img-catering-services'  src={user.pathImg} alt='img'/>
               </p>
+              <Link to="/book-catering">
               <button className="book-now-catering">Book Now</button>
+              </Link>
              <span>
              </span>
 

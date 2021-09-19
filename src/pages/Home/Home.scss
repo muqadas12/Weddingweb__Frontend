@@ -35,3 +35,30 @@
     font-size: 30px;
     
 }
+@media screen and (max-width: 800px) {
+    .heading-two{
+        margin-top: 400px;
+        margin-left: -80px;
+        text-align: center;
+        font-family: Chalkduster, fantasy;
+        font-size: 30px;
+        color: purple;
+    
+    
+    }
+    .heading-one-weds{
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        margin-left: -10px;
+        margin-top: -270px;
+        font-family: Chalkduster, fantasy	;
+    }
+    
+    .img-one{
+        width: 50%;
+        margin-left: 120px;
+        margin-top: 130px;
+    }
+    
+}

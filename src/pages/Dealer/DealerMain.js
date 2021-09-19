@@ -34,7 +34,7 @@ function DealerMain() {
      <img src={order} className="orderviewimg" alt="orders-img"/>
      <Link to="/dealer-view-orders"><p className="link-to-dealers-order">View Orders</p></Link>
      <img className="updateServiceimg" src={updateSer} alt="updateService-img"/>
-     <Link to="/dealer-update-services"><p className="update-services-link">Update Services</p></Link>
+     <Link to="/dealer-update-services/:id"><p className="update-services-link">Update Services</p></Link>
 
      <img className="logout-icon-customer" onClick={logout} src={logoutCustomer} alt="logoutCustomer"/>
 

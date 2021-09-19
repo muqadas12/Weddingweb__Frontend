@@ -1,18 +1,18 @@
 import React from "react"
-import {Link,Route,Switch,Redirect} from "react-router-dom"
+import {Link,Route,Switch} from "react-router-dom"
 import 'antd/dist/antd.css'; 
-import About from "../pages/AboutUs/About";
-import Contactus from "../pages/ContactUs/Contactus";
-import Home from "../pages/Home/Home";
+import About from "../pages/aboutUs/About";
+import Contactus from "../pages/contactUs/Contactus";
+import Home from "../pages/home/Home";
 import { CaretDownOutlined } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
-import CardDesign from "../pages/CardDesign/CardDesign";
-import hallSearch from "../pages/HallSearch/Hall"
+import { Layout, Menu, Row } from 'antd';
+import CardDesign from "../pages/cardDesign/CardDesign";
+import hallSearch from "../pages/hallSearch/Hall"
 import "./header.scss"
 import logo from "../Assets/images/wh.png"
 import Searchbar from "./searchbar";
-import Signup from "../pages/Signup/Signup";
-import SignIn from "../pages/Signup/SignIn";
+import Signup from "../pages/signup/Signup";
+import SignIn from "../pages/signup/SignIn";
 import Dealer from "../pages/Dealer/Dealer"
 import DealerMain from "../pages/Dealer/DealerMain"
 import UpdateProfile from "../pages/Dealer/Dealer-Dashboard/UpdateProfile";
@@ -26,13 +26,17 @@ import viewServices from "../pages/Dealer/Dealer-Dashboard/ViewServices"
  import CustomerOrdersView from "../pages/Customer/CustomerOrders";
  import ViewCustomerProfile from "../pages/Customer/ViewProfile";
  import CustomerMainPage from "../pages/Customer/Customer-main/Customer-main"
- import BookingSignup from "../pages/HallSearch/BookingSignup";
- import BookingSignin from "../pages/HallSearch/BookingSignin"
- import Booking from "../pages/HallSearch/Booking"
- import SaloonDealer from "../pages/SaloonDealer/SaloonDealer";
- import CarRental from "../pages/CarRental/CarRental";
- import cateringService from "../pages/CateringDealer/CateringDealer"
- import photographyService from '../pages/PhotographyDealer/PhotographerDealer'
+ import BookingSignup from "../pages/hallSearch/BookingSignup";
+ import BookingSignin from "../pages/hallSearch/BookingSignin"
+ import Booking from "../pages/hallSearch/Booking"
+ import SaloonDealer from "../pages/saloonDealer/SaloonDealer";
+ import CarRental from "../pages/carRental/CarRental";
+ import cateringService from "../pages/cateringDealer/CateringDealer"
+ import photographyService from '../pages/photographyDealer/PhotographerDealer'
+ import Bookfood from "../pages/cateringDealer/Bookfood";
+ import Carbooking from "../pages/carRental/Carbooking";
+ import Bookingsaloon from "../pages/saloonDealer/Bookingsaloon";
+ import Bookingphotographer from "../pages/photographyDealer/Bookingphotographer";
 const { SubMenu } = Menu;
 
 
@@ -90,7 +94,7 @@ function header2() {
         <Route path="/dealer-update-profile" component={UpdateProfile}/>
         <Route path="/dealer-view-profile"  component={ViewProfile}/>
         <Route path="/dealer-add-services"  component={AddServices}/>
-        <Route path="/dealer-update-services"  component={UpdateServices}/>
+        <Route path="/dealer-update-services/:id"  component={UpdateServices}/>
         <Route path="/dealer-view-orders"  component={Orders}/>
         <Route path="/dealer-view-services"  component={viewServices}/>
         <Route path="/customer-main" component={CustomerMainPage}/>
@@ -107,6 +111,13 @@ function header2() {
         <Route path="/car-rental-services"  component={CarRental}/>
         <Route path="/cateringservices"  component={cateringService}/>
         <Route path="/photography"  component={photographyService} />
+
+
+        {/* //Booking */}
+        <Route path='/book-catering' component={Bookfood}/>
+        <Route path="/car-booking" component={Carbooking}/>
+        <Route path="/booking-saloon" component={Bookingsaloon}/>
+        <Route path="/booking-photographer" component={Bookingphotographer}/>
 
 
 

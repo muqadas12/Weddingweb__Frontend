@@ -1,167 +1,67 @@
-
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
-import c1 from "../../../Assets/images/c1.jpg"
-
-
-export const ViewEFiling = (props) => {
-  let [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+import React, { useEffect,useState } from 'react'
+import axios from 'axios';
+import { connect } from 'react-redux'
+import { fetchServices } from '../../../ReduxApi/ViewDealerServices/Services.action'
+import servicesImg from '../../../Assets/images/services.jpg'
+import './ViewServices.scss'
+import { Tabs,Cards, Card,Row,Col } from 'antd';
+const { TabPane } = Tabs;
+function ViewDealerServices ({ userData, fetchServices }) {
  
-
-  
-
-
-
-
-
-  
-
   useEffect(() => {
-    
-    axios
-      .get("http://localhost:2000/api/getdealer/get-dealers")
-      .then((res) => {
-        console.log(res.data)
-        setData(res.data.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.response);
-        setIsLoading(false);
-      });
-  }, []);
-
- 
-  
-  
-
+    fetchServices()
+  }, [])
   
 
 
-  return (
+
+
+  return userData.loading ? (
+    <h2>Loading....</h2>
+  ) : userData.error ? (
+    <h2>{userData.error}</h2>
+  ) : (
     <div>
-    <h2 className="cause-list-search">View Services:</h2>
-   
-   
-      <div className="col-md-12 ">
-        {isLoading ? (
-         
-           <p>isLoading</p>
-          
-        ) : (
-
-          <div className="row">
-             <div className="col-md-12 mb-3 d-flex">
-              <div className="col-md-2 d-flex">
-
-                <span className="lawyernameviewfiling">Sercice Name</span>
-              </div>
-
-              <div className="col-md-2 d-flex">
-                <span className="partynamefilingview">Servuce</span>
-              </div>
-              <div className="col-md-2">
-                <span className="casetypefiling">Description</span>
-              </div>
-              <div className="col-md-2 font-weight-bold h5">
-                <span className="plaintshift">Plaint</span>
-              </div>
-              <div className="col-md-2 font-weight-bold h5">
-                <span className="docxshift" >Price</span>
-              </div>
-              
-
-              <div className="col-md-2 font-weight-bold h5">
-                <span className="accbtn">Image</span>
-              </div>
-            
-             
-            </div>
-
-
-
-            <div className="col-md-12 mb-3 h-80vh">
-
-              
-            
-              {data.map((list) => {
-                const {
-                  serviceName,
-                  dealerservice,
-                  description,
-                  price,
-                  pathImg
-                  
-                
-
-                } = list;
-                return (
-                 
-                  
-                  <div className="row">
-                  <div key={serviceName} className="col-md-12 mb-3 d-flex">
-                    
-                     
-                    <div className="col-md-2 d-flex">
-                    
-                      <span className="lawyernameviewfile">{serviceName}</span>
-                    </div>
-                  
-                    <div className="col-md-4 d-flex">
-                      <span className="partynamefiling">{dealerservice}</span>
-                    </div>
-                    <div className="col-md-2 d-flex">
-                      <span className="typeofcase">{description}</span>
-                    </div>
-                    <div className="col-md-2 d-flex">
-                      <span className="typeofcase">{price}</span>
-                    </div>
-                    <div>
-                  
-
-                        <img src={pathImg} alt="ab"/>
-                     {/* <span src={pathImg}>{pathImg}</span> */}
-                    </div>
-                   
-                  
-
-                   
-                    
-                   
-                  
-                    
-                   
-                   
-
-                    
-                    
-          
-                   </div>
-                   
-                   </div>
-                   
-                  
-                );
-                
-              })}
-              
-            </div>
-            
-           
-          </div>
-        )}
-      </div>
       
+      <img className="view-services" src={servicesImg} alt="servicesImg"/>
+      
+        <Card className="card-view-addedservices">
+          <p className="dealer-services-heading-one">Dealer Services</p>
+          <p>
+      {userData.services.dealerservice.map(c=><p>{c}</p>)}
+
+      </p>
+      <p className="services-name-heading-one">Service Name</p>
+      <p style={{marginLeft:'190px',marginTop:'8px'}} >
+      {userData.services.serviceName.map(c=><p>{c}</p>)}
+
+      </p>
+
+      </Card>
+     
+       
     </div>
-  );
-};
-export default ViewEFiling;
+   
+    
+  )
+}
 
+const mapStateToProps = state => {
+  return {
+    userData: state.service
+  }
+}
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchServices: () => dispatch(fetchServices())
+  }
+}
 
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ViewDealerServices)
 
 
 

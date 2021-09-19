@@ -1,3 +1,4 @@
+
 import React,{useState} from 'react'
 import axios from "axios"
 import { Form, Input, Button, Checkbox } from 'antd';
@@ -6,14 +7,16 @@ import { Card } from 'antd';
 import Loginimg from "../../Assets/images/cardlogin.jpg"
 import { useHistory } from "react-router-dom";
 
-function BookingSignin() {
+function SignIn() {
   let history = useHistory();
     const url='http://localhost:2000/api/users/login'
 
     const[data,setData]=useState({
            email:'',
            password:'',
-         
+           role:'',
+           token:'',
+           login:false
 
           
            
@@ -24,23 +27,27 @@ function BookingSignin() {
         axios.post(url,{
             email:data.email,
             password:data.password,
-           
+            role:data.role,
+            token:data.token
            
             
         })
         
            
         .then((res)=>{
-          
+          localStorage.setItem("token",res.data.token);
+          localStorage.setItem("email",res.data.email);
 
             alert(`You are signIn as ${data.email}`);
            
             
-            window.location="http://localhost:3000/booking"
+            //window.location="http://localhost:3000/dealer-main"
            
             
             
-           
+           {res.data.role==="Dealer" ? history.push("/dealer-main"): history.push("/booking")}
+           console.log(res.data.role);
+           console.log(res.data.token)
        
       
         })
@@ -141,4 +148,4 @@ function BookingSignin() {
     )
 }
 
-export default BookingSignin;
+export default SignIn

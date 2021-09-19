@@ -1,0 +1,42 @@
+.view-services{
+    width:350px;
+    margin-left: 600px;
+}
+.ppp{
+    word-spacing: 2px;
+    word-break: ',';
+    
+
+
+}
+.dealer-services-heading-one{
+    font-weight: bold;
+    font-family: cursive;
+
+}
+.services-name-heading-one{
+    font-weight: bold;
+    font-family: cursive;
+    margin-left: 190px;
+    margin-top: -110px;
+
+}
+.card-view-addedservices{
+    width: 400px;
+    height: 300px;
+    margin-left: 580px;
+    margin-top: 30px;
+}
+@media screen and (max-width: 600px) {
+    .view-services{
+        width:200px;
+        margin-left: 200px;
+    }
+    .card-view-addedservices{
+        width: 400px;
+        height: 300px;
+        margin-left: 90px;
+        margin-top: 30px;
+    }
+
+}

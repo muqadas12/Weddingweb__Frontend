@@ -73,4 +73,239 @@
   color: black;
   margin-left: 730px;
   margin-top: -56px;
+}
+
+@media screen and (max-width: 600px) {
+  .dealer-main-page-img {
+    width: 400px;
+    margin-left: 50px;
+    margin-top: -290px;
+  }
+
+  .view-profile-dealer-main-page {
+    width: 80px;
+    margin-top: 450px;
+    margin-left: -350px;
+  }
+
+  .Link-to-profile-page {
+    margin-left: 105px;
+    margin-top: 30px;
+    color: black;
+  }
+
+  .update-profile-dealer {
+    margin-left: 230px;
+    margin-top: -260px;
+  }
+
+  .link-to-update-profile {
+    margin-left: 240px;
+    margin-top: -60px;
+    color: black;
+  }
+
+  .add-services-dealer-page {
+    width: 110px;
+    margin-left: 380px;
+    margin-top: -290px;
+  }
+
+  .Link-to-add-services-page {
+    color: black;
+    margin-left: 380px;
+    margin-top: -60px;
+  }
+
+  .Link-to-view-services-page {
+    margin-left: 105px;
+    margin-top: 40px;
+    color: black;
+  }
+
+  .view-services-dealer {
+    width: 110px;
+    margin-left: 100px;
+    margin-top: 40px;
+  }
+
+  .updateServiceimg {
+    width: 90px;
+    margin-left: 250px;
+    margin-top: -290px;
+  }
+
+  .update-services-link {
+    color: black;
+    margin-left: 240px;
+    margin-top: -55px;
+  }
+
+  .orderviewimg {
+    width: 110px;
+    margin-left: 390px;
+    margin-top: -250px;
+  }
+
+  .link-to-dealers-order {
+    color: black;
+    margin-left: 390px;
+    margin-top: -72spx;
+  }
+}
+@media only screen and (max-width: 600px) and (min-width: 600px) {
+  .dealer-main-page-img {
+    width: 400px;
+    margin-left: 50px;
+    margin-top: -290px;
+  }
+
+  .view-profile-dealer-main-page {
+    width: 80px;
+    margin-top: 450px;
+    margin-left: -350px;
+  }
+
+  .Link-to-profile-page {
+    margin-left: 105px;
+    margin-top: 30px;
+    color: black;
+  }
+
+  .update-profile-dealer {
+    margin-left: 230px;
+    margin-top: -260px;
+  }
+
+  .link-to-update-profile {
+    margin-left: 240px;
+    margin-top: -60px;
+    color: black;
+  }
+
+  .add-services-dealer-page {
+    width: 110px;
+    margin-left: 380px;
+    margin-top: -290px;
+  }
+
+  .Link-to-add-services-page {
+    color: black;
+    margin-left: 380px;
+    margin-top: -60px;
+  }
+
+  .Link-to-view-services-page {
+    margin-left: 105px;
+    margin-top: 40px;
+    color: black;
+  }
+
+  .view-services-dealer {
+    width: 110px;
+    margin-left: 100px;
+    margin-top: 40px;
+  }
+
+  .updateServiceimg {
+    width: 90px;
+    margin-left: 250px;
+    margin-top: -290px;
+  }
+
+  .update-services-link {
+    color: black;
+    margin-left: 240px;
+    margin-top: -55px;
+  }
+
+  .orderviewimg {
+    width: 110px;
+    margin-left: 390px;
+    margin-top: -250px;
+  }
+
+  .link-to-dealers-order {
+    color: black;
+    margin-left: 390px;
+    margin-top: -72px;
+  }
+}
+@media only screen and (max-width: 600px) and (min-width: 768px) {
+  .dealer-main-page-img {
+    width: 400px;
+    margin-left: 50px;
+    margin-top: -290px;
+  }
+
+  .view-profile-dealer-main-page {
+    width: 80px;
+    margin-top: 450px;
+    margin-left: -350px;
+  }
+
+  .Link-to-profile-page {
+    margin-left: 105px;
+    margin-top: 30px;
+    color: black;
+  }
+
+  .update-profile-dealer {
+    margin-left: 230px;
+    margin-top: -260px;
+  }
+
+  .link-to-update-profile {
+    margin-left: 240px;
+    margin-top: -60px;
+    color: black;
+  }
+
+  .add-services-dealer-page {
+    width: 110px;
+    margin-left: 380px;
+    margin-top: -290px;
+  }
+
+  .Link-to-add-services-page {
+    color: black;
+    margin-left: 380px;
+    margin-top: -60px;
+  }
+
+  .Link-to-view-services-page {
+    margin-left: 105px;
+    margin-top: 40px;
+    color: black;
+  }
+
+  .view-services-dealer {
+    width: 110px;
+    margin-left: 100px;
+    margin-top: 40px;
+  }
+
+  .updateServiceimg {
+    width: 90px;
+    margin-left: 250px;
+    margin-top: -290px;
+  }
+
+  .update-services-link {
+    color: black;
+    margin-left: 240px;
+    margin-top: -55px;
+  }
+
+  .orderviewimg {
+    width: 110px;
+    margin-left: 390px;
+    margin-top: -250px;
+  }
+
+  .link-to-dealers-order {
+    color: black;
+    margin-left: 390px;
+    margin-top: -72spx;
+  }
 }/*# sourceMappingURL=Dealer-main.css.map */

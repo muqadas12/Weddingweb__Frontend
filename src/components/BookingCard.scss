@@ -1,0 +1,103 @@
+.book-catering-image{
+    width: 100%;
+  height: auto;
+}
+.card-booking-food-catering{
+    margin-top: 30px;
+    background-color: rgb(174, 243, 142);
+}
+.h1-food-booking{
+    text-align: center;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-booking{
+    margin-top: 40px;
+    background-color: rgb(247, 217, 84);
+    width: 540px;
+    height: 590px;
+    margin-left: 450px;
+}
+.h1-booking{
+    font-family: cursive;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.date-picker-booking{
+    margin-top: 20px;
+    margin-left: 3px;
+    
+
+}
+.label-date-picker{
+    font-family: cursive;
+    margin-left: 200px;
+
+}
+.function-time{
+    margin-top: 20px;
+}
+.book-now-button-food{
+    margin-left: 200px;
+    color: white;
+    background-color: rgb(37, 37, 35);
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.bookinghall-image{
+    width: 210vh;
+}
+.date-picker-food-catering{
+    width:520px
+
+}
+@media screen and (max-width: 600px) {
+    .bookinghall-image{
+        width: 500px;
+    }
+    .card-booking{
+        margin-top: 40px;
+        background-color: rgb(247, 217, 84);
+        width: 400px;
+        height: 590px;
+        margin-left: 50px;
+    }
+    .date-picker-food-catering{
+        width:520px
+    
+    }
+    .label-date-picker{
+        margin-left: 150px;
+    }
+    .book-now-button-food{
+        margin-left: 100px;
+        color: white;
+        background-color: rgb(37, 37, 35);
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+    @media all  and (max-width: 200px) 
+    { .bookinghall-image{
+        width: 500px;
+    }
+    .card-booking{
+        margin-top: 40px;
+        background-color: rgb(247, 217, 84);
+        width: 400px;
+        height: 590px;
+        margin-left: 50px;
+    }
+    .date-picker{
+        width:350px
+    
+    }
+    .label-date-picker{
+        margin-left: 150px;
+    }
+    .book-now-buuton{
+        margin-left: 130px;
+    }}
+}
+

@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { fetchServices } from '../../ReduxApi/Saloonservices/SaloonAction'
 import saloonServices from "../../Assets/images/saloonServices.jpg"
 import "./SaloonDealer.scss"
-import { Card } from 'antd';
+import { Link } from 'react-router-dom'
+import { Card, Col,Row } from 'antd';
 
 function SaloonDealer ({ userData, fetchServices }) {
   useEffect(() => {
@@ -18,21 +19,24 @@ function SaloonDealer ({ userData, fetchServices }) {
     
   ) : (
     <div>
+        
         <img className="saloon-image" src={saloonServices} alt="saloonService"/>
       {/* <div style={{display: "flex"}}> */}
-      <div>
+      <div className="saloon-services-hair">
         {userData &&
           userData.saloonser &&
           userData.saloonser.map(user => 
           <div className="cards-saloon-services" >
             <p className="service-name">{user.dealerservice}</p>
-            <p className="service-type">{user.serviceName}</p>
+            <p className="service-type-saloon">{user.serviceName}</p>
 
-            <p className="service-des">{user.description}</p>
+            <p className="service-des-saloon">{user.description}</p>
             <p className="service-price">For only Rs{user.price}</p>
             <p> <img className="service-img" src={user.pathImg} alt="img"/></p>
              <span>
+               <Link to="/booking-saloon">
              <button className="book-saloon-service-btn">Book Now</button>
+             </Link>
              </span>
 
               
@@ -49,6 +53,8 @@ function SaloonDealer ({ userData, fetchServices }) {
           
           )}
       </div>
+   
+      
     </div>
   )
 }

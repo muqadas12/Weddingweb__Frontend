@@ -1,5 +1,7 @@
 .saloon-image{
     margin-left: 480px;
+    height: auto;
+   
 
 }
 
@@ -11,8 +13,8 @@
    font-family: cursive;
 
 }
-.service-type{
-    margin-left: 710px;
+.service-type-saloon{
+    margin-left: 690px;
     margin-top: -20px;
    
     font-weight: bold;
@@ -20,9 +22,9 @@
    font-family: cursive;
 
 }
-.service-des{
+.service-des-saloon{
     font-family: cursive;
-    margin-left: 590px;
+    margin-left: 500px;
 
 }
 .service-price{
@@ -42,4 +44,22 @@
     color: white;
     border: rgb(235, 91, 91);
     height: 30px;
+    cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+    .saloon-image{
+        margin-left: 30px;
+        width: 90%;
+    
+    }
+    .cards-saloon-services{
+        margin-left: -550px;
+        width: 200%;
+    }
+    .service-des-saloon{
+        font-family: cursive;
+        margin-left: 590px;
+    
+    }
+
 }

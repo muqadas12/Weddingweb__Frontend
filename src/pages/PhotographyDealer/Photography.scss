@@ -1,6 +1,6 @@
 .photography-main-image{
     width: 600px;
-    margin-left: 450px;
+    margin-left: -10px;
 }
 .photographycards{
     width: 500px;
@@ -32,4 +32,13 @@
     cursor: pointer;
     font-weight: bold;
     
+}
+@media screen and (max-width: 700px) {
+    .photography-main-image{
+        width: 280px;
+  height: 300px;
+  object-fit: cover;
+  object-position: bottom;
+        margin-left: -30px;
+    }
 }

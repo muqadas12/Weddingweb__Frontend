@@ -35,3 +35,29 @@
     color: white;
     border-color: rgb(22, 16, 3);
 }
+@media screen and (max-width: 800px) {
+    .contactus-img{
+        width: 350px;
+        margin-left: 80px;
+    }
+    .contact-card{
+        margin-top: 40px;
+        background-color: orange;
+        width: 300px;
+        height: 500px;
+        margin-left: 90px;
+    }
+    .btn-submit-contact-us{
+        margin-left: 60px;
+        width: 90px;
+        height: 50px;
+        background-color: rgb(22, 16, 3);
+        color: white;
+        border-color: rgb(22, 16, 3);
+    }
+    .icons{
+        width: 32px;
+        font-size: 25px;
+        margin-left: -115px;
+     }
+}

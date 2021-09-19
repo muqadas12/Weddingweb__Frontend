@@ -3,8 +3,13 @@
     width:800px
 
 }
+.img-catering-services{
+    width:250px;
+    margin-left:90px
+}
 .card-catering{
-    width: 300px;
+    width: 500px;
+    height: 550px;
     
 }
 .dealer-services{
@@ -21,11 +26,50 @@
 
 }
 .book-now-catering{
-    margin-left: 160px;
+    margin-left: 100px;
     background-color: rgb(94, 94, 221);
     color: white;
     border:rgb(94, 94, 221);
     width: 90px;
     height: 30px;
     cursor: pointer;
+    margin-left: 190px;
+}
+@media screen and (max-width: 700px) {
+    .catering-img{
+        margin-left: 70px;
+        width:350px
+    
+    }
+    .card-catering{
+        width: 300px;
+        height: 400px;
+        
+    }
+    .img-catering-services{
+        width:70px;
+        margin-left:90px
+    }
+    .dealer-services{
+        font-family: cursive;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .book-now-catering{
+        margin-left: 70px;
+        background-color: rgb(94, 94, 221);
+        color: white;
+        border:rgb(94, 94, 221);
+        width: 90px;
+        height: 30px;
+        cursor: pointer;
+    }
+    .service-name-catering{
+        font-family: cursive;
+text-align: center;    
+        
+    
+    }
+   
 }

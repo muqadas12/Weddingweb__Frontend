@@ -3,9 +3,12 @@ import React,{useState} from 'react';
 import { Modal} from 'antd';
 import { Form, Input,Button } from 'antd';
 import hallSearch from "../../../Assets/images/weddingHallsearch.jpg"
+import {connect} from 'react-redux';
+import {fetchAddServices} from '../../../ReduxApi/addDealerServices/AddServices.actions'
 import "./AddService.scss"
 
-function AddServices() {
+
+function AddServices(props) {
  
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -14,6 +17,7 @@ function AddServices() {
     const[description,setDescription]=useState();
     const[price,setPrice]=useState();
     const[Img,setImg]=useState();
+
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -27,8 +31,8 @@ function AddServices() {
         setIsModalVisible(false);
       };
 
-    const send=(e)=>{
-        //e.preventDefault();
+    const send=(props)=>{
+        // e.preventDefault();
         const fileArray=[];
         fileArray.push(Img);
         const formData=new FormData();
@@ -37,14 +41,17 @@ function AddServices() {
         formData.append('dealerservice',dealerservice);
         formData.append('description',description);
         formData.append('price',price)
+        formData.append('email', localStorage.getItem('email'))
+      //  dispatch(fetchAddServices(formData.addservice))
 
-        axios.post("http://localhost:2000/api/postdealer/post-dealers",formData).then((res)=>{
-          localStorage.getItem('token')
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        // axios.post("http://localhost:2000/api/postdealer/post-dealers",formData).then((res)=>{
+        //     console.log(res);
+        // })
+        // .catch((err)=>{
+        //     console.log(err)
+        // })
+       //fetchAddServices.addservice()
+         
     }
    
     return (
@@ -152,7 +159,7 @@ function AddServices() {
 
  <img style={{width:'100px',marginLeft:'510px'}} src={Img? URL.createObjectURL(Img) : null} alt={Img? Img.name : null}/>
 <br/>
-<Button style={{marginTop:'30px',marginLeft:'510px'}} type="primary" htmlType='submit' onClick={showModal} >Submit</Button>
+<Button style={{marginTop:'30px',marginLeft:'510px'}} type="primary" htmlType='submit'  >Submit</Button>
 
 <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
        <p>Your service has added successfully!</p>
@@ -161,5 +168,16 @@ function AddServices() {
         </div>
     )
 }
+const mapStateToProps = state => {
+  return {
+    userData: state.addservice
+  }
+}
 
-export default  AddServices;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAddServices: () => dispatch(fetchAddServices())
+  }
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(AddServices);

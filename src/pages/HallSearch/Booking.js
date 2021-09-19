@@ -9,13 +9,13 @@ const { Option } = Select;
 function Booking() {
     return (
         <div>
-            <img src={bookingHall} alt="bookingHall"/>
+            <img className="bookinghall-image" src={bookingHall} alt="bookingHall"/>
             <Card className="card-booking">
                 <h1 className="h1-booking">Booking</h1>
                 <Form>
                <label className="label-date-picker">Function Date</label>
          <Form.Item className="date-picker-booking" >
-         <DatePicker style={{width:'490px'}} />
+         <DatePicker className="date-picker"  />
           </Form.Item>
           <label className="label-date-picker">Function Time</label>
           <Form.Item

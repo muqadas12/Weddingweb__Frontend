@@ -5,14 +5,11 @@ import {UserOutlined,MailOutlined,MessageOutlined}  from "@ant-design/icons"
 import "./Contactus.scss"
 import axios from 'axios';
 function Contactus() {
-    const [form] = Form.useForm();
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-
-   const [name,setname]=useState(" ");
-   const[email,setemail]=useState(" ");
-   const [msg,setmsg]=useState(" ");
-   const showModal = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [name,setname]=useState(" ");
+  const[email,setemail]=useState(" ");
+  const [msg,setmsg]=useState(" ");
+  const showModal = () => {
     setIsModalVisible(true);
   };
 
@@ -24,9 +21,10 @@ function Contactus() {
     setIsModalVisible(false);
   };
    const handleClick=(e)=>{
+    e.preventDefault();
+
        if(e.target.id===name){
            setname(e.target.value)
-           setname('')
        }
        if(e.target.id===email){
         setemail(e.target.value)
@@ -37,12 +35,10 @@ function Contactus() {
        
    }
    const handleSubmit=(e)=>{
-    //  console.log("im handle submit")
-    //  setname(" ")
-    //     setemail(" ")
-    //    setmsg(" ")
+
+   
        const dataSubmit={
-           name: e.name,
+           name:e.name,
            email:e.email,
            msg:e.message
 
@@ -51,6 +47,7 @@ function Contactus() {
 
 
        axios.post('http://localhost:2000/api/email/mail', dataSubmit)
+       
     
     }
         
@@ -70,6 +67,7 @@ function Contactus() {
     
     return (
         <div>
+         
             <img src={contactUs} alt="contactUs" className="contactus-img"/>
             <p className="contact-query">How can i help?<br/> PLease fill the form for any query.<br/>Will be respond shortly</p>
             <Card className="contact-card">
@@ -91,7 +89,12 @@ function Contactus() {
                    <Form.Item  name="message" >
         <Input.TextArea name='msg' value={msg} onChange={()=> handleClick} className="inputs-form" />
       </Form.Item>
-      <button onClick={()=>sendHandler}   className="btn-submit-contact-us">Send</button>
+      <button onClick={()=>
+        
+        
+        showModal()
+        
+        }   className="btn-submit-contact-us">Send</button>
      
 
 

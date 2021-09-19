@@ -63,4 +63,49 @@
 .logout-icon-customer {
   width: 70px;
   margin-left: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .customer-main-page-img {
+    width: 300px;
+    margin-left: 90px;
+  }
+
+  .h1-welcome-heading {
+    margin-left: 160px;
+  }
+
+  .Card-customer {
+    width: 400px;
+  }
+
+  .customer-profile-img {
+    margin-left: 150px;
+  }
+
+  .view-customer-profile {
+    margin-left: 120px;
+  }
+
+  .update-profile-img {
+    width: 100px;
+    margin-top: -200px;
+    margin-left: 290px;
+  }
+
+  .update-cus-profile {
+    color: black;
+    margin-left: 290px;
+    margin-top: -60px;
+  }
+
+  .viewOrder {
+    width: 100px;
+    margin-left: 210px;
+    margin-top: 20px;
+  }
+
+  .view-orders-cus {
+    margin-left: 230px;
+  }
 }/*# sourceMappingURL=Customer-main.css.map */

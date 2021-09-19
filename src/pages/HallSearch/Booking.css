@@ -33,4 +33,63 @@
   background-color: #252523;
   font-family: sans-serif;
   font-weight: bold;
+}
+
+.bookinghall-image {
+  width: 210vh;
+}
+
+.date-picker {
+  width: 490px;
+}
+
+@media screen and (max-width: 600px) {
+  .bookinghall-image {
+    width: 500px;
+  }
+
+  .card-booking {
+    margin-top: 40px;
+    background-color: #f7d954;
+    width: 400px;
+    height: 590px;
+    margin-left: 50px;
+  }
+
+  .date-picker {
+    width: 350px;
+  }
+
+  .label-date-picker {
+    margin-left: 150px;
+  }
+
+  .book-now-buuton {
+    margin-left: 130px;
+  }
+}
+@media screen and (max-width: 600px) and (max-width: 200px) {
+  .bookinghall-image {
+    width: 500px;
+  }
+
+  .card-booking {
+    margin-top: 40px;
+    background-color: #f7d954;
+    width: 400px;
+    height: 590px;
+    margin-left: 50px;
+  }
+
+  .date-picker {
+    width: 350px;
+  }
+
+  .label-date-picker {
+    margin-left: 150px;
+  }
+
+  .book-now-buuton {
+    margin-left: 130px;
+  }
 }/*# sourceMappingURL=Booking.css.map */

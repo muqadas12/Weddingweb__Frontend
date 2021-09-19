@@ -1,9 +1,13 @@
 import React from 'react'
 
-function UpdateProfile() {
+function UpdateProfile(props) {
+   console.warn('hi',props.match.params.id)
+
     return (
         <div>
-            updateProfile
+            
+           <h1>updateProfile</h1> 
+
         </div>
     )
 }

@@ -1,0 +1,37 @@
+.photography-main-image-booking{
+    width: 100%;
+    height: auto;
+    margin-left: -3px;
+}
+.card-photography{
+    background-color: rgb(240, 34, 34);
+    margin-top: 30px;
+}
+.book-photographer{
+    font-family: cursive;
+    font-weight:bold;
+    font-size:24px;
+    text-align: center;
+}
+.label-date-picker-photo{
+    font-family: cursive;
+    margin-left: 190px;
+   
+}
+.book-now-photo{
+    background-color:black;
+    color: white;
+    margin-left: 200px;
+}
+@media screen and (max-width: 600px) {
+    .label-date-picker-photo{
+        font-family: cursive;
+        margin-left: 60px;
+       
+    }
+    .book-now-photo{
+        background-color:black;
+        color: white;
+        margin-left: 50px;
+    }
+}

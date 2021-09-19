@@ -14,7 +14,6 @@ const { Option } = Select;
 function Signup() {
  
   let history = useHistory();
-  const dispatch=useDispatch();
 
   const url='http://localhost:2000/api/users/signup';
   const[data,setData]=useState({
@@ -233,23 +232,21 @@ function Signup() {
   </div>
   <br/>
   <div className="already-reg">
-      <span >  Already Register?Click here to 
-     
-        </span>
+      <span>
+        Already Register? Click here to#
+      </span>
         </div>
         <div className="signin-link-with-signup">
 
-        <Link   to="/sign-in"  onClick={autosigninHandler}>signIn</Link>
+        <Link to="/sign-in" onClick={autosigninHandler}>Sign In</Link>
         </div>
     </Form.Item>
    
-  </Form>
-  </Card>
+      </Form>
+    </Card>
   </div>
 
   )
 }
 
 export default Signup
-
-
