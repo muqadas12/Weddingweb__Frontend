@@ -288,7 +288,7 @@ function Signup() {
     }).then(res => {
     
      
-     {res.data.role==="Dealer"? history.push("/dealer-main"): history.push("/booking")}
+     {res.data.role==="Dealer"? history.push("/dealer-main"): history.push("/booking-sign-in")}
 
       console.log(res,"from auto sign in response");
     }).catch((err) => {
@@ -452,7 +452,7 @@ function Signup() {
         </div>
         <div className="signin-link-with-signup">
 
-        <Link to="/sign-in" onClick={autosigninHandler}>Sign In</Link>
+        <Link to="/booking-sign-in" onClick={autosigninHandler}>Sign In</Link>
         </div>
     </Form.Item>
    

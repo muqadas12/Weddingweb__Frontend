@@ -1,13 +1,17 @@
 import React,{useState} from 'react'
 import photographyimg from '../../Assets/images/photo.jpg'
-import { Card,DatePicker,Form, Input, Select, Button,Row,Col} from 'antd';
+import { Card,Form, Input, Select, Button,Row,Col} from 'antd';
 import axios from 'axios';
+import { useDispatch} from "react-redux";
+import{fetchbookPhotographerServices} from '../../ReduxApi/PhotographerBooking/PhotoBooking.action'
 import './Bookingphotography.scss'
 const { Option } = Select;
 
 
 function Bookingphotographer() {
-  const url='http://localhost:2000/api/bookingPhoto/booking'
+  const dispatch = useDispatch();
+
+ // const url='http://localhost:2000/api/bookingPhoto/booking'
   const[data,setData]=useState({
     functionDate:'',
     functionTime:'',
@@ -15,19 +19,20 @@ function Bookingphotographer() {
 
   })
 function handleSubmit(){
-  axios.post(url,{
-    functionDate:data.functionDate,
-    functionTime:data.functionTime,
-    photographyType:data.photographyType
+  dispatch(fetchbookPhotographerServices(data))
+  // axios.post(url,{
+  //   functionDate:data.functionDate,
+  //   functionTime:data.functionTime,
+  //   photographyType:data.photographyType
 
-  }).then(res=>{
-    alert('order done!');
-    console.log(res);
+  // }).then(res=>{
+  //   alert('order done!');
+  //   console.log(res);
 
-  })
-  .catch(err=>{
-    console.log(err)
-  })
+  // })
+  // .catch(err=>{
+  //   console.log(err)
+  // })
 
 }
 
@@ -53,10 +58,9 @@ function handleSubmit(){
          id="functionDate"
          name="functionDate" 
          onChange={(e)=>handleChange(e)}  >
-            {/* <input type="date"/> */}
-            <DatePicker name="functionDate"  onChange={(e)=>handleChange(e)} 
-/>
-         {/* <DatePicker       name="functionDate" onChange={(e)=>setImmediate()}/> */}
+            <input type="date" className="ant-input" />
+            {/* <DatePicker className="ant-input"    
+/> */}
           </Form.Item>
           <label className="label-date-picker-photo">Function Time</label>
           <Form.Item
@@ -71,14 +75,15 @@ function handleSubmit(){
           },
         ]}
       >
-        <select placeholder="select your Function Time" 
+        <select className="ant-input" placeholder="select your Function Time" 
         name="functionTime"
         id="functionTime"
-        onChange={(e)=>handleChange(e)} 
+        onChange={(e)=>handleChange(e)}
+      
         
         >
-           <option value="lunch">Lunch</option>
-          <option value="lunch">Lunch</option>
+           <option value="select an option">select an option</option>
+          <option value="lunchas">Lunch</option>
           <option value="dinner">Dinner</option>
         </select>
       </Form.Item>
@@ -102,13 +107,30 @@ function handleSubmit(){
 
 
         </select>
-        {/* <Select placeholder="select your  Photography type" style={{marginTop:'20px'}}>
-          <Option value="artist">Artist Photography</Option>
-          <Option value="modern">Modern Photography</Option>
-          <Option value="candid">Candid Photography</Option>
-
-        </Select> */}
+     
       </Form.Item>
+      {/* <label className="label-date-picker-photo">Photography type</label>
+          <Form.Item
+        
+       
+        rules={[
+          {
+            required: true,
+            message: 'Please select Photography type!',
+          },
+        ]}
+      >
+        <Select
+        id="photographyType"
+        onChange={e => handleChange(e)} >
+        <Option name="Select Option">Select an Option</Option>
+    <Option name="Artist Photography">Artist Photography</Option>
+      <Option name="Modern Photography">Modern Photography</Option>
+
+
+        </Select>
+     
+      </Form.Item> */}
       <Button htmlType="submit" className="book-now-photo">Book Now</Button>
       </Form>
 

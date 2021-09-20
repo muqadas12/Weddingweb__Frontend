@@ -1,10 +1,25 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Card,DatePicker,Form, Input, Select, Button,Row,Col} from 'antd';
+import axios from "axios";
 import './Bookfood.scss'
 import cateringBooking from '../../Assets/images/cateringBooking.png';
 const { Option } = Select;
 
 function Bookfood() {
+  const[data,setData]=useState({
+    functionDate:"",
+    functionTime:"",
+    functionType:"",
+    numOfPeople:"",
+    foodType:""
+
+  })
+  function handleSubmit(){
+
+  }
+
+
+
     return (
         <div>
             <img className="book-catering-image"  src={cateringBooking} alt='cateringbooking'/>

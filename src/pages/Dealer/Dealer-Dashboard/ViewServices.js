@@ -24,6 +24,7 @@ function ViewDealerServices ({ userData, fetchServices }) {
     <div>
       
       <img className="view-services" src={servicesImg} alt="servicesImg"/>
+      {/* {userData.services.dealerservice} */}
       
         <Card className="card-view-addedservices">
           <p className="dealer-services-heading-one">Dealer Services</p>

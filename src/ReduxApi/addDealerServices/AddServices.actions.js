@@ -5,13 +5,15 @@ import { FETCH_ADDSERVICES_REQUEST,
 
 } from './AddServices.types'
 
-export const fetchAddServices=()=>{
+export const fetchAddServices=(formData)=>{
+
     return(dispatch)=>{
         dispatch(fetchAddServicesRequest())
-        axios.post('http://localhost:2000/api/postdealer/post-dealers')
+        axios.post('http://localhost:2000/api/postdealer/post-dealers',formData)
         .then((res)=>{
-            const addservices=res.data.data;
+            const addservices=res.data;
             console.log(addservices,'hiii')
+            alert('service added successfully')
             dispatch(fetchAddServicesSucces(addservices))
         })
         .catch((error)=>{

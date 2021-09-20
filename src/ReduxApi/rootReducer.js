@@ -8,6 +8,9 @@ import photoReducer from './Photography/PhotographyReducer'
 import dealerReducer from './ViewDealerProfile/Dealer.reducer'
 import servicesReducer from './ViewDealerServices/Service.reducer'
 import addservicesReducer from './addDealerServices/AddServices.reducers'
+import PhotographerbookingReducer from './PhotographerBooking/PhotoBooking.reducer'
+import carBookingReducer from './carBooking/CarBooking.reducer'
+import saloonBookingReducer from './saloonBooking/SaloonBooking.reducer'
 const rootReducer = combineReducers({
   
   user: userReducer,
@@ -17,7 +20,10 @@ const rootReducer = combineReducers({
   photo:photoReducer,
   dealerProfile:dealerReducer,
   service:servicesReducer,
-  addservice:addservicesReducer
+  addservice:addservicesReducer,
+  bookPhotographers:PhotographerbookingReducer,
+  bookcars:carBookingReducer,
+  booksaloons:saloonBookingReducer
 
 })
 

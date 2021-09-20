@@ -5,12 +5,19 @@ import { Form, Input,Button } from 'antd';
 import hallSearch from "../../../Assets/images/weddingHallsearch.jpg"
 import {connect} from 'react-redux';
 import {fetchAddServices} from '../../../ReduxApi/addDealerServices/AddServices.actions'
+import { useDispatch, useSelector } from "react-redux";
+
+
 import "./AddService.scss"
 
 
 function AddServices(props) {
+  const dispatch = useDispatch();
+
+
  
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [patient, setPatient] = useState(null);
 
     const[serviceName,setService]=useState();
     const[dealerservice,setDealer]=useState();
@@ -32,7 +39,7 @@ function AddServices(props) {
       };
 
     const send=(props)=>{
-        // e.preventDefault();
+        
         const fileArray=[];
         fileArray.push(Img);
         const formData=new FormData();
@@ -42,15 +49,8 @@ function AddServices(props) {
         formData.append('description',description);
         formData.append('price',price)
         formData.append('email', localStorage.getItem('email'))
-      //  dispatch(fetchAddServices(formData.addservice))
-
-        // axios.post("http://localhost:2000/api/postdealer/post-dealers",formData).then((res)=>{
-        //     console.log(res);
-        // })
-        // .catch((err)=>{
-        //     console.log(err)
-        // })
-       //fetchAddServices.addservice()
+    
+       dispatch(fetchAddServices(formData))
          
     }
    
@@ -168,16 +168,5 @@ function AddServices(props) {
         </div>
     )
 }
-const mapStateToProps = state => {
-  return {
-    userData: state.addservice
-  }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchAddServices: () => dispatch(fetchAddServices())
-  }
-}
-
-export default  connect(mapStateToProps,mapDispatchToProps)(AddServices);
+export default  AddServices;
