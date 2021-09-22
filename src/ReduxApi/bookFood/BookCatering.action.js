@@ -5,11 +5,11 @@ import {
   FETCH_BOOKFOOD_FAILURE,
 } from "./BookCatering.types";
 
-export const fetchbookFoodServices = (data) => {
+export const fetchbookFoodServices = (payload) => {
   return (dispatch) => {
     dispatch(fetchBookFoodRequest());
     axios
-      .post("http://localhost:2000/api/cateringfood/booking", data)
+      .post("http://localhost:2000/api/cateringfood/booking",payload)
       .then((res) => {
         const bookFood = res.data;
         console.log(bookFood, "hiii");
@@ -22,11 +22,12 @@ export const fetchbookFoodServices = (data) => {
   };
 };
 
-export const fetchBookFoodRequest = () => {
-  return {
-    type: FETCH_BOOKFOOD_REQUEST,
-  };
-};
+export const fetchBookFoodRequest = () => ({
+  type: FETCH_BOOKFOOD_REQUEST,
+});
+
+
+
 export const fetchBookFoodSucces = (bookFood) => {
   return {
     type: FETCH_BOOKFOOD_SUCCESS,

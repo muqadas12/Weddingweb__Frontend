@@ -120,7 +120,7 @@ function Bookfood() {
       <Form.Item name="numOfPeople" label="No of people" style={{'fontFamily':'cursive',width:'500px',marginLeft:'16spx'}}>
           <Input style={{marginTop:'-20px'}}/>
       </Form.Item>
-<Button htmlType="submit" className="book-now-button-food">Book Now</Button>
+<Button htmlType="submit" className="book-now-button-food" >Book Now</Button>
         
           </Form>
 
