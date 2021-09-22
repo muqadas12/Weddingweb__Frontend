@@ -1,28 +1,28 @@
 import { combineReducers } from "redux";
 
-import userReducer from "./ViewProfile/userReducer";
-import viewServiceReducer from "./Saloonservices/SaloonReducers";
-import carRental from "./CarRental/CarReducer";
-import cateringService from "./Catering/CateringReducer";
-import photoReducer from "./Photography/PhotographyReducer";
-import dealerReducer from "./ViewDealerProfile/Dealer.reducer";
+import user from "./ViewProfile/userReducer";
+import viewSaloonServices from "./Saloonservices/SaloonReducers";
+import viewCarRentalServices from "./CarRental/CarReducer";
+import viewCateringService from "./Catering/CateringReducer";
+import viewphotographerServices from "./Photography/PhotographyReducer";
+import dealerProfile from "./ViewDealerProfile/Dealer.reducer";
 import servicesReducer from "./ViewDealerServices/Service.reducer";
-import addservicesReducer from "./addDealerServices/AddServices.reducers";
-import PhotographerbookingReducer from "./PhotographerBooking/PhotoBooking.reducer";
-import carBookingReducer from "./carBooking/CarBooking.reducer";
-import saloonBookingReducer from "./saloonBooking/SaloonBooking.reducer";
+import  addservice from "./addDealerServices/AddServices.reducers";
+import bookPhotographers from "./PhotographerBooking/PhotoBooking.reducer";
+import bookcars from "./carBooking/CarBooking.reducer";
+import booksaloons from "./saloonBooking/SaloonBooking.reducer";
 const rootReducer = combineReducers({
-  user: userReducer,
-  saloon: viewServiceReducer,
-  carrent: carRental,
-  catering: cateringService,
-  photo: photoReducer,
-  dealerProfile: dealerReducer,
+  user,
+  viewSaloonServices,
+  viewCarRentalServices,
+  viewCateringService,
+  viewphotographerServices,
+  dealerProfile,
   service: servicesReducer,
-  addservice: addservicesReducer,
-  bookPhotographers: PhotographerbookingReducer,
-  bookcars: carBookingReducer,
-  booksaloons: saloonBookingReducer,
+  addservice,
+  bookPhotographers,
+  bookcars,
+  booksaloons,
 });
 
 export default rootReducer;

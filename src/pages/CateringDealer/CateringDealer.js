@@ -72,7 +72,7 @@ function CateringDealer({ userData, fetchCatering }) {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.catering,
+    userData: state.viewCateringService,
   };
 };
 

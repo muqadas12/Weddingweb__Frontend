@@ -63,7 +63,7 @@ function PhotographerDealer({ userData, fetchPhotos }) {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.photo,
+    userData: state.viewphotographerServices,
   };
 };
 

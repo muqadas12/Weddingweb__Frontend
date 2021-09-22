@@ -48,7 +48,7 @@ function SaloonDealer({ userData, fetchServices }) {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.saloon,
+    userData: state.viewSaloonServices,
   };
 };
 

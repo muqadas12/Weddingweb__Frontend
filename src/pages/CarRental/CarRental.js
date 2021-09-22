@@ -40,7 +40,7 @@ function CarRental({ userData, fetchCarRental }) {
 }
 const mapStateToProps = (state) => {
   return {
-    userData: state.carrent,
+    userData: state.viewCarRentalServices,
   };
 };
 const mapDispatchToProps = (dispatch) => {
