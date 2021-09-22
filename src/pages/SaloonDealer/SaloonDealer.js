@@ -1,77 +1,61 @@
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchServices } from "../../ReduxApi/Saloonservices/SaloonAction";
+import saloonServices from "../../Assets/images/saloonServices.jpg";
+import "./SaloonDealer.scss";
+import { Link } from "react-router-dom";
+import { Card, Col, Row } from "antd";
 
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { fetchServices } from '../../ReduxApi/Saloonservices/SaloonAction'
-import saloonServices from "../../Assets/images/saloonServices.jpg"
-import "./SaloonDealer.scss"
-import { Link } from 'react-router-dom'
-import { Card, Col,Row } from 'antd';
-
-function SaloonDealer ({ userData, fetchServices }) {
+function SaloonDealer({ userData, fetchServices }) {
+  var a = "";
   useEffect(() => {
-    fetchServices()
-  }, [])
+    fetchServices();
+  }, []);
   console.log(userData);
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.err ? (
     <h2>{userData.err}</h2>
-    
   ) : (
     <div>
-        
-        <img className="saloon-image" src={saloonServices} alt="saloonService"/>
-      {/* <div style={{display: "flex"}}> */}
+      <img className="saloon-image" src={saloonServices} alt="saloonService" />
+      {/* <div style={{display: 'flex'}}> */}
       <div className="saloon-services-hair">
         {userData &&
           userData.saloonser &&
-          userData.saloonser.map(user => 
-          <div className="cards-saloon-services" >
-            <p className="service-name">{user.dealerservice}</p>
-            <p className="service-type-saloon">{user.serviceName}</p>
+          userData.saloonser.map((user) => (
+            <div className="cards-saloon-services">
+              <p className="service-name">{user.dealerservice}</p>
+              <p className="service-type-saloon">{user.serviceName}</p>
 
-            <p className="service-des-saloon">{user.description}</p>
-            <p className="service-price">For only Rs{user.price}</p>
-            <p> <img className="service-img" src={user.pathImg} alt="img"/></p>
-             <span>
-               <Link to="/booking-saloon">
-             <button className="book-saloon-service-btn">Book Now</button>
-             </Link>
-             </span>
-
-              
-              </div>
-              
-             
-             
-             
-               
-            
-         
-
-          
-          
-          )}
+              <p className="service-des-saloon">{user.description}</p>
+              <p className="service-price">For only Rs{user.price}</p>
+              <p>
+                {" "}
+                <img className="service-img" src={user.pathImg} alt="img" />
+              </p>
+              <span>
+                <Link to="/booking-saloon">
+                  <button className="book-saloon-service-btn">Book Now</button>
+                </Link>
+              </span>
+            </div>
+          ))}
       </div>
-   
-      
     </div>
-  )
+  );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userData: state.saloon
-  }
-}
+    userData: state.saloon,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchServices: () => dispatch(fetchServices())
-  }
-}
+    fetchServices: () => dispatch(fetchServices()),
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SaloonDealer)
+export default connect(mapStateToProps, mapDispatchToProps)(SaloonDealer);

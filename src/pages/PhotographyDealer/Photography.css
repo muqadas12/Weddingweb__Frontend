@@ -1,6 +1,6 @@
 .photography-main-image {
   width: 600px;
-  margin-left: 450px;
+  margin-left: -10px;
 }
 
 .photographycards {
@@ -36,12 +36,12 @@
 
 @media screen and (max-width: 700px) {
   .photography-main-image {
-    width: 80%;
+    width: 280px;
     height: 300px;
     -o-object-fit: cover;
        object-fit: cover;
     -o-object-position: bottom;
        object-position: bottom;
-    margin-left: 50px;
+    margin-left: -30px;
   }
 }/*# sourceMappingURL=Photography.css.map */

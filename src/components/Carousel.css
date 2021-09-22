@@ -1,11 +1,14 @@
 .responsive-crousel {
-  width: 200vh;
+  width: 100%;
+  height: auto;
 }
 
 .responsive-crousel-img2 {
-  width: 200vh;
+  width: 100%;
+  height: auto;
 }
 
 .responsive-crousel-img3 {
-  width: 200vh;
+  width: 100%;
+  height: auto;
 }/*# sourceMappingURL=Carousel.css.map */

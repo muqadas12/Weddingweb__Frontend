@@ -2,10 +2,13 @@ import React,{useState} from 'react'
 import { Card,DatePicker,Form, Input, Select, Button,Row,Col} from 'antd';
 import axios from "axios";
 import './Bookfood.scss'
+import {fetchbookFoodServices} from "../../ReduxApi/bookFood/BookCatering.action"
 import cateringBooking from '../../Assets/images/cateringBooking.png';
+import { useDispatch } from 'react-redux';
 const { Option } = Select;
 
 function Bookfood() {
+  const dispatch=useDispatch()
   const[data,setData]=useState({
     functionDate:"",
     functionTime:"",
@@ -14,9 +17,24 @@ function Bookfood() {
     foodType:""
 
   })
-  function handleSubmit(){
-
-  }
+  function  BookcateringFood(payload) {
+    dispatch(fetchbookFoodServices(payload))
+  
+ }
+ function formSubmit(e) {  
+   const payload = {
+     functionDate : e.functionDate,
+     functionTime:e.functionTime,
+     functionType:e.functionType,
+     numOfPeople: e.numOfPeople,
+     foodType:e.foodType
+    
+   }
+   console.log('helo', e, e.numOfPeople,payload);
+   BookcateringFood(payload);
+   //this should be addBookingSaloon or postBookingSalon
+ }
+ 
 
 
 
@@ -27,30 +45,36 @@ function Bookfood() {
       <Col xs={{ span: 15, offset: 8 }} lg={{ span: 9, offset: 8 }}>
             <Card className="card-booking-food-catering">
                 <h1 className="h1-food-booking">Book Your Food here!</h1>
-                <Form>
-               <label className="label-date-picker">Function Date</label>
-         <Form.Item className="date-picker-booking-food" >
+                <Form onFinish={(e)=>formSubmit(e)}>
+         <Form.Item className="date-picker-booking-food" label="Function date" name="functionDate">
          <DatePicker className="ant-input" />
           </Form.Item>
-          <label className="label-date-picker">Function Time</label>
           <Form.Item
-        name="Function Time"
+
+          label="Function Time"
+          name="functionTime"
+          className="date-picker-booking-food"
        
         rules={[
           {
-            required: true,
+           
             message: 'Please select Function Time!',
           },
         ]}
       >
-        <Select placeholder="select your Function Time" className="function-time">
+        <Select placeholder="select your Function Time"
+        style={{marginLeft:'2px'}}
+       
+        
+        >
           <Option value="lunch">Lunch</Option>
           <Option value="dinner">Dinner</Option>
         </Select>
       </Form.Item>
-      <label className="label-date-picker">Function Type</label>
           <Form.Item
-        name="Function Type"
+        label="Function Type"
+        name="functionType"
+        style={{'fontFamily':'cursive'}}
        
         rules={[
           {
@@ -59,7 +83,8 @@ function Bookfood() {
           },
         ]}
       >
-        <Select placeholder="select your Function Type" className="function-time">
+        <Select 
+        placeholder="select your Function Type" >
 
           <Option value="engagment">Engagment</Option>
           <Option value="nikah">Nikah</Option>
@@ -71,10 +96,10 @@ function Bookfood() {
         </Select>
       </Form.Item>
 
-      <label className="label-date-picker">Food Type</label>
           <Form.Item
-        name="Food Type"
-       
+          label="Food Type"
+        name="foodType"
+        style={{'fontFamily':'cursive'}}
         rules={[
           {
             required: true,
@@ -82,7 +107,7 @@ function Bookfood() {
           },
         ]}
       >
-        <Select placeholder="select your Food Type" className="function-time">
+        <Select placeholder="select your Food Type" className="foodtype-booking-catering" style={{width:'400px'}}>
 
           <Option value="chicken">Chicken</Option>
           <Option value="sweets">Sweets</Option>
@@ -92,11 +117,10 @@ function Bookfood() {
 
         </Select>
       </Form.Item>
-      <Form.Item>
-      <label className="label-date-picker">Number of people</label>
-          <Input style={{marginTop:'20px'}}/>
+      <Form.Item name="numOfPeople" label="No of people" style={{'fontFamily':'cursive',width:'500px',marginLeft:'16spx'}}>
+          <Input style={{marginTop:'-20px'}}/>
       </Form.Item>
-<Button className="book-now-button-food">Book Now</Button>
+<Button htmlType="submit" className="book-now-button-food">Book Now</Button>
         
           </Form>
 

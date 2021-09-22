@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function CustomerOrders() {
-    return (
-        <div>
-            cutomer orders
-        </div>
-    )
+  return <div>cutomer orders</div>;
 }
 
-export default CustomerOrders
+export default CustomerOrders;

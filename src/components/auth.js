@@ -1,13 +1,13 @@
 const Auth = {
   isAuthenticated: false,
   authenticate() {
-  this.isAuthenticated = true;
+    this.isAuthenticated = true;
   },
   signout() {
-  this.isAuthenticated = false;
+    this.isAuthenticated = false;
   },
   getAuth() {
-  return this.isAuthenticated;
-  }
-  };
-  export default Auth;
+    return this.isAuthenticated;
+  },
+};
+export default Auth;

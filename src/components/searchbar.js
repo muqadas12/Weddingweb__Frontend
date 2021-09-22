@@ -1,42 +1,37 @@
-import React,{useState} from "react";
- import {useHistory} from 'react-router-dom';
- import "./search.scss"
- import {SearchOutlined} from '@ant-design/icons';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./search.scss";
+import { SearchOutlined } from "@ant-design/icons";
 
-const Searchbar=()=>{
-    const [state , setstate] = useState();
+const Searchbar = () => {
+  const [state, setstate] = useState();
   const location = useHistory();
 
-  const onSubmitSearch = () =>{
-        
-    if (state){
-        console.log(state);
-        location.push(`/${state}`);
+  const onSubmitSearch = () => {
+    if (state) {
+      console.log(state);
+      location.push(`/${state}`);
     }
+  };
+  return (
+    <div>
+      <form>
+        <input
+          type="textsearchpage"
+          placeholder="Search"
+          value={state}
+          onChange={(e) => setstate(e.target.value)}
+          className="textsearchredirectpage"
+          style={{ color: "black" }}
+        />
 
-       
-    }
-    return(
-        <div>
- <form >
-                <input
-                type="textsearchpage" 
-                placeholder="Search" 
-                value={state}
-                onChange={e => setstate(e.target.value)}
-               className="textsearchredirectpage" 
-               style={{color:'black'}}
-                />
-
-<SearchOutlined 
-type="submit"
-className="btnofsearchpagetop"
-onClick={onSubmitSearch}
-
-/>
-               
-            </form>
-        </div>
-            )
-}
+        <SearchOutlined
+          type="submit"
+          className="btnofsearchpagetop"
+          onClick={onSubmitSearch}
+        />
+      </form>
+    </div>
+  );
+};
 export default Searchbar;

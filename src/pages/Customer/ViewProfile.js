@@ -1,53 +1,49 @@
+import React, { useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
+import { fetchUsers } from "../../ReduxApi/ViewProfile/userAction";
+import viewProfile from "../../Assets/images/viewProfile.jpg";
+import { Card } from "antd";
+import axios from "axios";
+import "./viewProfile.scss";
 
-import React, { useEffect, useState } from 'react'
-import { connect,useSelector } from 'react-redux'
-import { fetchUsers } from '../../ReduxApi/ViewProfile/userAction'
-import viewProfile from "../../Assets/images/viewProfile.jpg"
-import { Card } from 'antd';
-import axios from 'axios';
-import "./viewProfile.scss"
-
-function ViewProfile ({ userData, fetchUsers }) {
-
-  const [userInfo,setUserInfo] = useState({
-      name:"", email:"",phoneNumber:"",address:"",role:""})
+function ViewProfile({ userData, fetchUsers }) {
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    role: "",
+  });
 
   useEffect(() => {
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
 
+  const displayInfo = () => {
+    console.log(localStorage.getItem("email"), " email from display");
+    axios
+      .post("http://localhost:2000/api/users/dashboard", {
+        email: localStorage.getItem("email"),
+      })
+      .then((res) => {
+        setUserInfo({
+          name: res.data.existingUser.name,
+          email: res.data.existingUser.email,
+          phoneNumber: res.data.existingUser.phoneNumber,
+          address: res.data.existingUser.address,
+          role: res.data.existingUser.role,
+        });
 
-   
-  const displayInfo = ()=>{
-    console.log( localStorage.getItem("email")," email from display")
-       axios.post('http://localhost:2000/api/users/dashboard',{
-         email:localStorage.getItem("email"),
-       
-        
-         
-     }).then((res)=>{
-       setUserInfo({
-           name:res.data.existingUser.name,
-           email:res.data.existingUser.email,
-           phoneNumber:res.data.existingUser.phoneNumber,
-           address:res.data.existingUser.address,
-           role:res.data.existingUser.role
-       })
+        console.log(res.data.existingUser, "res from display");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-           console.log(res.data.existingUser,  "res from display")
-       })
-       .catch((err)=>{
-           console.log(err)
-       })
-
-   }
-
-   useEffect(() => {
-       displayInfo()
-      
-   }, [])
-
-
+  useEffect(() => {
+    displayInfo();
+  }, []);
 
   return userData.loading ? (
     <h2>Loading....</h2>
@@ -55,7 +51,11 @@ function ViewProfile ({ userData, fetchUsers }) {
     <h2>{userData.error}</h2>
   ) : (
     <div>
-      <img className="view-customer-profile" src={viewProfile} alt="viewProfile"/>
+      <img
+        className="view-customer-profile"
+        src={viewProfile}
+        alt="viewProfile"
+      />
       <div>
         {/* {userData &&
           userData.users &&
@@ -73,34 +73,34 @@ function ViewProfile ({ userData, fetchUsers }) {
           )} */}
       </div>
       <div>
-       <p className="view-profile-customer"> Welcome!
-        {userInfo.name }</p>
+        <p className="view-profile-customer">
+          {" "}
+          Welcome!
+          {userInfo.name}
+        </p>
         <div className="user-customer-profile-info">
-        Your user name: <p className="info-display">{userInfo.name}</p>
-        Your email:<p className="info-display">{userInfo.email}</p>
-         Your PhoneNo:<p className="info-display">{userInfo.phoneNumber}</p>
-         Your Address:<p className="info-display">{userInfo.address}</p>
-         You are SignUp with the <p className="info-display">{userInfo.role} role</p>
-         </div>
-
+          Your user name: <p className="info-display">{userInfo.name}</p>
+          Your email:<p className="info-display">{userInfo.email}</p>
+          Your PhoneNo:<p className="info-display">{userInfo.phoneNumber}</p>
+          Your Address:<p className="info-display">{userInfo.address}</p>
+          You are SignUp with the{" "}
+          <p className="info-display">{userInfo.role} role</p>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    userData: state.user
-  }
-}
+    userData: state.user,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUsers: () => dispatch(fetchUsers())
-  }
-}
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ViewProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

@@ -1,0 +1,32 @@
+.car-booking-main-image {
+  width: 400px;
+  height: auto;
+}
+
+.car-booking-card {
+  background-color: #ff8686;
+}
+
+.booking-h1-main-heading {
+  font-family: cursive;
+  margin-left: 200px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .booking-h1-main-heading {
+    font-family: cursive;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .label-date-picker {
+    margin-left: 45px;
+  }
+
+  .book-now-button-food {
+    margin-left: 30px;
+  }
+}/*# sourceMappingURL=Carbooking.css.map */

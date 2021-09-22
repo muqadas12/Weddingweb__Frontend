@@ -2,7 +2,6 @@
 // import React,{useState} from 'react';
 // import { Modal} from 'antd';
 
-
 // function Dealer() {
 //     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -15,11 +14,11 @@
 //     const showModal = () => {
 //         setIsModalVisible(true);
 //       };
-    
+
 //       const handleOk = () => {
 //         setIsModalVisible(false);
 //       };
-    
+
 //       const handleCancel = () => {
 //         setIsModalVisible(false);
 //       };
@@ -42,7 +41,7 @@
 //             console.log(err)
 //         })
 //     }
-   
+
 //     return (
 //         <div>
 //           <form onSubmit={send} >
