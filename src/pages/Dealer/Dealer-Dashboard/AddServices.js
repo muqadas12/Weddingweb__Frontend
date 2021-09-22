@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-import { Modal} from 'antd'
 import { Form, Input,Button } from 'antd';
 import hallSearch from "../../../Assets/images/weddingHallsearch.jpg"
 import {fetchAddServices}from '../../../ReduxApi/addDealerServices/AddServices.actions'
@@ -13,8 +12,6 @@ function AddServices(props) {
 
 
  
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [patient, setPatient] = useState(null);
 
     const[serviceName,setService]=useState();
     const[dealerservice,setDealer]=useState();
@@ -23,17 +20,7 @@ function AddServices(props) {
     const[Img,setImg]=useState();
 
 
-    const showModal = () => {
-        setIsModalVisible(true);
-      };
-    
-      const handleOk = () => {
-        setIsModalVisible(false);
-      };
-    
-      const handleCancel = () => {
-        setIsModalVisible(false);
-      };
+  
 
     const send=(props)=>{
         
@@ -158,9 +145,7 @@ function AddServices(props) {
 <br/>
 <Button style={{marginTop:'30px',marginLeft:'510px'}} type="primary" htmlType='submit'  >Submit</Button>
 
-<Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-       <p>Your service has added successfully!</p>
-      </Modal>
+
           </Form>
         </div>
     )

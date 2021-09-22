@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { connect } from "react-redux";
 import { fetchCatering } from "../../ReduxApi/Catering/CateringAction";
 import cateringImg from "../../Assets/images/catering.jpg";
 import "./CateringDealer.scss";
 import { Card, Space } from "antd";
-import { Link } from "react-router-dom";
 import{useHistory} from 'react-router-dom';
 export let booked
 export let bookCatering
@@ -21,7 +20,7 @@ function CateringDealer({ userData, fetchCatering }) {
   }, []);
 
   const bookHandler = ()=>{
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
     console.log(localStorage.getItem('token'))
     {localStorage.getItem('token')? history.push('/book-catering') : history.push('/sign-in')}
    // setBooked(true)

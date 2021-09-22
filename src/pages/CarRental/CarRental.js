@@ -8,7 +8,7 @@ import { Button } from "antd";
 function CarRental({ userData, fetchCarRental }) {
   useEffect(() => {
     fetchCarRental();
-  }, []);
+  });
 
   return userData.loading ? (
     <h1>Loading...</h1>

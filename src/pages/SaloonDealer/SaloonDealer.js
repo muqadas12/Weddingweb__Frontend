@@ -4,13 +4,11 @@ import { fetchServices } from "../../ReduxApi/Saloonservices/SaloonAction";
 import saloonServices from "../../Assets/images/saloonServices.jpg";
 import "./SaloonDealer.scss";
 import { Link } from "react-router-dom";
-import { Card, Col, Row } from "antd";
 
 function SaloonDealer({ userData, fetchServices }) {
-  var a = "";
   useEffect(() => {
     fetchServices();
-  }, []);
+  });
   console.log(userData);
   return userData.loading ? (
     <h2>Loading....</h2>

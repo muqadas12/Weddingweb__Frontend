@@ -8,7 +8,7 @@ import { Card, Space, Col, Row } from "antd";
 function PhotographerDealer({ userData, fetchPhotos }) {
   useEffect(() => {
     fetchPhotos();
-  }, []);
+  });
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.error ? (
