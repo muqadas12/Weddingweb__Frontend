@@ -4,7 +4,7 @@ import { Card, Button } from "antd";
 import c2 from "./Templates/c2.png";
 import c1 from "./Templates/c1.jpg";
 function CardDesign() {
-  const history = useHistory();
+  const history = useHistory()
   const inputData = (temp) => {
     history.push(`/InputData/${temp}`);
   };
