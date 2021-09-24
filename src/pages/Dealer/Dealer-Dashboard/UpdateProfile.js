@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button } from "antd";
-
-import axios from "axios";
-import viewprof from "../../../Assets/images/viewProfiledealer.gif";
+import React, { useEffect, useState } from 'react';
+import { Form, Input, Button } from 'antd';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import viewprof from '../../../Assets/images/viewProfiledealer.gif';
 import {
   fetchUsersupdated,
   fetchupdated,
-} from "../../../ReduxApi/updateProfile/userAction";
-import { connect } from "react-redux";
-import "./UpdateProfile.scss";
-function ViewProfile({ userData, fetchDealers }) {
+} from '../../../ReduxApi/updateProfile/userAction';
+import './UpdateProfile.scss';
+
+function ViewProfile({ userData }) {
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    role: "",
-    _id: "",
+    name: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+    role: '',
+    _id: '',
   });
   useEffect(() => {
     fetchUsersupdated();
   }, []);
   const displayInfo = () => {
-    console.log(localStorage.getItem("email"), " email from display");
+    console.log(localStorage.getItem('email'), ' email from display');
     axios
-      .post("http://localhost:2000/api/users/dashboard", {
-        email: localStorage.getItem("email"),
+      .post('http://localhost:2000/api/users/dashboard', {
+        email: localStorage.getItem('email'),
       })
       .then((res) => {
         setUserInfo({
@@ -37,7 +37,7 @@ function ViewProfile({ userData, fetchDealers }) {
           _id: res.data.existingUser._id,
         });
 
-        console.log(res.data.existingUser, "res from display");
+        console.log(res.data.existingUser, 'res from display');
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +48,7 @@ function ViewProfile({ userData, fetchDealers }) {
     displayInfo();
   }, []);
   function submit(id) {
-    console.log("hiii", fetchupdated());
+    console.log('hiii', fetchupdated());
     fetchupdated(id);
   }
 
@@ -61,7 +61,7 @@ function ViewProfile({ userData, fetchDealers }) {
       <img className="dealer-profile" src={viewprof} alt="profile" />
       <div>
         <p className="view-profile-dealer">
-          {" "}
+          {' '}
           Welcome!
           {userInfo.name}
         </p>
@@ -72,7 +72,7 @@ function ViewProfile({ userData, fetchDealers }) {
               name="username"
               className="updated-name"
               rules={[
-                { required: true, message: "Please update your username!" },
+                { required: true, message: 'Please update your username!' },
               ]}
             >
               <Input placeholder={userInfo.name} />
@@ -82,7 +82,7 @@ function ViewProfile({ userData, fetchDealers }) {
               label="email"
               name="email"
               className="updated-email"
-              rules={[{ required: true, message: "Please update your Email!" }]}
+              rules={[{ required: true, message: 'Please update your Email!' }]}
             >
               <Input placeholder={userInfo.email} />
             </Form.Item>
@@ -94,7 +94,7 @@ function ViewProfile({ userData, fetchDealers }) {
               rules={[
                 {
                   required: true,
-                  message: "Please update your phoneNumber!",
+                  message: 'Please update your phoneNumber!',
                 },
               ]}
             >
@@ -106,7 +106,7 @@ function ViewProfile({ userData, fetchDealers }) {
               name="address"
               className="updated-address"
               rules={[
-                { required: true, message: "Please update your username!" },
+                { required: true, message: 'Please update your username!' },
               ]}
             >
               <Input placeholder={userInfo.address} />
@@ -116,7 +116,7 @@ function ViewProfile({ userData, fetchDealers }) {
               label="Role"
               name="role"
               className="updated-role"
-              rules={[{ required: true, message: "Please update your role!" }]}
+              rules={[{ required: true, message: 'Please update your role!' }]}
             >
               <Input placeholder={userInfo.role} />
             </Form.Item>
@@ -129,15 +129,11 @@ function ViewProfile({ userData, fetchDealers }) {
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    userData: state.dealerProfile,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.dealerProfile,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsersupdated: () => dispatch(fetchUsersupdated()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchUsersupdated: () => dispatch(fetchUsersupdated()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

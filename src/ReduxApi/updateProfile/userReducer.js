@@ -2,12 +2,12 @@ import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
-} from "./userTypes";
+} from './userTypes';
 
 const initialState = {
   loading: false,
   users: [],
-  error: "",
+  error: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
       return {
         loading: false,
         users: action.payload,
-        error: "",
+        error: '',
       };
     case FETCH_USERS_FAILURE:
       return {

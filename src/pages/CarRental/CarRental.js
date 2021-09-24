@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { Button } from "antd";
-import { fetchCarRental } from "../../ReduxApi/CarRental/CarActions";
-import carRental from "../../Assets/images/carRental.jpg";
-import "./CarRental.scss";
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-lone-blocks */
+/* eslint-disable import/no-mutable-exports */
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { Button } from 'antd';
+import { fetchCarRental } from '../../ReduxApi/CarRental/CarActions';
+import carRental from '../../Assets/images/carRental.jpg';
+import './CarRental.scss';
+
 export let bookcar;
 
 function CarRental({ userData, fetchCarRental }) {
   const history = useHistory();
-  const [setBookcar] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [car, setBookcar] = useState(false);
 
   const bookHandler = () => {
-    console.log(localStorage.getItem("token"));
+    console.log(localStorage.getItem('token'));
     {
-      localStorage.getItem("token")
-        ? history.push("/car-booking")
-        : history.push("/sign-in");
+      localStorage.getItem('token')
+        ? history.push('/car-booking')
+        : history.push('/sign-in');
     }
     setBookcar(true);
   };
@@ -41,7 +46,7 @@ function CarRental({ userData, fetchCarRental }) {
             <p className="desc-car">{user.description}</p>
             <p className="price-img">Bring this for only Rs{user.price}</p>
             <p>
-              {" "}
+              {' '}
               <img className="car-rental-img" src={user.pathImg} alt="imgcar" />
             </p>
             <Link to="/car-booking">
@@ -54,15 +59,11 @@ function CarRental({ userData, fetchCarRental }) {
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    userData: state.viewCarRentalServices,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchCarRental: () => dispatch(fetchCarRental()),
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.viewCarRentalServices,
+});
+const mapDispatchToProps = (dispatch) => ({
+  fetchCarRental: () => dispatch(fetchCarRental()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarRental);

@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { fetchPhotos } from "../../ReduxApi/Photography/PhotographyAction";
-import photographyImg from "../../Assets/images/photographyImg.jpg";
-import { Link } from "react-router-dom";
-import "./Photography.scss";
-import { Card, Space, Col, Row } from "antd";
-/**
- * Adds two numbers together.
- * @param {int} num1 The first number.
- * @param {int} num2 The second number.
- * @return {int} The sum of the two numbers.
- */
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Card, Space, Col, Row } from 'antd';
+import { fetchPhotos } from '../../ReduxApi/Photography/PhotographyAction';
+import photographyImg from '../../Assets/images/photographyImg.jpg';
+import './Photography.scss';
+
 function PhotographerDealer({ userData, fetchPhotos }) {
   useEffect(() => {
     fetchPhotos();
@@ -28,11 +23,11 @@ function PhotographerDealer({ userData, fetchPhotos }) {
             src={photographyImg}
             alt="photographyImg"
           />
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             {userData &&
               userData.photos &&
               userData.photos.map((user) => (
-                <Space key={user} style={{ padding: "20px" }}>
+                <Space key={user} style={{ padding: '20px' }}>
                   <Card className="photographycards">
                     <p className="dealer-service-photography">
                       {user.dealerservice}
@@ -54,7 +49,9 @@ function PhotographerDealer({ userData, fetchPhotos }) {
                       />
                     </p>
                     <Link to="/booking-photographer">
-                      <button className="book-now-wedding">Book Now</button>
+                      <button type="submit" className="book-now-wedding">
+                        Book Now
+                      </button>
                     </Link>
                   </Card>
                 </Space>
@@ -66,16 +63,12 @@ function PhotographerDealer({ userData, fetchPhotos }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.viewphotographerServices,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.viewphotographerServices,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPhotos: () => dispatch(fetchPhotos()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchPhotos: () => dispatch(fetchPhotos()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotographerDealer);

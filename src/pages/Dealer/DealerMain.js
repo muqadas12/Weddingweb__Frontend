@@ -1,20 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import dealerdashboardpic from "../../Assets/images/dealer.jpg";
-import "./Dealer-main.scss";
-import dealerProfile from "../../Assets/images/profile.PNG";
-import updateProfile from "../../Assets/images/updateProfile.PNG";
-import addServices from "../../Assets/images/addSer.PNG";
-import viewServices from "../../Assets/images/viewServices.PNG";
-import order from "../../Assets/images/orders.PNG";
-import updateSer from "../../Assets/images/updateSer.PNG";
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React from 'react';
+import { Link } from 'react-router-dom';
+import dealerdashboardpic from '../../Assets/images/dealer.jpg';
+import './Dealer-main.scss';
+import dealerProfile from '../../Assets/images/profile.PNG';
+import updateProfile from '../../Assets/images/updateProfile.PNG';
+import addServices from '../../Assets/images/addSer.PNG';
+import viewServices from '../../Assets/images/viewServices.PNG';
+import order from '../../Assets/images/orders.PNG';
+import updateSer from '../../Assets/images/updateSer.PNG';
 
-import logoutCustomer from "../../Assets/images/logoutCustomer.PNG";
+import logoutCustomer from '../../Assets/images/logoutCustomer.PNG';
 
 function DealerMain() {
   const logout = () => {
     localStorage.clear();
-    window.location.href = "/sign-in";
+    window.location.href = '/sign-in';
   };
   return (
     <div>
@@ -30,7 +32,7 @@ function DealerMain() {
         alt="ViewProfile"
       />
       <Link to="/dealer-view-profile">
-        {" "}
+        {' '}
         <p className="Link-to-profile-page">View Profile</p>
       </Link>
       <img

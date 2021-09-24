@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchServices } from "../../ReduxApi/Saloonservices/SaloonAction";
-import saloonServices from "../../Assets/images/saloonServices.jpg";
-import "./SaloonDealer.scss";
+/* eslint-disable no-shadow */
+/* eslint-disable no-nested-ternary */
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchServices } from '../../ReduxApi/Saloonservices/SaloonAction';
+import saloonServices from '../../Assets/images/saloonServices.jpg';
+import './SaloonDealer.scss';
 
 function SaloonDealer({ userData, fetchServices }) {
   useEffect(() => {
@@ -22,14 +24,14 @@ function SaloonDealer({ userData, fetchServices }) {
         {userData &&
           userData.saloonser &&
           userData.saloonser.map((user) => (
-            <div key={u} className="cards-saloon-services">
+            <div key={user} className="cards-saloon-services">
               <p className="service-name">{user.dealerservice}</p>
               <p className="service-type-saloon">{user.serviceName}</p>
 
               <p className="service-des-saloon">{user.description}</p>
               <p className="service-price">For only Rs{user.price}</p>
               <p>
-                {" "}
+                {' '}
                 <img className="service-img" src={user.pathImg} alt="img" />
               </p>
               <span>
@@ -46,16 +48,12 @@ function SaloonDealer({ userData, fetchServices }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.viewSaloonServices,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.viewSaloonServices,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchServices: () => dispatch(fetchServices()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchServices: () => dispatch(fetchServices()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SaloonDealer);

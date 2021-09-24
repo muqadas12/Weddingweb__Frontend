@@ -3,8 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "google", "prettier"],
-
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -12,25 +11,27 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
   "rules": {
-    "quotes": ["error", "double"],
-    "indent": "off",
-    "react/forbid-prop-types": 0,
-    "linebreak-style": 0,
-    "object-curly-spacing": "off",
-    "require-jsdoc": 0,
-    "react/prop-types": 0,
-    "operator-linebreak": [
-      1,
-      "after",
-      {
-        "overrides": {
-          "?": "ignore",
-          ":": "ignore"
-        }
-      }
-    ],
-    "comma-dangle": [0, "always-multiline"]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "prettier/prettier": ["error"],
+    "react/prop-types": "off",
+    "no-console": "off",
+    "prefer-const": "off",
+    "react/destructuring-assignment": "off",
+    "react/prefer-stateless-function": "off",
+    "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "no-shadow": "off",
+    "no-lone-blocks": "off",
+    "react/jsx-no-bind": "off",
+    "no-empty-pattern": "off",
+    "no-nested-ternary": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y": "off",
+    "no-unused-expressions": "off",
+    "import/no-mutable-exports": [1],
+    "no-unused-vars": "off",
+    "no-alert": "off"
   }
 }

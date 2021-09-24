@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import viewprof from "../../../Assets/images/viewProfiledealer.gif";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import viewprof from '../../../Assets/images/viewProfiledealer.gif';
 // eslint-disable-next-line max-len
-import { fetchDealers } from "../../../ReduxApi/ViewDealerProfile/Dealer.action";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import "./viewProf.scss";
+import { fetchDealers } from '../../../ReduxApi/ViewDealerProfile/Dealer.action';
+import './viewProf.scss';
+
 function ViewProfile({ userData, fetchDealers }) {
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    role: "",
-    _id: "",
+    name: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+    role: '',
+    _id: '',
   });
   useEffect(() => {
     fetchDealers();
   }, []);
   const displayInfo = () => {
-    console.log(localStorage.getItem("email"), " email from display");
+    console.log(localStorage.getItem('email'), ' email from display');
     axios
-      .post("http://localhost:2000/api/users/dashboard", {
-        email: localStorage.getItem("email"),
+      .post('http://localhost:2000/api/users/dashboard', {
+        email: localStorage.getItem('email'),
       })
       .then((res) => {
         setUserInfo({
@@ -34,7 +35,7 @@ function ViewProfile({ userData, fetchDealers }) {
           _id: res.data.existingUser._id,
         });
 
-        console.log(res.data.existingUser, "res from display");
+        console.log(res.data.existingUser, 'res from display');
       })
       .catch((err) => {
         console.log(err);
@@ -54,7 +55,7 @@ function ViewProfile({ userData, fetchDealers }) {
       <img className="dealer-profile" src={viewprof} alt="profile" />
       <div>
         <p className="view-profile-dealer">
-          {" "}
+          {' '}
           Welcome!
           {userInfo.name}
         </p>
@@ -63,25 +64,21 @@ function ViewProfile({ userData, fetchDealers }) {
           Your email:<p className="info-display">{userInfo.email}</p>
           Your PhoneNo:<p className="info-display">{userInfo.phoneNumber}</p>
           Your Address:<p className="info-display">{userInfo.address}</p>
-          You are SignUp with the{" "}
+          You are SignUp with the{' '}
           <p className="info-display">{userInfo.role} role</p>
-          <Link to={"/dealer-update-profile/" + userInfo._id}>
-            <button>Update</button>
+          <Link to={`/dealer-update-profile/${userInfo._id}`}>
+            <button type="submit">Update</button>
           </Link>
         </div>
       </div>
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    userData: state.dealerProfile,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.dealerProfile,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchDealers: () => dispatch(fetchDealers()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchDealers: () => dispatch(fetchDealers()),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

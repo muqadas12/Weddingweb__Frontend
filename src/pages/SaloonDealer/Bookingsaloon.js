@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import bookingSaloon from "../../Assets/images/bookingSaloon.jpg";
-import { Card, DatePicker, Form, Select, Button, Row, Col } from "antd";
-import "./Bookingsaloon.scss";
-import { useDispatch } from "react-redux";
-import { fetchSaloon } from "../../ReduxApi/saloonBooking/SaloonBooking.action";
+import React, { useState } from 'react';
+import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
+import './Bookingsaloon.scss';
+import { useDispatch } from 'react-redux';
+import { fetchSaloon } from '../../ReduxApi/saloonBooking/SaloonBooking.action';
+import bookingSaloon from '../../Assets/images/bookingSaloon.jpg';
+
 const { Option } = Select;
 
-function Bookingsaloon(props) {
+function Bookingsaloon() {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
   const [data, setdata] = useState({
-    functionDate: "",
-    functionType: "",
-    makeupType: "",
+    functionDate: '',
+    functionType: '',
+    makeupType: '',
   });
   function addBookingSaloon(payload) {
     dispatch(fetchSaloon(payload));
@@ -24,7 +25,7 @@ function Bookingsaloon(props) {
       functionTime: e.functionTime,
       makeupType: e.makeuptype,
     };
-    console.log("helo", e, e.functionDate._d, payload);
+    console.log('helo', e, e.functionDate._d, payload);
     addBookingSaloon(payload);
   }
   return (
@@ -61,12 +62,12 @@ function Bookingsaloon(props) {
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Time!",
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
                 <Select
-                  style={{ marginTop: "-20px", marginLeft: "-3px" }}
+                  style={{ marginTop: '-20px', marginLeft: '-3px' }}
                   name="functionTime"
                   placeholder="select your Function Time"
                   className="function-time"
@@ -83,12 +84,12 @@ function Bookingsaloon(props) {
                 rules={[
                   {
                     required: true,
-                    message: "Please select makeup type!",
+                    message: 'Please select makeup type!',
                   },
                 ]}
               >
                 <Select
-                  style={{ marginTop: "-20px" }}
+                  style={{ marginTop: '-20px' }}
                   placeholder="select your  makeup type"
                   className="function-time"
                 >

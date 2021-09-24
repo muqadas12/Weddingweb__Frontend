@@ -1,7 +1,7 @@
-import React from "react";
-import "./Booking.scss";
-import { Card, DatePicker, Form, Input, Select, Button } from "antd";
-import bookingHall from "../../Assets/images/BookingHall.jpg";
+import React from 'react';
+import './Booking.scss';
+import { Card, DatePicker, Form, Input, Select, Button } from 'antd';
+import bookingHall from '../../Assets/images/BookingHall.jpg';
 
 const { Option } = Select;
 
@@ -12,17 +12,15 @@ function Booking() {
       <Card className="card-booking">
         <h1 className="h1-booking">Booking</h1>
         <Form>
-          <label className="label-date-picker">Function Date</label>
-          <Form.Item className="date-picker-booking">
+          <Form.Item className="date-picker-booking" label="Datepicker">
             <DatePicker className="date-picker" />
           </Form.Item>
-          <label className="label-date-picker">Function Time</label>
           <Form.Item
             name="Function Time"
             rules={[
               {
                 required: true,
-                message: "Please select Function Time!",
+                message: 'Please select Function Time!',
               },
             ]}
           >
@@ -34,13 +32,13 @@ function Booking() {
               <Option value="dinner">Dinner</Option>
             </Select>
           </Form.Item>
-          <label className="label-date-picker">Function Type</label>
           <Form.Item
             name="Function Type"
+            label="Function Type"
             rules={[
               {
                 required: true,
-                message: "Please select Function Type!",
+                message: 'Please select Function Type!',
               },
             ]}
           >
@@ -56,8 +54,7 @@ function Booking() {
             </Select>
           </Form.Item>
           <Form.Item>
-            <label className="label-date-picker">Number of people</label>
-            <Input style={{ marginTop: "20px" }} />
+            <Input style={{ marginTop: '20px' }} />
           </Form.Item>
           <Button className="book-now-buuton">Book Now</Button>
         </Form>

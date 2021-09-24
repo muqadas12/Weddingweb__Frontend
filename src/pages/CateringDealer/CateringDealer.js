@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { Card, Space } from "antd";
-import { useHistory } from "react-router-dom";
-import { fetchCatering } from "../../ReduxApi/Catering/CateringAction";
-import cateringImg from "../../Assets/images/catering.jpg";
-import "./CateringDealer.scss";
+/* eslint-disable import/no-mutable-exports */
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Card, Space } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { fetchCatering } from '../../ReduxApi/Catering/CateringAction';
+import cateringImg from '../../Assets/images/catering.jpg';
+import './CateringDealer.scss';
 
 export let booked;
 
@@ -17,11 +18,10 @@ function CateringDealer({ userData, fetchCatering }) {
   }, []);
 
   const bookHandler = () => {
-    console.log(localStorage.getItem("token"));
     {
-      localStorage.getItem("token")
-        ? history.push("/book-catering")
-        : history.push("/sign-in");
+      localStorage.getItem('token')
+        ? history.push('/book-catering')
+        : history.push('/sign-in');
     }
     setBooked(true);
     // booked = true;
@@ -34,12 +34,12 @@ function CateringDealer({ userData, fetchCatering }) {
   ) : (
     <div>
       <img className="catering-img" src={cateringImg} alt="catering" />
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         {userData &&
           userData.cateringser &&
           userData.cateringser.map((user) => (
             <div key={user}>
-              <Space style={{ padding: "20px" }}>
+              <Space style={{ padding: '20px' }}>
                 <Card className="card-catering">
                   <p className="dealer-services">{user.dealerservice}</p>
                   <p className="service-name-catering">{user.serviceName}</p>

@@ -1,12 +1,24 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   FETCH_SERVICES_REQUEST,
   FETCH_SERVICES_SUCCESS,
   FETCH_SERVICES_FAILURE,
-} from "./Service.types";
+} from './Service.types';
 
+export const fetchServicesRequest = () => ({
+  type: FETCH_SERVICES_REQUEST,
+});
+export const fetchServicesSucces = (services) => ({
+  type: FETCH_SERVICES_SUCCESS,
+  payload: services,
+});
+
+export const fetchServicesFailure = (error) => ({
+  type: FETCH_SERVICES_FAILURE,
+  payload: error,
+});
 export const fetchServices = () => {
-  const email = localStorage.getItem("email");
+  const email = localStorage.getItem('email');
   return (dispatch) => {
     dispatch(fetchServicesRequest());
     axios
@@ -20,24 +32,5 @@ export const fetchServices = () => {
       .catch((error) => {
         dispatch(fetchServicesFailure(error.message));
       });
-  };
-};
-
-export const fetchServicesRequest = () => {
-  return {
-    type: FETCH_SERVICES_REQUEST,
-  };
-};
-export const fetchServicesSucces = (services) => {
-  return {
-    type: FETCH_SERVICES_SUCCESS,
-    payload: services,
-  };
-};
-
-export const fetchServicesFailure = (error) => {
-  return {
-    type: FETCH_SERVICES_FAILURE,
-    payload: error,
   };
 };

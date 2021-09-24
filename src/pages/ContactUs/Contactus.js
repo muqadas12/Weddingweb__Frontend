@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Card, Form, Input, Modal } from "antd";
-import { UserOutlined, MailOutlined, MessageOutlined } from "@ant-design/icons";
-import "./Contactus.scss";
-import axios from "axios";
-import contactUs from "../../Assets/images/contactUs.jpg";
+import React, { useState } from 'react';
+import { Card, Form, Input, Modal } from 'antd';
+import { UserOutlined, MailOutlined, MessageOutlined } from '@ant-design/icons';
+import './Contactus.scss';
+import axios from 'axios';
+import contactUs from '../../Assets/images/contactUs.jpg';
 
 function Contactus() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [name, setname] = useState(" ");
-  const [email, setemail] = useState(" ");
-  const [msg, setmsg] = useState(" ");
+  const [name, setname] = useState(' ');
+  const [email, setemail] = useState(' ');
+  const [msg, setmsg] = useState(' ');
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -40,7 +40,7 @@ function Contactus() {
       msg: e.message,
     };
 
-    axios.post("http://localhost:2000/api/email/mail", dataSubmit);
+    axios.post('http://localhost:2000/api/email/mail', dataSubmit);
   };
   // const { mutate, isLoading, isError } = useMutation(postData, {
   //   onSuccess: (successData) => {
@@ -59,10 +59,8 @@ function Contactus() {
       </p>
       <Card className="contact-card">
         <Form onFinish={handleSubmit} id="contact-form">
-          <label className="label-form">
-            <UserOutlined className="icons" />
-            Enter Name
-          </label>
+          <UserOutlined className="icons" />
+          Enter Name
           <Form.Item name="name">
             <Input
               name="name"
@@ -71,15 +69,13 @@ function Contactus() {
               onChange={() => handleClick}
             />
           </Form.Item>
-          <label className="label-form">
-            <MailOutlined className="icons" />
-            Enter Email
-          </label>
+          <MailOutlined className="icons" />
+          Enter Email
           <Form.Item
             name="email"
             rules={[
               {
-                type: "email",
+                type: 'email',
               },
             ]}
           >
@@ -90,10 +86,8 @@ function Contactus() {
               className="inputs-form"
             />
           </Form.Item>
-          <label className="label-form">
-            <MessageOutlined className="icons" />
-            Enter Message
-          </label>
+          <MessageOutlined className="icons" />
+          Enter Message
           <Form.Item name="message">
             <Input.TextArea
               name="msg"
@@ -102,10 +96,13 @@ function Contactus() {
               className="inputs-form"
             />
           </Form.Item>
-          <button onClick={() => showModal()} className="btn-submit-contact-us">
+          <button
+            type="submit"
+            onClick={() => showModal()}
+            className="btn-submit-contact-us"
+          >
             Send
           </button>
-
           <Modal
             visible={isModalVisible}
             onOk={handleOk}

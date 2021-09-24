@@ -1,10 +1,11 @@
-import React from "react";
-import { Carousel } from "antd";
-import c1 from "../Assets/images/c1.jpg";
-import c2 from "../Assets/images/c22.jpg";
-import c3 from "../Assets/images/c3.jpg";
+import React from 'react';
+import { Carousel } from 'antd';
+import c1 from '../Assets/images/c1.jpg';
+import c2 from '../Assets/images/c22.jpg';
+import c3 from '../Assets/images/c3.jpg';
 
-import "./Carousel.scss";
+import './Carousel.scss';
+
 function Carouselcomp() {
   return (
     <div>

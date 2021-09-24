@@ -1,27 +1,25 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Form, Input, Button, Checkbox } from "antd";
-import { Link } from "react-router-dom";
-import { Card } from "antd";
-import "./Signup.scss";
-import CardForm from "../../components/Card-Forms";
-import cardImgOne from "../../Assets/images/cardImgone.jpg";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { Link, useHistory } from 'react-router-dom';
+import './Signup.scss';
+import CardForm from '../../components/Card-Forms';
+import cardImgOne from '../../Assets/images/cardImgone.jpg';
 
 function Signup() {
   const history = useHistory();
 
-  const url = "http://localhost:2000/api/users/signup";
+  const url = 'http://localhost:2000/api/users/signup';
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    role: "",
-    token: "",
-    phoneNumber: "",
-    address: "",
+    name: '',
+    email: '',
+    password: '',
+    role: '',
+    token: '',
+    phoneNumber: '',
+    address: '',
   });
-  function submit(e) {
+  function submit() {
     // dispatch(signupUser(name,email,password,role))
     axios
       .post(url, {
@@ -35,12 +33,12 @@ function Signup() {
       })
       .then((res) => {
         alert(`You are signUp as ${data.name}`);
-        window.location = "http://localhost:3000/booking-sign-in";
+        window.location = 'http://localhost:3000/booking-sign-in';
 
         console.log(res);
       })
-      .catch((err) => {
-        alert("User alreay exist!.PLease signIn");
+      .catch(() => {
+        alert('User alreay exist!.PLease signIn');
       });
   }
   function handleChange(e) {
@@ -62,20 +60,22 @@ function Signup() {
 
   const autosigninHandler = () => {
     axios
-      .post("http://localhost:2000/api/users/autoSignIn", {
-        email: localStorage.getItem("email"),
+      .post('http://localhost:2000/api/users/autoSignIn', {
+        email: localStorage.getItem('email'),
       })
       .then((res) => {
+        // eslint-disable-next-line no-lone-blocks
         {
-          res.data.role === "Dealer"
-            ? history.push("/dealer-main")
-            : history.push("/booking-sign-in");
+          // eslint-disable-next-line no-unused-expressions
+          res.data.role === 'Dealer'
+            ? history.push('/dealer-main')
+            : history.push('/booking-sign-in');
         }
 
-        console.log(res, "from auto sign in response");
+        console.log(res, 'from auto sign in response');
       })
-      .catch((err) => {
-        alert("User alreay exist!.PLease signIn");
+      .catch(() => {
+        alert('User alreay exist!.PLease signIn');
       });
 
     //  history.push("/sign-in")
@@ -88,10 +88,10 @@ function Signup() {
       <Card
         className="cover-card"
         style={{
-          width: "400px",
-          height: "500px",
-          marginLeft: "740px",
-          marginTop: "-500px",
+          width: '400px',
+          height: '500px',
+          marginLeft: '740px',
+          marginTop: '-500px',
         }}
       >
         <h1 className="sign-up"> Sign up </h1>
@@ -107,11 +107,12 @@ function Signup() {
           initialValues={{
             remember: true,
           }}
+          // eslint-disable-next-line react/jsx-no-bind
           onFinish={submit}
           autoComplete="off"
         >
           <Form.Item
-            style={{ marginTop: "-30px" }}
+            style={{ marginTop: '-30px' }}
             label="Username"
             name="name"
             id="name"
@@ -119,7 +120,7 @@ function Signup() {
             rules={[
               {
                 required: true,
-                message: "Please input your name!",
+                message: 'Please input your name!',
               },
             ]}
           >
@@ -133,7 +134,7 @@ function Signup() {
             rules={[
               {
                 required: true,
-                message: "Please input your email!",
+                message: 'Please input your email!',
               },
             ]}
           >
@@ -148,7 +149,7 @@ function Signup() {
             rules={[
               {
                 required: true,
-                message: "Please input your phoneNumber!",
+                message: 'Please input your phoneNumber!',
               },
             ]}
           >
@@ -162,7 +163,7 @@ function Signup() {
             rules={[
               {
                 required: true,
-                message: "Please input your address!",
+                message: 'Please input your address!',
               },
             ]}
           >
@@ -177,7 +178,7 @@ function Signup() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: 'Please input your password!',
               },
             ]}
           >
@@ -197,7 +198,7 @@ function Signup() {
           </Form.Item>
 
           <Form.Item
-            style={{ marginLeft: "-290px" }}
+            style={{ marginLeft: '-290px' }}
             name="remember"
             valuePropName="checked"
             wrapperCol={{
@@ -205,7 +206,7 @@ function Signup() {
               span: 16,
             }}
           >
-            <Checkbox style={{ marginTop: "-160px", marginLeft: "-40px" }}>
+            <Checkbox style={{ marginTop: '-160px', marginLeft: '-40px' }}>
               Remember me
             </Checkbox>
           </Form.Item>
@@ -223,7 +224,7 @@ function Signup() {
             </div>
 
             <p>Or</p>
-            <div style={{ marginTop: "-10px" }}></div>
+            <div style={{ marginTop: '-10px' }} />
             <br />
             <div className="already-reg">
               <span>Already Register? Click here to#</span>

@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Form, Input, Button, Checkbox } from "antd";
-import CardForm from "../../components/Card-Forms";
-import { Card } from "antd";
-import Loginimg from "../../Assets/images/cardlogin.jpg";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { useHistory } from 'react-router-dom';
+import CardForm from '../../components/Card-Forms';
+import Loginimg from '../../Assets/images/cardlogin.jpg';
 
 function SignIn() {
   const history = useHistory();
-  const url = "http://localhost:2000/api/users/login";
+  const url = 'http://localhost:2000/api/users/login';
 
   const [data, setData] = useState({
-    email: "",
-    password: "",
-    role: "",
-    token: "",
+    email: '',
+    password: '',
+    role: '',
+    token: '',
     login: false,
   });
 
-  function submiHandler(e) {
+  function submiHandler() {
     // e.preventDefault();
     axios
       .post(url, {
@@ -29,23 +28,24 @@ function SignIn() {
       })
 
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("email", res.data.email);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('email', res.data.email);
 
         alert(`You are signIn as ${data.email}`);
 
         // window.location="http://localhost:3000/dealer-main"
 
         {
-          res.data.role === "Dealer"
-            ? history.push("/dealer-main")
-            : history.push("/booking");
+          // eslint-disable-next-line no-unused-expressions
+          res.data.role === 'Dealer'
+            ? history.push('/dealer-main')
+            : history.push('/booking');
         }
         console.log(res.data.role);
         console.log(res.data.token);
       })
-      .catch((err) => {
-        alert("User doesnot exist!Please signUp");
+      .catch(() => {
+        alert('User doesnot exist!Please signUp');
       });
   }
   function handleChange(e) {
@@ -61,10 +61,10 @@ function SignIn() {
       <Card
         className="cover-card"
         style={{
-          width: "400px",
-          height: "500px",
-          marginLeft: "740px",
-          marginTop: "-500px",
+          width: '400px',
+          height: '500px',
+          marginLeft: '740px',
+          marginTop: '-500px',
         }}
       >
         <h1>Login Form</h1>
@@ -83,7 +83,7 @@ function SignIn() {
           autoComplete="off"
         >
           <Form.Item
-            style={{ marginTop: "70px" }}
+            style={{ marginTop: '70px' }}
             label="Email"
             name="email"
             id="email"
@@ -91,7 +91,7 @@ function SignIn() {
             rules={[
               {
                 required: true,
-                message: "Please input your email!",
+                message: 'Please input your email!',
               },
             ]}
           >
@@ -106,7 +106,7 @@ function SignIn() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: 'Please input your password!',
               },
             ]}
           >
@@ -133,7 +133,7 @@ function SignIn() {
             <Button type="primary" htmlType="submit">
               Login
             </Button>
-            <div style={{ marginTop: "30px" }}></div>
+            <div style={{ marginTop: '30px' }} />
           </Form.Item>
         </Form>
       </Card>

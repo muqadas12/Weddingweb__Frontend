@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Card } from 'antd';
 // eslint-disable-next-line max-len
-import { fetchServices } from "../../../ReduxApi/ViewDealerServices/Services.action";
-import servicesImg from "../../../Assets/images/services.jpg";
-import "./ViewServices.scss";
-import { Card } from "antd";
+import { fetchServices } from '../../../ReduxApi/ViewDealerServices/Services.action';
+import servicesImg from '../../../Assets/images/services.jpg';
+import './ViewServices.scss';
+
 function ViewDealerServices({ userData, fetchServices }) {
   useEffect(() => {
     fetchServices();
@@ -27,7 +28,7 @@ function ViewDealerServices({ userData, fetchServices }) {
           ))}
         </p>
         <p className="services-name-heading-one">Service Name</p>
-        <p style={{ marginLeft: "190px", marginTop: "8px" }}>
+        <p style={{ marginLeft: '190px', marginTop: '8px' }}>
           {userData.services.serviceName.map((c) => (
             <p key={c}>{c}</p>
           ))}
@@ -37,16 +38,12 @@ function ViewDealerServices({ userData, fetchServices }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.service,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.service,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchServices: () => dispatch(fetchServices()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchServices: () => dispatch(fetchServices()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewDealerServices);

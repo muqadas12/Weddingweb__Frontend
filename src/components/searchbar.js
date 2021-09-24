@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import "./search.scss";
-import { SearchOutlined } from "@ant-design/icons";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './search.scss';
+import { SearchOutlined } from '@ant-design/icons';
 
 const Searchbar = () => {
   const [state, setstate] = useState();
@@ -22,7 +22,7 @@ const Searchbar = () => {
           value={state}
           onChange={(e) => setstate(e.target.value)}
           className="textsearchredirectpage"
-          style={{ color: "black" }}
+          style={{ color: 'black' }}
         />
 
         <SearchOutlined

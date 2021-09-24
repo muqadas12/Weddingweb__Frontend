@@ -1,12 +1,12 @@
-import React from "react";
-import { Card, Col, Row } from "antd";
-import photographer from "../Assets/images/photography.jpg";
-import car from "../Assets/images/car.png";
-import saloon from "../Assets/images/saloon.jpg";
-import food from "../Assets/images/fod.jpg";
-import halll from "../Assets/images/hall.jpg";
-import "./cards.scss";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { Card, Col, Row } from 'antd';
+import { NavLink } from 'react-router-dom';
+import photographer from '../Assets/images/photography.jpg';
+import car from '../Assets/images/car.png';
+import saloon from '../Assets/images/saloon.jpg';
+import food from '../Assets/images/fod.jpg';
+import halll from '../Assets/images/hall.jpg';
+import './cards.scss';
 
 function cards() {
   return (
@@ -40,7 +40,7 @@ function cards() {
       </Row>
       <br />
       <Row>
-        <Col style={{ marginLeft: "200px" }} span={8}>
+        <Col style={{ marginLeft: '200px' }} span={8}>
           <Card
             className="card-title-hall"
             title="Wedding Hall"

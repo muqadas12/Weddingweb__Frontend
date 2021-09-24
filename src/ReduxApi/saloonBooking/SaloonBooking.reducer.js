@@ -2,12 +2,12 @@ import {
   FETCH_BOOKSALOON_SUCCESS,
   FETCH_BOOKSALOON_REQUEST,
   FETCH_BOOKSALOON_FAILURE,
-} from "./SaloonBooking.types";
+} from './SaloonBooking.types';
 
 const initialState = {
   loading: false,
   bookSaloon: [],
-  error: "",
+  error: '',
 };
 
 const bookSaloonservicesReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const bookSaloonservicesReducer = (state = initialState, action) => {
       return {
         bookSaloon: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_BOOKSALOON_FAILURE:
       return {

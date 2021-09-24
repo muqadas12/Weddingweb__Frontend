@@ -1,15 +1,15 @@
 /* eslint-disable no-use-before-define */
-import axios from "axios";
+import axios from 'axios';
 import {
   FETCH_SALOON_SERVICE_REQUEST,
   FETCH_SALOON_SERVICE_SUCCESS,
   FETCH_SALOON_SERVICE_FAILURE,
-} from "./SaloonTypes";
+} from './SaloonTypes';
 
 export const fetchServices = () => (dispatch) => {
   dispatch(fetchsaloonServiceRequest());
   axios
-    .get("http://localhost:2000/api/saloon/get-saloon-services")
+    .get('http://localhost:2000/api/saloon/get-saloon-services')
     .then((res) => {
       const saloonser = res.data.dataSaloon;
       dispatch(fetchsaloonServiceSuccess(saloonser));

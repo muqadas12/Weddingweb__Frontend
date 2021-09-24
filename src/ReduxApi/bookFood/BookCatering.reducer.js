@@ -2,11 +2,12 @@ import {
   FETCH_BOOKFOOD_SUCCESS,
   FETCH_BOOKFOOD_REQUEST,
   FETCH_BOOKFOOD_FAILURE,
-} from "./BookCatering.types";
+} from './BookCatering.types';
+
 const initialState = {
   loading: false,
   bookFood: [],
-  error: "",
+  error: '',
 };
 
 const bookFoodservicesReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const bookFoodservicesReducer = (state = initialState, action) => {
       return {
         bookFood: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_BOOKFOOD_FAILURE:
       return {

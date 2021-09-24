@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import photographyimg from "../../Assets/images/photo.jpg";
-import { Card, Form, Select, Button, Row, Col } from "antd";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { Card, Form, Select, Button, Row, Col } from 'antd';
+import { useDispatch } from 'react-redux';
+import photographyimg from '../../Assets/images/photo.jpg';
 // eslint-disable-next-line max-len
-import { fetchPhoto } from "../../ReduxApi/PhotographerBooking/PhotoBooking.action";
-import "./Bookingphotography.scss";
+import { fetchPhoto } from '../../ReduxApi/PhotographerBooking/PhotoBooking.action';
+import './Bookingphotography.scss';
 // eslint-disable-next-line no-unused-vars
 const { Option } = Select;
 
@@ -12,9 +12,9 @@ function Bookingphotographer() {
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
-    functionDate: "",
-    functionTime: "",
-    photographyType: "",
+    functionDate: '',
+    functionTime: '',
+    photographyType: '',
   });
   function handleSubmit() {
     dispatch(fetchPhoto(data));
@@ -43,25 +43,23 @@ function Bookingphotographer() {
           <Card className="card-photography">
             <h1 className="book-photographer">Book Now</h1>
             <Form onFinish={handleSubmit}>
-              <label className="label-date-picker-photo">Function Date</label>
-
               <Form.Item
                 className="date-picker-booking-food"
                 id="functionDate"
                 name="functionDate"
+                label="function date"
                 onChange={(e) => handleChange(e)}
               >
                 <input type="date" className="ant-input" />
               </Form.Item>
-              <label className="label-date-picker-photo">Function Time</label>
-
               <Form.Item
                 name="functionTime"
                 id="functionTime"
+                label="Function Time"
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Time!",
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
@@ -77,15 +75,12 @@ function Bookingphotographer() {
                   <option value="dinner">Dinner</option>
                 </select>
               </Form.Item>
-
-              <label className="label-date-picker-photo">
-                Photography type
-              </label>
+              Photography type
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Please select Photography type!",
+                    message: 'Please select Photography type!',
                   },
                 ]}
               >

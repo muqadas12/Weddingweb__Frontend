@@ -2,11 +2,12 @@ import {
   FETCH_SIGNIN_SUCCESS,
   FETCH_SIGNIN_REQUEST,
   FETCH_SIGNIN_FAILURE,
-} from "./SignIn.types";
+} from './SignIn.types';
+
 const initialState = {
   loading: false,
   signinUser: [],
-  error: "",
+  error: '',
 };
 
 const signinUserReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const signinUserReducer = (state = initialState, action) => {
       return {
         signinUser: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_SIGNIN_FAILURE:
       return {

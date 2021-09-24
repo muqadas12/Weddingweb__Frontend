@@ -2,11 +2,12 @@ import {
   FETCH_DEALER_SUCCESS,
   FETCH_DEALER_REQUEST,
   FETCH_DEALER_FAILURE,
-} from "./Dealer.types";
+} from './Dealer.types';
+
 const initialState = {
   loading: false,
   dealers: [],
-  error: "",
+  error: '',
 };
 
 const dealerReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const dealerReducer = (state = initialState, action) => {
       return {
         dealers: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_DEALER_FAILURE:
       return {

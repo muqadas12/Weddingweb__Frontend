@@ -2,11 +2,12 @@ import {
   FETCH_SERVICES_SUCCESS,
   FETCH_SERVICES_REQUEST,
   FETCH_SERVICES_FAILURE,
-} from "./Service.types";
+} from './Service.types';
+
 const initialState = {
   loading: false,
   services: [],
-  error: "",
+  error: '',
 };
 
 const servicesReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const servicesReducer = (state = initialState, action) => {
       return {
         services: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_SERVICES_FAILURE:
       return {

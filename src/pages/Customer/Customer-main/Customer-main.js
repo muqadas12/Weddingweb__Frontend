@@ -1,19 +1,20 @@
-import React from "react";
-import Customermainpic from "../../../Assets/images/customerdashboard.jpg";
-import CustomerIcon from "../../../Assets/images/customerIcon.jpg";
-import viewCF from "../../../Assets/images/viewCustomerProfile.PNG";
-import updateCP from "../../../Assets/images/updateCustomerProfile.PNG";
-import viewOrder from "../../../Assets/images/viewOrders.PNG";
-import logoutCustomer from "../../../Assets/images/logoutCustomer.PNG";
-import "./Customer-main.scss";
-import { Link } from "react-router-dom";
-
-import { Card } from "antd";
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Card } from 'antd';
+import Customermainpic from '../../../Assets/images/customerdashboard.jpg';
+import CustomerIcon from '../../../Assets/images/customerIcon.jpg';
+import viewCF from '../../../Assets/images/viewCustomerProfile.PNG';
+import updateCP from '../../../Assets/images/updateCustomerProfile.PNG';
+import viewOrder from '../../../Assets/images/viewOrders.PNG';
+import logoutCustomer from '../../../Assets/images/logoutCustomer.PNG';
+import './Customer-main.scss';
 
 function Customermain() {
   const logout = () => {
     localStorage.clear();
-    window.location.href = "/sign-in";
+    window.location.href = '/sign-in';
   };
 
   return (
@@ -32,7 +33,7 @@ function Customermain() {
           Here the customer can view profile.
           <br />
           Customer can also update profile and view order wheather they are
-          accept or reject{" "}
+          accept or reject{' '}
         </p>
       </Card>
       <img
@@ -63,7 +64,7 @@ function Customermain() {
         alt="logoutCustomer"
       />
 
-      <div></div>
+      <div />
     </div>
   );
 }

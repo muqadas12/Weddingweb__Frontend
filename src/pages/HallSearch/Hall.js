@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import hallSearch from "../../Assets/images/weddingHallsearch.jpg";
-import "./Hall.scss";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import hallSearch from '../../Assets/images/weddingHallsearch.jpg';
+import './Hall.scss';
 
 const CaseStatusLaw = () => {
-  const [VenueType, setVenueType] = useState("");
+  const [VenueType, setVenueType] = useState('');
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState('');
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/api/hall/gethalls")
+      .get('http://localhost:2000/api/hall/gethalls')
       .then((res) => {
         setData(res.data.dataH);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // console.log(err);
       });
   }, []);
 
@@ -26,9 +26,9 @@ const CaseStatusLaw = () => {
     const search = data.filter(
       (x) => x.VenueType === VenueType || x.city === city
     );
-    console.log(VenueType, city);
-    console.log(data);
-    console.log(search);
+    // console.log(VenueType, city);
+    // console.log(data);
+    // console.log(search);
     setSearchData(search);
     setShow(true);
   };
@@ -38,7 +38,7 @@ const CaseStatusLaw = () => {
   };
 
   const handleChangecity = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setCity(e.target.value);
   };
 
@@ -46,13 +46,12 @@ const CaseStatusLaw = () => {
     <div>
       <img src={hallSearch} alt="weddinghall" />
       <h1 className="wedding-hall-h1">
-        Welcome!Here You can Serach hall according to your need{" "}
+        Welcome!Here You can Serach hall according to your need{' '}
       </h1>
       <form>
-        <label className="label-hall-type">Select Hall Type:</label>
         <select className="dropdown-hall" onChange={handleChangeVenueType}>
           <option
-            style={{ marginTop: "990px" }}
+            style={{ marginTop: '990px' }}
             name="select hall type"
             disabled
           >
@@ -60,27 +59,26 @@ const CaseStatusLaw = () => {
           </option>
 
           {data.map((el) => (
-            <option key={e} name={el.VenueType}>
+            <option key={el} name={el.VenueType}>
               {el.VenueType}
             </option>
           ))}
         </select>
-        <label className="label-city">Select City:</label>
         <select className="dropdown-city" onChange={handleChangecity}>
           <option name="select city" disabled>
             Select city
           </option>
 
           {data.map((el) => (
-            <option key={e} name={el.city}>
+            <option key={el} name={el.city}>
               {el.city}
             </option>
           ))}
         </select>
       </form>
-      <button className="search-button" onClick={handleSubmit}>
-        {" "}
-        Search{" "}
+      <button type="submit" className="search-button" onClick={handleSubmit}>
+        {' '}
+        Search{' '}
       </button>
       <br />
       <br />
@@ -93,7 +91,9 @@ const CaseStatusLaw = () => {
                 MaximumCapacity,
                 MinimumGuest,
                 Services,
+                // eslint-disable-next-line no-shadow
                 VenueType,
+                // eslint-disable-next-line no-shadow
                 city,
                 description,
                 name,
@@ -129,7 +129,7 @@ const CaseStatusLaw = () => {
 
                   <br />
                   <br />
-                  <button className="book-now">
+                  <button type="submit" className="book-now">
                     <Link to="/booking-sign-up">Book Now</Link>
                   </button>
                 </div>

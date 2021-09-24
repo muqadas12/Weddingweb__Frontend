@@ -1,6 +1,7 @@
-import React from "react";
-import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from "antd";
-import "./BookingCard.scss";
+import React from 'react';
+import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
+import './BookingCard.scss';
+
 const { Option } = Select;
 
 function Bookfood(props) {
@@ -16,17 +17,15 @@ function Bookfood(props) {
           <Card className="card-booking-food-catering">
             <h1 className="h1-food-booking">{props.mainheading}</h1>
             <Form>
-              <label className="label-date-picker">{props.funDate}</label>
               <Form.Item className="date-picker-booking-food">
                 <DatePicker className="ant-input" />
               </Form.Item>
-              <label className="label-date-picker">{props.funTime}</label>
               <Form.Item
                 name="Function Time"
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Time!",
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
@@ -38,13 +37,12 @@ function Bookfood(props) {
                   <Option value="dinner">Dinner</Option>
                 </Select>
               </Form.Item>
-              <label className="label-date-picker">{props.funType}</label>
               <Form.Item
                 name="Function Type"
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Type!",
+                    message: 'Please select Function Type!',
                   },
                 ]}
               >
@@ -60,13 +58,12 @@ function Bookfood(props) {
                 </Select>
               </Form.Item>
 
-              <label className="label-date-picker">{props.foodType}</label>
               <Form.Item
                 name="Food Type"
                 rules={[
                   {
                     required: true,
-                    message: "Please select Food Type!",
+                    message: 'Please select Food Type!',
                   },
                 ]}
               >
@@ -80,8 +77,7 @@ function Bookfood(props) {
                 </Select>
               </Form.Item>
               <Form.Item>
-                <label className="label-date-picker">{props.people}</label>
-                <Input style={{ marginTop: "20px" }} />
+                <Input style={{ marginTop: '20px' }} />
               </Form.Item>
               <Button className="book-now-button-food">{props.btn}</Button>
             </Form>

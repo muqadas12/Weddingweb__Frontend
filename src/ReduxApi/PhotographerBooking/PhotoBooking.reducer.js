@@ -2,11 +2,12 @@ import {
   FETCH_BOOKPHOTOGRAPHY_SUCCESS,
   FETCH_BOOKPHOTOGRAPHY_REQUEST,
   FETCH_BOOKPHOTOGRAPHY_FAILURE,
-} from "./PhotoBooking.types";
+} from './PhotoBooking.types';
+
 const initialState = {
   loading: false,
   bookPhotographer: [],
-  error: "",
+  error: '',
 };
 
 const bookPhotoservicesReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const bookPhotoservicesReducer = (state = initialState, action) => {
       return {
         bookPhotographer: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_BOOKPHOTOGRAPHY_FAILURE:
       return {

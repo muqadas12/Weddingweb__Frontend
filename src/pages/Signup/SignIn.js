@@ -1,20 +1,24 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Checkbox, Card } from "antd";
-import CardForm from "../../components/Card-Forms";
-import Loginimg from "../../Assets/images/cardlogin.jpg";
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-unused-expressions */
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { Form, Input, Button, Checkbox, Card } from 'antd';
+import CardForm from '../../components/Card-Forms';
+import Loginimg from '../../Assets/images/cardlogin.jpg';
 
-import { booked } from "../cateringDealer/CateringDealer";
+import { booked } from '../cateringDealer/CateringDealer';
+
 function SignIn() {
   const history = useHistory();
-  const url = "http://localhost:2000/api/users/login";
+  const url = 'http://localhost:2000/api/users/login';
 
   const [data, setData] = useState({
-    email: "",
-    password: "",
-    role: "",
-    token: "",
+    email: '',
+    password: '',
+    role: '',
+    token: '',
     login: false,
   });
 
@@ -28,8 +32,8 @@ function SignIn() {
       })
 
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("email", res.data.email);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('email', res.data.email);
 
         alert(`You are signIn as ${data.email}`);
 
@@ -44,18 +48,19 @@ function SignIn() {
 
         //  }
 
+        // eslint-disable-next-line no-lone-blocks
         {
-          booked === "booked-catering"
-            ? history.push("/book-catering")
-            : res.data.role === "Dealer"
-            ? history.push("/dealer-main")
-            : history.push("/customer-main");
+          booked === 'booked-catering'
+            ? history.push('/book-catering')
+            : res.data.role === 'Dealer'
+            ? history.push('/dealer-main')
+            : history.push('/customer-main');
         }
         console.log(res.data.role);
         console.log(res.data.token);
       })
       .catch(() => {
-        alert("User doesnot exist!Please signUp");
+        alert('User doesnot exist!Please signUp');
       });
   }
   function handleChange(e) {
@@ -64,17 +69,17 @@ function SignIn() {
     setData(newData);
     console.log(newData);
   }
-  console.log(booked, "from catering booked");
+  console.log(booked, 'from catering booked');
   return (
     <div>
       <CardForm img={Loginimg} alt="alt" />
       <Card
         className="cover-card"
         style={{
-          width: "400px",
-          height: "500px",
-          marginLeft: "740px",
-          marginTop: "-500px",
+          width: '400px',
+          height: '500px',
+          marginLeft: '740px',
+          marginTop: '-500px',
         }}
       >
         <h1>Login Form</h1>
@@ -93,7 +98,7 @@ function SignIn() {
           autoComplete="off"
         >
           <Form.Item
-            style={{ marginTop: "70px" }}
+            style={{ marginTop: '70px' }}
             label="Email"
             name="email"
             id="email"
@@ -101,7 +106,7 @@ function SignIn() {
             rules={[
               {
                 required: true,
-                message: "Please input your email!",
+                message: 'Please input your email!',
               },
             ]}
           >
@@ -116,7 +121,7 @@ function SignIn() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: 'Please input your password!',
               },
             ]}
           >
@@ -143,7 +148,7 @@ function SignIn() {
             <Button type="primary" htmlType="submit">
               Login
             </Button>
-            <div style={{ marginTop: "30px" }}></div>
+            <div style={{ marginTop: '30px' }} />
           </Form.Item>
         </Form>
       </Card>

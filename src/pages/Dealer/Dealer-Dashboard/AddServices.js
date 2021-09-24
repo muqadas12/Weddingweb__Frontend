@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
-import { useDispatch } from "react-redux";
-import hallSearch from "../../../Assets/images/weddingHallsearch.jpg";
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import hallSearch from '../../../Assets/images/weddingHallsearch.jpg';
 // eslint-disable-next-line max-len
-import { fetchAddServices } from "../../../ReduxApi/addDealerServices/AddServices.actions";
-import "./AddService.scss";
+import { fetchAddServices } from '../../../ReduxApi/addDealerServices/AddServices.actions';
+import './AddService.scss';
 
 function AddServices() {
   const dispatch = useDispatch();
@@ -18,12 +18,12 @@ function AddServices() {
     const fileArray = [];
     fileArray.push(Img);
     const formData = new FormData();
-    fileArray.map((file) => formData.append("image", file));
-    formData.append("serviceName", serviceName);
-    formData.append("dealerservice", dealerservice);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("email", localStorage.getItem("email"));
+    fileArray.map((file) => formData.append('image', file));
+    formData.append('serviceName', serviceName);
+    formData.append('dealerservice', dealerservice);
+    formData.append('description', description);
+    formData.append('price', price);
+    formData.append('email', localStorage.getItem('email'));
     dispatch(fetchAddServices(formData));
   };
   return (
@@ -54,12 +54,12 @@ function AddServices() {
           rules={[
             {
               required: true,
-              message: "Please input your servicename!",
+              message: 'Please input your servicename!',
             },
           ]}
         >
           <Input
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: '10px' }}
             className="service-name"
             onChange={(event) => {
               const { value } = event.target;
@@ -73,7 +73,7 @@ function AddServices() {
           id="dealerservice"
         >
           <select
-            style={{ width: "350px" }}
+            style={{ width: '350px' }}
             className="ant-input"
             onChange={(event) => {
               const { value } = event.target;
@@ -90,10 +90,10 @@ function AddServices() {
           </select>
         </Form.Item>
 
-        <Form.Item name="serviceName" label="Description">
+        <Form.Item name="description" label="Description">
           <Input.TextArea
             className="service-name"
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: '10px' }}
             onChange={(event) => {
               const { value } = event.target;
               setDescription(value);
@@ -106,12 +106,12 @@ function AddServices() {
           rules={[
             {
               required: true,
-              message: "Please input your price",
+              message: 'Please input your price',
             },
           ]}
         >
           <Input
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: '10px' }}
             className="service-name"
             onChange={(event) => {
               const { value } = event.target;
@@ -126,7 +126,7 @@ function AddServices() {
           rules={[
             {
               required: true,
-              message: "Please upload Image for your service",
+              message: 'Please upload Image for your service',
             },
           ]}
         >
@@ -141,13 +141,13 @@ function AddServices() {
         </Form.Item>
 
         <img
-          style={{ width: "100px", marginLeft: "510px" }}
+          style={{ width: '100px', marginLeft: '510px' }}
           src={Img ? URL.createObjectURL(Img) : null}
           alt={Img ? Img.name : null}
         />
         <br />
         <Button
-          style={{ marginTop: "30px", marginLeft: "510px" }}
+          style={{ marginTop: '30px', marginLeft: '510px' }}
           type="primary"
           htmlType="submit"
         >

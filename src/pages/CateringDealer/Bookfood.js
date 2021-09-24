@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from "antd";
-import { useDispatch } from "react-redux";
-import "./Bookfood.scss";
-import { fetchFoodServices } from "../../ReduxApi/bookFood/BookCatering.action";
-import cateringBooking from "../../Assets/images/cateringBooking.png";
+import React, { useState } from 'react';
+import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
+import { useDispatch } from 'react-redux';
+import './Bookfood.scss';
+import { fetchFoodServices } from '../../ReduxApi/bookFood/BookCatering.action';
+import cateringBooking from '../../Assets/images/cateringBooking.png';
 
 const { Option } = Select;
 
 function Bookfood() {
   const dispatch = useDispatch();
   const [] = useState({
-    functionDate: "",
-    functionTime: "",
-    functionType: "",
-    numOfPeople: "",
-    foodType: "",
+    functionDate: '',
+    functionTime: '',
+    functionType: '',
+    numOfPeople: '',
+    foodType: '',
   });
   function bookcateringFood(payload) {
     dispatch(fetchFoodServices(payload));
@@ -54,13 +54,13 @@ function Bookfood() {
                 className="date-picker-booking-food"
                 rules={[
                   {
-                    message: "Please select Function Time!",
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
                 <Select
                   placeholder="select your Function Time"
-                  style={{ marginLeft: "2px" }}
+                  style={{ marginLeft: '2px' }}
                 >
                   <Option value="lunch">Lunch</Option>
                   <Option value="dinner">Dinner</Option>
@@ -69,11 +69,11 @@ function Bookfood() {
               <Form.Item
                 label="Function Type"
                 name="functionType"
-                style={{ fontFamily: "cursive" }}
+                style={{ fontFamily: 'cursive' }}
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Type!",
+                    message: 'Please select Function Type!',
                   },
                 ]}
               >
@@ -89,18 +89,18 @@ function Bookfood() {
               <Form.Item
                 label="Food Type"
                 name="foodType"
-                style={{ fontFamily: "cursive" }}
+                style={{ fontFamily: 'cursive' }}
                 rules={[
                   {
                     required: true,
-                    message: "Please select Food Type!",
+                    message: 'Please select Food Type!',
                   },
                 ]}
               >
                 <Select
                   placeholder="select your Food Type"
                   className="foodtype-booking-catering"
-                  style={{ width: "400px" }}
+                  style={{ width: '400px' }}
                 >
                   <Option value="chicken">Chicken</Option>
                   <Option value="sweets">Sweets</Option>
@@ -111,12 +111,12 @@ function Bookfood() {
                 name="numOfPeople"
                 label="No of people"
                 style={{
-                  fontFamily: "cursive",
-                  width: "500px",
-                  marginLeft: "16px",
+                  fontFamily: 'cursive',
+                  width: '500px',
+                  marginLeft: '16px',
                 }}
               >
-                <Input style={{ marginTop: "-20px" }} />
+                <Input style={{ marginTop: '-20px' }} />
               </Form.Item>
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now

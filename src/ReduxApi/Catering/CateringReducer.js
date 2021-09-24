@@ -2,12 +2,12 @@ import {
   FETCH_CATERING_REQUEST,
   FETCH_CATERING_SUCCESS,
   FETCH_CATERING_FAILURE,
-} from "./CateringTypes";
+} from './CateringTypes';
 
 const initialState = {
   loading: false,
   cateringser: [],
-  err: "",
+  err: '',
 };
 
 const cateringReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ const cateringReducer = (state = initialState, action) => {
       return {
         loading: false,
         cateringser: action.payload,
-        err: "",
+        err: '',
       };
     case FETCH_CATERING_FAILURE:
       return {

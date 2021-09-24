@@ -1,7 +1,8 @@
-import React from "react";
-import "./Footer.scss";
+import React from 'react';
+import './Footer.scss';
 
-import { Layout } from "antd";
+import { Layout } from 'antd';
+
 const { Footer } = Layout;
 function FooterComponent() {
   return (

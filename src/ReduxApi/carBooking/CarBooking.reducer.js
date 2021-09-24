@@ -2,11 +2,12 @@ import {
   FETCH_BOOKCAR_SUCCESS,
   FETCH_BOOKCAR_REQUEST,
   FETCH_BOOKCAR_FAILURE,
-} from "./CarBooking.types";
+} from './CarBooking.types';
+
 const initialState = {
   loading: false,
   bookCar: [],
-  error: "",
+  error: '',
 };
 
 const bookCarReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const bookCarReducer = (state = initialState, action) => {
       return {
         bookCar: action.payload,
         loading: false,
-        error: "",
+        error: '',
       };
     case FETCH_BOOKCAR_FAILURE:
       return {

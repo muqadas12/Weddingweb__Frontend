@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { fetchUsers } from "../../ReduxApi/ViewProfile/userAction";
-import viewProfile from "../../Assets/images/viewProfile.jpg";
-import axios from "axios";
-import "./viewProfile.scss";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { fetchUsers } from '../../ReduxApi/ViewProfile/userAction';
+import viewProfile from '../../Assets/images/viewProfile.jpg';
+import './viewProfile.scss';
 
 function ViewProfile({ userData, fetchUsers }) {
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    role: "",
+    name: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+    role: '',
   });
 
   useEffect(() => {
@@ -19,10 +19,10 @@ function ViewProfile({ userData, fetchUsers }) {
   }, []);
 
   const displayInfo = () => {
-    console.log(localStorage.getItem("email"), " email from display");
+    console.log(localStorage.getItem('email'), ' email from display');
     axios
-      .post("http://localhost:2000/api/users/dashboard", {
-        email: localStorage.getItem("email"),
+      .post('http://localhost:2000/api/users/dashboard', {
+        email: localStorage.getItem('email'),
       })
       .then((res) => {
         setUserInfo({
@@ -33,7 +33,7 @@ function ViewProfile({ userData, fetchUsers }) {
           role: res.data.existingUser.role,
         });
 
-        console.log(res.data.existingUser, "res from display");
+        console.log(res.data.existingUser, 'res from display');
       })
       .catch((err) => {
         console.log(err);
@@ -55,10 +55,10 @@ function ViewProfile({ userData, fetchUsers }) {
         src={viewProfile}
         alt="viewProfile"
       />
-      <div></div>
+      <div />
       <div>
         <p className="view-profile-customer">
-          {" "}
+          {' '}
           Welcome!
           {userInfo.name}
         </p>
@@ -67,7 +67,7 @@ function ViewProfile({ userData, fetchUsers }) {
           Your email:<p className="info-display">{userInfo.email}</p>
           Your PhoneNo:<p className="info-display">{userInfo.phoneNumber}</p>
           Your Address:<p className="info-display">{userInfo.address}</p>
-          You are SignUp with the{" "}
+          You are SignUp with the{' '}
           <p className="info-display">{userInfo.role} role</p>
         </div>
       </div>
@@ -75,16 +75,12 @@ function ViewProfile({ userData, fetchUsers }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.user,
-  };
-};
+const mapStateToProps = (state) => ({
+  userData: state.user,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchUsers: () => dispatch(fetchUsers()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

@@ -2,12 +2,12 @@ import {
   FETCH_CARRENT_REQUEST,
   FETCH_CARRENT_SUCCESS,
   FETCH_CARRENT_FAILURE,
-} from "./CarTypes";
+} from './CarTypes';
 
 const initialSate = {
   loading: false,
   carrent: [],
-  err: "",
+  err: '',
 };
 const carReducer = (state = initialSate, action) => {
   switch (action.type) {
@@ -20,7 +20,7 @@ const carReducer = (state = initialSate, action) => {
       return {
         loading: false,
         carrent: action.payload,
-        err: "",
+        err: '',
       };
     case FETCH_CARRENT_FAILURE:
       return {

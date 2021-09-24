@@ -2,11 +2,12 @@ import {
   FETCH_SALOON_SERVICE_REQUEST,
   FETCH_SALOON_SERVICE_SUCCESS,
   FETCH_SALOON_SERVICE_FAILURE,
-} from "./SaloonTypes";
+} from './SaloonTypes';
+
 const initialSate = {
   loading: false,
   saloonser: [],
-  err: "",
+  err: '',
 };
 
 const saloonReducer = (state = initialSate, action) => {
@@ -20,7 +21,7 @@ const saloonReducer = (state = initialSate, action) => {
       return {
         loading: false,
         saloonser: action.payload,
-        err: "",
+        err: '',
       };
     case FETCH_SALOON_SERVICE_FAILURE:
       return {

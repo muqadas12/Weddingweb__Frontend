@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function UpdateServices() {
   return <div>update services</div>;

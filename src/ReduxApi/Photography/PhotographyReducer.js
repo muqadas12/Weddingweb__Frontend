@@ -2,12 +2,12 @@ import {
   FETCH_PHOTOGRAPHY_REQUEST,
   FETCH_PHOTOGRAPHY_SUCCESS,
   FETCH_PHOTOGRAPHY_FAILURE,
-} from "./PhotographyTypes";
+} from './PhotographyTypes';
 
 const initialState = {
   loading: false,
   photos: [],
-  error: "",
+  error: '',
 };
 
 const photoReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         loading: false,
         photos: action.payload,
-        error: "",
+        error: '',
       };
     case FETCH_PHOTOGRAPHY_FAILURE:
       return {

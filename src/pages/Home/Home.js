@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import weds from "../../Assets/images/weds.jpg";
-import "./Home.scss";
-import Card from "../../components/cards";
-import Crouselcom from "../../components/Carousel";
+import weds from '../../Assets/images/weds.jpg';
+import './Home.scss';
+import Card from '../../components/cards';
+import Crouselcom from '../../components/Carousel';
+
 function Home() {
   return (
     <div>

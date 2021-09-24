@@ -1,43 +1,27 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from "antd";
-import carBooking from "../../Assets/images/carBooking.jpg";
-import { fetchbookCar } from "../../ReduxApi/carBooking/CarBooking.action";
-import "./Carbooking.scss";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
+import carBooking from '../../Assets/images/carBooking.jpg';
+import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
+import './Carbooking.scss';
+
 const { Option } = Select;
-/**
- * Adds two numbers together.
- * @param {int} num1 The first number.
- * @param {int} num2 The second number.
- * @return {int} The sum of the two numbers.
- */
 function Carbooking() {
   const dispatch = useDispatch();
   const [] = useState({
-    functionDate: "",
-    functionType: "",
-    numOfPeople: "",
+    functionDate: '',
+    functionType: '',
+    numOfPeople: '',
   });
-  /**
-   * Adds two numbers together.
-   * @param {int} payload The first number.
-   * @param {int} num2 The second number.
-   */
   function addCarRental(payload) {
     dispatch(fetchbookCar(payload));
   }
-  /**
-   * Adds two numbers together.
-   * @param {int} e The first number.
-   * @param {int} num2 The second number.
-   */
   function formSubmit(e) {
     const payload = {
       functionDate: e.functionDate,
       functionTime: e.functionTime,
       numOfPeople: e.numOfPeople,
     };
-    console.log(e, e.numOfPeople);
     addCarRental(payload);
   }
 
@@ -65,13 +49,13 @@ function Carbooking() {
                 name="functionTime"
                 label="Function Time"
                 className="date-picker-booking-car"
-                style={{ marginLeft: "-10px" }}
+                style={{ marginLeft: '-10px' }}
                 // className="function-time-car"
 
                 rules={[
                   {
                     required: true,
-                    message: "Please select Function Time!",
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
@@ -86,7 +70,7 @@ function Carbooking() {
                 name="numOfPeople"
                 className="date-picker-booking-car"
               >
-                <Input style={{ marginTop: "-15px" }} />
+                <Input style={{ marginTop: '-15px' }} />
               </Form.Item>
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
