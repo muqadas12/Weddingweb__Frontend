@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import contactUs from "../../Assets/images/contactUs.jpg";
-import { Button, Card, Form, Input, Modal } from "antd";
+import { Card, Form, Input, Modal } from "antd";
 import { UserOutlined, MailOutlined, MessageOutlined } from "@ant-design/icons";
 import "./Contactus.scss";
 import axios from "axios";
+import contactUs from "../../Assets/images/contactUs.jpg";
+
 function Contactus() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [name, setname] = useState(" ");
@@ -12,8 +13,7 @@ function Contactus() {
   const showModal = () => {
     setIsModalVisible(true);
   };
-
-  const handleOk = (e) => {
+  const handleOk = () => {
     setIsModalVisible(false);
   };
 
@@ -32,6 +32,7 @@ function Contactus() {
       setmsg(e.target.value);
     }
   };
+
   const handleSubmit = (e) => {
     const dataSubmit = {
       name: e.name,
@@ -41,15 +42,11 @@ function Contactus() {
 
     axios.post("http://localhost:2000/api/email/mail", dataSubmit);
   };
-
-  const sendHandler = (e) => {
-    //e.preventDefault()
-    console.log("im from senhandler");
-    // showModal()
-    setname(" ");
-    setemail(" ");
-    setmsg(" ");
-  };
+  // const { mutate, isLoading, isError } = useMutation(postData, {
+  //   onSuccess: (successData) => {
+  //     console.log(successData)
+  //   },
+  // })
 
   return (
     <div>

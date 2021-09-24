@@ -5,7 +5,7 @@ import {
   FETCH_BOOKPHOTOGRAPHY_FAILURE,
 } from "./PhotoBooking.types";
 
-export const fetchbookPhotographerServices = (data) => {
+export const fetchPhoto = (data) => {
   return (dispatch) => {
     dispatch(fetchBookPhotographerRequest());
     axios
@@ -40,4 +40,3 @@ export const fetchBookPhotographerFailure = (error) => {
     payload: error,
   };
 };
-//payload is the data we need to pass to reducer

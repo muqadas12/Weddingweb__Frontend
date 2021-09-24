@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from "antd";
 import "./BookingCard.scss";
-import cateringBooking from "../Assets/images/cateringBooking.png";
 const { Option } = Select;
 
 function Bookfood(props) {

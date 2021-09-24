@@ -38,4 +38,3 @@ export const fetchDealerFailure = (error) => {
     payload: error,
   };
 };
-//payload is the data we need to pass to reducer

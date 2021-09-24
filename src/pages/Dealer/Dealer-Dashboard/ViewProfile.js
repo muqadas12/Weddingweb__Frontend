@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import viewprof from "../../../Assets/images/viewProfiledealer.gif";
+// eslint-disable-next-line max-len
 import { fetchDealers } from "../../../ReduxApi/ViewDealerProfile/Dealer.action";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -64,7 +65,7 @@ function ViewProfile({ userData, fetchDealers }) {
           Your Address:<p className="info-display">{userInfo.address}</p>
           You are SignUp with the{" "}
           <p className="info-display">{userInfo.role} role</p>
-          <Link to={"/dealer-update-services/" + userInfo._id}>
+          <Link to={"/dealer-update-profile/" + userInfo._id}>
             <button>Update</button>
           </Link>
         </div>

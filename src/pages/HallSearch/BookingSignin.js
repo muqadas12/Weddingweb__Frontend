@@ -7,7 +7,7 @@ import Loginimg from "../../Assets/images/cardlogin.jpg";
 import { useHistory } from "react-router-dom";
 
 function SignIn() {
-  let history = useHistory();
+  const history = useHistory();
   const url = "http://localhost:2000/api/users/login";
 
   const [data, setData] = useState({
@@ -34,7 +34,7 @@ function SignIn() {
 
         alert(`You are signIn as ${data.email}`);
 
-        //window.location="http://localhost:3000/dealer-main"
+        // window.location="http://localhost:3000/dealer-main"
 
         {
           res.data.role === "Dealer"

@@ -7,7 +7,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 export const FetchSignInUser = (data) => {
-  let history = useHistory();
+  const history = useHistory();
 
   return (dispatch) => {
     dispatch(fetchSigninRequest());
@@ -21,7 +21,7 @@ export const FetchSignInUser = (data) => {
 
         alert(`You are signIn as ${data.email}`);
 
-        //window.location="http://localhost:3000/dealer-main"
+        // window.location="http://localhost:3000/dealer-main"
 
         {
           res.data.role === "Dealer"
@@ -57,4 +57,4 @@ export const fetchSigninFailure = (error) => {
     payload: error,
   };
 };
-//payload is the data we need to pass to reducer
+// payload is the data we need to pass to reducer

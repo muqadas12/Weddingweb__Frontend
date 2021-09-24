@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import hallSearch from "../../Assets/images/weddingHallsearch.jpg";
 import "./Hall.scss";
-import { Form, Input, Button, Checkbox, Select } from "antd";
 import { Link } from "react-router-dom";
 
 const CaseStatusLaw = () => {
@@ -61,7 +60,9 @@ const CaseStatusLaw = () => {
           </option>
 
           {data.map((el) => (
-            <option name={el.VenueType}>{el.VenueType}</option>
+            <option key={e} name={el.VenueType}>
+              {el.VenueType}
+            </option>
           ))}
         </select>
         <label className="label-city">Select City:</label>
@@ -71,7 +72,9 @@ const CaseStatusLaw = () => {
           </option>
 
           {data.map((el) => (
-            <option name={el.city}>{el.city}</option>
+            <option key={e} name={el.city}>
+              {el.city}
+            </option>
           ))}
         </select>
       </form>
@@ -83,24 +86,6 @@ const CaseStatusLaw = () => {
       <br />
       {show ? (
         <>
-          {/* <div className="labels" >
-           
-             
-
-             <p >Name:</p>
-            <p>Hall:</p>
-            <p>MaximumCapacity:</p>
-            <p>MinimumGuest:</p>
-            <p>VenueType:</p>
-            <p>City:</p>
-            <p>Description:</p>
-            <p>Image</p>
-
-           
-              
-            
-              
-            </div> */}
           <div>
             {searchData.map((list) => {
               const {
@@ -115,10 +100,7 @@ const CaseStatusLaw = () => {
                 img,
               } = list;
               return (
-                <div
-                  key={name}
-                  className="row justify-content-around p-3 align-items-center shadow-sm"
-                >
+                <div key={name} className="row justify-content-around ">
                   {/* <img src={img} alt="asd"/> */}
 
                   <p className="label-name">Name:</p>

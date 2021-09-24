@@ -4,10 +4,10 @@ import {
   FETCH_CATERING_FAILURE,
 } from "./CateringTypes";
 import axios from "axios";
-
 export const fetchCatering = () => {
   return (dispatch) => {
     dispatch(fetchcateringrequest());
+
     axios
       .get("http://localhost:2000/api/catering/get-catering")
       .then((res) => {

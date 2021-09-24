@@ -5,11 +5,11 @@ import {
   FETCH_BOOKFOOD_FAILURE,
 } from "./BookCatering.types";
 
-export const fetchbookFoodServices = (payload) => {
+export const fetchFoodServices = (payload) => {
   return (dispatch) => {
     dispatch(fetchBookFoodRequest());
     axios
-      .post("http://localhost:2000/api/cateringfood/booking",payload)
+      .post("http://localhost:2000/api/cateringfood/booking", payload)
       .then((res) => {
         const bookFood = res.data;
         console.log(bookFood, "hiii");
@@ -26,8 +26,6 @@ export const fetchBookFoodRequest = () => ({
   type: FETCH_BOOKFOOD_REQUEST,
 });
 
-
-
 export const fetchBookFoodSucces = (bookFood) => {
   return {
     type: FETCH_BOOKFOOD_SUCCESS,
@@ -41,4 +39,3 @@ export const fetchBookFoodFailure = (error) => {
     payload: error,
   };
 };
-//payload is the data we need to pass to reducer

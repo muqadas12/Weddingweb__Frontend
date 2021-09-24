@@ -1,9 +1,11 @@
+import axios from "axios";
+
 import {
   FETCH_CARRENT_REQUEST,
   FETCH_CARRENT_SUCCESS,
   FETCH_CARRENT_FAILURE,
 } from "./CarTypes";
-import axios from "axios";
+
 export const fetchCarRental = () => {
   return (dispatch) => {
     dispatch(fetchCarrequest());

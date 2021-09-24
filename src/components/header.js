@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import { CaretDownOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import About from "../pages/aboutUs/About";
 import Contactus from "../pages/contactUs/Contactus";
 import Home from "../pages/home/Home";
-import { CaretDownOutlined } from "@ant-design/icons";
-import { Layout, Menu, Row } from "antd";
 import CardDesign from "../pages/cardDesign/CardDesign";
 import hallSearch from "../pages/hallSearch/Hall";
 import "./header.scss";
@@ -36,10 +36,20 @@ import photographyService from "../pages/photographyDealer/PhotographerDealer";
 import Bookfood from "../pages/cateringDealer/Bookfood";
 import Carbooking from "../pages/carRental/Carbooking";
 import Bookingsaloon from "../pages/saloonDealer/Bookingsaloon";
-import Bookingphotographer from "../pages/photographyDealer/Bookingphotographer";
-const { SubMenu } = Menu;
+import Bookphotographer from "../pages/photographyDealer/Bookingphotographer";
+/**
+ * pa
+ * pa
+ */
 
+const { SubMenu } = Menu;
 const { Header, Content } = Layout;
+/**
+ * Adds two numbers together.
+ * @param {int} num1 The first number.
+ * @param {int} num2 The second number.
+ * @return {int} The sum of the two numbers.
+ */
 function header2() {
   return (
     <Layout>
@@ -53,7 +63,6 @@ function header2() {
           defaultSelectedKeys={["1"]}
         >
           <Menu.Item key="0">
-            {" "}
             <img className="logo-navbar" src={logo} alt="abc" />
           </Menu.Item>
           <Menu.Item key="1">
@@ -166,7 +175,7 @@ function header2() {
               />
               <Route
                 path="/booking-photographer"
-                component={Bookingphotographer}
+                component={Bookphotographer}
               />
 
               <Route path={["/", "/home"]} component={Home} />

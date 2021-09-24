@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Input, Button, Checkbox, Select } from "antd";
-import { Link } from "react-router-dom";
-import { Card } from "antd";
+import { Form, Input, Button, Checkbox, Card } from "antd";
+import { Link, useHistory } from "react-router-dom";
 import "./Signup.scss";
 import CardForm from "../../components/Card-Forms";
 import cardImgOne from "../../Assets/images/cardImgone.jpg";
-import GoogleLogin from "react-google-login";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-const { Option } = Select;
 
+// const { Option } = Select;
+/**
+ * Adds two numbers together.
+ * @param {int} num1 The first number.
+ * @param {int} num2 The second number.
+ * @return {int} The sum of the two numbers.
+ */
 function Signup() {
-  let history = useHistory();
+  const history = useHistory();
 
   const url = "http://localhost:2000/api/users/signup";
   const [data, setData] = useState({
@@ -24,6 +26,11 @@ function Signup() {
     phoneNumber: "",
     address: "",
   });
+  /**
+   * Adds two numbers together.
+   * @param {int} e The first number.
+   * @param {int} num2 The second number.
+   */
   function submit(e) {
     // dispatch(signupUser(name,email,password,role))
     axios
@@ -46,23 +53,28 @@ function Signup() {
         alert("User alreay exist!.PLease signIn");
       });
   }
+  /**
+   * Adds two numbers together.
+   * @param {int} e The first number.
+   * @param {int} num2 The second number.
+   */
   function handleChange(e) {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
     console.log(newData);
   }
-  const responseGoogle = (response) => {
-    localStorage.setItem("token", JSON.stringify(response));
-    {
-      response.data.role === "Dealer"
-        ? history.push("/dealer-main")
-        : history.push("/about");
-    }
+  // const responseGoogle = (response) => {
+  //   localStorage.setItem("token", JSON.stringify(response));
+  //   {
+  //     response.data.role === "Dealer"
+  //       ? history.push("/dealer-main")
+  //       : history.push("/about");
+  //   }
 
-    window.location = "http://localhost:3000/about";
-    console.log(response);
-  };
+  //   window.location = "http://localhost:3000/about";
+  //   console.log(response);
+  // };
 
   const autosigninHandler = () => {
     axios
@@ -227,15 +239,7 @@ function Signup() {
             </div>
 
             <p>Or</p>
-            <div style={{ marginTop: "-10px" }}>
-              {/* <GoogleLogin 
-        
-    clientId="1059632853515-5f2nns82qfhhrc195rpnen9b6vel8h15.apps.googleusercontent.com"
-    buttonText="Login With Google"
-    onSuccess={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  /> */}
-            </div>
+            <div style={{ marginTop: "-10px" }}></div>
             <br />
             <div className="already-reg">
               <span>Already Register? Click here to#</span>

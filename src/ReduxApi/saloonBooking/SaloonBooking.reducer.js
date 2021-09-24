@@ -3,6 +3,7 @@ import {
   FETCH_BOOKSALOON_REQUEST,
   FETCH_BOOKSALOON_FAILURE,
 } from "./SaloonBooking.types";
+
 const initialState = {
   loading: false,
   bookSaloon: [],
@@ -28,7 +29,6 @@ const bookSaloonservicesReducer = (state = initialState, action) => {
         bookSaloon: [],
         error: action.payload,
       };
-
     default:
       return state;
   }

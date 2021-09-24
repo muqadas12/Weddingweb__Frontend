@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+// eslint-disable-next-line max-len
 import { fetchServices } from "../../../ReduxApi/ViewDealerServices/Services.action";
 import servicesImg from "../../../Assets/images/services.jpg";
 import "./ViewServices.scss";
-import { Tabs, Cards, Card, Row, Col } from "antd";
+import { Card } from "antd";
 function ViewDealerServices({ userData, fetchServices }) {
   useEffect(() => {
     fetchServices();
@@ -23,13 +23,13 @@ function ViewDealerServices({ userData, fetchServices }) {
         <p className="dealer-services-heading-one">Dealer Services</p>
         <p>
           {userData.services.dealerservice.map((c) => (
-            <p>{c}</p>
+            <p key={c}>{c}</p>
           ))}
         </p>
         <p className="services-name-heading-one">Service Name</p>
         <p style={{ marginLeft: "190px", marginTop: "8px" }}>
           {userData.services.serviceName.map((c) => (
-            <p>{c}</p>
+            <p key={c}>{c}</p>
           ))}
         </p>
       </Card>

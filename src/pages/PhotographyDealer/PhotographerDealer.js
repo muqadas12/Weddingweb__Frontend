@@ -5,10 +5,16 @@ import photographyImg from "../../Assets/images/photographyImg.jpg";
 import { Link } from "react-router-dom";
 import "./Photography.scss";
 import { Card, Space, Col, Row } from "antd";
+/**
+ * Adds two numbers together.
+ * @param {int} num1 The first number.
+ * @param {int} num2 The second number.
+ * @return {int} The sum of the two numbers.
+ */
 function PhotographerDealer({ userData, fetchPhotos }) {
   useEffect(() => {
     fetchPhotos();
-  });
+  }, []);
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.error ? (
@@ -26,7 +32,7 @@ function PhotographerDealer({ userData, fetchPhotos }) {
             {userData &&
               userData.photos &&
               userData.photos.map((user) => (
-                <Space style={{ padding: "20px" }}>
+                <Space key={user} style={{ padding: "20px" }}>
                   <Card className="photographycards">
                     <p className="dealer-service-photography">
                       {user.dealerservice}
@@ -50,7 +56,6 @@ function PhotographerDealer({ userData, fetchPhotos }) {
                     <Link to="/booking-photographer">
                       <button className="book-now-wedding">Book Now</button>
                     </Link>
-                    {/* <video src={user.pathImg} type="video/mp4"  controls alt="wedimg"/> */}
                   </Card>
                 </Space>
               ))}

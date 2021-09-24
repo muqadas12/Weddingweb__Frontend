@@ -8,7 +8,7 @@ import halll from "../Assets/images/hall.jpg";
 import "./cards.scss";
 import { NavLink } from "react-router-dom";
 
-function cards(props) {
+function cards() {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Customermainpic from "../../../Assets/images/customerdashboard.jpg";
 import CustomerIcon from "../../../Assets/images/customerIcon.jpg";
-import viewCustomerProfile from "../../../Assets/images/viewCustomerProfile.PNG";
-import updateCustomerProfile from "../../../Assets/images/updateCustomerProfile.PNG";
+import viewCF from "../../../Assets/images/viewCustomerProfile.PNG";
+import updateCP from "../../../Assets/images/updateCustomerProfile.PNG";
 import viewOrder from "../../../Assets/images/viewOrders.PNG";
 import logoutCustomer from "../../../Assets/images/logoutCustomer.PNG";
 import "./Customer-main.scss";
@@ -37,7 +37,7 @@ function Customermain() {
       </Card>
       <img
         className="customer-profile-img"
-        src={viewCustomerProfile}
+        src={viewCF}
         alt="viewCustomerProfile"
       />
       <Link to="customer-profile">
@@ -45,7 +45,7 @@ function Customermain() {
       </Link>
       <img
         className="update-profile-img"
-        src={updateCustomerProfile}
+        src={updateCP}
         alt="updateCustomerProfile"
       />
       <Link to="/customer-update-profile">

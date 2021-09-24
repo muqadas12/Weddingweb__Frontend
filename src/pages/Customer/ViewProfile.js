@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { fetchUsers } from "../../ReduxApi/ViewProfile/userAction";
 import viewProfile from "../../Assets/images/viewProfile.jpg";
-import { Card } from "antd";
 import axios from "axios";
 import "./viewProfile.scss";
 
@@ -56,22 +55,7 @@ function ViewProfile({ userData, fetchUsers }) {
         src={viewProfile}
         alt="viewProfile"
       />
-      <div>
-        {/* {userData &&
-          userData.users &&
-          userData.users.map(user => 
-          
-          <p >
-              {user.name}
-             
-               
-             </p>
-         
-
-          
-          
-          )} */}
-      </div>
+      <div></div>
       <div>
         <p className="view-profile-customer">
           {" "}

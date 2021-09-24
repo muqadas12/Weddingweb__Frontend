@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import dealerdashboardpic from "../../Assets/images/dealer.jpg";
 import "./Dealer-main.scss";
 import dealerProfile from "../../Assets/images/profile.PNG";
@@ -7,8 +8,7 @@ import addServices from "../../Assets/images/addSer.PNG";
 import viewServices from "../../Assets/images/viewServices.PNG";
 import order from "../../Assets/images/orders.PNG";
 import updateSer from "../../Assets/images/updateSer.PNG";
-import { Link } from "react-router-dom";
-import { Card } from "antd";
+
 import logoutCustomer from "../../Assets/images/logoutCustomer.PNG";
 
 function DealerMain() {
