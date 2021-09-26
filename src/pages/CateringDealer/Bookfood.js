@@ -15,6 +15,7 @@ function Bookfood() {
     functionType: '',
     numOfPeople: '',
     foodType: '',
+    email: '',
   });
   function bookcateringFood(payload) {
     dispatch(fetchFoodServices(payload));
@@ -26,6 +27,7 @@ function Bookfood() {
       functionType: e.functionType,
       numOfPeople: e.numOfPeople,
       foodType: e.foodType,
+      email: localStorage.getItem('email'),
     };
     bookcateringFood(payload);
   }

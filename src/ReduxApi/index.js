@@ -8,3 +8,5 @@ export * from './ViewDealerProfile/Dealer.action';
 export * from './ViewDealerServices/Services.action';
 export * from './addDealerServices/AddServices.actions';
 export * from './PhotographerBooking/PhotoBooking.action';
+export * from './viewCatering/ViewCateringAction';
+export * from './viewDealerOrders/Orders.action';

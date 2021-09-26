@@ -1,7 +1,8 @@
+/* eslint-disable no-debugger */
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import viewprof from '../../../Assets/images/viewProfiledealer.gif';
 import {
   fetchUsersupdated,
@@ -9,7 +10,8 @@ import {
 } from '../../../ReduxApi/updateProfile/userAction';
 import './UpdateProfile.scss';
 
-function ViewProfile({ userData }) {
+function updateProfile({ userData, onEdit }) {
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -47,11 +49,6 @@ function ViewProfile({ userData }) {
   useEffect(() => {
     displayInfo();
   }, []);
-  function submit(id) {
-    console.log('hiii', fetchupdated());
-    fetchupdated(id);
-  }
-
   return userData.loadin ? (
     <h1>Loading..</h1>
   ) : userData.error ? (
@@ -69,7 +66,13 @@ function ViewProfile({ userData }) {
           <Form>
             <Form.Item
               label="Username"
-              name="username"
+              name="name"
+              onChange={(e) => {
+                console.log(e.target.value);
+                userInfo.name = e.target.value;
+                console.log(userInfo);
+                setUserInfo(userInfo);
+              }}
               className="updated-name"
               rules={[
                 { required: true, message: 'Please update your username!' },
@@ -81,6 +84,10 @@ function ViewProfile({ userData }) {
             <Form.Item
               label="email"
               name="email"
+              onChange={(e) => {
+                userInfo.email = e.target.value;
+                setUserInfo(userInfo);
+              }}
               className="updated-email"
               rules={[{ required: true, message: 'Please update your Email!' }]}
             >
@@ -90,6 +97,10 @@ function ViewProfile({ userData }) {
             <Form.Item
               label="Phone Number"
               name="phoneNumber"
+              onChange={(e) => {
+                userInfo.phoneNumber = e.target.value;
+                setUserInfo(userInfo);
+              }}
               className="updated-number"
               rules={[
                 {
@@ -104,6 +115,10 @@ function ViewProfile({ userData }) {
             <Form.Item
               label="Address"
               name="address"
+              onChange={(e) => {
+                userInfo.address = e.target.value;
+                setUserInfo(userInfo);
+              }}
               className="updated-address"
               rules={[
                 { required: true, message: 'Please update your username!' },
@@ -115,15 +130,21 @@ function ViewProfile({ userData }) {
             <Form.Item
               label="Role"
               name="role"
+              onChange={(e) => {
+                userInfo.role = e.target.value;
+                setUserInfo(userInfo);
+              }}
               className="updated-role"
               rules={[{ required: true, message: 'Please update your role!' }]}
             >
               <Input placeholder={userInfo.role} />
             </Form.Item>
           </Form>
-          <Button type="primary" onClick={() => submit()} htmlType="submit">
+
+          <br />
+          <button type="button" onClick={() => onEdit(userInfo._id, userInfo)}>
             Update
-          </Button>
+          </button>
         </div>
       </div>
     </div>
@@ -134,6 +155,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUsersupdated: () => dispatch(fetchUsersupdated()),
+  onEdit: (_id, userInfo) => {
+    dispatch(fetchupdated(_id, userInfo));
+  },
 });
-export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(updateProfile);

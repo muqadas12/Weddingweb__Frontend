@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import viewprof from '../../../Assets/images/viewProfiledealer.gif';
 // eslint-disable-next-line max-len
 import { fetchDealers } from '../../../ReduxApi/ViewDealerProfile/Dealer.action';
+import { deleteDealer } from '../../../ReduxApi/updateProfile/userAction';
 import './viewProf.scss';
 
-function ViewProfile({ userData, fetchDealers }) {
+function ViewProfile({ userData, fetchDealers, deleteDealer, onDelete }) {
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -19,6 +21,7 @@ function ViewProfile({ userData, fetchDealers }) {
   useEffect(() => {
     fetchDealers();
   }, []);
+
   const displayInfo = () => {
     console.log(localStorage.getItem('email'), ' email from display');
     axios
@@ -45,7 +48,10 @@ function ViewProfile({ userData, fetchDealers }) {
   useEffect(() => {
     displayInfo();
   }, []);
-
+  function submit(id) {
+    console.log('hii', dispatch(deleteDealer()));
+    dispatch(deleteDealer());
+  }
   return userData.loadin ? (
     <h1>Loading..</h1>
   ) : userData.error ? (
@@ -64,11 +70,14 @@ function ViewProfile({ userData, fetchDealers }) {
           Your email:<p className="info-display">{userInfo.email}</p>
           Your PhoneNo:<p className="info-display">{userInfo.phoneNumber}</p>
           Your Address:<p className="info-display">{userInfo.address}</p>
-          You are SignUp with the{' '}
+          You are SignUp with the
           <p className="info-display">{userInfo.role} role</p>
           <Link to={`/dealer-update-profile/${userInfo._id}`}>
             <button type="submit">Update</button>
           </Link>
+          <button type="button" onClick={() => onDelete(userInfo._id)}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -80,5 +89,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchDealers: () => dispatch(fetchDealers()),
+  onDelete: (_id) => {
+    dispatch(deleteDealer(_id));
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../ReduxApi/ViewProfile/userAction';
+import { deleteDealer } from '../../ReduxApi/updateProfile/userAction';
 import viewProfile from '../../Assets/images/viewProfile.jpg';
 import './viewProfile.scss';
 
-function ViewProfile({ userData, fetchUsers }) {
+function ViewProfile({ userData, fetchUsers, onDelete }) {
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
     phoneNumber: '',
     address: '',
     role: '',
+    _id: '',
   });
 
   useEffect(() => {
@@ -31,6 +34,7 @@ function ViewProfile({ userData, fetchUsers }) {
           phoneNumber: res.data.existingUser.phoneNumber,
           address: res.data.existingUser.address,
           role: res.data.existingUser.role,
+          _id: res.data.existingUser._id,
         });
 
         console.log(res.data.existingUser, 'res from display');
@@ -69,6 +73,12 @@ function ViewProfile({ userData, fetchUsers }) {
           Your Address:<p className="info-display">{userInfo.address}</p>
           You are SignUp with the{' '}
           <p className="info-display">{userInfo.role} role</p>
+          <Link to={`/customer-update-profile/${userInfo._id}`}>
+            <button type="submit">Update</button>
+          </Link>
+          <button type="button" onClick={() => onDelete(userInfo._id)}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -81,6 +91,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
+  onDelete: (_id) => {
+    dispatch(deleteDealer(_id));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewProfile);

@@ -1,61 +1,58 @@
 import React, { useState } from 'react';
-import { Card, Form, Select, Button, Row, Col } from 'antd';
 import { useDispatch } from 'react-redux';
+import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
 import photographyimg from '../../Assets/images/photo.jpg';
-// eslint-disable-next-line max-len
 import { fetchPhoto } from '../../ReduxApi/PhotographerBooking/PhotoBooking.action';
 import './Bookingphotography.scss';
-// eslint-disable-next-line no-unused-vars
+
 const { Option } = Select;
-
-function Bookingphotographer() {
+function Carbooking() {
   const dispatch = useDispatch();
-
-  const [data, setData] = useState({
+  const [] = useState({
     functionDate: '',
-    functionTime: '',
+    functionType: '',
     photographyType: '',
   });
-  function handleSubmit() {
-    dispatch(fetchPhoto(data));
+  function addCarRental(payload) {
+    dispatch(fetchPhoto(payload));
+  }
+  function formSubmit(e) {
+    const payload = {
+      functionDate: e.functionDate,
+      functionTime: e.functionTime,
+      photographyType: e.photographyType,
+    };
+    addCarRental(payload);
   }
 
-  function handleChange(e) {
-    const newData = { ...data };
-    newData[e.target.id] = e.target.value;
-    setData(newData);
-    console.log(newData);
-  }
   return (
     <div>
-      <img
-        className="photography-main-image-booking"
-        src={photographyimg}
-        alt="phot"
-      />
       <Row>
-        <Col
-          xs={{ span: 14, offset: 8 }}
-          md={{ span: 19, offset: 10 }}
-          lg={{ span: 8, offset: 8 }}
-          s
-        >
+        <img
+          className="photography-main-image-booking"
+          src={photographyimg}
+          alt="phot"
+        />
+      </Row>
+      <br />
+      <Row>
+        <Col xs={{ span: 12, offset: 8 }} lg={{ span: 9, offset: 7 }}>
           <Card className="card-photography">
-            <h1 className="book-photographer">Book Now</h1>
-            <Form onFinish={handleSubmit}>
+            <h1 className="booking-h1-main-heading">Book Your Car </h1>
+
+            <Form onFinish={(e) => formSubmit(e)}>
               <Form.Item
-                className="date-picker-booking-food"
-                id="functionDate"
+                className="date-picker-booking-car"
+                label="Function Date"
                 name="functionDate"
-                label="function date"
-                onChange={(e) => handleChange(e)}
               >
-                <input type="date" className="ant-input" />
+                <DatePicker className="ant-input" />
               </Form.Item>
               <Form.Item
                 name="functionTime"
-                id="functionTime"
                 label="Function Time"
+                className="date-picker-booking-car"
+                style={{ marginLeft: '-10px' }}
                 rules={[
                   {
                     required: true,
@@ -63,39 +60,31 @@ function Bookingphotographer() {
                   },
                 ]}
               >
-                <select
-                  className="ant-input"
-                  placeholder="select your Function Time"
-                  name="functionTime"
-                  id="functionTime"
-                  onChange={(e) => handleChange(e)}
-                >
-                  <option value="select an option">select an option</option>
-                  <option value="lunch">Lunch</option>
-                  <option value="dinner">Dinner</option>
-                </select>
+                <Select placeholder="select your Function Time">
+                  <Option value="lunch">Lunch</Option>
+                  <Option value="dinner">Dinner</Option>
+                </Select>
               </Form.Item>
-              Photography type
+
               <Form.Item
+                name="photographyType"
+                label="Photography"
+                className="date-picker-booking-car"
+                style={{ marginLeft: '-2px' }}
                 rules={[
                   {
                     required: true,
-                    message: 'Please select Photography type!',
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
-                <select
-                  className="ant-input"
-                  name="photographyType"
-                  id="photographyType"
-                  onChange={(e) => handleChange(e)}
-                >
-                  <option name="Select Option">Select an Option</option>
-                  <option name="Artist Photography">Artist Photography</option>
-                  <option name="Modern Photography">Modern Photography</option>
-                </select>
+                <Select placeholder="select your Function Time">
+                  <Option value="Select Option">Select Option</Option>
+                  <Option value="Artist Photography">Artist Photography</Option>
+                  <Option value="Modern Photography">Modern Photography</Option>
+                </Select>
               </Form.Item>
-              <Button htmlType="submit" className="book-now-photo">
+              <Button htmlType="submit" className="book-now-button-food">
                 Book Now
               </Button>
             </Form>
@@ -106,4 +95,4 @@ function Bookingphotographer() {
   );
 }
 
-export default Bookingphotographer;
+export default Carbooking;

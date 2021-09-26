@@ -10,6 +10,8 @@ import addservice from './addDealerServices/AddServices.reducers';
 import bookPhotographers from './PhotographerBooking/PhotoBooking.reducer';
 import bookcars from './carBooking/CarBooking.reducer';
 import booksaloons from './saloonBooking/SaloonBooking.reducer';
+import viewservices from './viewCatering/ViewCateringReducer';
+import viewOrders from './viewDealerOrders/Order.reducer';
 
 const rootReducer = combineReducers({
   user,
@@ -23,6 +25,8 @@ const rootReducer = combineReducers({
   bookPhotographers,
   bookcars,
   booksaloons,
+  servicescatering: viewservices,
+  viewOrders,
 });
 
 export default rootReducer;

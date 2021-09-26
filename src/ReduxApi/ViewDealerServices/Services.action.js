@@ -24,8 +24,8 @@ export const fetchServices = () => {
     axios
       .get(`http://localhost:2000/api/getdealer/get-dealers?email=${email}`)
       .then((res) => {
-        const services = res.data.data;
-        console.log(services);
+        const services = res.data;
+        console.log(res.data);
         // console.log(services.map((dealer)=>dealer.dealerservice),'hiii')
         dispatch(fetchServicesSucces(res.data));
       })

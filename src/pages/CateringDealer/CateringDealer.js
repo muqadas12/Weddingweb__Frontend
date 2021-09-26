@@ -10,9 +10,9 @@ import './CateringDealer.scss';
 export let booked;
 
 function CateringDealer({ userData, fetchCatering }) {
-  const history = useHistory();
+  let history = useHistory();
 
-  const [setBooked] = useState(false);
+  const [booked, setBooked] = useState(false);
   useEffect(() => {
     fetchCatering();
   }, []);

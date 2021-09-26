@@ -1,8 +1,15 @@
+import React, { useState } from 'react';
 import axios from 'axios';
 import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
+  FETCH_DELETE_REQUEST,
+  FETCH_DELETE_SUCCESS,
+  FETCH_DELETE_FAILURE,
+  FETCH_UPDATE_REQUEST,
+  FETCH_UPDATE_SUCCESS,
+  FETCH_UPDATE_FAILURE,
 } from './userTypes';
 
 export const fetchUsersRequest = () => ({
@@ -25,7 +32,6 @@ export const fetchUsersupdated = (props) => (dispatch) => {
     .then((response) => {
       // response.data is the users
       const users = response.data.dataL;
-
       dispatch(fetchUsersSuccess(users));
     })
     .catch((error) => {
@@ -33,18 +39,74 @@ export const fetchUsersupdated = (props) => (dispatch) => {
       dispatch(fetchUsersFailure(error.message));
     });
 };
-export const fetchupdated = (id) => (dispatch) => {
-  dispatch(fetchUsersRequest());
+
+// DELETING USER
+
+export const deleteUserRequest = () => ({
+  type: FETCH_DELETE_REQUEST,
+});
+
+export const deleteUserSuccess = (id) => ({
+  type: FETCH_DELETE_SUCCESS,
+  payload: {
+    id,
+  },
+});
+
+export const deleteUserFailure = (err) => ({
+  type: FETCH_DELETE_FAILURE,
+  payload: {
+    err,
+  },
+});
+
+export const deleteDealer = (_id) => (dispatch) => {
+  dispatch(deleteUserRequest());
   axios
-    .put(`http://localhost:2000/api/updateuser/${id}`)
+    .delete(`http://localhost:2000/api/delUser/delete/${_id}`)
     .then((response) => {
       // response.data is the users
-      const users = response.data.dataL;
+      const delusers = response.data;
+      alert('deleted!');
 
-      dispatch(fetchUsersSuccess(users));
+      dispatch(deleteUserSuccess(delusers));
     })
     .catch((error) => {
       // error.message is the error message
-      dispatch(fetchUsersFailure(error.message));
+      dispatch(deleteUserFailure(error.message));
+    });
+};
+
+// UPDATING USER
+export const updateUserRequest = () => ({
+  type: FETCH_UPDATE_REQUEST,
+});
+
+export const updateUserSuccess = (_id, updateUser) => ({
+  type: FETCH_UPDATE_SUCCESS,
+  payload: {
+    _id,
+    updateUser,
+  },
+});
+
+export const updateUserFailure = (err) => ({
+  type: FETCH_UPDATE_FAILURE,
+  payload: {
+    err,
+  },
+});
+export const fetchupdated = (_id, userInfo) => (dispatch) => {
+  console.log(userInfo);
+  axios
+    .put(`http://localhost:2000/api/updateuser/${_id}`, userInfo)
+    .then((response) => {
+      const updateUser = response.data.dataL;
+      console.log(response);
+      alert('updated');
+      dispatch(updateUserSuccess(updateUser));
+    })
+    .catch((error) => {
+      dispatch(updateUserFailure(error.message));
     });
 };

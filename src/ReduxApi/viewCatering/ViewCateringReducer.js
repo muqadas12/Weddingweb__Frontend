@@ -1,44 +1,23 @@
 import {
-  FETCH_CATERING_REQUEST,
-  FETCH_CATERING_SUCCESS,
-  FETCH_CATERING_FAILURE,
   FETCH_VIEWCATERING_REQUEST,
   FETCH_VIEWCATERING_SUCCESS,
   FETCH_VIEWCATERING_FAILURE,
-} from './CateringTypes';
+} from './ViewCateringTypes';
 
 const initialState = {
   loading: false,
-  cateringser: [],
   viewCatering: [],
   err: '',
 };
 
-const cateringReducer = (state = initialState, action) => {
+const viewCateringReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CATERING_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
-
-    case FETCH_CATERING_SUCCESS:
-      return {
-        loading: false,
-        cateringser: action.payload,
-        err: '',
-      };
-    case FETCH_CATERING_FAILURE:
-      return {
-        loading: false,
-        cateringser: [],
-        err: action.payload,
-      };
     case FETCH_VIEWCATERING_REQUEST:
       return {
         ...state,
         loading: true,
       };
+
     case FETCH_VIEWCATERING_SUCCESS:
       return {
         loading: false,
@@ -51,9 +30,8 @@ const cateringReducer = (state = initialState, action) => {
         viewCatering: [],
         err: action.payload,
       };
-
     default:
       return state;
   }
 };
-export default cateringReducer;
+export default viewCateringReducer;

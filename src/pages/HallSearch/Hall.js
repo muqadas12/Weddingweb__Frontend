@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Form, Input, Select } from 'antd';
 import hallSearch from '../../Assets/images/weddingHallsearch.jpg';
 import './Hall.scss';
+
+const { Option } = Select;
 
 const CaseStatusLaw = () => {
   const [VenueType, setVenueType] = useState('');
@@ -17,8 +20,8 @@ const CaseStatusLaw = () => {
       .then((res) => {
         setData(res.data.dataH);
       })
-      .catch(() => {
-        // console.log(err);
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -26,9 +29,9 @@ const CaseStatusLaw = () => {
     const search = data.filter(
       (x) => x.VenueType === VenueType || x.city === city
     );
-    // console.log(VenueType, city);
-    // console.log(data);
-    // console.log(search);
+    console.log(VenueType, city);
+    console.log(data);
+    console.log(search);
     setSearchData(search);
     setShow(true);
   };
@@ -48,7 +51,8 @@ const CaseStatusLaw = () => {
       <h1 className="wedding-hall-h1">
         Welcome!Here You can Serach hall according to your need{' '}
       </h1>
-      <form>
+      <Form>
+        <label className="label-hall-type">Select Hall Type:</label>
         <select className="dropdown-hall" onChange={handleChangeVenueType}>
           <option
             style={{ marginTop: '990px' }}
@@ -64,6 +68,8 @@ const CaseStatusLaw = () => {
             </option>
           ))}
         </select>
+        <label className="label-city">Select City:</label>
+
         <select className="dropdown-city" onChange={handleChangecity}>
           <option name="select city" disabled>
             Select city
@@ -75,7 +81,7 @@ const CaseStatusLaw = () => {
             </option>
           ))}
         </select>
-      </form>
+      </Form>
       <button type="submit" className="search-button" onClick={handleSubmit}>
         {' '}
         Search{' '}
