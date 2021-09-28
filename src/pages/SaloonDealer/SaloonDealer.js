@@ -1,16 +1,27 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { fetchServices } from '../../ReduxApi/Saloonservices/SaloonAction';
 import saloonServices from '../../Assets/images/saloonServices.jpg';
+import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import './SaloonDealer.scss';
 
 function SaloonDealer({ userData, fetchServices }) {
+  let history = useHistory();
+  const dispatch = useDispatch();
   useEffect(() => {
     fetchServices();
   }, []);
+  const bookHandler = () => {
+    if (localStorage.getItem('token')) {
+      history.push('/booking-saloon');
+    } else {
+      dispatch(myCategory('booked-saloon'));
+      history.push('/sign-in');
+    }
+  };
   console.log(userData);
   return userData.loading ? (
     <h2>Loading....</h2>
@@ -35,11 +46,13 @@ function SaloonDealer({ userData, fetchServices }) {
                 <img className="service-img" src={user.pathImg} alt="img" />
               </p>
               <span>
-                <Link to="/booking-saloon">
-                  <button type="submit" className="book-saloon-service-btn">
-                    Book Now
-                  </button>
-                </Link>
+                <button
+                  type="submit"
+                  onClick={bookHandler}
+                  className="book-saloon-service-btn"
+                >
+                  Book Now
+                </button>
               </span>
             </div>
           ))}

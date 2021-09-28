@@ -8,7 +8,13 @@ import { fetchDealers } from '../../../ReduxApi/ViewDealerProfile/Dealer.action'
 import { deleteDealer } from '../../../ReduxApi/updateProfile/userAction';
 import './viewProf.scss';
 
-function ViewProfile({ userData, fetchDealers, deleteDealer, onDelete }) {
+function ViewProfile({
+  userData,
+  fetchDealers,
+  deleteDealer,
+  onDelete,
+  props,
+}) {
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: '',
@@ -48,10 +54,7 @@ function ViewProfile({ userData, fetchDealers, deleteDealer, onDelete }) {
   useEffect(() => {
     displayInfo();
   }, []);
-  function submit(id) {
-    console.log('hii', dispatch(deleteDealer()));
-    dispatch(deleteDealer());
-  }
+
   return userData.loadin ? (
     <h1>Loading..</h1>
   ) : userData.error ? (
@@ -78,6 +81,9 @@ function ViewProfile({ userData, fetchDealers, deleteDealer, onDelete }) {
           <button type="button" onClick={() => onDelete(userInfo._id)}>
             Delete
           </button>
+          {/* <button type="button" onClick={() => deleteDealer(userInfo._id)}>
+            del
+          </button> */}
         </div>
       </div>
     </div>
@@ -85,10 +91,12 @@ function ViewProfile({ userData, fetchDealers, deleteDealer, onDelete }) {
 }
 const mapStateToProps = (state) => ({
   userData: state.dealerProfile,
+  deluser: state.deluser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchDealers: () => dispatch(fetchDealers()),
+  deleteDealer: (delusers) => dispatch(deleteDealer(delusers)),
   onDelete: (_id) => {
     dispatch(deleteDealer(_id));
   },

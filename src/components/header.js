@@ -26,8 +26,6 @@ import UpdateCustomerProfile from '../pages/Customer/UpdateProfile';
 import CustomerOrdersView from '../pages/Customer/CustomerOrders';
 import ViewCustomerProfile from '../pages/Customer/ViewProfile';
 import CustomerMainPage from '../pages/Customer/Customer-main/Customer-main';
-import BookingSignup from '../pages/hallSearch/BookingSignup';
-import BookingSignin from '../pages/hallSearch/BookingSignin';
 import Booking from '../pages/hallSearch/Booking';
 import SaloonDealer from '../pages/saloonDealer/SaloonDealer';
 import CarRental from '../pages/carRental/CarRental';
@@ -37,19 +35,12 @@ import Bookfood from '../pages/cateringDealer/Bookfood';
 import Carbooking from '../pages/carRental/Carbooking';
 import Bookingsaloon from '../pages/saloonDealer/Bookingsaloon';
 import Bookphotographer from '../pages/photographyDealer/Bookingphotographer';
-/**
- * pa
- * pa
- */
+import viewOrderStatus from '../pages/Customer/ViewOrderStatus';
+import SaloonOrder from '../pages/Customer/SallonOrder';
 
 const { SubMenu } = Menu;
 const { Header, Content } = Layout;
-/**
- * Adds two numbers together.
- * @param {int} num1 The first number.
- * @param {int} num2 The second number.
- * @return {int} The sum of the two numbers.
- */
+
 function header2() {
   return (
     <Layout>
@@ -156,8 +147,7 @@ function header2() {
                 component={UpdateCustomerProfile}
               />
               <Route path="/customer-orders" component={CustomerOrdersView} />
-              <Route path="/booking-sign-up" component={BookingSignup} />
-              <Route path="/booking-sign-in" component={BookingSignin} />
+
               <Route path="/booking" component={Booking} />
 
               {/* saloon services */}
@@ -169,14 +159,14 @@ function header2() {
               {/* //Booking */}
               <Route path="/book-catering" component={Bookfood} />
               <Route path="/car-booking" component={Carbooking} />
-              <ProtectiveRoute
-                path="/booking-saloon"
-                component={Bookingsaloon}
-              />
+              <Route path="/booking-saloon" component={Bookingsaloon} />
               <Route
                 path="/booking-photographer"
                 component={Bookphotographer}
               />
+              {/* //vieworderstatus */}
+              <Route path="/view-Order-Status" component={viewOrderStatus} />
+              <Route path="/saloon-order" component={SaloonOrder} />
 
               <Route path={['/', '/home']} component={Home} />
             </Switch>

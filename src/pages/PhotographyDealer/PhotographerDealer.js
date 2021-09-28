@@ -1,15 +1,27 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { Card, Space, Col, Row } from 'antd';
+import { myCategory } from '../../ReduxApi/Category/categoriesAction';
+
 import { fetchPhotos } from '../../ReduxApi/Photography/PhotographyAction';
 import photographyImg from '../../Assets/images/photographyImg.jpg';
 import './Photography.scss';
 
 function PhotographerDealer({ userData, fetchPhotos }) {
+  const dispatch = useDispatch();
+  let history = useHistory();
   useEffect(() => {
     fetchPhotos();
   }, []);
+  const bookHandler = () => {
+    if (localStorage.getItem('token')) {
+      history.push('/booking-photographer');
+    } else {
+      dispatch(myCategory('booked-photographer'));
+      history.push('/sign-in');
+    }
+  };
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.error ? (
@@ -48,11 +60,14 @@ function PhotographerDealer({ userData, fetchPhotos }) {
                         alt="wedimg"
                       />
                     </p>
-                    <Link to="/booking-photographer">
-                      <button type="submit" className="book-now-wedding">
-                        Book Now
-                      </button>
-                    </Link>
+
+                    <button
+                      type="submit"
+                      onClick={bookHandler}
+                      className="book-now-wedding"
+                    >
+                      Book Now
+                    </button>
                   </Card>
                 </Space>
               ))}

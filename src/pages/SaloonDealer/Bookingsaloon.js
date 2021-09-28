@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
+import { Card, DatePicker, Form, Select, Button, Row, Col, Input } from 'antd';
 import './Bookingsaloon.scss';
 import { useDispatch } from 'react-redux';
 import { fetchSaloon } from '../../ReduxApi/saloonBooking/SaloonBooking.action';
@@ -15,6 +15,9 @@ function Bookingsaloon() {
     functionDate: '',
     functionType: '',
     makeupType: '',
+    serviceName: '',
+    serviceCategory: '',
+    email: '',
   });
   function addBookingSaloon(payload) {
     dispatch(fetchSaloon(payload));
@@ -24,6 +27,10 @@ function Bookingsaloon() {
       functionDate: e.functionDate,
       functionTime: e.functionTime,
       makeupType: e.makeuptype,
+      serviceName: e.serviceName,
+      serviceCategory: e.serviceCategory,
+
+      email: localStorage.getItem('email'),
     };
     console.log('helo', e, e.functionDate._d, payload);
     addBookingSaloon(payload);
@@ -75,6 +82,39 @@ function Bookingsaloon() {
                   <Option value="lunch">Lunch</Option>
                   <Option value="dinner">Dinner</Option>
                 </Select>
+              </Form.Item>
+              <Form.Item
+                name="serviceCategory"
+                label="Select Service"
+                className="date-picker-booking-car"
+                style={{ marginLeft: '-10px' }}
+                // className="function-time-car"
+
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please select your service!',
+                  },
+                ]}
+              >
+                <Select placeholder="select your service">
+                  <Option value="carRental">Car Rental</Option>
+                  <Option value="photography">Photography</Option>
+                  <Option value="hall">Hall Booking</Option>
+                  <Option value="saloon">Saloon</Option>
+                  <Option value="catering">Catering</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                name="serviceName"
+                label="Service Name"
+                style={{
+                  fontFamily: 'cursive',
+
+                  marginLeft: '16px',
+                }}
+              >
+                <Input style={{ marginTop: '-20px' }} />
               </Form.Item>
 
               <Form.Item

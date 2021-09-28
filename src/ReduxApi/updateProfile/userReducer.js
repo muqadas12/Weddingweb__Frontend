@@ -45,7 +45,9 @@ const reducer = (state = initialState, action) => {
     case FETCH_DELETE_SUCCESS:
       return {
         loading: false,
-        delusers: action.payload,
+        delusers: state.delusers.filter(
+          (user) => user.id !== action.payload.id
+        ),
         error: '',
       };
     case FETCH_DELETE_FAILURE:
@@ -62,7 +64,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_UPDATE_SUCCESS:
       return {
         loading: false,
-        updateUser: action.payload.updateUser,
+        updateUser: action.payload.updateUsers,
         error: '',
       };
     case FETCH_UPDATE_FAILURE:

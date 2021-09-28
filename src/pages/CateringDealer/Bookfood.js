@@ -14,7 +14,8 @@ function Bookfood() {
     functionTime: '',
     functionType: '',
     numOfPeople: '',
-    foodType: '',
+    serviceName: '',
+    serviceCategory: '',
     email: '',
   });
   function bookcateringFood(payload) {
@@ -26,7 +27,8 @@ function Bookfood() {
       functionTime: e.functionTime,
       functionType: e.functionType,
       numOfPeople: e.numOfPeople,
-      foodType: e.foodType,
+      serviceName: e.serviceName,
+      serviceCategory: e.serviceCategory,
       email: localStorage.getItem('email'),
     };
     bookcateringFood(payload);
@@ -89,25 +91,37 @@ function Bookfood() {
               </Form.Item>
 
               <Form.Item
-                label="Food Type"
-                name="foodType"
-                style={{ fontFamily: 'cursive' }}
+                name="serviceCategory"
+                label="Select Service"
+                className="date-picker-booking-car"
+                style={{ marginLeft: '-10px' }}
+                // className="function-time-car"
+
                 rules={[
                   {
                     required: true,
-                    message: 'Please select Food Type!',
+                    message: 'Please select your service!',
                   },
                 ]}
               >
-                <Select
-                  placeholder="select your Food Type"
-                  className="foodtype-booking-catering"
-                  style={{ width: '400px' }}
-                >
-                  <Option value="chicken">Chicken</Option>
-                  <Option value="sweets">Sweets</Option>
-                  <Option value="drinks">Drinks</Option>
+                <Select placeholder="select your service">
+                  <Option value="carRental">Car Rental</Option>
+                  <Option value="photography">Photography</Option>
+                  <Option value="hall">Hall Booking</Option>
+                  <Option value="saloon">Saloon</Option>
+                  <Option value="catering">Catering</Option>
                 </Select>
+              </Form.Item>
+              <Form.Item
+                name="serviceName"
+                label="Service Name"
+                style={{
+                  fontFamily: 'cursive',
+                  width: '500px',
+                  marginLeft: '16px',
+                }}
+              >
+                <Input style={{ marginTop: '-20px' }} />
               </Form.Item>
               <Form.Item
                 name="numOfPeople"

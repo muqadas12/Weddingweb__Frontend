@@ -2,28 +2,29 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable import/no-mutable-exports */
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 import { fetchCarRental } from '../../ReduxApi/CarRental/CarActions';
+import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import carRental from '../../Assets/images/carRental.jpg';
 import './CarRental.scss';
 
 export let bookcar;
 
 function CarRental({ userData, fetchCarRental }) {
+  const dispatch = useDispatch();
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
   const [car, setBookcar] = useState(false);
 
   const bookHandler = () => {
-    console.log(localStorage.getItem('token'));
-    {
-      localStorage.getItem('token')
-        ? history.push('/car-booking')
-        : history.push('/sign-in');
+    if (localStorage.getItem('token')) {
+      history.push('/car-booking');
+    } else {
+      dispatch(myCategory('booked-car'));
+      history.push('/sign-in');
     }
-    setBookcar(true);
   };
   useEffect(() => {
     fetchCarRental();
@@ -49,11 +50,10 @@ function CarRental({ userData, fetchCarRental }) {
               {' '}
               <img className="car-rental-img" src={user.pathImg} alt="imgcar" />
             </p>
-            <Link to="/car-booking">
-              <Button onClick={bookHandler} className="btn-booking-car">
-                Book Now
-              </Button>
-            </Link>
+
+            <Button onClick={bookHandler} className="btn-booking-car">
+              Book Now
+            </Button>
           </div>
         ))}
     </div>

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
+import { deleteDealer } from '../../../ReduxApi/updateProfile/userAction';
+
 // eslint-disable-next-line max-len
 import { fetchServices } from '../../../ReduxApi/ViewDealerServices/Services.action';
 import servicesImg from '../../../Assets/images/services.jpg';
 import './ViewServices.scss';
 
-function ViewDealerServices({ userData, fetchServices }) {
+function ViewDealerServices({ userData, fetchServices, onDelete }) {
   const [data, setData] = useState({
     _id: '',
   });
@@ -44,9 +46,6 @@ function ViewDealerServices({ userData, fetchServices }) {
             <p key={c}>{c}</p>
           ))}
         </p>
-        <Link to={`/customer-update-profile/${userData.services._id}`}>
-          <button type="submit">Update</button>
-        </Link>
       </Card>
     </div>
   );
@@ -54,10 +53,15 @@ function ViewDealerServices({ userData, fetchServices }) {
 
 const mapStateToProps = (state) => ({
   userData: state.service,
+  deluser: state.deluser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchServices: () => dispatch(fetchServices()),
+  deleteDealer: (delusers) => dispatch(deleteDealer(delusers)),
+  onDelete: (_id) => {
+    dispatch(deleteDealer(_id));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewDealerServices);

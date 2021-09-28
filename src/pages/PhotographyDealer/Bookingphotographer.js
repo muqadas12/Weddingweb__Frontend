@@ -12,6 +12,9 @@ function Carbooking() {
     functionDate: '',
     functionType: '',
     photographyType: '',
+    serviceName: '',
+    serviceCategory: '',
+    email: '',
   });
   function addCarRental(payload) {
     dispatch(fetchPhoto(payload));
@@ -21,6 +24,10 @@ function Carbooking() {
       functionDate: e.functionDate,
       functionTime: e.functionTime,
       photographyType: e.photographyType,
+      serviceName: e.serviceName,
+      serviceCategory: e.serviceCategory,
+
+      email: localStorage.getItem('email'),
     };
     addCarRental(payload);
   }
@@ -64,6 +71,39 @@ function Carbooking() {
                   <Option value="lunch">Lunch</Option>
                   <Option value="dinner">Dinner</Option>
                 </Select>
+              </Form.Item>
+              <Form.Item
+                name="serviceCategory"
+                label="Select Service"
+                className="date-picker-booking-car"
+                style={{ marginLeft: '-10px' }}
+                // className="function-time-car"
+
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please select your service!',
+                  },
+                ]}
+              >
+                <Select placeholder="select your service">
+                  <Option value="carRental">Car Rental</Option>
+                  <Option value="photography">Photography</Option>
+                  <Option value="hall">Hall Booking</Option>
+                  <Option value="saloon">Saloon</Option>
+                  <Option value="catering">Catering</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                name="serviceName"
+                label="Service Name"
+                style={{
+                  fontFamily: 'cursive',
+                  width: '500px',
+                  marginLeft: '16px',
+                }}
+              >
+                <Input style={{ marginTop: '-20px' }} />
               </Form.Item>
 
               <Form.Item

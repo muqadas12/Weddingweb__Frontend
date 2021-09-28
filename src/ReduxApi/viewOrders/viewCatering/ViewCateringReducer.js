@@ -30,6 +30,7 @@ const viewCateringReducer = (state = initialState, action) => {
         viewCatering: [],
         err: action.payload,
       };
+
     default:
       return state;
   }

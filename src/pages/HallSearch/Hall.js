@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Input, Select } from 'antd';
+import { useDispatch } from 'react-redux';
+import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import hallSearch from '../../Assets/images/weddingHallsearch.jpg';
 import './Hall.scss';
 
 const { Option } = Select;
 
 const CaseStatusLaw = () => {
+  const dispatch = useDispatch();
+  let history = useHistory();
   const [VenueType, setVenueType] = useState('');
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
@@ -24,7 +28,14 @@ const CaseStatusLaw = () => {
         console.log(err);
       });
   }, []);
-
+  const bookHandler = () => {
+    if (localStorage.getItem('token')) {
+      history.push('/booking');
+    } else {
+      dispatch(myCategory('booked-hall'));
+      history.push('/sign-in');
+    }
+  };
   const handleSubmit = () => {
     const search = data.filter(
       (x) => x.VenueType === VenueType || x.city === city
@@ -135,8 +146,12 @@ const CaseStatusLaw = () => {
 
                   <br />
                   <br />
-                  <button type="submit" className="book-now">
-                    <Link to="/booking-sign-up">Book Now</Link>
+                  <button
+                    type="submit"
+                    className="book-now"
+                    onClick={bookHandler}
+                  >
+                    Book Now
                   </button>
                 </div>
               );

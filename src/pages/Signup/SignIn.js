@@ -4,15 +4,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Form, Input, Button, Checkbox, Card } from 'antd';
 import CardForm from '../../components/Card-Forms';
 import Loginimg from '../../Assets/images/cardlogin.jpg';
-import { booked } from '../cateringDealer/CateringDealer';
 
 function SignIn() {
-  let booked = 'booked';
   const history = useHistory();
   const url = 'http://localhost:2000/api/users/login';
+  const categoryType = useSelector((state) => state.countReducers.cat);
+
+  console.log(categoryType, ' catType from signin');
 
   const [data, setData] = useState({
     email: '',
@@ -37,20 +39,17 @@ function SignIn() {
 
         alert(`You are signIn as ${data.email}`);
 
-        // window.location="http://localhost:3000/dealer-main"
-
-        //  {booked==="booked-catering"?history.push("/book-catering"):
-        //  booked==="foode-catering"?history.push("/food-catering"):
-
-        //       res.data.role === "Dealer"
-        //         ? history.push("/dealer-main")
-        //         : history.push("/customer-main");
-
-        //  }
-
         // eslint-disable-next-line no-lone-blocks
         {
-          booked === 'booked-catering'
+          categoryType === 'booked-hall'
+            ? history.push('/booking')
+            : categoryType === 'booked-photographer'
+            ? history.push('/booking-photographer')
+            : categoryType === 'booked-car'
+            ? history.push('/car-booking')
+            : categoryType === 'booked-saloon'
+            ? history.push('/booking-saloon')
+            : categoryType === 'booked-catering'
             ? history.push('/book-catering')
             : res.data.role === 'Dealer'
             ? history.push('/dealer-main')
@@ -59,6 +58,14 @@ function SignIn() {
         console.log(res.data.role);
         console.log(res.data.token);
       })
+      //   {
+      //     res.data.role === 'Dealer'
+      //       ? history.push('/dealer-main')
+      //       : history.push('/customer-main');
+      //   }
+      //   console.log(res.data.role);
+      //   console.log(res.data.token);
+      // })
       .catch(() => {
         alert('User doesnot exist!Please signUp');
       });
@@ -69,7 +76,7 @@ function SignIn() {
     setData(newData);
     console.log(newData);
   }
-  console.log(booked, 'from catering booked');
+  // console.log(booked, 'from catering booked');
   return (
     <div>
       <CardForm img={Loginimg} alt="alt" />

@@ -16,6 +16,7 @@ export const fetchViewCateringFailure = (err) => ({
   type: FETCH_VIEWCATERING_FAILURE,
   payload: err,
 });
+
 export const fetchViewCatering = () => (dispatch) => {
   dispatch(fetchViewcateringrequest());
   const email = localStorage.getItem('email');

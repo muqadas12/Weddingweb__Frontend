@@ -1,16 +1,18 @@
 /* eslint-disable import/no-mutable-exports */
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Card, Space } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { fetchCatering } from '../../ReduxApi/Catering/CateringAction';
 import cateringImg from '../../Assets/images/catering.jpg';
+import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import './CateringDealer.scss';
 
-export let booked;
+// export let booked;
 
 function CateringDealer({ userData, fetchCatering }) {
   let history = useHistory();
+  const dispatch = useDispatch();
 
   const [booked, setBooked] = useState(false);
   useEffect(() => {
@@ -18,12 +20,21 @@ function CateringDealer({ userData, fetchCatering }) {
   }, []);
 
   const bookHandler = () => {
-    {
-      localStorage.getItem('token')
-        ? history.push('/book-catering')
-        : history.push('/sign-in');
+    if (localStorage.getItem('token')) {
+      history.push('/book-catering');
+    } else {
+      dispatch(myCategory('booked-catering'));
+      history.push('/sign-in');
     }
-    setBooked(true);
+    // {
+    //   localStorage.getItem('token')
+    //     ? history.push('/book-catering')
+    //     : history.push('/sign-in');
+    // }
+
+    // {!localStorage.getItem('token') &&   dispatch(myCategory('CateringDealer'))}
+
+    //  setBooked(true);
     // booked = true;
   };
 

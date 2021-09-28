@@ -1,21 +1,19 @@
-// import React from 'react';
-
-// function CustomerOrders() {
-//   return <div>cutomer orders</div>;
-// }
-
-// export default CustomerOrders;
-
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Card } from 'antd';
+import { Link } from 'react-router-dom';
 import order from '../../Assets/images/order.PNG';
-import { fetchViewCatering } from '../../ReduxApi/viewCatering/ViewCateringAction';
+import { fetchViewCatering } from '../../ReduxApi/viewOrders/viewCatering/ViewCateringAction';
+import { fetchViewSallonOrder } from '../../ReduxApi/viewOrders/viewSaloonBooking/Saloonbooking.actions';
+
 import './CusOrder.scss';
 
-function CustomerOrders({ userData, fetchViewCatering }) {
+function CustomerOrders({ userData, fetchViewCatering, fetchViewSallonOrder }) {
+  const saloon = useSelector((state) => state.viewSaloonorder);
+
   useEffect(() => {
     fetchViewCatering();
+    fetchViewSallonOrder();
   }, []);
 
   return userData.loading ? (
@@ -27,6 +25,30 @@ function CustomerOrders({ userData, fetchViewCatering }) {
       <img className="customer-view-order-img" src={order} alt="order" />
       <p className="customer-irder-view-heading">View Your order here!</p>
       <Card className="card-view-orders">
+        <p className="Function-date-Customer-order">Service Category:</p>
+        <p
+          className="service-category-view-customer
+        "
+        >
+          {' '}
+          {userData.viewCatering.serviceCategory}
+        </p>
+        <p className="Function-date-Customer-order">Customer Email:</p>
+        <p
+          className="cus-email-view-customer
+        "
+        >
+          {' '}
+          {userData.viewCatering.email}
+        </p>
+        <p className="Function-date-Customer-order">Service Name:</p>
+        <p
+          className="service-name-view-customer
+        "
+        >
+          {' '}
+          {userData.viewCatering.serviceName}
+        </p>
         <p className="Function-date-Customer-order">Function date:</p>
         <p
           className="function-date-view-customer
@@ -53,6 +75,54 @@ function CustomerOrders({ userData, fetchViewCatering }) {
           {userData.viewCatering.numOfPeople}
         </p>
       </Card>
+      <Card className="card-view-orders">
+        <p className="Function-date-Customer-order">Service Category:</p>
+        <p
+          className="service-category-view-customer
+        "
+        >
+          {' '}
+          {saloon.viewSaloonorder.serviceCategory}
+        </p>
+        <p className="Function-date-Customer-order">Customer Email:</p>
+        <p
+          className="cus-email-view-customer
+        "
+        >
+          {' '}
+          {saloon.viewSaloonorder.email}
+        </p>
+        <p className="Function-date-Customer-order">Service Name:</p>
+        <p
+          className="service-name-view-customer
+        "
+        >
+          {' '}
+          {saloon.viewSaloonorder.serviceName}
+        </p>
+        <p className="Function-date-Customer-order">Function date:</p>
+        <p
+          className="function-date-view-customer
+        "
+        >
+          {' '}
+          {saloon.viewSaloonorder.functionDate}
+        </p>
+        <br />
+        <p className="Function-date-Customer-order">Function Time:</p>
+        <p className="function-time-view-customer">
+          {' '}
+          {saloon.viewSaloonorder.functionTime}
+        </p>
+        <br />
+        <p className="Function-date-Customer-order">Makeup Type:</p>
+        <p className="function-time-view-customer">
+          {' '}
+          {saloon.viewSaloonorder.makeupType}
+        </p>
+        <br />
+      </Card>
+      <Link to="/view-Order-Status">View order status</Link>
     </div>
   );
 }
@@ -63,6 +133,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchViewCatering: () => dispatch(fetchViewCatering()),
+  fetchViewSallonOrder: () => dispatch(fetchViewSallonOrder()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomerOrders);
