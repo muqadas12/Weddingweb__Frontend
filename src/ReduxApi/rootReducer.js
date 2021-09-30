@@ -17,6 +17,8 @@ import bookHall from './bookHall/BookHall.reducer';
 import viewStatusorder from './orderStatus/OrderStatus.reducer';
 import viewSaloonorder from './viewOrders/viewSaloonBooking/Saloonbooking.reducer';
 import viewDealerSaloonOrder from './viewDealerOrders/saloonOrders/SaloonOrder.reducer';
+import searchHallreducer from './hallSearch/Hall.reducer';
+import viewdealers from './ViewDealerServices/viewDealers/Dealer.reducer';
 
 const rootReducer = combineReducers({
   user,
@@ -37,6 +39,8 @@ const rootReducer = combineReducers({
   viewStatusorder,
   viewSaloonorder,
   viewDealerSaloonOrder,
+  searchHallreducer,
+  viewdealers,
 });
 
 export default rootReducer;

@@ -1,27 +1,34 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Card, Space, Col, Row } from 'antd';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 
-import { fetchPhotos } from '../../ReduxApi/Photography/PhotographyAction';
+import {
+  fetchPhotos,
+  setSelectedDealer,
+} from '../../ReduxApi/Photography/PhotographyAction';
 import photographyImg from '../../Assets/images/photographyImg.jpg';
 import './Photography.scss';
 
-function PhotographerDealer({ userData, fetchPhotos }) {
+function PhotographerDealer({ userData, fetchPhotos, setSelectedDealer }) {
   const dispatch = useDispatch();
-  let history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     fetchPhotos();
   }, []);
-  const bookHandler = () => {
+  const bookHandler = (user) => {
     if (localStorage.getItem('token')) {
+      setSelectedDealer(user);
+      // console.log(setSelectedDealer(user));
+
       history.push('/booking-photographer');
     } else {
       dispatch(myCategory('booked-photographer'));
       history.push('/sign-in');
     }
   };
+
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.error ? (
@@ -50,9 +57,9 @@ function PhotographerDealer({ userData, fetchPhotos }) {
                     <p className="service-name-photography">
                       {user.description}
                     </p>
-                    <p className="service-name-photography">
+                    {/* <p className="service-name-photography">
                       For only Rupees{user.price}
-                    </p>
+                    </p> */}
                     <p>
                       <img
                         className="photography-img"
@@ -60,14 +67,15 @@ function PhotographerDealer({ userData, fetchPhotos }) {
                         alt="wedimg"
                       />
                     </p>
-
-                    <button
-                      type="submit"
-                      onClick={bookHandler}
-                      className="book-now-wedding"
-                    >
-                      Book Now
-                    </button>
+                    <Link to="/booking-photographer" state={user.serviceName}>
+                      <button
+                        type="submit"
+                        onClick={() => bookHandler(user)}
+                        className="book-now-wedding"
+                      >
+                        Book Now
+                      </button>
+                    </Link>
                   </Card>
                 </Space>
               ))}
@@ -84,6 +92,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPhotos: () => dispatch(fetchPhotos()),
+  setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotographerDealer);

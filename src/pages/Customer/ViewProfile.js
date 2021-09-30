@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { message } from 'antd';
 import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../ReduxApi/ViewProfile/userAction';
 import { deleteDealer } from '../../ReduxApi/updateProfile/userAction';
@@ -22,7 +23,6 @@ function ViewProfile({ userData, fetchUsers, onDelete }) {
   }, []);
 
   const displayInfo = () => {
-    console.log(localStorage.getItem('email'), ' email from display');
     axios
       .post('http://localhost:2000/api/users/dashboard', {
         email: localStorage.getItem('email'),
@@ -36,11 +36,9 @@ function ViewProfile({ userData, fetchUsers, onDelete }) {
           role: res.data.existingUser.role,
           _id: res.data.existingUser._id,
         });
-
-        console.log(res.data.existingUser, 'res from display');
       })
       .catch((err) => {
-        console.log(err);
+        message.error(err);
       });
   };
 

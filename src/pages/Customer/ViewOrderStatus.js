@@ -1,13 +1,7 @@
-// import React from 'react';
-// import { fetchViewOrderStatus } from '../../ReduxApi/orderStatus/OrderStatus.action';
-
-// const viewOrderStatus = () => <div>hi</div>;
-// export default viewOrderStatus;
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
-import { Link } from 'react-router-dom';
-import order from '../../Assets/images/order.PNG';
+
 import { fetchViewOrderStatus } from '../../ReduxApi/orderStatus/OrderStatus.action';
 import './CusOrder.scss';
 
@@ -22,9 +16,6 @@ function CustomerOrders({ userData, fetchViewOrderStatus }) {
     <h2>{userData.error}</h2>
   ) : (
     <div>
-      {/* {userData &&
-        userData.viewOrderStatus &&
-        userData.viewOrderStatus.map((user) => <p>{user.orderStatus}</p>)} */}
       {userData &&
         userData.viewOrderStatus &&
         userData.viewOrderStatus.map((user) => (
@@ -38,7 +29,7 @@ function CustomerOrders({ userData, fetchViewOrderStatus }) {
                 marginTop: '10px',
               }}
             >
-              <p>Cases: {user.orderStatus} </p>
+              <p> {user.orderStatus} </p>
             </Card>
           </p>
         ))}

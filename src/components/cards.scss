@@ -1,98 +1,89 @@
-$wsize:340px;
+$wsize: 340px;
 $hsize: 30px;
-@mixin size{ 
 
-    width: 340px;
-    margin-left: 30px;
-} 
-.cards-img{
-   @include size()
+@mixin size {
+  width: 340px;
+  margin-left: 30px;
 }
-.card-title{
-    text-align: center;
+.cards-img {
+  @include size();
+}
+.card-title {
+  text-align: center;
+}
+.card-title-hall {
+  text-align: center;
+}
+.card-title-food {
+  text-align: center;
+}
+.cards-img-hall {
+  @include size();
+}
+.cards-img-photo {
+  @include size();
+}
+.cards-img-car {
+  @include size();
+}
+.cards-img-food {
+  @include size();
+}
+.cards-img-saloon {
+  @include size();
+}
 
+.card-title-food {
+  text-align: center;
 }
-.card-title-hall{
-    text-align: center;
-
-}
-.card-title-food{
-    text-align: center;
-
-}
-.cards-img-hall{
-    @include size()
-
-}
-.cards-img-photo{
-    @include size()
-}
-.cards-img-car{
-    @include size()
-
-}
-.cards-img-food{
-    @include size()
-
-}
-.cards-img-saloon{
-    @include size()
-
-}
-// .cards-food{
-//     margin-left:'290px';
-//     margin-top:'50px'
-
-// }
-.card-title-food{
-text-align: center;
+.trying {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 @media screen and (max-width: 800px) {
-    .cards-img-hall{
-        width: 150px;
-        margin-left: -30px;
-    }
-    .cards-img{
-        width: 340px;
-        margin-left: 30px;
-    }
-    .cards-img-photo{
-        width: 150px;
-        margin-left: -20px;
-    }
-   .cards-img-car{
+  .cards-img-hall {
+    width: 150px;
+    margin-left: -30px;
+  }
+  .cards-img {
+    width: 340px;
+    margin-left: 30px;
+  }
+  .cards-img-photo {
     width: 150px;
     margin-left: -20px;
-
-   }
-   .cards-img-saloon{
+  }
+  .cards-img-car {
     width: 150px;
     margin-left: -20px;
-
-   }
-   .card-title-hall{
+  }
+  .cards-img-saloon {
+    width: 150px;
     margin-left: -20px;
+  }
+  .card-title-hall {
+    margin-left: -20px;
+  }
 
-}
+  // .cards-img-food{
+  //     width: 150px;
+  //     margin-left:230px;
+  //     margin-top: -330px;
 
-// .cards-img-food{
-//     width: 150px;
-//     margin-left:230px;
-//     margin-top: -330px;
-
-// }
-.card-title-food{
+  // }
+  .card-title-food {
     margin-left: 100px;
-}
+  }
 
-.cards-img-food{
+  .cards-img-food {
     width: 150px;
-    margin-left:60px;
-}
-// }
-// .cards-food{
-//     margin-left:'290px';
-//     margin-top:'50px'
+    margin-left: 60px;
+  }
+  // }
+  // .cards-food{
+  //     margin-left:'290px';
+  //     margin-top:'50px'
 
-// }
+  // }
 }

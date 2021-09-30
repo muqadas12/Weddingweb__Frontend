@@ -8,7 +8,8 @@ import viewCustomerOrder from '../../../Assets/images/viewCustomerOrder.png';
 import './Order.scss';
 
 const { Option } = Select;
-function Orders({ userData, fetchOrders }) {
+function Orders({ userData, fetchOrders, fetchOrdersSaloon }) {
+  // eslint-disable-next-line no-unused-vars
   const saloonSer = useSelector((state) => state.viewDealerSaloonOrder);
   const dispatch = useDispatch();
   const [] = useState({
@@ -39,6 +40,9 @@ function Orders({ userData, fetchOrders }) {
         src={viewCustomerOrder}
         alt="viewCustomerOrderImg"
       />
+      {/* {saloonSer &&
+        saloonSer.dealerSaloonOrders &&
+        saloonSer.dealerSaloonOrders.map((user) => <p>{user.makeupType}</p>)} */}
       <h1 className="view-customer-order-heading">View Customer Order</h1>
       <div>
         {userData &&
@@ -90,7 +94,6 @@ function Orders({ userData, fetchOrders }) {
                 </p>
                 <p className="heading-function-date-customer-order">
                   Customer Email
-                  {saloonSer.dealerSaloonOrders.makeupType}
                 </p>
                 <p className="email-of-order-by-customer">{user.email}</p>
               </Card>
@@ -113,7 +116,84 @@ function Orders({ userData, fetchOrders }) {
               <Option value="Pending">Pending</Option>
             </Select>
           </Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="assign-status-order-btn"
+          >
+            Assign
+          </Button>
+        </Form>
+      </div>
+      <div>
+        {/* {saloonSer &&
+        saloonSer.dealerSaloonOrders &&
+        saloonSer.dealerSaloonOrders.map((user) => <p>{user.makeupType}</p>)} */}
+        {saloonSer &&
+          saloonSer.dealerSaloonOrders &&
+          saloonSer.dealerSaloonOrders.map((user) => (
+            <p>
+              <Card className="card-view-order-of-customer">
+                <p className="function-date-of-order-by-customer">
+                  <p className="heading-function-date-customer-order">
+                    Service Category
+                  </p>
+                  {user.serviceCategory}
+                </p>
+                <p className="function-date-of-order-by-customer">
+                  <p className="heading-function-date-customer-order">
+                    Service Name
+                  </p>
+                  {user.serviceName}
+                </p>
+                <p className="function-date-of-order-by-customer">
+                  <p className="heading-function-date-customer-order">
+                    Function date
+                  </p>
+                  {user.functionDate}
+                </p>
+                <p className="function-date-of-order-by-customer">
+                  <p className="heading-function-date-customer-order">
+                    Function Time
+                  </p>
+                  {user.functionTime}
+                </p>
+                <p className="function-type-of-order-by-customer">
+                  <p className="heading-function-date-customer-order">
+                    Makeup Type
+                  </p>
+                  {user.makeupType}
+                </p>
+
+                <p className="heading-function-date-customer-order">
+                  Customer Email
+                </p>
+                <p className="email-of-order-by-customer">{user.email}</p>
+              </Card>
+            </p>
+          ))}
+        <Form onFinish={(e) => formSubmit(e)}>
+          <Form.Item
+            name="orderStatus"
+            label="Give Order Status"
+            className="order-status-dropdown"
+            rules={[
+              {
+                required: true,
+                message: 'Please select Order Status!',
+              },
+            ]}
+          >
+            <Select placeholder="select Order Status">
+              <Option value="Accepted">Accepted</Option>
+              <Option value="Pending">Pending</Option>
+            </Select>
+          </Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="assign-status-order-btn"
+          >
             Assign
           </Button>
         </Form>

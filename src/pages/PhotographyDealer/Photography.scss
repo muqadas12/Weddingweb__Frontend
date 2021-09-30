@@ -1,44 +1,44 @@
-.photography-main-image{
-    width: 600px;
-    margin-left: -10px;
+.photography-main-image {
+  width: 380px;
+  margin-left: -10px;
 }
-.photographycards{
-    width: 500px;
-    justify-content: center;
 
+.photographycards {
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  margin-left: -30px;
+}
+.dealer-service-photography {
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.service-name-photography {
+  font-family: cursive;
 
+  text-align: center;
 }
-.dealer-service-photography{
-    font-family: cursive;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
+.photography-img {
+  margin-left: 160px;
+  width: 180px;
 }
-.service-name-photography{
-    font-family: cursive;
-   
-    text-align: center;
-
-}
-.photography-img{
-    margin-left: 100px;
-}
-.book-now-wedding{
-    margin-left: 200px;
-    background-color: rgb(240, 240, 83);
-    border: rgb(240, 240, 83);
-    width: 90px;
-    height: 40px;
-    cursor: pointer;
-    font-weight: bold;
-    
+.book-now-wedding {
+  margin-left: 200px;
+  background-color: rgb(240, 240, 83);
+  border: rgb(240, 240, 83);
+  width: 90px;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
 }
 @media screen and (max-width: 700px) {
-    .photography-main-image{
-        width: 280px;
-  height: 300px;
-  object-fit: cover;
-  object-position: bottom;
-        margin-left: -30px;
-    }
+  .photography-main-image {
+    width: 280px;
+    height: 300px;
+    object-fit: cover;
+    object-position: bottom;
+    margin-left: -30px;
+  }
 }

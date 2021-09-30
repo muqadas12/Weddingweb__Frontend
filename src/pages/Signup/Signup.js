@@ -1,19 +1,14 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /* eslint-disable no-lone-blocks */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { Form, Input, Button, Checkbox, Card, message } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
 import './Signup.scss';
 import CardForm from '../../components/Card-Forms';
 import cardImgOne from '../../Assets/images/cardImgone.jpg';
 
-// const { Option } = Select;
-/**
- * Adds two numbers together.
- * @param {int} num1 The first number.
- * @param {int} num2 The second number.
- * @return {int} The sum of the two numbers.
- */
 function Signup() {
   const history = useHistory();
 
@@ -27,11 +22,7 @@ function Signup() {
     phoneNumber: '',
     address: '',
   });
-  /**
-   * Adds two numbers together.
-   * @param {int} e The first number.
-   * @param {int} num2 The second number.
-   */
+
   function submit() {
     // dispatch(signupUser(name,email,password,role))
     axios
@@ -45,37 +36,23 @@ function Signup() {
         address: data.address,
       })
       .then((res) => {
-        alert(`You are signUp as ${data.name}`);
+        // alert(`You are signUp as ${data.name}`);
+        message.success(`You are signUp as ${data.name}`);
         window.location = 'http://localhost:3000/sign-in';
 
         console.log(res);
       })
       .catch(() => {
-        alert('User alreay exist!.PLease signIn');
+        message.error('User alreay exist!.PLease signIn');
       });
   }
-  /**
-   * Adds two numbers together.
-   * @param {int} e The first number.
-   * @param {int} num2 The second number.
-   */
+
   function handleChange(e) {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
     console.log(newData);
   }
-  // const responseGoogle = (response) => {
-  //   localStorage.setItem("token", JSON.stringify(response));
-  //   {
-  //     response.data.role === "Dealer"
-  //       ? history.push("/dealer-main")
-  //       : history.push("/about");
-  //   }
-
-  //   window.location = "http://localhost:3000/about";
-  //   console.log(response);
-  // };
 
   const autosigninHandler = () => {
     axios

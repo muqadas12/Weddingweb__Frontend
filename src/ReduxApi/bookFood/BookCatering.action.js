@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_BOOKFOOD_REQUEST,

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
 // eslint-disable-next-line prettier/prettier
 const initialstate = {
@@ -5,7 +6,6 @@ const initialstate = {
 };
 
 const countReducers = (state = initialstate, action) => {
-  console.log(action.payload, 'from reducer file telling about category type');
   switch (action.type) {
     case 'CATEGORY':
       return {

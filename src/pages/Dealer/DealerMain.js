@@ -9,7 +9,7 @@ import updateProfile from '../../Assets/images/updateProfile.PNG';
 import addServices from '../../Assets/images/addSer.PNG';
 import viewServices from '../../Assets/images/viewServices.PNG';
 import order from '../../Assets/images/orders.PNG';
-import updateSer from '../../Assets/images/updateSer.PNG';
+// import updateSer from '../../Assets/images/updateSer.PNG';
 
 import logoutCustomer from '../../Assets/images/logoutCustomer.PNG';
 
@@ -63,14 +63,14 @@ function DealerMain() {
       <Link to="/dealer-view-orders">
         <p className="link-to-dealers-order">View Orders</p>
       </Link>
-      <img
+      {/* <img
         className="updateServiceimg"
         src={updateSer}
         alt="updateService-img"
       />
       <Link to="/dealer-update-services/:id">
         <p className="update-services-link">Update Services</p>
-      </Link>
+      </Link> */}
 
       <img
         className="logout-icon-customer"

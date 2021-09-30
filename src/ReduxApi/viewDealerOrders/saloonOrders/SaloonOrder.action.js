@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_SALOONORDER_REQUEST,
@@ -22,7 +23,7 @@ export const fetchOrdersSaloon = () => (dispatch) => {
   axios
     .get('http://localhost:2000/api/saloonBooking/get-saloon-services')
     .then((res) => {
-      const dealerSaloonOrders = res.data;
+      const dealerSaloonOrders = res.data.data;
       console.log(dealerSaloonOrders);
       dispatch(fetchOrdersaloonServiceSucces(dealerSaloonOrders));
     })

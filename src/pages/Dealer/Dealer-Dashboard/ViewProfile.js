@@ -1,21 +1,15 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import viewprof from '../../../Assets/images/viewProfiledealer.gif';
 // eslint-disable-next-line max-len
 import { fetchDealers } from '../../../ReduxApi/ViewDealerProfile/Dealer.action';
 import { deleteDealer } from '../../../ReduxApi/updateProfile/userAction';
 import './viewProf.scss';
 
-function ViewProfile({
-  userData,
-  fetchDealers,
-  deleteDealer,
-  onDelete,
-  props,
-}) {
-  const dispatch = useDispatch();
+function ViewProfile({ userData, fetchDealers, onDelete }) {
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',

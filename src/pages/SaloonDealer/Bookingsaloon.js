@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { Card, DatePicker, Form, Select, Button, Row, Col, Input } from 'antd';
+/* eslint-disable no-console */
+import React, { useState, useEffect } from 'react';
+import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
 import './Bookingsaloon.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { fetchSaloon } from '../../ReduxApi/saloonBooking/SaloonBooking.action';
+import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
+
 import bookingSaloon from '../../Assets/images/bookingSaloon.jpg';
 
 const { Option } = Select;
 
-function Bookingsaloon() {
+function Bookingsaloon({ userData, fetchAllDealers }) {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
@@ -19,6 +22,9 @@ function Bookingsaloon() {
     serviceCategory: '',
     email: '',
   });
+  useEffect(() => {
+    fetchAllDealers();
+  }, []);
   function addBookingSaloon(payload) {
     dispatch(fetchSaloon(payload));
   }
@@ -105,7 +111,7 @@ function Bookingsaloon() {
                   <Option value="catering">Catering</Option>
                 </Select>
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 name="serviceName"
                 label="Service Name"
                 style={{
@@ -115,6 +121,27 @@ function Bookingsaloon() {
                 }}
               >
                 <Input style={{ marginTop: '-20px' }} />
+              </Form.Item> */}
+              <Form.Item
+                name="serviceName"
+                label="Service Name"
+                style={{
+                  fontFamily: 'cursive',
+                  width: '500px',
+                  marginLeft: '16px',
+                }}
+              >
+                {/* <Input style={{ marginTop: '-20px' }} /> */}
+                <select
+                  className="saloon-booking-services-name"
+                  placeholder="select your service"
+                >
+                  {userData.viewDealers.map((user) => (
+                    <option key={user} name={user.serviceName}>
+                      {user.serviceName.toString()}
+                    </option>
+                  ))}
+                </select>
               </Form.Item>
 
               <Form.Item
@@ -147,5 +174,11 @@ function Bookingsaloon() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  userData: state.viewdealers,
+});
 
-export default Bookingsaloon;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAllDealers: () => dispatch(fetchAllDealers()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Bookingsaloon);

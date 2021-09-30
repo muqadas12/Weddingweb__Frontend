@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_CATERING_REQUEST,
@@ -23,41 +24,9 @@ export const fetchCatering = () => (dispatch) => {
     .get('http://localhost:2000/api/catering/get-catering')
     .then((res) => {
       const cateringser = res.data;
-      console.log(cateringser);
       dispatch(fetchcateringSuccess(cateringser));
     })
     .catch((err) => {
       dispatch(fetchCateringFailure(err.message));
     });
 };
-
-// getservices
-// export const fetchservicerequest = () => ({
-//   type: FETCH_VIEWCATERING_REQUEST,
-// });
-// export const fetchserviceSuccess = (viewcatering) => ({
-//   type: FETCH_VIEWCATERING_SUCCESS,
-//   payload: viewcatering,
-// });
-// export const fetchserviceFailure = (err) => ({
-//   type: FETCH_VIEWCATERING_FAILURE,
-//   payload: err,
-// });
-// export const fetchCateringServices = () => (dispatch) => {
-//   const email = localStorage.getItem('email');
-
-//   dispatch(fetchservicerequest());
-
-//   axios
-//     .get(
-//       `http://localhost:2000/api/servicescatering/get-cateringservices?email=${email}`
-//     )
-//     .then((res) => {
-//       const catering = res.data;
-//       console.log(catering);
-//       dispatch(fetchserviceSuccess(catering));
-//     })
-//     .catch((err) => {
-//       dispatch(fetchserviceFailure(err.message));
-//     });
-// };

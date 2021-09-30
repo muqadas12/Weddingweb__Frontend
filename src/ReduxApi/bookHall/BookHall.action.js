@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_BOOKINGHALL_REQUEST,

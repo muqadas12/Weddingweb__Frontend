@@ -6,8 +6,8 @@ import c1 from './Templates/c1.jpg';
 
 function CardDesign() {
   const history = useHistory();
-  const inputData = (temp) => {
-    history.push(`/InputData/${temp}`);
+  const inputData = (selectedtemp) => {
+    history.push(`/InputData/${selectedtemp}`);
   };
   return (
     <div>
@@ -33,7 +33,7 @@ function CardDesign() {
         }}
         cover={<img alt="example" src={c2} />}
       >
-        <Button onClick={() => inputData(1)}>Customize</Button>
+        <Button onClick={() => inputData(2)}>Customize</Button>
       </Card>
     </div>
   );

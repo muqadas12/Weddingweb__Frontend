@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_SERVICES_REQUEST,
@@ -25,7 +26,7 @@ export const fetchServices = () => {
       .get(`http://localhost:2000/api/getdealer/get-dealers?email=${email}`)
       .then((res) => {
         const services = res.data;
-        console.log(res.data);
+        console.log(services);
         // console.log(services.map((dealer)=>dealer.dealerservice),'hiii')
         dispatch(fetchServicesSucces(res.data));
       })

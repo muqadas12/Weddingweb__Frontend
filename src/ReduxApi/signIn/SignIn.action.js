@@ -1,5 +1,7 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import {
   FETCH_SIGNIN_REQUEST,
   FETCH_SIGNIN_SUCCESS,
@@ -19,8 +21,6 @@ export const fetchSigninFailure = (error) => ({
   payload: error,
 });
 export const FetchSignInUser = (data) => {
-  const history = useHistory();
-
   return (dispatch) => {
     dispatch(fetchSigninRequest());
     axios
@@ -35,11 +35,6 @@ export const FetchSignInUser = (data) => {
 
         // window.location="http://localhost:3000/dealer-main"
 
-        {
-          res.data.role === 'Dealer'
-            ? history.push('/dealer-main')
-            : history.push('/customer-main');
-        }
         console.log(res.data.role);
         console.log(res.data.token);
 

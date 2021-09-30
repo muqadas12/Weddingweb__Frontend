@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import './Bookfood.scss';
 import { fetchFoodServices } from '../../ReduxApi/bookFood/BookCatering.action';
+import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 import cateringBooking from '../../Assets/images/cateringBooking.png';
 
 const { Option } = Select;
 
-function Bookfood() {
+function Bookfood({ userData, fetchAllDealers }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -18,6 +19,9 @@ function Bookfood() {
     serviceCategory: '',
     email: '',
   });
+  useEffect(() => {
+    fetchAllDealers();
+  }, []);
   function bookcateringFood(payload) {
     dispatch(fetchFoodServices(payload));
   }
@@ -40,6 +44,7 @@ function Bookfood() {
         src={cateringBooking}
         alt="cateringbooking"
       />
+
       <Row>
         <Col xs={{ span: 15, offset: 8 }} lg={{ span: 9, offset: 8 }}>
           <Card className="card-booking-food-catering">
@@ -104,7 +109,7 @@ function Bookfood() {
                   },
                 ]}
               >
-                <Select placeholder="select your service">
+                <Select>
                   <Option value="carRental">Car Rental</Option>
                   <Option value="photography">Photography</Option>
                   <Option value="hall">Hall Booking</Option>
@@ -121,7 +126,13 @@ function Bookfood() {
                   marginLeft: '16px',
                 }}
               >
-                <Input style={{ marginTop: '-20px' }} />
+                <select placeholder="select your service">
+                  {userData.viewDealers.map((user) => (
+                    <option key={user} name={user.serviceName}>
+                      {user.serviceName.toString()}
+                    </option>
+                  ))}
+                </select>
               </Form.Item>
               <Form.Item
                 name="numOfPeople"
@@ -144,5 +155,11 @@ function Bookfood() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  userData: state.viewdealers,
+});
 
-export default Bookfood;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAllDealers: () => dispatch(fetchAllDealers()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Bookfood);

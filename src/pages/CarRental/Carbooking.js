@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, connect } from 'react-redux';
 import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
 import carBooking from '../../Assets/images/carBooking.jpg';
 import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
+import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
+
 import './Carbooking.scss';
 
 const { Option } = Select;
-function Carbooking() {
+function Carbooking({ userData, fetchAllDealers }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -16,6 +18,9 @@ function Carbooking() {
     serviceCategory: '',
     email: '',
   });
+  useEffect(() => {
+    fetchAllDealers();
+  }, []);
   function addCarRental(payload) {
     dispatch(fetchbookCar(payload));
   }
@@ -71,7 +76,7 @@ function Carbooking() {
                 </Select>
               </Form.Item>
               <Form.Item
-                name="service"
+                name="serviceCategory"
                 label="Select Service"
                 className="date-picker-booking-car"
                 style={{ marginLeft: '-10px' }}
@@ -100,12 +105,39 @@ function Carbooking() {
               >
                 <Input style={{ marginTop: '-15px' }} />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 label="Service name"
                 name="serviceName"
                 className="date-picker-booking-car"
               >
-                <Input style={{ marginTop: '-15px' }} />
+                <select placeholder="select your service">
+                  {userData.viewDealers.map((user) => (
+                    <option key={user} name={user.serviceName}>
+                      {user.serviceName}
+                    </option>
+                  ))}
+                </select>
+              </Form.Item> */}
+              <Form.Item
+                name="serviceName"
+                label="Service Name"
+                style={{
+                  fontFamily: 'cursive',
+                  width: '500px',
+                  marginLeft: '16px',
+                }}
+              >
+                {/* <Input style={{ marginTop: '-20px' }} /> */}
+                <select
+                  className="car-booking-services-name"
+                  placeholder="select your service"
+                >
+                  {userData.viewDealers.map((user) => (
+                    <option key={user} name={user.serviceName}>
+                      {user.serviceName.toString()}
+                    </option>
+                  ))}
+                </select>
               </Form.Item>
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
@@ -117,5 +149,11 @@ function Carbooking() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  userData: state.viewdealers,
+});
 
-export default Carbooking;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAllDealers: () => dispatch(fetchAllDealers()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Carbooking);

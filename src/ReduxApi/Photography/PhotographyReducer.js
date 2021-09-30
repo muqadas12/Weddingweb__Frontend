@@ -2,12 +2,14 @@ import {
   FETCH_PHOTOGRAPHY_REQUEST,
   FETCH_PHOTOGRAPHY_SUCCESS,
   FETCH_PHOTOGRAPHY_FAILURE,
+  SET_SELECTED_DEALER,
 } from './PhotographyTypes';
 
 const initialState = {
   loading: false,
   photos: [],
   error: '',
+  selectedDealer: {},
 };
 
 const photoReducer = (state = initialState, action) => {
@@ -28,6 +30,11 @@ const photoReducer = (state = initialState, action) => {
         loading: false,
         photos: [],
         error: action.payload,
+      };
+    case SET_SELECTED_DEALER:
+      return {
+        ...state,
+        selectedDealer: action.payload.dealer,
       };
     default:
       return state;

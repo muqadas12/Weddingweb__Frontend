@@ -1,4 +1,3 @@
-import { FETCH_BOOKCAR_FAILURE } from '../carBooking/CarBooking.types';
 import {
   FETCH_BOOKINGHALL_FAILURE,
   FETCH_BOOKINGHALL_REQUEST,
@@ -24,7 +23,7 @@ const bookHallreducer = (state = initialState, action) => {
         hallBooking: action.payload,
         err: [],
       };
-    case FETCH_BOOKCAR_FAILURE:
+    case FETCH_BOOKINGHALL_FAILURE:
       return {
         loading: false,
         hallBooking: [],

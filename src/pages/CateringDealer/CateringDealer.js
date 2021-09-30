@@ -1,5 +1,6 @@
+/* eslint-disable no-shadow */
 /* eslint-disable import/no-mutable-exports */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Card, Space } from 'antd';
 import { useHistory } from 'react-router-dom';
@@ -8,13 +9,10 @@ import cateringImg from '../../Assets/images/catering.jpg';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import './CateringDealer.scss';
 
-// export let booked;
-
 function CateringDealer({ userData, fetchCatering }) {
-  let history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
 
-  const [booked, setBooked] = useState(false);
   useEffect(() => {
     fetchCatering();
   }, []);

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, connect } from 'react-redux';
+import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
 import photographyimg from '../../Assets/images/photo.jpg';
 import { fetchPhoto } from '../../ReduxApi/PhotographerBooking/PhotoBooking.action';
+import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
+
 import './Bookingphotography.scss';
 
 const { Option } = Select;
-function Carbooking() {
+function Carbooking({ userData, fetchAllDealers, dealer }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -19,6 +21,9 @@ function Carbooking() {
   function addCarRental(payload) {
     dispatch(fetchPhoto(payload));
   }
+  useEffect(() => {
+    fetchAllDealers();
+  }, []);
   function formSubmit(e) {
     const payload = {
       functionDate: e.functionDate,
@@ -31,6 +36,7 @@ function Carbooking() {
     };
     addCarRental(payload);
   }
+  // console.log(dealer);
 
   return (
     <div>
@@ -45,7 +51,9 @@ function Carbooking() {
       <Row>
         <Col xs={{ span: 12, offset: 8 }} lg={{ span: 9, offset: 7 }}>
           <Card className="card-photography">
-            <h1 className="booking-h1-main-heading">Book Your Car </h1>
+            <h1 className="booking-h1-main-heading">
+              Book Your Photographer {dealer?.serviceName}
+            </h1>
 
             <Form onFinish={(e) => formSubmit(e)}>
               <Form.Item
@@ -103,7 +111,17 @@ function Carbooking() {
                   marginLeft: '16px',
                 }}
               >
-                <Input style={{ marginTop: '-20px' }} />
+                {/* <Input style={{ marginTop: '-20px' }} /> */}
+                <select
+                  className="car-booking-services-name"
+                  placeholder="select your service"
+                >
+                  {userData.viewDealers.map((user) => (
+                    <option key={user} name={user.serviceName}>
+                      {user.serviceName.toString()}
+                    </option>
+                  ))}
+                </select>
               </Form.Item>
 
               <Form.Item
@@ -127,6 +145,7 @@ function Carbooking() {
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
               </Button>
+              {userData.viewdealer}
             </Form>
           </Card>
         </Col>
@@ -134,5 +153,13 @@ function Carbooking() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  userData: state.viewdealers,
+  dealer: state.viewphotographerServices.selectedDealer,
+});
 
-export default Carbooking;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAllDealers: () => dispatch(fetchAllDealers()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carbooking);

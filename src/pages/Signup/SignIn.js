@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
@@ -5,7 +7,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { Form, Input, Button, Checkbox, Card, message } from 'antd';
 import CardForm from '../../components/Card-Forms';
 import Loginimg from '../../Assets/images/cardlogin.jpg';
 
@@ -37,7 +39,7 @@ function SignIn() {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('email', res.data.email);
 
-        alert(`You are signIn as ${data.email}`);
+        message.success(`You are signIn as ${data.email}`);
 
         // eslint-disable-next-line no-lone-blocks
         {
@@ -58,16 +60,9 @@ function SignIn() {
         console.log(res.data.role);
         console.log(res.data.token);
       })
-      //   {
-      //     res.data.role === 'Dealer'
-      //       ? history.push('/dealer-main')
-      //       : history.push('/customer-main');
-      //   }
-      //   console.log(res.data.role);
-      //   console.log(res.data.token);
-      // })
+
       .catch(() => {
-        alert('User doesnot exist!Please signUp');
+        message.error('User doesnot exist!Please signUp');
       });
   }
   function handleChange(e) {

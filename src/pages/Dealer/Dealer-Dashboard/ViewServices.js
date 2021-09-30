@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-shadow */
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'antd';
-import { Link } from 'react-router-dom';
-import { deleteDealer } from '../../../ReduxApi/updateProfile/userAction';
-
 // eslint-disable-next-line max-len
 import { fetchServices } from '../../../ReduxApi/ViewDealerServices/Services.action';
 import servicesImg from '../../../Assets/images/services.jpg';
 import './ViewServices.scss';
 
-function ViewDealerServices({ userData, fetchServices, onDelete }) {
-  const [data, setData] = useState({
-    _id: '',
-  });
+function ViewDealerServices({ userData, fetchServices }) {
   useEffect(() => {
     fetchServices();
   }, []);
@@ -25,12 +20,15 @@ function ViewDealerServices({ userData, fetchServices, onDelete }) {
     <div>
       <img className="view-services" src={servicesImg} alt="servicesImg" />
       {/* <Card className="card-view-addedservices">
-        <p className="services-name-heading-one">Service Name</p>
-        <p>{userData.services.serviceName}</p>
-        <p className="dealer-services-heading-one">Dealer Services</p>
-        <p style={{ padding: 10, marginHorizontal: 10 }}>
+        <p>
           {' '}
-          {userData.services.dealerservice}
+          {userData.services.serviceName}
+          <button type="button" onClick={() => onDelete(userInfo._id)}>
+            Del
+          </button>
+          <br />
+          <br />
+          <button type="button">Update</button>
         </p>
       </Card> */}
       <Card className="card-view-addedservices">
@@ -53,15 +51,11 @@ function ViewDealerServices({ userData, fetchServices, onDelete }) {
 
 const mapStateToProps = (state) => ({
   userData: state.service,
-  deluser: state.deluser,
+  deluser: state.delDealers,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchServices: () => dispatch(fetchServices()),
-  deleteDealer: (delusers) => dispatch(deleteDealer(delusers)),
-  onDelete: (_id) => {
-    dispatch(deleteDealer(_id));
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewDealerServices);

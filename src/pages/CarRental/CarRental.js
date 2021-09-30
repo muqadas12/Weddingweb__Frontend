@@ -3,7 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 import { fetchCarRental } from '../../ReduxApi/CarRental/CarActions';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';

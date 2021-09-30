@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable no-debugger */
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input } from 'antd';
 import axios from 'axios';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import viewprof from '../../Assets/images/viewProfiledealer.gif';
 import {
   fetchUsersupdated,
@@ -11,7 +12,6 @@ import {
 // import './UpdateProfile.scss';
 
 function updateProfile({ userData, onEdit }) {
-  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',

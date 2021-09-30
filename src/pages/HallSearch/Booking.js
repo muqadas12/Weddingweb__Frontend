@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, connect } from 'react-redux';
 import { Card, DatePicker, Form, Input, Select, Button } from 'antd';
 import { fetchbookingHallServices } from '../../ReduxApi/bookHall/BookHall.action';
+import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 import bookingHall from '../../Assets/images/hallBook.jpg';
 import './Booking.scss';
 
 const { Option } = Select;
 
-function Booking() {
+function Booking({ userData, fetchAllDealers }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -18,6 +19,9 @@ function Booking() {
     serviceCategory: '',
     email: '',
   });
+  useEffect(() => {
+    fetchAllDealers();
+  }, []);
   const bookHall = (payload) => {
     dispatch(fetchbookingHallServices(payload));
   };
@@ -120,7 +124,16 @@ function Booking() {
               marginLeft: '16px',
             }}
           >
-            <Input style={{ marginTop: '-20px' }} />
+            <select
+              className="service-name-booking-hall"
+              placeholder="select your service"
+            >
+              {userData.viewDealers.map((user) => (
+                <option key={user} name={user.serviceName}>
+                  {user.serviceName.toString()}
+                </option>
+              ))}
+            </select>
           </Form.Item>
           <Form.Item
             label="Num Of people"
@@ -137,5 +150,11 @@ function Booking() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  userData: state.viewdealers,
+});
 
-export default Booking;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAllDealers: () => dispatch(fetchAllDealers()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Booking);

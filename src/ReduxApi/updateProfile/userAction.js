@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   FETCH_USERS_REQUEST,

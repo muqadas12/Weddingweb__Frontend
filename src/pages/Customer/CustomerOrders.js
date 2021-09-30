@@ -5,15 +5,23 @@ import { Link } from 'react-router-dom';
 import order from '../../Assets/images/order.PNG';
 import { fetchViewCatering } from '../../ReduxApi/viewOrders/viewCatering/ViewCateringAction';
 import { fetchViewSallonOrder } from '../../ReduxApi/viewOrders/viewSaloonBooking/Saloonbooking.actions';
+import { fetchViewOrderStatus } from '../../ReduxApi/orderStatus/OrderStatus.action';
 
 import './CusOrder.scss';
 
-function CustomerOrders({ userData, fetchViewCatering, fetchViewSallonOrder }) {
+function CustomerOrders({
+  userData,
+  fetchViewCatering,
+  fetchViewSallonOrder,
+  fetchViewOrderStatus,
+}) {
   const saloon = useSelector((state) => state.viewSaloonorder);
+  const orders = useSelector((state) => state.viewStatusorder);
 
   useEffect(() => {
     fetchViewCatering();
     fetchViewSallonOrder();
+    fetchViewOrderStatus();
   }, []);
 
   return userData.loading ? (
@@ -74,6 +82,32 @@ function CustomerOrders({ userData, fetchViewCatering, fetchViewSallonOrder }) {
         <p className="function-NumOfPeople-view-customer">
           {userData.viewCatering.numOfPeople}
         </p>
+        <br />
+        <p className="Function-date-Customer-order">Order Status:</p>
+        <p className="function-NumOfPeople-view-customer">
+          {orders &&
+            orders.viewOrderStatus &&
+            orders.viewOrderStatus.map((user) => (
+              <p>
+                <p>
+                  {' '}
+                  {user.orderStatus === 'Accepted' ? (
+                    <Link to="/customer-payment">
+                      <p style={{ marginLeft: '-25px' }}>
+                        {' '}
+                        Your order is <p style={{ color: 'green' }}>
+                          accepted
+                        </p>{' '}
+                        Click here to pay
+                      </p>
+                    </Link>
+                  ) : (
+                    'wait'
+                  )}{' '}
+                </p>
+              </p>
+            ))}
+        </p>
       </Card>
       <Card className="card-view-orders">
         <p className="Function-date-Customer-order">Service Category:</p>
@@ -122,7 +156,15 @@ function CustomerOrders({ userData, fetchViewCatering, fetchViewSallonOrder }) {
         </p>
         <br />
       </Card>
-      <Link to="/view-Order-Status">View order status</Link>
+      {/* {orders.viewOrderStatus.orderStatus} */}
+      {/* {orders &&
+        orders.viewOrderStatus &&
+        orders.viewOrderStatus.map((user) => (
+          <p>
+            <p> {user.orderStatus} </p>
+          </p>
+        ))} */}
+      {/* <Link to="/view-Order-Status">View order status</Link> */}
     </div>
   );
 }
@@ -134,6 +176,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchViewCatering: () => dispatch(fetchViewCatering()),
   fetchViewSallonOrder: () => dispatch(fetchViewSallonOrder()),
+  fetchViewOrderStatus: () => dispatch(fetchViewOrderStatus()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomerOrders);
