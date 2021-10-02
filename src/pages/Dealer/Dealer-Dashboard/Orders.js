@@ -4,11 +4,18 @@ import { Card, Form, Select, Button } from 'antd';
 import { fetchOrders } from '../../../ReduxApi/viewDealerOrders/CateringOrders/Orders.action';
 import { fetchOrderStatus } from '../../../ReduxApi/orderStatus/OrderStatus.action';
 import { fetchOrdersSaloon } from '../../../ReduxApi/viewDealerOrders/saloonOrders/SaloonOrder.action';
+import { fetchDealerOrdersPhotography } from '../../../ReduxApi/viewDealerOrders/viewPhotographyOrders/PhotographyOrder.action';
 import viewCustomerOrder from '../../../Assets/images/viewCustomerOrder.png';
 import './Order.scss';
 
 const { Option } = Select;
-function Orders({ userData, fetchOrders, fetchOrdersSaloon }) {
+function Orders({
+  userData,
+  fetchOrders,
+  fetchOrdersSaloon,
+  fetchDealerOrdersPhotography,
+  photographyData,
+}) {
   // eslint-disable-next-line no-unused-vars
   const saloonSer = useSelector((state) => state.viewDealerSaloonOrder);
   const dispatch = useDispatch();
@@ -27,6 +34,7 @@ function Orders({ userData, fetchOrders, fetchOrdersSaloon }) {
   useEffect(() => {
     fetchOrders();
     fetchOrdersSaloon();
+    fetchDealerOrdersPhotography();
   }, []);
 
   return userData.loading ? (
@@ -40,10 +48,52 @@ function Orders({ userData, fetchOrders, fetchOrdersSaloon }) {
         src={viewCustomerOrder}
         alt="viewCustomerOrderImg"
       />
-      {/* {saloonSer &&
-        saloonSer.dealerSaloonOrders &&
-        saloonSer.dealerSaloonOrders.map((user) => <p>{user.makeupType}</p>)} */}
+
       <h1 className="view-customer-order-heading">View Customer Order</h1>
+      <Card className="photography-order-dealer-view">
+        {photographyData &&
+          photographyData.photographyOrders &&
+          photographyData.photographyOrders.map((user) => (
+            <div>
+              <p className="photography-type-order">{user.photographyType}</p>
+              <p className="photography-type-customer-select">
+                <p style={{ marginLeft: '40px' }}> {'of '}</p>
+                <br />
+                <p className="service-name-dealer-view"> {user.serviceName}</p>
+              </p>
+
+              <p className="photography-type-customer-select-price">
+                {`at Rs ${user.price}`}
+              </p>
+              <p className="customer-order-email">{user.email}</p>
+            </div>
+          ))}
+        <Form onFinish={(e) => formSubmit(e)}>
+          <Form.Item
+            name="orderStatus"
+            label="Give Order Status"
+            className="order-status-dropdown-muqaddas"
+            rules={[
+              {
+                required: true,
+                message: 'Please select Order Status!',
+              },
+            ]}
+          >
+            <Select placeholder="select Order Status">
+              <Option value="Accepted">Accepted</Option>
+              <Option value="Pending">Pending</Option>
+            </Select>
+          </Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="assign-status-order-btn-muqaddas-orders"
+          >
+            Assign
+          </Button>
+        </Form>
+      </Card>
       <div>
         {userData &&
           userData.orders &&
@@ -204,11 +254,13 @@ function Orders({ userData, fetchOrders, fetchOrdersSaloon }) {
 
 const mapStateToProps = (state) => ({
   userData: state.viewOrders,
+  photographyData: state.viewPhotographyOrders,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchOrders: () => dispatch(fetchOrders()),
   fetchOrdersSaloon: () => dispatch(fetchOrdersSaloon()),
+  fetchDealerOrdersPhotography: () => dispatch(fetchDealerOrdersPhotography()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Orders);

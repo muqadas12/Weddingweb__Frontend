@@ -19,6 +19,7 @@ import viewSaloonorder from './viewOrders/viewSaloonBooking/Saloonbooking.reduce
 import viewDealerSaloonOrder from './viewDealerOrders/saloonOrders/SaloonOrder.reducer';
 import searchHallreducer from './hallSearch/Hall.reducer';
 import viewdealers from './ViewDealerServices/viewDealers/Dealer.reducer';
+import viewPhotographyOrders from './viewDealerOrders/viewPhotographyOrders/PhotographyOrder.reducers';
 
 const rootReducer = combineReducers({
   user,
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   viewDealerSaloonOrder,
   searchHallreducer,
   viewdealers,
+  viewPhotographyOrders,
 });
 
 export default rootReducer;

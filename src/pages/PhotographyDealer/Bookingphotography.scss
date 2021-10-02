@@ -1,5 +1,5 @@
 .photography-main-image-booking {
-  width: 100%;
+  width: 120%;
   height: auto;
   margin-left: -3px;
 }
@@ -12,6 +12,17 @@
   font-weight: bold;
   font-size: 24px;
   text-align: center;
+}
+.service-name-photography-heading {
+  font-weight: bold;
+  text-align: center;
+  font-family: cursive;
+}
+
+.service-price-photography {
+  font-family: cursive;
+  margin-top: 30px;
+  margin-left: 170px;
 }
 .label-date-picker-photo {
   font-family: cursive;

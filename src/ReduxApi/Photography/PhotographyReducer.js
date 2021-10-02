@@ -3,6 +3,7 @@ import {
   FETCH_PHOTOGRAPHY_SUCCESS,
   FETCH_PHOTOGRAPHY_FAILURE,
   SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
 } from './PhotographyTypes';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   photos: [],
   error: '',
   selectedDealer: {},
+  setSelectedPrice: {},
 };
 
 const photoReducer = (state = initialState, action) => {
@@ -34,7 +36,12 @@ const photoReducer = (state = initialState, action) => {
     case SET_SELECTED_DEALER:
       return {
         ...state,
-        selectedDealer: action.payload.dealer,
+        selectedDealer: action.payload,
+      };
+    case SET_SELECTED_PRICE:
+      return {
+        ...state,
+        setSelectedPrice: action.payload,
       };
     default:
       return state;

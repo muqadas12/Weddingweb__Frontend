@@ -4,13 +4,17 @@ import React from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { message } from 'antd';
+import { connect } from 'react-redux';
 import billImg from '../../Assets/images/bill.jpg';
 import './CheckoutForm.scss';
 
 // eslint-disable-next-line import/prefer-default-export
-export const CheckoutForm = () => {
+
+function CheckoutForm({ price, dealer }) {
   const stripe = useStripe();
   const elements = useElements();
+  console.log(price);
+  console.log(dealer);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,7 +30,7 @@ export const CheckoutForm = () => {
         const response = await axios.post(
           'http://localhost:2000/stripe/charge',
           {
-            amount: 999,
+            amount: price,
             id,
           }
         );
@@ -43,14 +47,23 @@ export const CheckoutForm = () => {
       console.log(error.message);
     }
   };
-
   return (
     <div>
       <img className="bill-img-payment" src={billImg} alt="bill" />
+      <p style={{ marginLeft: '20px' }}>
+        You have to pay {price} for {dealer}
+      </p>
       <form onSubmit={handleSubmit} style={{ maxWidth: 900 }}>
         <CardElement className="card-elements-payment" />
         <button className="pay-btn">Pay</button>
       </form>
     </div>
   );
-};
+}
+const mapStateToProps = (state) => ({
+  price: state.viewphotographerServices.setSelectedPrice,
+  photographyType: state.viewphotographerServices.selectedPhotography,
+  dealer: state.viewphotographerServices.selectedDealer,
+});
+
+export default connect(mapStateToProps, null)(CheckoutForm);

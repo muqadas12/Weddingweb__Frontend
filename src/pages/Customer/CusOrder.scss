@@ -12,7 +12,44 @@
 .cus-email-view-customer {
   margin-left: 130px;
 }
-
+.photography-order-customer-view {
+  width: 450px;
+  height: 300px;
+  margin-left: 580px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.photography-type-order-price {
+  margin-left: 180px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+.photography-type-customer-select-email {
+  margin-left: 150px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.photography-type-customer-select-price {
+  margin-left: 150px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.photography-type-order-dealer-text {
+  margin-left: 120px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+.photography-type-customer-select {
+  margin-left: 130px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.service-name-dealer-view {
+  margin-top: -30px;
+}
+.photography-type-order {
+  margin-left: 130px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
 .service-name-view-customer {
   margin-left: 120px;
 }

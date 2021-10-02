@@ -34,7 +34,7 @@ function ViewDealerServices({ userData, fetchServices }) {
       <Card className="card-view-addedservices">
         <p className="dealer-services-heading-one">Dealer Services</p>
         <p>
-          {userData.services.dealerservice.map((c) => (
+          {userData?.services.dealerservice.map((c) => (
             <p key={c}>{c}</p>
           ))}
         </p>
