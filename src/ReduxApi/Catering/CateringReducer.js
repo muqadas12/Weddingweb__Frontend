@@ -5,12 +5,18 @@ import {
   FETCH_VIEWCATERING_REQUEST,
   FETCH_VIEWCATERING_SUCCESS,
   FETCH_VIEWCATERING_FAILURE,
+  SET_SELECTED_EMAIL,
+  SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
 } from './CateringTypes';
 
 const initialState = {
   loading: false,
   cateringser: [],
   viewCatering: [],
+  selectedEmail: {},
+  selectedDealer: {},
+  setSelectedPrice: {},
   err: '',
 };
 
@@ -51,7 +57,21 @@ const cateringReducer = (state = initialState, action) => {
         viewCatering: [],
         err: action.payload,
       };
-
+    case SET_SELECTED_EMAIL:
+      return {
+        ...state,
+        selectedEmail: action.payload,
+      };
+    case SET_SELECTED_DEALER:
+      return {
+        ...state,
+        selectedDealer: action.payload,
+      };
+    case SET_SELECTED_PRICE:
+      return {
+        ...state,
+        setSelectedPrice: action.payload,
+      };
     default:
       return state;
   }

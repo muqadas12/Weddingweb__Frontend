@@ -37,6 +37,7 @@ import Bookingsaloon from '../pages/saloonDealer/Bookingsaloon';
 import Bookphotographer from '../pages/photographyDealer/Bookingphotographer';
 import viewOrderStatus from '../pages/Customer/ViewOrderStatus';
 import Payment from '../pages/Customer/Payment';
+import OrderStatus from '../pages/Dealer/Dealer-Dashboard/OrderStatus';
 
 const { SubMenu } = Menu;
 const { Header, Content } = Layout;
@@ -167,6 +168,7 @@ function header2() {
               {/* //vieworderstatus */}
               <Route path="/view-Order-Status" component={viewOrderStatus} />
               <Route path="/customer-payment" component={Payment} />
+              <Route path="/order-status" component={OrderStatus} />
 
               <Route path={['/', '/home']} component={Home} />
             </Switch>

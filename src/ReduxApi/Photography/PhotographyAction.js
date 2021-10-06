@@ -5,6 +5,7 @@ import {
   FETCH_PHOTOGRAPHY_FAILURE,
   SET_SELECTED_DEALER,
   SET_SELECTED_PRICE,
+  SET_SELECTED_EMAIL,
 } from './PhotographyTypes';
 
 export const fetchPhotoRequest = () => ({
@@ -22,6 +23,10 @@ export const fetchPhotoFailure = (error) => ({
 export const setSelectedDealer = (dealer) => ({
   type: SET_SELECTED_DEALER,
   payload: dealer,
+});
+export const setSelectedEmail = (email) => ({
+  type: SET_SELECTED_EMAIL,
+  payload: email,
 });
 export const setSelectedPrice = (price) => ({
   type: SET_SELECTED_PRICE,

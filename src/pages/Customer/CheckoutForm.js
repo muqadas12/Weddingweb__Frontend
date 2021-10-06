@@ -51,7 +51,7 @@ function CheckoutForm({ price, dealer }) {
     <div>
       <img className="bill-img-payment" src={billImg} alt="bill" />
       <p style={{ marginLeft: '20px' }}>
-        You have to pay {price} for {dealer}
+        Your bill is Rs {price} for {dealer}
       </p>
       <form onSubmit={handleSubmit} style={{ maxWidth: 900 }}>
         <CardElement className="card-elements-payment" />

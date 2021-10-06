@@ -32,6 +32,7 @@ export const setSelectedDealer = (dealer) => ({
 });
 export const fetchOrdersPhotography = () => (dispatch) => {
   const email = localStorage.getItem('email');
+  console.log(email, 'immm photo email');
   dispatch(photographyOrderRequest());
   axios
     .get(
@@ -39,7 +40,9 @@ export const fetchOrdersPhotography = () => (dispatch) => {
     )
     .then((res) => {
       const photographyOrders = res.data.data;
-      console.log(photographyOrders);
+      console.log(email, 'immm photo email');
+
+      // console.log(photographyOrders);
       dispatch(photographyOrderSucces(photographyOrders));
     })
     .catch((error) => {
@@ -47,10 +50,13 @@ export const fetchOrdersPhotography = () => (dispatch) => {
     });
 };
 export const fetchDealerOrdersPhotography = () => (dispatch) => {
+  const email = localStorage.getItem('email');
+  console.log(email);
+
   dispatch(photographyOrderRequest());
   axios
     .get(
-      'http://localhost:2000/api/bookingPhoto/get-photography-orders-dealers'
+      `http://localhost:2000/api/bookingPhoto/get-photography-orders-dealers?email=${email}`
     )
     .then((res) => {
       const photographyOrders = res.data.data;

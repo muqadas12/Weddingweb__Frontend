@@ -8,15 +8,18 @@ import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/D
 import './Carbooking.scss';
 
 const { Option } = Select;
-function Carbooking({ userData, fetchAllDealers }) {
+function Carbooking({ fetchAllDealers, dealer, price, email }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
     functionType: '',
     numOfPeople: '',
-    serviceName: '',
-    serviceCategory: '',
+    carType: '',
+    serviceName: dealer,
+    dealerEmail: '',
+
     email: '',
+    price,
   });
   useEffect(() => {
     fetchAllDealers();
@@ -29,13 +32,16 @@ function Carbooking({ userData, fetchAllDealers }) {
       functionDate: e.functionDate,
       functionTime: e.functionTime,
       numOfPeople: e.numOfPeople,
-      serviceName: e.serviceName,
-      serviceCategory: e.serviceCategory,
+      carType: e.carType,
+      serviceName: dealer,
+      dealerEmail: email,
+      price,
+
       email: localStorage.getItem('email'),
     };
     addCarRental(payload);
   }
-
+  console.log(dealer, 'hi', price);
   return (
     <div>
       <Row>
@@ -46,7 +52,7 @@ function Carbooking({ userData, fetchAllDealers }) {
       <Row>
         <Col xs={{ span: 12, offset: 8 }} lg={{ span: 9, offset: 7 }}>
           <Card className="car-booking-card">
-            <h1 className="booking-h1-main-heading">Book Your Car </h1>
+            <h1 className="booking-h1-main-heading">{dealer} </h1>
 
             <Form onFinish={(e) => formSubmit(e)}>
               <Form.Item
@@ -76,28 +82,22 @@ function Carbooking({ userData, fetchAllDealers }) {
                 </Select>
               </Form.Item>
               <Form.Item
-                name="serviceCategory"
-                label="Select Service"
-                className="date-picker-booking-car"
-                style={{ marginLeft: '-10px' }}
-                // className="function-time-car"
-
+                name="carType"
+                label="Car type"
+                className="car-type"
                 rules={[
                   {
                     required: true,
-                    message: 'Please select your service!',
+                    message: 'Please select Function Time!',
                   },
                 ]}
               >
-                <Select placeholder="select your service">
-                  <Option value="carRental">Car Rental</Option>
-                  <Option value="photography">Photography</Option>
-                  <Option value="hall">Hall Booking</Option>
-                  <Option value="saloon">Saloon</Option>
-                  <Option value="catering">Catering</Option>
+                <Select placeholder="select your car type">
+                  <Option value="Select Option">Select Option</Option>
+                  <Option value="Corolla">Corolla</Option>
+                  <Option value="Bus">Bus</Option>
                 </Select>
               </Form.Item>
-
               <Form.Item
                 label="No. of peoples"
                 name="numOfPeople"
@@ -118,7 +118,7 @@ function Carbooking({ userData, fetchAllDealers }) {
                   ))}
                 </select>
               </Form.Item> */}
-              <Form.Item
+              {/* <Form.Item
                 name="serviceName"
                 label="Service Name"
                 style={{
@@ -127,7 +127,6 @@ function Carbooking({ userData, fetchAllDealers }) {
                   marginLeft: '16px',
                 }}
               >
-                {/* <Input style={{ marginTop: '-20px' }} /> */}
                 <select
                   className="car-booking-services-name"
                   placeholder="select your service"
@@ -138,7 +137,7 @@ function Carbooking({ userData, fetchAllDealers }) {
                     </option>
                   ))}
                 </select>
-              </Form.Item>
+              </Form.Item> */}
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
               </Button>
@@ -151,6 +150,9 @@ function Carbooking({ userData, fetchAllDealers }) {
 }
 const mapStateToProps = (state) => ({
   userData: state.viewdealers,
+  dealer: state.viewCarRentalServices.selectedDealer,
+  price: state.viewCarRentalServices.setSelectedPrice,
+  email: state.viewCarRentalServices.selectedEmail,
 });
 
 const mapDispatchToProps = (dispatch) => ({

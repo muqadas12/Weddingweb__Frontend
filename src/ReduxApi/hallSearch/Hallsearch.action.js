@@ -4,6 +4,8 @@ import {
   FETCH_HALLSEARCH_REQUEST,
   FETCH_HALLSEARCH_SUCCESS,
   FETCH_HALLSEARCH_FAILURE,
+  SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
 } from './Hall.types';
 
 export const fetchHallSerach = () => (dispatch) => {
@@ -30,4 +32,12 @@ export const fetchHallSerachSuccess = (hallSearch) => ({
 export const fetchHallSerachFailure = (err) => ({
   type: FETCH_HALLSEARCH_FAILURE,
   payload: err,
+});
+export const setSelectedDealer = (dealer) => ({
+  type: SET_SELECTED_DEALER,
+  payload: dealer,
+});
+export const setSelectedPrice = (price) => ({
+  type: SET_SELECTED_PRICE,
+  payload: price,
 });

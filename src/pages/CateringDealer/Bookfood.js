@@ -8,7 +8,7 @@ import cateringBooking from '../../Assets/images/cateringBooking.png';
 
 const { Option } = Select;
 
-function Bookfood({ userData, fetchAllDealers }) {
+function Bookfood({ fetchAllDealers, email, dealer, price }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -16,8 +16,10 @@ function Bookfood({ userData, fetchAllDealers }) {
     functionType: '',
     numOfPeople: '',
     serviceName: '',
-    serviceCategory: '',
+    dealerEmail: '',
     email: '',
+    foodType: '',
+    price: '',
   });
   useEffect(() => {
     fetchAllDealers();
@@ -31,12 +33,15 @@ function Bookfood({ userData, fetchAllDealers }) {
       functionTime: e.functionTime,
       functionType: e.functionType,
       numOfPeople: e.numOfPeople,
-      serviceName: e.serviceName,
-      serviceCategory: e.serviceCategory,
+      serviceName: dealer,
+      dealerEmail: email,
+      foodType: e.foodType,
+      price,
       email: localStorage.getItem('email'),
     };
     bookcateringFood(payload);
   }
+  console.log(email);
   return (
     <div>
       <img
@@ -48,7 +53,7 @@ function Bookfood({ userData, fetchAllDealers }) {
       <Row>
         <Col xs={{ span: 15, offset: 8 }} lg={{ span: 9, offset: 8 }}>
           <Card className="card-booking-food-catering">
-            <h1 className="h1-food-booking">Book Your Food here!</h1>
+            <h1 className="h1-food-booking">{dealer}</h1>
             <Form onFinish={(e) => formSubmit(e)}>
               <Form.Item
                 className="date-picker-booking-food"
@@ -79,12 +84,6 @@ function Bookfood({ userData, fetchAllDealers }) {
                 label="Function Type"
                 name="functionType"
                 style={{ fontFamily: 'cursive' }}
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please select Function Type!',
-                  },
-                ]}
               >
                 <Select placeholder="select your Function Type">
                   <Option value="engagment">Engagment</Option>
@@ -96,54 +95,33 @@ function Bookfood({ userData, fetchAllDealers }) {
               </Form.Item>
 
               <Form.Item
-                name="serviceCategory"
-                label="Select Service"
+                name="foodType"
+                label="food type"
                 className="date-picker-booking-car"
-                style={{ marginLeft: '-10px' }}
-                // className="function-time-car"
-
+                style={{ marginLeft: '20px', width: '620px' }}
                 rules={[
                   {
                     required: true,
-                    message: 'Please select your service!',
+                    message: 'Please select your menu!',
                   },
                 ]}
               >
                 <Select>
-                  <Option value="carRental">Car Rental</Option>
-                  <Option value="photography">Photography</Option>
-                  <Option value="hall">Hall Booking</Option>
-                  <Option value="saloon">Saloon</Option>
-                  <Option value="catering">Catering</Option>
+                  <Option value="Menu1">ChickenPulao </Option>
+                  <Option value="sweets">Sweets</Option>
                 </Select>
               </Form.Item>
-              <Form.Item
-                name="serviceName"
-                label="Service Name"
-                style={{
-                  fontFamily: 'cursive',
-                  width: '500px',
-                  marginLeft: '16px',
-                }}
-              >
-                <select placeholder="select your service">
-                  {userData.viewDealers.map((user) => (
-                    <option key={user} name={user.serviceName}>
-                      {user.serviceName.toString()}
-                    </option>
-                  ))}
-                </select>
-              </Form.Item>
+
               <Form.Item
                 name="numOfPeople"
                 label="No of people"
                 style={{
                   fontFamily: 'cursive',
-                  width: '500px',
+                  width: '800px',
                   marginLeft: '16px',
                 }}
               >
-                <Input style={{ marginTop: '-20px' }} />
+                <Input style={{ marginTop: '-20px', width: '540px' }} />
               </Form.Item>
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
@@ -157,6 +135,9 @@ function Bookfood({ userData, fetchAllDealers }) {
 }
 const mapStateToProps = (state) => ({
   userData: state.viewdealers,
+  email: state.viewCateringService.selectedEmail,
+  dealer: state.viewCarRentalServices.selectedDealer,
+  price: state.viewCarRentalServices.setSelectedPrice,
 });
 
 const mapDispatchToProps = (dispatch) => ({

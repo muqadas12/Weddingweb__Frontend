@@ -4,6 +4,9 @@ import {
   FETCH_CATERING_REQUEST,
   FETCH_CATERING_SUCCESS,
   FETCH_CATERING_FAILURE,
+  SET_SELECTED_EMAIL,
+  SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
 } from './CateringTypes';
 
 export const fetchcateringrequest = () => ({
@@ -16,6 +19,18 @@ export const fetchcateringSuccess = (cateringser) => ({
 export const fetchCateringFailure = (err) => ({
   type: FETCH_CATERING_FAILURE,
   payload: err,
+});
+export const setSelectedEmail = (email) => ({
+  type: SET_SELECTED_EMAIL,
+  payload: email,
+});
+export const setSelectedDealer = (dealer) => ({
+  type: SET_SELECTED_DEALER,
+  payload: dealer,
+});
+export const setSelectedPrice = (price) => ({
+  type: SET_SELECTED_PRICE,
+  payload: price,
 });
 export const fetchCatering = () => (dispatch) => {
   dispatch(fetchcateringrequest());

@@ -4,6 +4,7 @@ import {
   FETCH_PHOTOGRAPHY_FAILURE,
   SET_SELECTED_DEALER,
   SET_SELECTED_PRICE,
+  SET_SELECTED_EMAIL,
 } from './PhotographyTypes';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   photos: [],
   error: '',
   selectedDealer: {},
+  selectedEmail: {},
   setSelectedPrice: {},
 };
 
@@ -37,6 +39,11 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedDealer: action.payload,
+      };
+    case SET_SELECTED_EMAIL:
+      return {
+        ...state,
+        selectedEmail: action.payload,
       };
     case SET_SELECTED_PRICE:
       return {

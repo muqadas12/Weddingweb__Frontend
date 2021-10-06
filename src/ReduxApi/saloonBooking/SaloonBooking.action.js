@@ -5,6 +5,7 @@ import {
   FETCH_BOOKSALOON_REQUEST,
   FETCH_BOOKSALOON_SUCCESS,
   FETCH_BOOKSALOON_FAILURE,
+  SET_SELECTED_EMAIL,
 } from './SaloonBooking.types';
 
 export const fetchBookSaloonRequest = () => ({
@@ -18,6 +19,10 @@ export const fetchBookSaloonSucces = (bookSaloon) => ({
 export const fetchBookSaloonFailure = (error) => ({
   type: FETCH_BOOKSALOON_FAILURE,
   payload: error,
+});
+export const setSelectedEmail = (email) => ({
+  type: SET_SELECTED_EMAIL,
+  payload: email,
 });
 export const fetchSaloon = (payload) => (dispatch) => {
   dispatch(fetchBookSaloonRequest());

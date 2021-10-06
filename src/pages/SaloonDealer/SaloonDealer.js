@@ -4,20 +4,38 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { fetchServices } from '../../ReduxApi/Saloonservices/SaloonAction';
+import {
+  fetchServices,
+  setSelectedEmail,
+  setSelectedDealer,
+  setSelectedPrice,
+} from '../../ReduxApi/Saloonservices/SaloonAction';
 import saloonServices from '../../Assets/images/saloonServices.jpg';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import { truncateString } from './SaloonDealrt.utils';
 import './SaloonDealer.scss';
 
-function SaloonDealer({ userData, fetchServices }) {
+function SaloonDealer({
+  userData,
+  fetchServices,
+  setSelectedEmail,
+  setSelectedDealer,
+  setSelectedPrice,
+}) {
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     fetchServices();
   }, []);
-  const bookHandler = () => {
+  const bookHandler = (user) => {
     if (localStorage.getItem('token')) {
+      setSelectedDealer(user.serviceName);
+      setSelectedPrice(user.price);
+      setSelectedEmail(user.email);
+      console.log(setSelectedEmail(user.email));
+      console.log(setSelectedDealer(user.serviceName));
+      console.log(setSelectedPrice(user.price));
+
       history.push('/booking-saloon');
     } else {
       dispatch(myCategory('booked-saloon'));
@@ -52,7 +70,7 @@ function SaloonDealer({ userData, fetchServices }) {
               <span>
                 <button
                   type="submit"
-                  onClick={bookHandler}
+                  onClick={() => bookHandler(user)}
                   className="book-saloon-service-btn"
                 >
                   Book Now
@@ -71,6 +89,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchServices: () => dispatch(fetchServices()),
+  setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
+  setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
+  setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SaloonDealer);

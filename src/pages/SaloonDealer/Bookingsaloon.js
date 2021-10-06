@@ -10,7 +10,7 @@ import bookingSaloon from '../../Assets/images/bookingSaloon.jpg';
 
 const { Option } = Select;
 
-function Bookingsaloon({ userData, fetchAllDealers }) {
+function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
@@ -19,8 +19,9 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
     functionType: '',
     makeupType: '',
     serviceName: '',
-    serviceCategory: '',
     email: '',
+    dealerEmail: '',
+    price: '',
   });
   useEffect(() => {
     fetchAllDealers();
@@ -33,14 +34,15 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
       functionDate: e.functionDate,
       functionTime: e.functionTime,
       makeupType: e.makeuptype,
-      serviceName: e.serviceName,
-      serviceCategory: e.serviceCategory,
-
+      serviceName: dealer,
+      dealerEmail: email,
+      price,
       email: localStorage.getItem('email'),
     };
     console.log('helo', e, e.functionDate._d, payload);
     addBookingSaloon(payload);
   }
+  console.log(email);
   return (
     <div>
       <Row>
@@ -59,14 +61,20 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
           lg={{ span: 6, offset: 9 }}
         >
           <Card className="saloon-booking">
-            <p className="saloon-booking-main-heading">Booking</p>
+            <p className="saloon-booking-main-heading">{dealer}</p>
             <Form name="basic" onFinish={(e) => formSubmit(e)}>
               <Form.Item
                 className="date-picker-booking-Saloon"
                 name="functionDate"
                 label="Function Date"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please select Function Time!',
+                  },
+                ]}
               >
-                <DatePicker className="ant-input" />
+                <DatePicker className="ant-input" style={{ width: '211px' }} />
               </Form.Item>
               <Form.Item
                 label="Function Time"
@@ -89,28 +97,7 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
                   <Option value="dinner">Dinner</Option>
                 </Select>
               </Form.Item>
-              <Form.Item
-                name="serviceCategory"
-                label="Select Service"
-                className="date-picker-booking-car"
-                style={{ marginLeft: '-10px' }}
-                // className="function-time-car"
 
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please select your service!',
-                  },
-                ]}
-              >
-                <Select placeholder="select your service">
-                  <Option value="carRental">Car Rental</Option>
-                  <Option value="photography">Photography</Option>
-                  <Option value="hall">Hall Booking</Option>
-                  <Option value="saloon">Saloon</Option>
-                  <Option value="catering">Catering</Option>
-                </Select>
-              </Form.Item>
               {/* <Form.Item
                 name="serviceName"
                 label="Service Name"
@@ -122,27 +109,6 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
               >
                 <Input style={{ marginTop: '-20px' }} />
               </Form.Item> */}
-              <Form.Item
-                name="serviceName"
-                label="Service Name"
-                style={{
-                  fontFamily: 'cursive',
-                  width: '500px',
-                  marginLeft: '16px',
-                }}
-              >
-                {/* <Input style={{ marginTop: '-20px' }} /> */}
-                <select
-                  className="saloon-booking-services-name"
-                  placeholder="select your service"
-                >
-                  {userData.viewDealers.map((user) => (
-                    <option key={user} name={user.serviceName}>
-                      {user.serviceName.toString()}
-                    </option>
-                  ))}
-                </select>
-              </Form.Item>
 
               <Form.Item
                 className="date-picker-booking-Saloon"
@@ -176,6 +142,9 @@ function Bookingsaloon({ userData, fetchAllDealers }) {
 }
 const mapStateToProps = (state) => ({
   userData: state.viewdealers,
+  email: state.viewSaloonServices.selectedEmail,
+  dealer: state.viewSaloonServices.selectedDealer,
+  price: state.viewSaloonServices.setSelectedPrice,
 });
 
 const mapDispatchToProps = (dispatch) => ({

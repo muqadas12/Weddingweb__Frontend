@@ -6,6 +6,16 @@
 .card-booking-food-catering {
   margin-top: 30px;
   background-color: #aef38e;
+  width: 690px;
+}
+
+.food-type-catering-book {
+  width: 120px;
+  margin-left: 200px;
+}
+
+.food-type-select-dropdown {
+  width: 20px;
 }
 
 .h1-food-booking {
@@ -45,6 +55,10 @@
   width: 20px;
 }
 
+.date-picker-booking-food {
+  font-family: cursive;
+}
+
 .book-now-button-food {
   margin-left: 200px;
   color: white;
@@ -59,6 +73,12 @@
 
 .date-picker-food-catering {
   width: 520px;
+}
+
+.foodtype-booking-catering {
+  margin-top: -10px;
+  margin-left: 20px;
+  font-family: cursive;
 }
 
 @media screen and (max-width: 600px) {

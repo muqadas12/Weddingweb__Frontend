@@ -5,14 +5,23 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Input, Select } from 'antd';
 import { useDispatch, useSelector, connect } from 'react-redux';
-import { fetchHallSerach } from '../../ReduxApi/hallSearch/Hallsearch.action';
+import {
+  fetchHallSerach,
+  setSelectedPrice,
+  setSelectedDealer,
+} from '../../ReduxApi/hallSearch/Hallsearch.action';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import hallSearch from '../../Assets/images/weddingHallsearch.jpg';
 import './Hall.scss';
 
 const { Option } = Select;
 
-const CaseStatusLaw = ({ fetchHallSerach, userData }) => {
+const CaseStatusLaw = ({
+  fetchHallSerach,
+  userData,
+  setSelectedPrice,
+  setSelectedDealer,
+}) => {
   const dispatch = useDispatch();
   const hall = useSelector((state) => state.searchHallreducer);
   const history = useHistory();
@@ -24,6 +33,8 @@ const CaseStatusLaw = ({ fetchHallSerach, userData }) => {
 
   useEffect(() => {
     fetchHallSerach();
+    setSelectedPrice();
+    setSelectedDealer();
     // axios
     //   .get('http://localhost:2000/api/hall/gethalls')
     //   .then((res) => {
@@ -33,8 +44,13 @@ const CaseStatusLaw = ({ fetchHallSerach, userData }) => {
     //     console.log(err);
     //   });
   }, []);
-  const bookHandler = () => {
+  const bookHandler = (list) => {
     if (localStorage.getItem('token')) {
+      setSelectedPrice(list.price);
+      setSelectedDealer(list.email);
+      console.log(setSelectedPrice(list.price));
+      console.log(setSelectedDealer(list.email));
+
       history.push('/booking');
     } else {
       dispatch(myCategory('booked-hall'));
@@ -133,7 +149,7 @@ const CaseStatusLaw = ({ fetchHallSerach, userData }) => {
                   {/* <img src={img} alt="asd"/> */}
 
                   <p className="label-name">Name:</p>
-                  <p className="hall-name">{name}</p>
+                  <p className="hall-name">{list.name}</p>
 
                   <p className="label-hall">Hall:</p>
                   <p className="avb-hall">{Hall}</p>
@@ -161,7 +177,7 @@ const CaseStatusLaw = ({ fetchHallSerach, userData }) => {
                   <button
                     type="submit"
                     className="book-now"
-                    onClick={bookHandler}
+                    onClick={() => bookHandler(list)}
                   >
                     Book Now
                   </button>
@@ -181,6 +197,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchHallSerach: () => dispatch(fetchHallSerach()),
+  setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
+  setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CaseStatusLaw);

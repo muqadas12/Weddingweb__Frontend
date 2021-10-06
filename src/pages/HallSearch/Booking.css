@@ -1,9 +1,9 @@
-.card-booking {
+.card-booking-booking-hall {
   margin-top: 40px;
-  background-color: #f7d954;
-  width: 540px;
-  height: 590px;
+  background-color: #b564f7;
+  height: 500px;
   margin-left: 450px;
+  width: 550px;
 }
 
 .h1-booking {
@@ -13,34 +13,41 @@
   text-align: center;
 }
 
-.date-picker-booking {
-  margin-top: 20px;
-  margin-left: 3px;
+.service-name-booking-hall {
+  width: 370px;
+  height: 33px;
+  border: none;
 }
 
-.label-date-picker {
-  font-family: cursive;
-  margin-left: 200px;
+.date-picker-booking-hall {
+  margin-top: -90px;
+  margin-left: 10px;
+  width: 382px;
 }
 
-.function-time {
-  margin-top: 20px;
+.function-time-booking-hall {
+  width: 540px;
 }
 
-.book-now-buuton {
-  margin-left: 200px;
+.function-type-booking-hall {
+  margin-top: -30px;
+}
+
+.num-people-booking-hall {
+  margin-top: -20px;
+  width: 381px;
+  margin-left: 6px;
+}
+
+.book-now-btton-bookinghall {
   color: white;
-  background-color: #252523;
-  font-family: sans-serif;
-  font-weight: bold;
+  background-color: black;
+  margin-left: 200px;
+  margin-top: 20px;
 }
 
-.bookinghall-image {
-  width: 210vh;
-}
-
-.date-picker {
-  width: 490px;
+.functinTime-booking-hall-labels {
+  font-family: cursive;
 }
 
 @media screen and (max-width: 600px) {

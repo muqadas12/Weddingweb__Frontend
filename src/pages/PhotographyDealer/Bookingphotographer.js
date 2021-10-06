@@ -9,7 +9,7 @@ import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/D
 import './Bookingphotography.scss';
 
 const { Option } = Select;
-function photobooking({ userData, fetchAllDealers, dealer, price }) {
+function photobooking({ userData, fetchAllDealers, dealer, price, email }) {
   const history = useHistory();
   const { search } = useLocation();
   const name = new URLSearchParams(search).get('name');
@@ -23,6 +23,7 @@ function photobooking({ userData, fetchAllDealers, dealer, price }) {
     serviceName: '',
     email: '',
     price,
+    dealerEmail: '',
   });
   function addCarRental(payload) {
     dispatch(fetchPhoto(payload));
@@ -38,13 +39,14 @@ function photobooking({ userData, fetchAllDealers, dealer, price }) {
       serviceName: dealer,
       serviceCategory: e.serviceCategory,
       price,
-
+      dealerEmail: email,
       email: localStorage.getItem('email'),
     };
     addCarRental(payload);
   }
   console.log(dealer, 'hi');
   console.log(price, 'pricee');
+  console.log(email, 'email');
 
   return (
     <div>
@@ -124,6 +126,7 @@ const mapStateToProps = (state) => ({
   userData: state.viewdealers,
   dealer: state.viewphotographerServices.selectedDealer,
   price: state.viewphotographerServices.setSelectedPrice,
+  email: state.viewphotographerServices.selectedEmail,
 });
 
 const mapDispatchToProps = (dispatch) => ({

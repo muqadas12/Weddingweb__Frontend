@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import axios from 'axios';
 import {
   FETCH_BOOKCAR_REQUEST,
@@ -23,7 +24,7 @@ export const fetchbookCar = (payload) => (dispatch) => {
     .post('http://localhost:2000/api/carBooking//carRental', payload)
     .then((res) => {
       const bookCar = res.data;
-      alert('Photographer booked successfully');
+      alert('Car booked successfully');
       dispatch(fetchBookCarSucces(bookCar));
     })
     .catch((error) => {

@@ -23,6 +23,8 @@ function SignIn() {
     password: '',
     role: '',
     token: '',
+    _id: '',
+
     login: false,
   });
 
@@ -33,12 +35,14 @@ function SignIn() {
         password: data.password,
         role: data.role,
         token: data.token,
+        _id: data._id,
       })
 
       .then((res) => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('email', res.data.email);
-
+        localStorage.setItem('id', res.data.userId);
+        console.log(res);
         message.success(`You are signIn as ${data.email}`);
 
         // eslint-disable-next-line no-lone-blocks

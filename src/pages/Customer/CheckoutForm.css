@@ -1,0 +1,20 @@
+.bill-img-payment {
+  width: 500px;
+  margin-left: 500px;
+}
+
+.card-elements-payment {
+  margin-left: 530px;
+  margin-top: 20px;
+}
+
+.pay-btn {
+  margin-left: 710px;
+  margin-top: 30px;
+  width: 90px;
+  height: 30px;
+  font-family: "Times New Roman", Times, serif;
+  background-color: #f7cb5d;
+  color: black;
+  border: none;
+}/*# sourceMappingURL=CheckoutForm.css.map */

@@ -48,6 +48,7 @@ export const fetchOrderStatus = (data) => (dispatch) => {
 };
 
 export const fetchViewOrderStatus = (data) => (dispatch) => {
+  // const id = localStorage.getItem('id');
   dispatch(fetchViewOrderStatusRequest());
   axios
     .get('http://localhost:2000/api/orderstatus/get-order-status', data)

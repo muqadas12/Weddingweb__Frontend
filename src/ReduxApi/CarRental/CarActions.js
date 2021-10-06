@@ -4,6 +4,9 @@ import {
   FETCH_CARRENT_REQUEST,
   FETCH_CARRENT_SUCCESS,
   FETCH_CARRENT_FAILURE,
+  SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
+  SET_SELECTED_EMAIL,
 } from './CarTypes';
 
 export const fetchCarrequest = () => ({
@@ -17,6 +20,19 @@ export const fetchCarFailure = (err) => ({
   type: FETCH_CARRENT_FAILURE,
   payload: err,
 });
+export const setSelectedDealer = (dealer) => ({
+  type: SET_SELECTED_DEALER,
+  payload: dealer,
+});
+export const setSelectedPrice = (price) => ({
+  type: SET_SELECTED_PRICE,
+  payload: price,
+});
+export const setSelectedEmail = (email) => ({
+  type: SET_SELECTED_EMAIL,
+  payload: email,
+});
+
 export const fetchCarRental = () => (dispatch) => {
   dispatch(fetchCarrequest());
   axios

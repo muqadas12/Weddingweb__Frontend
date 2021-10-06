@@ -21,6 +21,7 @@ function Signup() {
     token: '',
     phoneNumber: '',
     address: '',
+    _id: '',
   });
 
   function submit() {
@@ -34,6 +35,7 @@ function Signup() {
         token: data.token,
         phoneNumber: data.phoneNumber,
         address: data.address,
+        _id: data._id,
       })
       .then((res) => {
         // alert(`You are signUp as ${data.name}`);
@@ -46,7 +48,7 @@ function Signup() {
         message.error('User alreay exist!.PLease signIn');
       });
   }
-
+  console.log(localStorage.getItem('_id'));
   function handleChange(e) {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;

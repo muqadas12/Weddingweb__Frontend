@@ -14,6 +14,22 @@
   font-weight: bold;
 }
 
+.car-type {
+  width: 492px;
+  margin-left: 28px;
+  font-family: cursive;
+}
+
+.car-booking-services-name {
+  width: 395px;
+  height: 32px;
+}
+
+.date-picker-booking-car {
+  font-family: cursive;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 600px) {
   .booking-h1-main-heading {
     font-family: cursive;
@@ -28,5 +44,17 @@
 
   .book-now-button-food {
     margin-left: 30px;
+  }
+
+  .function-time-car {
+    width: 200px;
+    margin-top: 30px;
+    margin-left: -5px;
+  }
+
+  .num-of-people-car-booking {
+    width: 205px;
+    margin-top: -10px;
+    margin-left: -10px;
   }
 }/*# sourceMappingURL=Carbooking.css.map */

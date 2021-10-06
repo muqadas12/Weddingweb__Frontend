@@ -19,9 +19,12 @@ export const fetchOrdersaloonServiceFailure = (error) => ({
   payload: error,
 });
 export const fetchOrdersSaloon = () => (dispatch) => {
+  const email = localStorage.getItem('email');
   dispatch(fetchOrdersaloonServiceRequest());
   axios
-    .get('http://localhost:2000/api/saloonBooking/get-saloon-services')
+    .get(
+      `http://localhost:2000/api/saloonBooking/get-saloon-services?email=${email}`
+    )
     .then((res) => {
       const dealerSaloonOrders = res.data.data;
       console.log(dealerSaloonOrders);

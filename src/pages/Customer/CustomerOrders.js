@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { Card } from 'antd';
@@ -8,17 +9,21 @@ import order from '../../Assets/images/order.PNG';
 import { fetchViewCatering } from '../../ReduxApi/viewOrders/viewCatering/ViewCateringAction';
 import { fetchViewSallonOrder } from '../../ReduxApi/viewOrders/viewSaloonBooking/Saloonbooking.actions';
 import { fetchViewOrderStatus } from '../../ReduxApi/orderStatus/OrderStatus.action';
+import { setSelectedEmail } from '../../ReduxApi/CarRental/CarActions';
 import {
   fetchOrdersPhotography,
   setSelectedPrice,
   setSelectedDealer,
 } from '../../ReduxApi/viewDealerOrders/viewPhotographyOrders/PhotographyOrder.action';
-
+import { fetchViewCarBooking } from '../../ReduxApi/viewOrders/viewCarRental/CarBookingorder.action';
 import './CusOrder.scss';
 
 function CustomerOrders({
+  carData,
   userData,
+  setSelectedEmail,
   fetchViewCatering,
+  fetchViewCarBooking,
   fetchViewSallonOrder,
   fetchViewOrderStatus,
   fetchOrdersPhotography,
@@ -28,23 +33,31 @@ function CustomerOrders({
 }) {
   // const saloon = useSelector((state) => state.viewSaloonorder);
   const orders = useSelector((state) => state.viewStatusorder);
+
   const history = useHistory();
 
   useEffect(() => {
     fetchViewCatering();
+    fetchViewCarBooking();
     fetchViewSallonOrder();
     fetchViewOrderStatus();
     fetchOrdersPhotography();
     setSelectedPrice();
+    setSelectedEmail();
+    setSelectedDealer();
   }, []);
   const bookHandler = (user) => {
     setSelectedPrice(user.price);
     setSelectedDealer(user.photographyType);
+    setSelectedEmail(user.email);
+    console.log(setSelectedEmail(user.email));
     console.log(setSelectedDealer(user.photographyType));
     console.log(setSelectedPrice(user.price));
 
     history.push('/customer-payment');
   };
+  console.log(carData);
+
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.error ? (
@@ -52,6 +65,7 @@ function CustomerOrders({
   ) : (
     <div>
       <img className="customer-view-order-img" src={order} alt="order" />
+
       <p className="customer-irder-view-heading">View Your order here!</p>
 
       <Card className="photography-order-customer-view">
@@ -72,8 +86,26 @@ function CustomerOrders({
               <p style={{ marginLeft: '120px' }}>
                 {moment(user.functionDate).format('MMMM Do YYYY')}
               </p>
+              {orders &&
+                orders.viewOrderStatus &&
+                orders.viewOrderStatus.map((user) => (
+                  <p>
+                    <p>
+                      {' '}
+                      {user.orderStatus === 'Accepted' ? (
+                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
+                          {' '}
+                          Your order is{' '}
+                          <p style={{ color: 'green' }}>accepted</p>{' '}
+                        </p>
+                      ) : (
+                        'wait'
+                      )}{' '}
+                    </p>
+                  </p>
+                ))}
               <button
-                style={{ marginTop: '20px' }}
+                className="pay-btn-customer"
                 type="button"
                 onClick={() => bookHandler(user)}
               >
@@ -81,26 +113,50 @@ function CustomerOrders({
               </button>
             </div>
           ))}
-
-        {orders &&
-          orders.viewOrderStatus &&
-          orders.viewOrderStatus.map((user) => (
-            <p>
-              <p>
-                {' '}
-                {user.orderStatus === 'Accepted' ? (
-                  <p style={{ marginLeft: '135px', marginTop: '-30px' }}>
-                    {' '}
-                    Your order is <p style={{ color: 'green' }}>
-                      accepted
-                    </p>{' '}
-                    Click here to pay
-                  </p>
-                ) : (
-                  'wait'
-                )}{' '}
+      </Card>
+      <Card className="photography-order-customer-view">
+        {carData &&
+          carData.viewCarBook &&
+          carData.viewCarBook.map((user) => (
+            <div>
+              <p className="photography-type-order">{user.photographyType}</p>
+              <p className="photography-type-customer-select">
+                <br />
+                <p className="service-name-dealer-view"> {user.serviceName}</p>
               </p>
-            </p>
+              {/* {user.orderstatuses} */}
+              <p className="photography-type-customer-select-price">
+                {`at Rs ${user.price}`}
+              </p>
+              <p style={{ marginLeft: '120px' }}>
+                {moment(user.functionDate).format('MMMM Do YYYY')}
+              </p>
+              <button
+                className="pay-btn-customer"
+                type="button"
+                onClick={() => bookHandler(user)}
+              >
+                pay
+              </button>
+              {orders &&
+                orders.viewOrderStatus &&
+                orders.viewOrderStatus.map((user) => (
+                  <p>
+                    <p>
+                      {' '}
+                      {user.orderStatus === 'Accepted' ? (
+                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
+                          {' '}
+                          Your order is{' '}
+                          <p style={{ color: 'green' }}>accepted</p>{' '}
+                        </p>
+                      ) : (
+                        'wait'
+                      )}{' '}
+                    </p>
+                  </p>
+                ))}
+            </div>
           ))}
       </Card>
 
@@ -238,15 +294,18 @@ function CustomerOrders({
 const mapStateToProps = (state) => ({
   userData: state.servicescatering,
   photographyData: state.viewPhotographyOrders,
+  carData: state.viewCarRentalOrders,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchViewCatering: () => dispatch(fetchViewCatering()),
+  fetchViewCarBooking: () => dispatch(fetchViewCarBooking()),
   fetchViewSallonOrder: () => dispatch(fetchViewSallonOrder()),
   fetchViewOrderStatus: () => dispatch(fetchViewOrderStatus()),
   fetchOrdersPhotography: () => dispatch(fetchOrdersPhotography()),
   setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
   setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
+  setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomerOrders);

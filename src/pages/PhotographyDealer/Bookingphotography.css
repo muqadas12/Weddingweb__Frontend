@@ -1,11 +1,11 @@
 .photography-main-image-booking {
-  width: 100%;
+  width: 120%;
   height: auto;
   margin-left: -3px;
 }
 
 .card-photography {
-  background-color: #f02222;
+  background-color: #47bb11;
   margin-top: 30px;
 }
 
@@ -16,9 +16,27 @@
   text-align: center;
 }
 
+.service-name-photography-heading {
+  font-weight: bold;
+  text-align: center;
+  font-family: cursive;
+}
+
+.service-price-photography {
+  font-family: cursive;
+  margin-top: 30px;
+  margin-left: 170px;
+}
+
 .label-date-picker-photo {
   font-family: cursive;
   margin-left: 190px;
+}
+
+.car-booking-services-name {
+  width: 395px;
+  height: 32px;
+  border: none;
 }
 
 .book-now-photo {

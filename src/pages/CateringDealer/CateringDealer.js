@@ -4,12 +4,23 @@ import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Card, Space } from 'antd';
 import { useHistory } from 'react-router-dom';
-import { fetchCatering } from '../../ReduxApi/Catering/CateringAction';
+import {
+  fetchCatering,
+  setSelectedEmail,
+  setSelectedDealer,
+  setSelectedPrice,
+} from '../../ReduxApi/Catering/CateringAction';
 import cateringImg from '../../Assets/images/catering.jpg';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import './CateringDealer.scss';
 
-function CateringDealer({ userData, fetchCatering }) {
+function CateringDealer({
+  userData,
+  fetchCatering,
+  setSelectedEmail,
+  setSelectedDealer,
+  setSelectedPrice,
+}) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -17,8 +28,14 @@ function CateringDealer({ userData, fetchCatering }) {
     fetchCatering();
   }, []);
 
-  const bookHandler = () => {
+  const bookHandler = (user) => {
     if (localStorage.getItem('token')) {
+      setSelectedEmail(user.email);
+      setSelectedDealer(user.serviceName);
+      setSelectedPrice(user.price);
+      console.log(setSelectedDealer(user.serviceName));
+      console.log(setSelectedPrice(user.price));
+      console.log(setSelectedEmail(user.email));
       history.push('/book-catering');
     } else {
       dispatch(myCategory('booked-catering'));
@@ -68,7 +85,7 @@ function CateringDealer({ userData, fetchCatering }) {
                   <button
                     type="submit"
                     className="book-now-catering"
-                    onClick={bookHandler}
+                    onClick={() => bookHandler(user)}
                   >
                     Book Now
                   </button>
@@ -87,6 +104,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCatering: () => dispatch(fetchCatering()),
+  setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
+  setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
+  setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CateringDealer);

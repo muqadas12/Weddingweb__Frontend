@@ -2,6 +2,8 @@ import {
   FETCH_HALLSEARCH_REQUEST,
   FETCH_HALLSEARCH_SUCCESS,
   FETCH_HALLSEARCH_FAILURE,
+  SET_SELECTED_DEALER,
+  SET_SELECTED_PRICE,
 } from './Hall.types';
 
 const initialSate = {
@@ -22,6 +24,16 @@ const hallSearchReducer = (state = initialSate, action) => {
         loading: false,
         hallSearch: action.payload,
         err: '',
+      };
+    case SET_SELECTED_DEALER:
+      return {
+        ...state,
+        selectedDealer: action.payload,
+      };
+    case SET_SELECTED_PRICE:
+      return {
+        ...state,
+        setSelectedPrice: action.payload,
       };
     case FETCH_HALLSEARCH_FAILURE:
       return {

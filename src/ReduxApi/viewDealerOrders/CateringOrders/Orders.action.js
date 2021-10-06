@@ -19,9 +19,12 @@ export const fetchOrderFailure = (error) => ({
   payload: error,
 });
 export const fetchOrders = () => (dispatch) => {
+  const email = localStorage.getItem('email');
   dispatch(fetchOrderRequest());
   axios
-    .get('http://localhost:2000/api/servicescatering/get-catering')
+    .get(
+      `http://localhost:2000/api/servicescatering/get-catering?email=${email}`
+    )
     .then((res) => {
       const orders = res.data.data;
       console.log(orders);

@@ -9,7 +9,6 @@ import updateProfile from '../../Assets/images/updateProfile.PNG';
 import addServices from '../../Assets/images/addSer.PNG';
 import viewServices from '../../Assets/images/viewServices.PNG';
 import order from '../../Assets/images/orders.PNG';
-// import updateSer from '../../Assets/images/updateSer.PNG';
 
 import logoutCustomer from '../../Assets/images/logoutCustomer.PNG';
 
@@ -18,6 +17,7 @@ function DealerMain() {
     localStorage.clear();
     window.location.href = '/sign-in';
   };
+
   return (
     <div>
       <img

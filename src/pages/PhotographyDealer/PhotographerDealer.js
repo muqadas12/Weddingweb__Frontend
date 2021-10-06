@@ -8,6 +8,7 @@ import {
   fetchPhotos,
   setSelectedDealer,
   setSelectedPrice,
+  setSelectedEmail,
 } from '../../ReduxApi/Photography/PhotographyAction';
 import photographyImg from '../../Assets/images/photographyImg.jpg';
 import './Photography.scss';
@@ -17,6 +18,7 @@ function PhotographerDealer({
   fetchPhotos,
   setSelectedDealer,
   setSelectedPrice,
+  setSelectedEmail,
 }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,6 +31,8 @@ function PhotographerDealer({
       setSelectedDealer(user.serviceName);
       setSelectedPrice(user.price);
       console.log(setSelectedDealer(user.serviceName));
+      console.log(setSelectedEmail(user.email));
+
       console.log(setSelectedPrice(user.price));
 
       history.push(`/booking-photographer?name=${user.serviceName}`);
@@ -99,6 +103,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPhotos: () => dispatch(fetchPhotos()),
   setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
   setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
+  setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotographerDealer);
