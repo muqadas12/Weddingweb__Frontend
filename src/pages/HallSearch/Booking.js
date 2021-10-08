@@ -8,7 +8,7 @@ import './Booking.scss';
 
 const { Option } = Select;
 
-function Booking({ userData, fetchAllDealers }) {
+function Booking({ fetchAllDealers, dealer, price, email }) {
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -16,8 +16,9 @@ function Booking({ userData, fetchAllDealers }) {
     functionType: '',
     numOfPeople: '',
     serviceName: '',
-    serviceCategory: '',
+    price: '',
     email: '',
+    dealerEmail: '',
   });
   useEffect(() => {
     fetchAllDealers();
@@ -31,8 +32,9 @@ function Booking({ userData, fetchAllDealers }) {
       functionTime: e.functionTime,
       functionType: e.functionType,
       numOfPeople: e.numOfPeople,
-      serviceName: e.serviceName,
-      serviceCategory: e.serviceCategory,
+      serviceName: dealer,
+      dealerEmail: email,
+      price,
 
       email: localStorage.getItem('email'),
     };
@@ -43,7 +45,7 @@ function Booking({ userData, fetchAllDealers }) {
     <div>
       <img src={bookingHall} alt="bookingHall" />
       <Card className="card-booking-booking-hall">
-        <h1 className="h1-booking">Booking</h1>
+        <h1 className="h1-booking">{dealer}</h1>
         <Form onFinish={(e) => formSubmit(e)}>
           <Form.Item
             label="Function Date"
@@ -93,48 +95,7 @@ function Booking({ userData, fetchAllDealers }) {
               <Option value="walima">Walima</Option>
             </Select>
           </Form.Item>
-          <Form.Item
-            name="serviceCategory"
-            label="Select Service"
-            className="date-picker-booking-car"
-            style={{ marginLeft: '-10px' }}
-            // className="function-time-car"
 
-            rules={[
-              {
-                required: true,
-                message: 'Please select your service!',
-              },
-            ]}
-          >
-            <Select placeholder="select your service">
-              <Option value="carRental">Car Rental</Option>
-              <Option value="photography">Photography</Option>
-              <Option value="hall">Hall Booking</Option>
-              <Option value="saloon">Saloon</Option>
-              <Option value="catering">Catering</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name="serviceName"
-            label="Service Name"
-            style={{
-              fontFamily: 'cursive',
-              width: '500px',
-              marginLeft: '16px',
-            }}
-          >
-            <select
-              className="service-name-booking-hall"
-              placeholder="select your service"
-            >
-              {userData.viewDealers.map((user) => (
-                <option key={user} name={user.serviceName}>
-                  {user.serviceName.toString()}
-                </option>
-              ))}
-            </select>
-          </Form.Item>
           <Form.Item
             label="Num Of people"
             name="numOfPeople"
@@ -152,6 +113,9 @@ function Booking({ userData, fetchAllDealers }) {
 }
 const mapStateToProps = (state) => ({
   userData: state.viewdealers,
+  dealer: state.searchHallreducer.selectedDealer,
+  price: state.searchHallreducer.setSelectedPrice,
+  email: state.searchHallreducer.setSelectedEmail,
 });
 
 const mapDispatchToProps = (dispatch) => ({

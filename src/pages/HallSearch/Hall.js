@@ -9,6 +9,7 @@ import {
   fetchHallSerach,
   setSelectedPrice,
   setSelectedDealer,
+  setSelectedEmail,
 } from '../../ReduxApi/hallSearch/Hallsearch.action';
 import { myCategory } from '../../ReduxApi/Category/categoriesAction';
 import hallSearch from '../../Assets/images/weddingHallsearch.jpg';
@@ -21,11 +22,12 @@ const CaseStatusLaw = ({
   userData,
   setSelectedPrice,
   setSelectedDealer,
+  setSelectedEmail,
 }) => {
   const dispatch = useDispatch();
   const hall = useSelector((state) => state.searchHallreducer);
   const history = useHistory();
-  const [VenueType, setVenueType] = useState('');
+  const [hallType, sethallType] = useState('');
   const [data, setData] = useState([]);
   const [searchData, setSearchData] = useState([]);
   const [city, setCity] = useState('');
@@ -35,6 +37,7 @@ const CaseStatusLaw = ({
     fetchHallSerach();
     setSelectedPrice();
     setSelectedDealer();
+    setSelectedEmail();
     // axios
     //   .get('http://localhost:2000/api/hall/gethalls')
     //   .then((res) => {
@@ -47,9 +50,11 @@ const CaseStatusLaw = ({
   const bookHandler = (list) => {
     if (localStorage.getItem('token')) {
       setSelectedPrice(list.price);
-      setSelectedDealer(list.email);
+      setSelectedDealer(list.serviceName);
+      setSelectedEmail(list.email);
       console.log(setSelectedPrice(list.price));
-      console.log(setSelectedDealer(list.email));
+      console.log(setSelectedEmail(list.email));
+      console.log(setSelectedDealer(list.serviceName));
 
       history.push('/booking');
     } else {
@@ -59,17 +64,17 @@ const CaseStatusLaw = ({
   };
   const handleSubmit = () => {
     const search = userData.hallSearch.filter(
-      (x) => x.VenueType === VenueType || x.city === city
+      (x) => x.hallType === hallType || x.city === city
     );
-    console.log(VenueType, city);
+    console.log(hallType, city);
     console.log(data);
     console.log(search);
     setSearchData(search);
     setShow(true);
   };
 
-  const handleChangeVenueType = (e) => {
-    setVenueType(e.target.value);
+  const handleChangehallType = (e) => {
+    sethallType(e.target.value);
   };
 
   const handleChangecity = (e) => {
@@ -82,13 +87,13 @@ const CaseStatusLaw = ({
       <img src={hallSearch} alt="weddinghall" />
       {/* {userData &&
         userData.hallSearch &&
-        userData.hallSearch.map((user) => <p>{user.VenueType}</p>)} */}
+        userData.hallSearch.map((user) => <p>{user.hallType}</p>)} */}
       <h1 className="wedding-hall-h1">
         Welcome!Here You can Serach hall according to your need{' '}
       </h1>
       <Form>
         <label className="label-hall-type">Select Hall Type:</label>
-        <select className="dropdown-hall" onChange={handleChangeVenueType}>
+        <select className="dropdown-hall" onChange={handleChangehallType}>
           <option
             style={{ marginTop: '990px' }}
             name="select hall type"
@@ -100,8 +105,8 @@ const CaseStatusLaw = ({
           {userData &&
             userData.hallSearch &&
             userData.hallSearch.map((user) => (
-              <option key={user} name={user.VenueType}>
-                {user.VenueType}
+              <option key={user} name={user.hallType}>
+                {user.hallType}
               </option>
             ))}
         </select>
@@ -132,45 +137,45 @@ const CaseStatusLaw = ({
           <div>
             {searchData.map((list) => {
               const {
-                Hall,
-                MaximumCapacity,
-                MinimumGuest,
-                Services,
+                serviceName,
+                maxCapacity,
+                minCapacity,
+                price,
+                services,
                 // eslint-disable-next-line no-shadow
-                VenueType,
+                hallType,
                 // eslint-disable-next-line no-shadow
                 city,
                 description,
-                name,
-                img,
+                pathImg,
               } = list;
               return (
-                <div key={name} className="row justify-content-around ">
+                <div key={serviceName} className="row justify-content-around ">
                   {/* <img src={img} alt="asd"/> */}
 
                   <p className="label-name">Name:</p>
-                  <p className="hall-name">{list.name}</p>
+                  <p className="hall-name">{list.serviceName}</p>
 
-                  <p className="label-hall">Hall:</p>
-                  <p className="avb-hall">{Hall}</p>
+                  <p className="label-hall">Price:</p>
+                  <p className="avb-hall">{price}</p>
 
                   <p className="label-hall">Maximum Capacity:</p>
-                  <p className="max-cap">{MaximumCapacity}</p>
+                  <p className="max-cap">{maxCapacity}</p>
 
                   <p className="label-hall">Minimum Guest:</p>
-                  <p className="min-guest">{MinimumGuest}</p>
+                  <p className="min-guest">{minCapacity}</p>
 
                   <p className="label-hall">Services:</p>
-                  <p className="services">{Services}</p>
+                  <p className="services">{services}</p>
 
                   <p className="label-hall">VenueType</p>
-                  <p className="ven-type">{VenueType}</p>
+                  <p className="ven-type">{hallType}</p>
                   <p className="label-hall">City:</p>
                   <p className="city">{city}</p>
 
                   <p className="label-hall">Description</p>
                   <p className="description">{description}</p>
-                  <img className="img-hall" src={img} alt="imghall" />
+                  <img className="img-hall" src={pathImg} alt="imghall" />
 
                   <br />
                   <br />
@@ -199,6 +204,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchHallSerach: () => dispatch(fetchHallSerach()),
   setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
   setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
+  setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CaseStatusLaw);

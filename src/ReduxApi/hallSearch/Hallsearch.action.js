@@ -6,12 +6,13 @@ import {
   FETCH_HALLSEARCH_FAILURE,
   SET_SELECTED_DEALER,
   SET_SELECTED_PRICE,
+  SET_SELECTED_EMAIL,
 } from './Hall.types';
 
 export const fetchHallSerach = () => (dispatch) => {
   dispatch(fetchHallSerachRequest());
   axios
-    .get('http://localhost:2000/api/hall/gethalls')
+    .get('http://localhost:2000/api/hall/getHall')
     .then((res) => {
       const hallSearch = res.data.dataH;
       dispatch(fetchHallSerachSuccess(hallSearch));
@@ -36,6 +37,10 @@ export const fetchHallSerachFailure = (err) => ({
 export const setSelectedDealer = (dealer) => ({
   type: SET_SELECTED_DEALER,
   payload: dealer,
+});
+export const setSelectedEmail = (email) => ({
+  type: SET_SELECTED_EMAIL,
+  payload: email,
 });
 export const setSelectedPrice = (price) => ({
   type: SET_SELECTED_PRICE,

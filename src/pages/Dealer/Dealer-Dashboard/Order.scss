@@ -1,3 +1,24 @@
+.photography-type {
+  margin-left: 710px;
+  font-family: cursive;
+  font-weight: bold;
+}
+.photography-type-order-dealer {
+  margin-left: 710px;
+  font-family: cursive;
+}
+.order-status-dropdown-dealer-photographer {
+  margin-left: 700px;
+  width: 180px;
+  font-family: cursive;
+}
+.assign-status-order-btn-dealer-orders {
+  margin-left: 740px;
+}
+.photography-type-order-dealer-price {
+  margin-left: 740px;
+  font-family: cursive;
+}
 .card-view-order-of-customer {
   margin-left: 550px;
   margin-top: 50px;
@@ -5,6 +26,26 @@
   height: 600px;
   text-align: center;
 }
+.order-status-dropdown-catering-dealer {
+  width: 300px;
+  margin-left: 120px;
+  margin-top: 20px;
+}
+.card-view-order-of-customer-catering-dealer {
+  margin-left: 550px;
+  margin-top: -390px;
+  width: 420px;
+  height: 600px;
+  text-align: center;
+}
+.card-view-order-of-customer-saloon {
+  margin-left: 550px;
+  margin-top: -370px;
+  width: 420px;
+  height: 600px;
+  text-align: center;
+}
+
 .heading-function-date-customer-order {
   font-family: cursive;
   font-weight: bold;
@@ -17,6 +58,14 @@
   font-weight: bold;
   margin-left: 120px;
 }
+.customer-order-email-car {
+  font-weight: bold;
+  margin-left: 150px;
+}
+.carType-type-order-dealer {
+  margin-left: 180px;
+}
+
 .view-customer-order-heading {
   text-align: center;
   font-size: 20px;
@@ -36,6 +85,7 @@
 .assign-status-order-btn-muqaddas-orders {
   margin-left: 170px;
 }
+
 .carType-type-order {
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
@@ -49,4 +99,10 @@
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+}
+.service-name-dealer-view {
+  margin-left: 25px;
+}
+.car-type-customer-select-price {
+  margin-left: 170px;
 }

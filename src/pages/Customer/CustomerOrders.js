@@ -15,18 +15,21 @@ import {
   setSelectedPrice,
   setSelectedDealer,
 } from '../../ReduxApi/viewDealerOrders/viewPhotographyOrders/PhotographyOrder.action';
+import { fetchOrdersHall } from '../../ReduxApi/viewDealerOrders/hallOrder/HallOrder.action';
 import { fetchViewCarBooking } from '../../ReduxApi/viewOrders/viewCarRental/CarBookingorder.action';
 import './CusOrder.scss';
 
 function CustomerOrders({
   carData,
   userData,
+  hallOrderData,
   setSelectedEmail,
   fetchViewCatering,
   fetchViewCarBooking,
   fetchViewSallonOrder,
   fetchViewOrderStatus,
   fetchOrdersPhotography,
+  fetchOrdersHall,
   photographyData,
   setSelectedPrice,
   setSelectedDealer,
@@ -42,6 +45,7 @@ function CustomerOrders({
     fetchViewSallonOrder();
     fetchViewOrderStatus();
     fetchOrdersPhotography();
+    fetchOrdersHall();
     setSelectedPrice();
     setSelectedEmail();
     setSelectedDealer();
@@ -77,7 +81,10 @@ function CustomerOrders({
               <p className="photography-type-customer-select">
                 <p style={{ marginLeft: '40px' }}> {'of '}</p>
                 <br />
-                <p className="service-name-dealer-view"> {user.serviceName}</p>
+                <p className="service-name-dealer-view-photo">
+                  {' '}
+                  {user.serviceName}
+                </p>
               </p>
 
               <p className="photography-type-customer-select-price">
@@ -122,9 +129,55 @@ function CustomerOrders({
               <p className="photography-type-order">{user.photographyType}</p>
               <p className="photography-type-customer-select">
                 <br />
-                <p className="service-name-dealer-view"> {user.serviceName}</p>
+                <p className="service-name-dealer-view-car">
+                  {' '}
+                  {user.serviceName}
+                </p>
               </p>
-              {/* {user.orderstatuses} */}
+              <p className="photography-type-customer-select-price">
+                {`at Rs ${user.price}`}
+              </p>
+              <p style={{ marginLeft: '120px' }}>
+                {moment(user.functionDate).format('MMMM Do YYYY')}
+              </p>
+              <button
+                className="pay-btn-customer"
+                type="button"
+                onClick={() => bookHandler(user)}
+              >
+                pay
+              </button>
+              {orders &&
+                orders.viewOrderStatus &&
+                orders.viewOrderStatus.map((user) => (
+                  <p>
+                    <p>
+                      {' '}
+                      {user.orderStatus === 'Accepted' ? (
+                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
+                          {' '}
+                          Your order is{' '}
+                          <p style={{ color: 'green' }}>accepted</p>{' '}
+                        </p>
+                      ) : (
+                        'wait'
+                      )}{' '}
+                    </p>
+                  </p>
+                ))}
+            </div>
+          ))}
+      </Card>
+      <Card className="photography-order-customer-view">
+        {hallOrderData &&
+          hallOrderData.dealerHallOrders &&
+          hallOrderData.dealerHallOrders.map((user) => (
+            <div>
+              <p className="hall-selected-dealer-order">
+                You have selected the Hall of{' '}
+              </p>
+              <p className="photography-type-order">{user.serviceName}</p>
+
               <p className="photography-type-customer-select-price">
                 {`at Rs ${user.price}`}
               </p>
@@ -294,6 +347,7 @@ function CustomerOrders({
 const mapStateToProps = (state) => ({
   userData: state.servicescatering,
   photographyData: state.viewPhotographyOrders,
+  hallOrderData: state.viewHallDealerOrder,
   carData: state.viewCarRentalOrders,
 });
 
@@ -306,6 +360,7 @@ const mapDispatchToProps = (dispatch) => ({
   setSelectedPrice: (price) => dispatch(setSelectedPrice(price)),
   setSelectedDealer: (dealer) => dispatch(setSelectedDealer(dealer)),
   setSelectedEmail: (email) => dispatch(setSelectedEmail(email)),
+  fetchOrdersHall: () => dispatch(fetchOrdersHall()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CustomerOrders);

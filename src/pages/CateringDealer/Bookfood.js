@@ -41,7 +41,6 @@ function Bookfood({ fetchAllDealers, email, dealer, price }) {
     };
     bookcateringFood(payload);
   }
-  console.log(email);
   return (
     <div>
       <img

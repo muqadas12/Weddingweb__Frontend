@@ -2,20 +2,23 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-
 import hallSearch from '../../../Assets/images/weddingHallsearch.jpg';
 // eslint-disable-next-line max-len
 import { fetchAddServices } from '../../../ReduxApi/addDealerServices/AddServices.actions';
 import './AddService.scss';
 
-function AddServices() {
+function AddHall() {
   const dispatch = useDispatch();
   const [serviceName, setService] = useState();
   const [dealerservice, setDealer] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
   const [Img, setImg] = useState();
+  const [hallType, sethallType] = useState();
+  const [city, setcity] = useState();
+  const [maxCapacity, setmaxCapacity] = useState();
+  const [minCapacity, setminCapacity] = useState();
+  const [services, setservices] = useState();
 
   const send = () => {
     const fileArray = [];
@@ -26,6 +29,12 @@ function AddServices() {
     formData.append('dealerservice', dealerservice);
     formData.append('description', description);
     formData.append('price', price);
+    formData.append('hallType', hallType);
+    formData.append('city', city);
+    formData.append('maxCapacity', maxCapacity);
+    formData.append('minCapacity', minCapacity);
+    formData.append('services', services);
+
     formData.append('email', localStorage.getItem('email'));
     dispatch(fetchAddServices(formData));
   };
@@ -33,7 +42,7 @@ function AddServices() {
     <div>
       <img src={hallSearch} alt="weddinghall" />
       <br />
-      <p className="services-heading">Please Add Your Services here</p>
+      <p className="services-heading">Please Add Your Hall Services here</p>
       <hr className="hr-line" />
       <br />
 
@@ -70,6 +79,7 @@ function AddServices() {
             }}
           />
         </Form.Item>
+
         <Form.Item
           label="Select service"
           name="dealerservice"
@@ -85,12 +95,84 @@ function AddServices() {
             name="dealerservice"
             id="dealerservice"
           >
-            <option name="select service">select service</option>
-            <option name="Car rental">Car rental</option>
-            <option name="Saloon">Saloon</option>
-            <option name="Catering">Catering</option>
-            <option name="Photography">Photography</option>
             <option name="Hall">Hall</option>
+            <option name="wedHall">weddingHall</option>
+          </select>
+        </Form.Item>
+        <Form.Item label="Select hall" name="hallType" id="hallType">
+          <select
+            style={{ width: '350px' }}
+            className="ant-input"
+            onChange={(event) => {
+              const { value } = event.target;
+              sethallType(value);
+            }}
+            name="hallType"
+            id="hallType"
+          >
+            <option name="Selectsite">Select VenueType</option>
+
+            <option name="Beachside">Beachside</option>
+            <option name="Lounge">Lounge</option>
+            <option name="Garden">Garden</option>
+          </select>
+        </Form.Item>
+        <Form.Item label="Select city" name="city" id="city">
+          <select
+            style={{ width: '350px' }}
+            className="ant-input"
+            onChange={(event) => {
+              const { value } = event.target;
+              setcity(value);
+            }}
+            name="city"
+            id="city"
+          >
+            <option name="SelectCity">Select City</option>
+            <option name="Islamabad">Islamabad</option>
+            <option name="Rawalpindi">Rawalpindi</option>
+          </select>
+        </Form.Item>
+        <Form.Item
+          label="Select MaxCapacity"
+          name="maxCapacity"
+          id="maxCapacity"
+        >
+          <select
+            style={{ width: '350px' }}
+            className="ant-input"
+            onChange={(event) => {
+              const { value } = event.target;
+              setmaxCapacity(value);
+            }}
+            name="maxCapacity"
+            id="maxCapacity"
+          >
+            <option name="SelectmaxCapacity">Select Maximum Capacity</option>
+            <option name="400">400</option>
+            <option name="200">600</option>
+            <option name="100">500</option>
+          </select>
+        </Form.Item>
+        <Form.Item
+          label="Select MinCapacity"
+          name="minCapacity"
+          id="minCapacity"
+        >
+          <select
+            style={{ width: '350px' }}
+            className="ant-input"
+            onChange={(event) => {
+              const { value } = event.target;
+              setminCapacity(value);
+            }}
+            name="minCapacity"
+            id="minCapacity"
+          >
+            <option name="SelectminCapacity">Select Minimum Capacity</option>
+            <option name="200">200</option>
+            <option name="100">100</option>
+            <option name="160">160</option>
           </select>
         </Form.Item>
 
@@ -123,9 +205,28 @@ function AddServices() {
             }}
           />
         </Form.Item>
+        <Form.Item
+          label="services"
+          name="services"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your services',
+            },
+          ]}
+        >
+          <Input
+            style={{ marginLeft: '10px' }}
+            className="service-name"
+            onChange={(event) => {
+              const { value } = event.target;
+              setservices(value);
+            }}
+          />
+        </Form.Item>
 
         <Form.Item
-          label="Upload Service Img"
+          label="Upload Hall Img"
           name="Image"
           rules={[
             {
@@ -157,12 +258,9 @@ function AddServices() {
         >
           Submit
         </Button>
-        <Link className="link-to-hall-services" to="/AddHall">
-          Click here for adding Hall services
-        </Link>
       </Form>
     </div>
   );
 }
 
-export default AddServices;
+export default AddHall;

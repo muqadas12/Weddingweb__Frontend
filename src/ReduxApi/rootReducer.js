@@ -22,6 +22,7 @@ import viewdealers from './ViewDealerServices/viewDealers/Dealer.reducer';
 import viewPhotographyOrders from './viewDealerOrders/viewPhotographyOrders/PhotographyOrder.reducers';
 import viewCarRentalOrders from './viewOrders/viewCarRental/CarBookingorder.reducer';
 import viewDealerCarOrder from './viewDealerOrders/carRentalOrders/CarRentalOrders.reducer';
+import viewHallDealerOrder from './viewDealerOrders/hallOrder/HallOrder.reducer';
 
 const rootReducer = combineReducers({
   user,
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
   searchHallreducer,
   viewdealers,
   viewPhotographyOrders,
+  viewHallDealerOrder,
   viewCarRentalOrders,
   viewDealerCarOrder,
 });

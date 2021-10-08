@@ -6,8 +6,18 @@
   display: flex;
   justify-content: space-between;
 }
+.service-name-dealer-view-car {
+  margin-left: -5px;
+}
 .service-category-view-customer {
   margin-left: 150px;
+}
+.hall-selected-dealer-order {
+  margin-left: 90px;
+}
+.service-name-dealer-view-photo {
+  margin-left: -10px;
+  margin-top: -20px;
 }
 .cus-email-view-customer {
   margin-left: 130px;
@@ -23,7 +33,7 @@
 }
 .photography-order-customer-view {
   width: 450px;
-  height: 300px;
+  height: 350px;
   margin-left: 580px;
   margin-top: 30px;
   display: flex;

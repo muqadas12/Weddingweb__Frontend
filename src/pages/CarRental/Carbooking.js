@@ -67,8 +67,6 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
                 label="Function Time"
                 className="date-picker-booking-car"
                 style={{ marginLeft: '-10px' }}
-                // className="function-time-car"
-
                 rules={[
                   {
                     required: true,
@@ -105,39 +103,7 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
               >
                 <Input style={{ marginTop: '-15px' }} />
               </Form.Item>
-              {/* <Form.Item
-                label="Service name"
-                name="serviceName"
-                className="date-picker-booking-car"
-              >
-                <select placeholder="select your service">
-                  {userData.viewDealers.map((user) => (
-                    <option key={user} name={user.serviceName}>
-                      {user.serviceName}
-                    </option>
-                  ))}
-                </select>
-              </Form.Item> */}
-              {/* <Form.Item
-                name="serviceName"
-                label="Service Name"
-                style={{
-                  fontFamily: 'cursive',
-                  width: '500px',
-                  marginLeft: '16px',
-                }}
-              >
-                <select
-                  className="car-booking-services-name"
-                  placeholder="select your service"
-                >
-                  {userData.viewDealers.map((user) => (
-                    <option key={user} name={user.serviceName}>
-                      {user.serviceName.toString()}
-                    </option>
-                  ))}
-                </select>
-              </Form.Item> */}
+
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
               </Button>

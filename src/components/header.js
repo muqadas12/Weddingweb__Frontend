@@ -18,7 +18,6 @@ import DealerMain from '../pages/Dealer/DealerMain';
 import UpdateProfile from '../pages/Dealer/Dealer-Dashboard/UpdateProfile';
 import ViewProfile from '../pages/Dealer/Dealer-Dashboard/ViewProfile';
 import AddServices from '../pages/Dealer/Dealer-Dashboard/AddServices';
-import UpdateServices from '../pages/Dealer/Dealer-Dashboard/UpdateServices';
 import Orders from '../pages/Dealer/Dealer-Dashboard/Orders';
 import viewServices from '../pages/Dealer/Dealer-Dashboard/ViewServices';
 import ProtectiveRoute from './ProtectiveRoute';
@@ -38,6 +37,7 @@ import Bookphotographer from '../pages/photographyDealer/Bookingphotographer';
 import viewOrderStatus from '../pages/Customer/ViewOrderStatus';
 import Payment from '../pages/Customer/Payment';
 import OrderStatus from '../pages/Dealer/Dealer-Dashboard/OrderStatus';
+import AddHall from '../pages/Dealer/Dealer-Dashboard/AddHall';
 
 const { SubMenu } = Menu;
 const { Header, Content } = Layout;
@@ -134,10 +134,7 @@ function header2() {
               <Route path="/dealer-update-profile" component={UpdateProfile} />
               <Route path="/dealer-view-profile" component={ViewProfile} />
               <Route path="/dealer-add-services" component={AddServices} />
-              <Route
-                path="/dealer-update-services/:id"
-                component={UpdateServices}
-              />
+
               <Route path="/dealer-view-orders" component={Orders} />
               <Route path="/dealer-view-services" component={viewServices} />
               <Route path="/customer-main" component={CustomerMainPage} />
@@ -169,6 +166,7 @@ function header2() {
               <Route path="/view-Order-Status" component={viewOrderStatus} />
               <Route path="/customer-payment" component={Payment} />
               <Route path="/order-status" component={OrderStatus} />
+              <Route path="/AddHall" component={AddHall} />
 
               <Route path={['/', '/home']} component={Home} />
             </Switch>

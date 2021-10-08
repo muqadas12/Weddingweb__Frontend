@@ -70,10 +70,18 @@ function ViewProfile({ userData, fetchDealers, onDelete }) {
           You are SignUp with the
           <p className="info-display">{userInfo.role} role</p>
           <Link to={`/dealer-update-profile/${userInfo._id}`}>
-            <button type="submit">Update</button>
+            <button className="update-profile-btn" type="submit">
+              Update Profile
+            </button>
           </Link>
-          <button type="button" onClick={() => onDelete(userInfo._id)}>
-            Delete
+          <br />
+          <br />
+          <button
+            className="del-profile-btn"
+            type="button"
+            onClick={() => onDelete(userInfo._id)}
+          >
+            Delete Profile
           </button>
           {/* <button type="button" onClick={() => deleteDealer(userInfo._id)}>
             del

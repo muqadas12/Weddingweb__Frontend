@@ -41,16 +41,6 @@ function CateringDealer({
       dispatch(myCategory('booked-catering'));
       history.push('/sign-in');
     }
-    // {
-    //   localStorage.getItem('token')
-    //     ? history.push('/book-catering')
-    //     : history.push('/sign-in');
-    // }
-
-    // {!localStorage.getItem('token') &&   dispatch(myCategory('CateringDealer'))}
-
-    //  setBooked(true);
-    // booked = true;
   };
 
   return userData.loading ? (

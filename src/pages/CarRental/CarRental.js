@@ -35,10 +35,6 @@ function CarRental({
       setSelectedPrice(user.price);
       setSelectedEmail(user.email);
 
-      console.log(setSelectedDealer(user.serviceName));
-      console.log(setSelectedEmail(user.email));
-      console.log(setSelectedPrice(user.price));
-
       history.push('/car-booking');
     } else {
       dispatch(myCategory('booked-car'));

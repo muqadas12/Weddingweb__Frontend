@@ -72,10 +72,19 @@ function ViewProfile({ userData, fetchUsers, onDelete }) {
           You are SignUp with the{' '}
           <p className="info-display">{userInfo.role} role</p>
           <Link to={`/customer-update-profile/${userInfo._id}`}>
-            <button type="submit">Update</button>
+            <button type="submit" className="update-profile-btn">
+              {' '}
+              Update Profile
+            </button>
           </Link>
-          <button type="button" onClick={() => onDelete(userInfo._id)}>
-            Delete
+          <br />
+          <br />
+          <button
+            type="button"
+            className="del-profile-btn"
+            onClick={() => onDelete(userInfo._id)}
+          >
+            Delete Profile
           </button>
         </div>
       </div>

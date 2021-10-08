@@ -42,11 +42,6 @@ function Contactus() {
 
     axios.post('http://localhost:2000/api/email/mail', dataSubmit);
   };
-  // const { mutate, isLoading, isError } = useMutation(postData, {
-  //   onSuccess: (successData) => {
-  //     console.log(successData)
-  //   },
-  // })
 
   return (
     <div>

@@ -7,6 +7,7 @@ import ReactEditableSvgLabel from 'react-editable-svg-label';
 import ReactToPrint from 'react-to-print';
 // eslint-disable-next-line no-unused-vars
 import img2 from './img2.svg';
+import './CardDesign.scss';
 
 class ArrestWarrant extends React.PureComponent {
   render() {
@@ -14,9 +15,11 @@ class ArrestWarrant extends React.PureComponent {
       <div>
         <ReactToPrint
           trigger={() => (
-            <a href="#" style={{ marginTop: '100px' }}>
-              Print this out!
-            </a>
+            <div className="card-edit-elements">
+              <a href="#" style={{ marginLeft: '180px', marginTop: '900px' }}>
+                Print this out!
+              </a>
+            </div>
           )}
           content={() => this.componentRef}
         />
@@ -43,7 +46,7 @@ export class ComponentToPrint extends React.PureComponent {
       time: '10pm',
       type: 'Nikah',
       gender: 'Son',
-      venue: 'Sarena Hotel',
+      venue: 'Serena Hotel',
     };
   }
 
@@ -86,13 +89,45 @@ export class ComponentToPrint extends React.PureComponent {
   render() {
     return (
       <div>
-        <ReactEditableSvgLabel onChange={this.handleChangeText}>
-          {this.state.text}
-        </ReactEditableSvgLabel>
-
+        <div style={{ marginTop: '-109px' }}>
+          Bride Name:
+          <ReactEditableSvgLabel onChange={this.handleChangeText}>
+            {this.state.text}
+          </ReactEditableSvgLabel>
+          <br />
+          Groom Name:
+          <ReactEditableSvgLabel onChange={this.handleChangeText2}>
+            {this.state.text1}
+          </ReactEditableSvgLabel>
+          <br />
+          Time:
+          <ReactEditableSvgLabel
+            onChange={this.handleChangeTime}
+            x="40%"
+            y="99%"
+          >
+            {this.state.time}
+          </ReactEditableSvgLabel>
+          <br />
+          Event:
+          <ReactEditableSvgLabel
+            onChange={this.handleChangeType}
+            x="40%"
+            y="99%"
+          >
+            {this.state.type}
+          </ReactEditableSvgLabel>
+          <br />
+          Venue:
+          <ReactEditableSvgLabel
+            onChange={this.handleChangevenue}
+            x="40%"
+            y="99%"
+          >
+            {this.state.venue}
+          </ReactEditableSvgLabel>
+        </div>
         <svg width="900px" height="900px">
-          {/* <rect x="0" y="0" width="100%" height="100%" fill="#da552f" /> */}
-
           <image
             xlinkHref="https://www.pngfind.com/pngs/m/689-6897178_wedding-invitation-card-template-floral-black-and-white.png"
             x="20%"
@@ -134,27 +169,6 @@ export class ComponentToPrint extends React.PureComponent {
             </text>
           </g>
         </svg>
-
-        <br />
-        <ReactEditableSvgLabel onChange={this.handleChangeText2}>
-          {this.state.text1}
-        </ReactEditableSvgLabel>
-        <br />
-        <ReactEditableSvgLabel onChange={this.handleChangeTime} x="40%" y="99%">
-          {this.state.time}
-        </ReactEditableSvgLabel>
-        <br />
-        <ReactEditableSvgLabel onChange={this.handleChangeType} x="40%" y="99%">
-          {this.state.type}
-        </ReactEditableSvgLabel>
-        <br />
-        <ReactEditableSvgLabel
-          onChange={this.handleChangevenue}
-          x="40%"
-          y="99%"
-        >
-          {this.state.venue}
-        </ReactEditableSvgLabel>
       </div>
     );
   }

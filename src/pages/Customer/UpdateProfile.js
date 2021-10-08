@@ -142,7 +142,11 @@ function updateProfile({ userData, onEdit }) {
           </Form>
 
           <br />
-          <button type="button" onClick={() => onEdit(userInfo._id, userInfo)}>
+          <button
+            className="update-profile-btn"
+            type="button"
+            onClick={() => onEdit(userInfo._id, userInfo)}
+          >
             Update
           </button>
         </div>
