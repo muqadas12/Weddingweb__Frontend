@@ -26,7 +26,7 @@ export const fetchOrdersSaloon = () => (dispatch) => {
       `http://localhost:2000/api/saloonBooking/get-saloon-services?email=${email}`
     )
     .then((res) => {
-      const dealerSaloonOrders = res.data.data;
+      const dealerSaloonOrders = res.data.datas;
       console.log(dealerSaloonOrders);
       dispatch(fetchOrdersaloonServiceSucces(dealerSaloonOrders));
     })

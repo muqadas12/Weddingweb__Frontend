@@ -42,7 +42,6 @@ function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
     console.log('helo', e, e.functionDate._d, payload);
     addBookingSaloon(payload);
   }
-  console.log(email);
   return (
     <div>
       <Row>

@@ -23,10 +23,10 @@ export const fetchViewSallonOrder = () => (dispatch) => {
   const email = localStorage.getItem('email');
   axios
     .get(
-      `http://localhost:2000/api/saloonBooking/get-Saloonservices?email=${email}`
+      `http://localhost:2000/api/saloonBooking/get-saloon-services-customer?email=${email}`
     )
     .then((res) => {
-      const viewSaloonorder = res.data;
+      const viewSaloonorder = res.data.datas;
       console.log(res.data);
       dispatch(fetchViewSaloonSuccess(viewSaloonorder));
     })

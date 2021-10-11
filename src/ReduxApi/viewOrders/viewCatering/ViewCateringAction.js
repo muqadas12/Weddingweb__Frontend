@@ -23,10 +23,10 @@ export const fetchViewCatering = () => (dispatch) => {
   const email = localStorage.getItem('email');
   axios
     .get(
-      `http://localhost:2000/api/servicescatering/get-cateringservices?email=${email}`
+      `http://localhost:2000/api/servicescatering/get-catering-customer?email=${email}`
     )
     .then((res) => {
-      const viewCatering = res.data;
+      const viewCatering = res.data.data;
       console.log(res.data);
       dispatch(fetchViewcateringSuccess(viewCatering));
     })

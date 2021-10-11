@@ -23,7 +23,9 @@ export const fetchServices = () => {
   return (dispatch) => {
     dispatch(fetchServicesRequest());
     axios
-      .get(`http://localhost:2000/api/getdealer/get-dealers?email=${email}`)
+      .get(
+        `http://localhost:2000/api/getdealer/get-all-dealer-services?email=${email}`
+      )
       .then((res) => {
         const services = res.data;
         console.log(services);

@@ -5,7 +5,7 @@ import viewCarRentalServices from './CarRental/CarReducer';
 import viewCateringService from './Catering/CateringReducer';
 import viewphotographerServices from './Photography/PhotographyReducer';
 import dealerProfile from './ViewDealerProfile/Dealer.reducer';
-import servicesReducer from './ViewDealerServices/Service.reducer';
+import services from './ViewDealerServices/Service.reducer';
 import addservice from './addDealerServices/AddServices.reducers';
 import bookPhotographers from './PhotographerBooking/PhotoBooking.reducer';
 import bookcars from './carBooking/CarBooking.reducer';
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   viewCateringService,
   viewphotographerServices,
   dealerProfile,
-  service: servicesReducer,
+  services,
   addservice,
   bookPhotographers,
   bookcars,

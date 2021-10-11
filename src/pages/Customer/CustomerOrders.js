@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
-import { Card } from 'antd';
+import { Card, Spin, BackTop } from 'antd';
 import { useHistory } from 'react-router-dom';
+import { ToTopOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
 import order from '../../Assets/images/order.PNG';
@@ -22,7 +23,7 @@ import './CusOrder.scss';
 function CustomerOrders({
   carData,
   userData,
-  hallOrderData,
+  // hallOrderData,
   setSelectedEmail,
   fetchViewCatering,
   fetchViewCarBooking,
@@ -30,7 +31,7 @@ function CustomerOrders({
   fetchViewOrderStatus,
   fetchOrdersPhotography,
   fetchOrdersHall,
-  photographyData,
+  // photographyData,
   setSelectedPrice,
   setSelectedDealer,
 }) {
@@ -50,20 +51,20 @@ function CustomerOrders({
     setSelectedEmail();
     setSelectedDealer();
   }, []);
-  const bookHandler = (user) => {
-    setSelectedPrice(user.price);
-    setSelectedDealer(user.photographyType);
-    setSelectedEmail(user.email);
-    console.log(setSelectedEmail(user.email));
-    console.log(setSelectedDealer(user.photographyType));
-    console.log(setSelectedPrice(user.price));
+  const bookHandler = (userData) => {
+    setSelectedPrice(userData.price);
+    setSelectedDealer(userData.photographyType);
+    setSelectedEmail(userData.email);
+    console.log(setSelectedEmail(userData.email));
+    console.log(setSelectedDealer(userData.photographyType));
+    console.log(setSelectedPrice(userData.price));
 
     history.push('/customer-payment');
   };
   console.log(carData);
 
   return userData.loading ? (
-    <h2>Loading....</h2>
+    <Spin size="large" />
   ) : userData.error ? (
     <h2>{userData.error}</h2>
   ) : (
@@ -73,44 +74,23 @@ function CustomerOrders({
       <p className="customer-irder-view-heading">View Your order here!</p>
 
       <Card className="photography-order-customer-view">
-        {photographyData &&
-          photographyData.photographyOrders &&
-          photographyData.photographyOrders.map((user) => (
-            <div>
-              <p className="photography-type-order">{user.photographyType}</p>
-              <p className="photography-type-customer-select">
-                <p style={{ marginLeft: '40px' }}> {'of '}</p>
-                <br />
-                <p className="service-name-dealer-view-photo">
-                  {' '}
-                  {user.serviceName}
-                </p>
-              </p>
-
-              <p className="photography-type-customer-select-price">
-                {`at Rs ${user.price}`}
-              </p>
-              <p style={{ marginLeft: '120px' }}>
+        {orders &&
+          orders.viewOrderStatus &&
+          orders.viewOrderStatus.map((user) => (
+            <p>
+              <p className="booked-heading-customer-order">You have booked</p>
+              <p className="service-name-cus">{user.serviceName}</p>
+              <p className="order-heading-customer-order">Your order is </p>
+              <p className="acc-service-name-cus">{user.orderStatus}</p>
+              <p className="order-date-cu-order">Your order date is</p>
+              <p className="function-date-cus-order">
+                {' '}
                 {moment(user.functionDate).format('MMMM Do YYYY')}
               </p>
-              {orders &&
-                orders.viewOrderStatus &&
-                orders.viewOrderStatus.map((user) => (
-                  <p>
-                    <p>
-                      {' '}
-                      {user.orderStatus === 'Accepted' ? (
-                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
-                          {' '}
-                          Your order is{' '}
-                          <p style={{ color: 'green' }}>accepted</p>{' '}
-                        </p>
-                      ) : (
-                        'wait'
-                      )}{' '}
-                    </p>
-                  </p>
-                ))}
+
+              <p className="bill-is">Bill is</p>
+              <p className="cus-price"> {user.price}</p>
+
               <button
                 className="pay-btn-customer"
                 type="button"
@@ -118,10 +98,10 @@ function CustomerOrders({
               >
                 pay
               </button>
-            </div>
+            </p>
           ))}
       </Card>
-      <Card className="photography-order-customer-view">
+      {/* <Card className="photography-order-customer-view">
         {carData &&
           carData.viewCarBook &&
           carData.viewCarBook.map((user) => (
@@ -147,13 +127,15 @@ function CustomerOrders({
               >
                 pay
               </button>
+
               {orders &&
                 orders.viewOrderStatus &&
                 orders.viewOrderStatus.map((user) => (
                   <p>
                     <p>
                       {' '}
-                      {user.orderStatus === 'Accepted' ? (
+                      {user.orderStatus === 'Accepted' &&
+                      user.serviceName === 'Maliks Car Rentals' ? (
                         <p style={{ marginLeft: '135px', marginTop: '30px' }}>
                           {' '}
                           Your order is{' '}
@@ -212,134 +194,100 @@ function CustomerOrders({
             </div>
           ))}
       </Card>
-
-      {/* <Card className="card-view-orders">
-        <p className="Function-date-Customer-order">Service Category:</p>
-        <p
-          className="service-category-view-customer
-        "
-        >
-          {' '}
-          {userData.viewCatering.serviceCategory}
-        </p>
-        <p className="Function-date-Customer-order">Customer Email:</p>
-        <p
-          className="cus-email-view-customer
-        "
-        >
-          {' '}
-          {userData.viewCatering.email}
-        </p>
-        <p className="Function-date-Customer-order">Service Name:</p>
-        <p
-          className="service-name-view-customer
-        "
-        >
-          {' '}
-          {userData.viewCatering.serviceName}
-        </p>
-        <p className="Function-date-Customer-order">Function date:</p>
-        <p
-          className="function-date-view-customer
-        "
-        >
-          {' '}
-          {userData.viewCatering.functionDate}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Function Time:</p>
-        <p className="function-time-view-customer">
-          {' '}
-          {userData.viewCatering.functionTime}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Function Type:</p>
-        <p className="function-time-view-customer">
-          {' '}
-          {userData.viewCatering.functionType}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Number of people:</p>
-        <p className="function-NumOfPeople-view-customer">
-          {userData.viewCatering.numOfPeople}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Order Status:</p>
-        <p className="function-NumOfPeople-view-customer">
-          {orders &&
-            orders.viewOrderStatus &&
-            orders.viewOrderStatus.map((user) => (
-              <p>
-                <p>
-                  {' '}
-                  {user.orderStatus === 'Accepted' ? (
-                    <Link to="/customer-payment">
-                      <p style={{ marginLeft: '-25px' }}>
-                        {' '}
-                        Your order is <p style={{ color: 'green' }}>
-                          accepted
-                        </p>{' '}
-                        Click here to pay
-                      </p>
-                    </Link>
-                  ) : (
-                    'wait'
-                  )}{' '}
-                </p>
+      <Card className="photography-order-customer-view">
+        {userData &&
+          userData.viewCatering &&
+          userData.viewCatering.map((user) => (
+            <div>
+              <p className="hall-selected-dealer-order">
+                {'You have selected the Food of '}
               </p>
-            ))}
-        </p>
+              <p className="photography-type-order">{user.serviceName}</p>
+
+              <p className="photography-type-customer-select-price">
+                {`at Rs ${user.price}`}
+              </p>
+              <p style={{ marginLeft: '120px' }}>
+                {moment(user.functionDate).format('MMMM Do YYYY')}
+              </p>
+              <button
+                className="pay-btn-customer"
+                type="button"
+                onClick={() => bookHandler(user)}
+              >
+                pay
+              </button>
+              {orders &&
+                orders.viewOrderStatus &&
+                orders.viewOrderStatus.map((user) => (
+                  <p>
+                    <p>
+                      {' '}
+                      {user.orderStatus === 'Accepted' ? (
+                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
+                          {' '}
+                          Your order is{' '}
+                          <p style={{ color: 'green' }}>accepted</p>{' '}
+                        </p>
+                      ) : (
+                        'wait'
+                      )}{' '}
+                    </p>
+                  </p>
+                ))}
+            </div>
+          ))}
       </Card>
-      <Card className="card-view-orders">
-        <p className="Function-date-Customer-order">Service Category:</p>
-        <p
-          className="service-category-view-customer
-        "
-        >
-          {' '}
-          {saloon.viewSaloonorder.serviceCategory}
-        </p>
-        <p className="Function-date-Customer-order">Customer Email:</p>
-        <p
-          className="cus-email-view-customer
-        "
-        >
-          {' '}
-          {saloon.viewSaloonorder.email}
-        </p>
-        <p className="Function-date-Customer-order">Service Name:</p>
-        <p
-          className="service-name-view-customer
-        "
-        >
-          {' '}
-          {saloon.viewSaloonorder.serviceName}
-        </p>
-        <p className="Function-date-Customer-order">Function date:</p>
-        <p
-          className="function-date-view-customer
-        "
-        >
-          {' '}
-          {saloon.viewSaloonorder.functionDate}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Function Time:</p>
-        <p className="function-time-view-customer">
-          {' '}
-          {saloon.viewSaloonorder.functionTime}
-        </p>
-        <br />
-        <p className="Function-date-Customer-order">Makeup Type:</p>
-        <p className="function-time-view-customer">
-          {' '}
-          {saloon.viewSaloonorder.makeupType}
-        </p>
-        <br />
+
+      <Card className="photography-order-customer-view">
+        {saloon &&
+          saloon.viewSaloonorder &&
+          saloon.viewSaloonorder.map((user) => (
+            <div>
+              <p className="hall-selected-dealer-order">
+                {'You have selected the Saloon of '}
+              </p>
+              <p className="photography-type-order">{user.serviceName}</p>
+
+              <p className="photography-type-customer-select-price">
+                {`at Rs ${user.price}`}
+              </p>
+              <p style={{ marginLeft: '120px' }}>
+                {moment(user.functionDate).format('MMMM Do YYYY')}
+              </p>
+              <button
+                className="pay-btn-customer"
+                type="button"
+                onClick={() => bookHandler(user)}
+              >
+                pay
+              </button>
+              {orders &&
+                orders.viewOrderStatus &&
+                orders.viewOrderStatus.map((user) => (
+                  <p>
+                    <p>
+                      {' '}
+                      {user.orderStatus === 'Accepted' ? (
+                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
+                          {' '}
+                          Your order is{' '}
+                          <p style={{ color: 'green' }}>accepted</p>{' '}
+                        </p>
+                      ) : (
+                        'wait'
+                      )}{' '}
+                    </p>
+                  </p>
+                ))}
+            </div>
+          ))}
       </Card> */}
-      {/* {photography &&
-        photography.photographyOrders &&
-        photography.photographyOrders.map((user) => <p>{user.serviceName}</p>)} */}
+      <BackTop>
+        <div>
+          <ToTopOutlined className="icons" />
+        </div>
+      </BackTop>
     </div>
   );
 }
