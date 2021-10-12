@@ -51,6 +51,18 @@ function CustomerOrders({
     setSelectedEmail();
     setSelectedDealer();
   }, []);
+  // const bookHandler = useMemo((userData) => {
+  //   console.log('UseMemo longestWord');
+  //   setSelectedPrice(userData.price);
+  //   setSelectedDealer(userData.photographyType);
+  //   setSelectedEmail(userData.email);
+  //   console.log(setSelectedEmail(userData.email));
+  //   console.log(setSelectedDealer(userData.photographyType));
+  //   console.log(setSelectedPrice(userData.price));
+
+  //   history.push('/customer-payment');
+  // }, []);
+  // console.log(carData);
   const bookHandler = (userData) => {
     setSelectedPrice(userData.price);
     setSelectedDealer(userData.photographyType);

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable import/no-mutable-exports */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
@@ -27,9 +27,7 @@ function CarRental({
   const dispatch = useDispatch();
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
-  const [car, setBookcar] = useState(false);
-
-  const bookHandler = (user) => {
+  const bookHandler = useCallback((user) => {
     if (localStorage.getItem('token')) {
       setSelectedDealer(user.serviceName);
       setSelectedPrice(user.price);
@@ -40,7 +38,21 @@ function CarRental({
       dispatch(myCategory('booked-car'));
       history.push('/sign-in');
     }
-  };
+  }, []);
+
+  // const [car, setBookcar] = useState(false);
+  // const bookHandler = (user) => {
+  //   if (localStorage.getItem('token')) {
+  //     setSelectedDealer(user.serviceName);
+  //     setSelectedPrice(user.price);
+  //     setSelectedEmail(user.email);
+
+  //     history.push('/car-booking');
+  //   } else {
+  //     dispatch(myCategory('booked-car'));
+  //     history.push('/sign-in');
+  //   }
+  // };
   useEffect(() => {
     fetchCarRental();
   }, []);

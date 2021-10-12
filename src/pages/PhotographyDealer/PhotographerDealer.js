@@ -18,11 +18,10 @@ function PhotographerDealer({
   fetchPhotos,
   setSelectedDealer,
   setSelectedPrice,
-  setSelectedEmail,
+  // setSelectedEmail,
 }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(history);
   useEffect(() => {
     fetchPhotos();
   }, []);
@@ -30,10 +29,6 @@ function PhotographerDealer({
     if (localStorage.getItem('token')) {
       setSelectedDealer(user.serviceName);
       setSelectedPrice(user.price);
-      console.log(setSelectedDealer(user.serviceName));
-      console.log(setSelectedEmail(user.email));
-
-      console.log(setSelectedPrice(user.price));
 
       history.push(`/booking-photographer?name=${user.serviceName}`);
     } else {

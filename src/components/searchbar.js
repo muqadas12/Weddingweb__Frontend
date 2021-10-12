@@ -9,7 +9,6 @@ const Searchbar = () => {
 
   const onSubmitSearch = () => {
     if (state) {
-      console.log(state);
       location.push(`/${state}`);
     }
   };

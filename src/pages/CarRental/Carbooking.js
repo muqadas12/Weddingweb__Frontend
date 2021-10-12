@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, connect } from 'react-redux';
-import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
+import { Card, DatePicker, Input, Form, Select, Button, Row, Col } from 'antd';
 import carBooking from '../../Assets/images/carBooking.jpg';
 import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
+
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 
 import './Carbooking.scss';
@@ -12,6 +13,7 @@ const { Option } = Select;
 function Carbooking({ fetchAllDealers, dealer, price, email }) {
   const dispatch = useDispatch();
   const numOfPeople = useRef(null);
+
   const [] = useState({
     functionDate: '',
     functionType: '',
@@ -26,6 +28,8 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
   });
   useEffect(() => {
     fetchAllDealers();
+    numOfPeople.current.focus();
+    // numOfPeople.current.style.color = 'red';
   }, []);
   function addCarRental(payload) {
     dispatch(fetchbookCar(payload));
@@ -45,10 +49,10 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
       email: localStorage.getItem('email'),
     };
     // numOfPeople.current.focus();
-    numOfPeople.current.style.color = 'red';
+    // numOfPeople.current.style.color = 'red';
     addCarRental(payload);
   }
-  console.log(dealer, 'hi', price);
+  // console.log(dealer, 'hi', price);
   return (
     <div>
       <Row>
@@ -108,9 +112,8 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
                 name="numOfPeople"
                 className="date-picker-booking-car"
               >
-                <input style={{ marginTop: '-15px' }} ref={numOfPeople} />
+                <Input style={{ marginTop: '-15px' }} ref={numOfPeople} />
               </Form.Item>
-
               <Button htmlType="submit" className="book-now-button-food">
                 Book Now
               </Button>

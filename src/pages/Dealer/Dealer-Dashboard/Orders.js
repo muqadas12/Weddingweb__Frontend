@@ -25,7 +25,6 @@ function Orders({
   cardealer,
 }) {
   // eslint-disable-next-line no-unused-vars
-  console.log(userData.serviceName);
   // const saloonSer = useSelector((state) => state.viewDealerSaloonOrder);
   const dispatch = useDispatch();
   const [] = useState({
@@ -57,12 +56,12 @@ function Orders({
 
   const orderHandler = (userEmail, serviceName, price, functionDate) => {
     // console.log(e.orderStatus, 'im status');
-    console.log(userEmail, 'im email');
-    console.log(serviceName, 'im service');
-    console.log(price, 'im price');
-    console.log(functionDate, 'im functionDate');
+    // console.log(userEmail, 'im email');
+    // console.log(serviceName, 'im service');
+    // console.log(price, 'im price');
+    // console.log(functionDate, 'im functionDate');
 
-    console.log(status, 'im status');
+    // console.log(status, 'im status');
     const payload = {
       // orderStatus: e.orderStatus,
       orderStatus: status,

@@ -1,11 +1,30 @@
 import React from 'react';
+import useRandomColor from '../../components/Hooks/useRandomColor';
+
 import aboutUsImg from '../../Assets/images/about.png';
 import './About.scss';
 
 function About() {
+  const { color, chnageColor } = useRandomColor();
+
   return (
-    <div>
+    <div
+      style={{ width: '205vh', height: '100vh', backgroundColor: `#${color}` }}
+    >
       <img className="about-us-img" src={aboutUsImg} alt="aboutus" />
+      <button
+        style={{
+          border: 'none',
+          backgroundColor: 'black',
+          color: 'white',
+          marginLeft: '170px',
+          onHover: 'çursor',
+        }}
+        type="button"
+        onClick={chnageColor}
+      >
+        Change Theme
+      </button>
       <p className="first-heading-about-us">Welcome to Wanclouds Weds</p>
       <p className="second-heading-about-us">
         We are glad and greatful that you are here

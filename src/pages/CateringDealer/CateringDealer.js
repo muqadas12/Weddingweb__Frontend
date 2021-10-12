@@ -33,9 +33,9 @@ function CateringDealer({
       setSelectedEmail(user.email);
       setSelectedDealer(user.serviceName);
       setSelectedPrice(user.price);
-      console.log(setSelectedDealer(user.serviceName));
-      console.log(setSelectedPrice(user.price));
-      console.log(setSelectedEmail(user.email));
+      // console.log(setSelectedDealer(user.serviceName));
+      // console.log(setSelectedPrice(user.price));
+      // console.log(setSelectedEmail(user.email));
       history.push('/book-catering');
     } else {
       dispatch(myCategory('booked-catering'));
