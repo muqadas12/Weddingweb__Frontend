@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable */
 import React, { useState } from 'react';
 
 function useHover() {
   const [hovering, setHovering] = useState(false);
   const onMouseOver = () => {
-    console.log('hovering');
+    // console.log('hovering');
   };
   const onMouseLeave = () => {
     console.log('not hover');

@@ -1,6 +1,121 @@
+.photography-type {
+  margin-left: 710px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.photography-types-order-dealer {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 700px;
+  font-weight: bold;
+}
+
+.of-photography {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 40px;
+}
+
+.photography-type-order-dealer-price-photographer {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 730px;
+}
+
+.photography-type-order-dealer-email {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 680px;
+}
+
+.order-status-dropdown-dealer-photographers {
+  font-family: "Times New Roman", Times, serif;
+  width: 300px;
+  margin-left: 670px;
+}
+
+.service-name-dealer-view-photography {
+  font-family: "Times New Roman", Times, serif;
+  margin-top: -20px;
+  margin-left: -10px;
+}
+
+.hall-type-order-dealer {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 700px;
+}
+
+.hall-type-order-dealer-price {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 730px;
+}
+
+.function-servicename-catering-of-order-by-customer {
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.order-status-dropdown-dealer-catering {
+  margin-left: 120px;
+}
+
+.hall-heading {
+  margin-left: 50px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.hall-type-order-dealer-email {
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 710px;
+}
+
+.order-status-dropdown-dealer-hall {
+  margin-left: 700px;
+}
+
+.photography-type-order-dealer {
+  margin-left: 710px;
+  font-family: cursive;
+}
+
+.order-status-dropdown-dealer-photographer {
+  margin-left: 700px;
+  width: 180px;
+  font-family: cursive;
+}
+
+.assign-status-order-btn-dealer-orders {
+  margin-left: 740px;
+}
+
+.photography-type-order-dealer-price {
+  margin-left: 740px;
+  font-family: cursive;
+}
+
 .card-view-order-of-customer {
   margin-left: 550px;
   margin-top: 50px;
+  width: 420px;
+  height: 600px;
+  text-align: center;
+}
+
+.order-status-dropdown-catering-dealer {
+  width: 300px;
+  margin-left: 120px;
+  margin-top: 20px;
+}
+
+.card-view-order-of-customer-catering-dealer {
+  margin-left: 550px;
+  margin-top: -390px;
+  width: 420px;
+  height: 600px;
+  text-align: center;
+}
+
+.card-view-order-of-customer-saloon {
+  margin-left: 550px;
+  margin-top: -370px;
   width: 420px;
   height: 600px;
   text-align: center;
@@ -19,6 +134,16 @@
 .customer-order-email {
   font-weight: bold;
   margin-left: 120px;
+}
+
+.customer-order-email-car {
+  font-weight: bold;
+  margin-left: 150px;
+}
+
+.carType-type-order-dealer {
+  margin-left: 180px;
+  margin-top: -40px;
 }
 
 .view-customer-order-heading {
@@ -58,4 +183,25 @@
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+}
+
+.service-name-dealer-view {
+  margin-left: 25px;
+}
+
+.car-type-customer-select-price {
+  margin-left: 170px;
+}
+
+.order-status-dropdown-dealer-car-rent {
+  width: 300px;
+  margin-left: 70px;
+}
+
+.assign-status-order-btn-dealer-orders-carrent {
+  margin-left: 160px;
+}
+
+.makeUpType-type-order-dealer {
+  margin-left: 150px;
 }/*# sourceMappingURL=Order.css.map */

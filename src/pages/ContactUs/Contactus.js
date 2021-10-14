@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, Form, Input, Modal } from 'antd';
 import { UserOutlined, MailOutlined, MessageOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import './Contactus.scss';
 import contactUs from '../../Assets/images/contactUs.jpg';
 
 function Contactus() {
+  const nameRef = useRef(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fields, handleFieldChange] = useFields({
     name: '',
@@ -45,10 +46,12 @@ function Contactus() {
       email: e.email,
       msg: e.message,
     };
-
     axios.post('http://localhost:2000/api/email/mail', dataSubmit);
+    // nameRef.current.focus();
   };
-
+  React.useEffect(() => {
+    nameRef.current.focus();
+  }, []);
   return (
     <div>
       <img src={contactUs} alt="contactUs" className="contactus-img" />
@@ -65,9 +68,11 @@ function Contactus() {
           <Form.Item name="name">
             <Input
               name="name"
+              id="name"
               value={fields.name}
               className="inputs-form"
               onChange={() => handleFieldChange}
+              ref={nameRef}
             />
           </Form.Item>
           <MailOutlined className="icons" />

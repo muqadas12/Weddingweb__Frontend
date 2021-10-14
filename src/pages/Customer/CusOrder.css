@@ -7,8 +7,21 @@
   justify-content: space-between;
 }
 
+.service-name-dealer-view-car {
+  margin-left: -5px;
+}
+
 .service-category-view-customer {
   margin-left: 150px;
+}
+
+.hall-selected-dealer-order {
+  margin-left: 90px;
+}
+
+.service-name-dealer-view-photo {
+  margin-left: -10px;
+  margin-top: -20px;
 }
 
 .cus-email-view-customer {
@@ -16,7 +29,7 @@
 }
 
 .pay-btn-customer {
-  margin-left: 130px;
+  margin-left: 150px;
   width: 90px;
   color: black;
   background-color: #f7b946;
@@ -27,7 +40,7 @@
 
 .photography-order-customer-view {
   width: 450px;
-  height: 300px;
+  height: 1700px;
   margin-left: 580px;
   margin-top: 30px;
   display: flex;
@@ -103,5 +116,41 @@
 .customer-irder-view-heading {
   margin-left: 720px;
   font-family: cursive;
+  font-weight: bold;
+}
+
+.booked-heading-customer-order {
+  margin-left: 150px;
+}
+
+.service-name-cus {
+  margin-left: 150px;
+  font-weight: bold;
+}
+
+.order-heading-customer-order {
+  margin-left: 165px;
+}
+
+.acc-service-name-cus {
+  margin-left: 170px;
+  font-weight: bold;
+}
+
+.order-date-cu-order {
+  margin-left: 150px;
+}
+
+.function-date-cus-order {
+  margin-left: 140px;
+  font-weight: bold;
+}
+
+.bill-is {
+  margin-left: 170px;
+}
+
+.cus-price {
+  margin-left: 167px;
   font-weight: bold;
 }/*# sourceMappingURL=CusOrder.css.map */

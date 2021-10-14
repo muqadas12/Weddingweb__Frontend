@@ -3,27 +3,31 @@
 }
 
 .first-heading-about-us {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
 }
+
 .second-heading-about-us {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
   font-weight: bold;
   font-size: 17px;
 }
+
 .description-about-us {
   text-align: center;
 }
+
 .btn-color-change {
-  border: 'none';
-  background-color: 'black';
-  color: 'white';
-  margin-left: '170px';
+  border: "none";
+  background-color: "black";
+  color: "white";
+  margin-left: "170px";
 }
+
 .bgg {
-  width: '205vh';
-  height: '200vh';
-}
+  width: "205vh";
+  height: "200vh";
+}/*# sourceMappingURL=About.css.map */

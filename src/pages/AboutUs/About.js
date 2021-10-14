@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import useRandomColor from '../../components/Hooks/useRandomColor';
 
@@ -9,20 +10,11 @@ function About() {
 
   return (
     <div
+      className="bgg"
       style={{ width: '205vh', height: '100vh', backgroundColor: `#${color}` }}
     >
       <img className="about-us-img" src={aboutUsImg} alt="aboutus" />
-      <button
-        style={{
-          border: 'none',
-          backgroundColor: 'black',
-          color: 'white',
-          marginLeft: '170px',
-          onHover: 'çursor',
-        }}
-        type="button"
-        onClick={chnageColor}
-      >
+      <button className="btn-color-change" type="button" onClick={chnageColor}>
         Change Theme
       </button>
       <p className="first-heading-about-us">Welcome to Wanclouds Weds</p>

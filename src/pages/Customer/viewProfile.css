@@ -10,6 +10,18 @@
   font-size: 30px;
 }
 
+.update-profile-btn {
+  background-color: #b3b3eb;
+  border-color: #b3b3eb;
+  color: black;
+}
+
+.del-profile-btn {
+  background-color: #f55454;
+  border-color: #f55454;
+  color: black;
+}
+
 .user-customer-profile-info {
   font-family: cursive;
   text-align: center;

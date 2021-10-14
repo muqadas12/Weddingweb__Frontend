@@ -6,6 +6,7 @@ import carBooking from '../../Assets/images/carBooking.jpg';
 import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
 
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
+// import useFields from '../../components/Hooks/useFields';
 
 import './Carbooking.scss';
 
@@ -29,6 +30,8 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
   useEffect(() => {
     fetchAllDealers();
     numOfPeople.current.focus();
+    // numOfPeople.current.value=""
+
     // numOfPeople.current.style.color = 'red';
   }, []);
   function addCarRental(payload) {
@@ -52,6 +55,7 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
     // numOfPeople.current.style.color = 'red';
     addCarRental(payload);
   }
+
   // console.log(dealer, 'hi', price);
   return (
     <div>
