@@ -12,9 +12,10 @@ import {
 export const fetchHallSerach = () => (dispatch) => {
   dispatch(fetchHallSerachRequest());
   axios
-    .get('http://localhost:2000/api/hall/getHall')
+    .get('http://localhost:2000/api/gethall/get-hall-ser')
+
     .then((res) => {
-      const hallSearch = res.data.dataH;
+      const hallSearch = res.data;
       dispatch(fetchHallSerachSuccess(hallSearch));
     })
     .catch((err) => {
