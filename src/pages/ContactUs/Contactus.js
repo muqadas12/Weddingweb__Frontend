@@ -32,7 +32,10 @@ function Contactus() {
       email: e.email,
       msg: e.message,
     };
-    axios.post('http://localhost:2000/api/email/mail', dataSubmit);
+    axios.post(
+      'https://wedding-web-app.herokuapp.com/api/email/mail',
+      dataSubmit
+    );
   };
   React.useEffect(() => {
     nameRef.current.focus();
