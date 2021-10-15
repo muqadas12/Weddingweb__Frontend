@@ -22,13 +22,7 @@ function ArrestWarrant() {
 export class Parent extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChangeText = this.handleChangeText.bind(this);
-    this.handleChangeText2 = this.handleChangeText2.bind(this);
-    this.handleChangeTime = this.handleChangeTime.bind(this);
-    this.handleChangeType = this.handleChangeType.bind(this);
-    this.handleChangegender = this.handleChangegender.bind(this);
-    this.handleChangevenue = this.handleChangevenue.bind(this);
-    this.setSelectedImg = this.setSelectedImg.bind(this);
+
     this.state = {
       bride: 'Maryum',
       groom: 'Hassan',
@@ -36,49 +30,44 @@ export class Parent extends React.Component {
       type: 'Nikah',
       gender: 'Son',
       venue: 'Sarena Hotel',
+      img: 'https://cutcraftdiy.com/wp-content/uploads/2020/07/Wedding-Monogram-SVG.jpg',
     };
   }
 
-  handleChangeText(newText) {
+  handleChangeText = (newText) => {
     this.setState({
       bride: newText,
     });
-  }
-  handleChangeText(newText) {
+  };
+  handleChangeText2 = (newText) => {
     this.setState({
       groom: newText,
     });
-  }
+  };
 
-  handleChangeTime(newText) {
+  handleChangeTime = (newText) => {
     this.setState({
       time: newText,
     });
-  }
+  };
 
-  handleChangeType(newText) {
+  handleChangeType = (newText) => {
     this.setState({
       type: newText,
     });
-  }
+  };
 
-  handleChangegender(newText2) {
+  handleChangegender = (newText2) => {
     this.setState({
       gender: newText2,
     });
-  }
+  };
 
-  handleChangevenue(newText2) {
+  handleChangevenue = (newText2) => {
     this.setState({
       venue: newText2,
     });
-  }
-
-  handleChangeText2(newText2) {
-    this.setState({
-      text1: newText2,
-    });
-  }
+  };
 
   render() {
     return (
@@ -133,7 +122,7 @@ export class Parent extends React.Component {
           </span>
           <br />
           <br />
-          <p className="bride-name-card">Venue</p>
+          <p className="bride-name-card ">Venue</p>
           <span className="venue-on-card">
             <ReactEditableSvgLabel
               onChange={this.handleChangevenue}
@@ -151,6 +140,7 @@ export class Parent extends React.Component {
           type={this.state.type}
           gender={this.state.gender}
           venue={this.state.venue}
+          img={this.state.img}
         />
       </div>
     );

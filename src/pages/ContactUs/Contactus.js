@@ -14,9 +14,7 @@ function Contactus() {
     email: '',
     msg: '',
   });
-  // const [name, setname] = useState(' ');
-  // const [email, setemail] = useState(' ');
-  // const [msg, setmsg] = useState(' ');
+
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -27,18 +25,6 @@ function Contactus() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-
-  //   if (e.target.id === name) {
-  //     setname(e.target.value);
-  //   }
-  //   if (e.target.id === email) {
-  //     setemail(e.target.value);
-  //   } else {
-  //     setmsg(e.target.value);
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     const dataSubmit = {
@@ -47,7 +33,6 @@ function Contactus() {
       msg: e.message,
     };
     axios.post('http://localhost:2000/api/email/mail', dataSubmit);
-    // nameRef.current.focus();
   };
   React.useEffect(() => {
     nameRef.current.focus();
@@ -55,7 +40,7 @@ function Contactus() {
   return (
     <div>
       <img src={contactUs} alt="contactUs" className="contactus-img" />
-      <p className="contact-query">
+      <p className="contact-query" data-testid="contact-para">
         How can i help?
         <br /> PLease fill the form for any query.
         <br />

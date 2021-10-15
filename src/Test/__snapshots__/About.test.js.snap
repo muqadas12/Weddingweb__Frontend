@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing about us page abut 1`] = `
+<div
+  className="bgg"
+  style={
+    Object {
+      "backgroundColor": "#undefined",
+      "height": "100vh",
+      "width": "205vh",
+    }
+  }
+>
+  <img
+    alt="aboutus"
+    className="about-us-img"
+    src="about.png"
+  />
+  <button
+    className="btn-color-change"
+    onClick={[Function]}
+    type="button"
+  >
+    Change Theme
+  </button>
+  <p
+    className="first-heading-about-us"
+  >
+    Welcome to Wanclouds Weds
+  </p>
+  <p
+    className="second-heading-about-us"
+  >
+    We are glad and greatful that you are here
+  </p>
+  <p
+    className="description-about-us"
+  >
+    Wanclouds weds is platform that allow you to make your dreams true of a perfect wedding.
+  </p>
+  <p
+    className="description-about-us"
+  >
+    It help you providing the facility to book wedding hall,Car rental, Catering, Saloon and Photography.We deal with best dealers to provide you quality based services
+  </p>
+</div>
+`;
