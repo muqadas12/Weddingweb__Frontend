@@ -23,7 +23,7 @@ export const fetchOrdersHall = () => (dispatch) => {
   dispatch(fetchOrderhallServiceRequest());
   axios
     .get(
-      `http://localhost:2000/api/bookedhall/get-booking-hall-customer-order?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/bookedhall/get-booking-hall-customer-order?email=${email}`
     )
     .then((res) => {
       const dealerHallOrders = res.data.data;
@@ -39,7 +39,7 @@ export const fetchOrdersDealerHall = () => (dispatch) => {
   dispatch(fetchOrderhallServiceRequest());
   axios
     .get(
-      `http://localhost:2000/api/bookedhall//get-hall-orders-dealers?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/bookedhall//get-hall-orders-dealers?email=${email}`
     )
     .then((res) => {
       const dealerHallOrders = res.data.data;

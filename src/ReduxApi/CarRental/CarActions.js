@@ -36,7 +36,7 @@ export const setSelectedEmail = (email) => ({
 export const fetchCarRental = () => (dispatch) => {
   dispatch(fetchCarrequest());
   axios
-    .get('http://localhost:2000/api/cars/get-cars')
+    .get('https://wedding-web-app.herokuapp.com/api/cars/get-cars')
     .then((res) => {
       const carrent = res.data.dataCar;
       dispatch(fetchCarsuccess(carrent));

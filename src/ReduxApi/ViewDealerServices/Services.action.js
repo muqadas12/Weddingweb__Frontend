@@ -24,7 +24,7 @@ export const fetchServices = () => {
     dispatch(fetchServicesRequest());
     axios
       .get(
-        `http://localhost:2000/api/getdealer/get-all-dealer-services?email=${email}`
+        `https://wedding-web-app.herokuapp.com/api/getdealer/get-all-dealer-services?email=${email}`
       )
       .then((res) => {
         const services = res.data;

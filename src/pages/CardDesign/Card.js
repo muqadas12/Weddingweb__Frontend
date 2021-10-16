@@ -1,4 +1,5 @@
 import React from 'react';
+import card from '../../Assets/images/c.svg';
 // import cardWed from '../../Assets/images/cardWed.svg';
 
 function Card(props) {
@@ -7,7 +8,7 @@ function Card(props) {
       <svg width="990px" height="900px">
         <image
           // xlinkHref={cardWed}
-          xlinkHref={props.img}
+          xlinkHref={card}
           // xlinkHref="https://www.pngfind.com/pngs/m/689-6897178_wedding-invitation-card-template-floral-black-and-white.png"
           x="50%"
           y="10%"

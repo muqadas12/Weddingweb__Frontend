@@ -25,7 +25,7 @@ function ViewProfile({ userData, fetchDealers, onDelete }) {
   const displayInfo = () => {
     console.log(localStorage.getItem('email'), ' email from display');
     axios
-      .post('http://localhost:2000/api/users/dashboard', {
+      .post('https://wedding-web-app.herokuapp.com/api/users/dashboard', {
         email: localStorage.getItem('email'),
       })
       .then((res) => {

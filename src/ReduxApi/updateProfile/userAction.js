@@ -64,7 +64,7 @@ export const deleteUserFailure = (err) => ({
 export const deleteDealer = (_id) => (dispatch) => {
   dispatch(deleteUserRequest());
   axios
-    .delete(`http://localhost:2000/api/delUser/delete/${_id}`)
+    .delete(`https://wedding-web-app.herokuapp.com/api/delUser/delete/${_id}`)
     .then((response) => {
       // response.data is the users
       const delusers = response.data;

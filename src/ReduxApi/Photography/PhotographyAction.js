@@ -36,7 +36,7 @@ export const setSelectedPrice = (price) => ({
 export const fetchPhotos = () => (dispatch) => {
   dispatch(fetchPhotoRequest());
   axios
-    .get('http://localhost:2000/api/photos/get-photo')
+    .get('https://wedding-web-app.herokuapp.com/api/photos/get-photo')
     .then((response) => {
       // response.data is the users
       const photos = response.data;

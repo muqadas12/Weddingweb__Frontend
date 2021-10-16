@@ -36,7 +36,7 @@ export const fetchOrdersPhotography = () => (dispatch) => {
   dispatch(photographyOrderRequest());
   axios
     .get(
-      `http://localhost:2000/api/bookingPhoto/get-photography-orders?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/bookingPhoto/get-photography-orders?email=${email}`
     )
     .then((res) => {
       const photographyOrders = res.data.data;

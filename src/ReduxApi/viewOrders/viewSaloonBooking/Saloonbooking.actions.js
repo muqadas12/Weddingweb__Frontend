@@ -23,7 +23,7 @@ export const fetchViewSallonOrder = () => (dispatch) => {
   const email = localStorage.getItem('email');
   axios
     .get(
-      `http://localhost:2000/api/saloonBooking/get-saloon-services-customer?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/saloonBooking/get-saloon-services-customer?email=${email}`
     )
     .then((res) => {
       const viewSaloonorder = res.data.datas;

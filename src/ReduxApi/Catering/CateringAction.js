@@ -36,7 +36,7 @@ export const fetchCatering = () => (dispatch) => {
   dispatch(fetchcateringrequest());
 
   axios
-    .get('http://localhost:2000/api/catering/get-catering')
+    .get('https://wedding-web-app.herokuapp.com/api/catering/get-catering')
     .then((res) => {
       const cateringser = res.data;
       dispatch(fetchcateringSuccess(cateringser));

@@ -21,7 +21,9 @@ export const fetchDeleteDealersFailure = (error) => ({
 export const fetchdelDealers = (_id) => (dispatch) => {
   dispatch(fetchDeleteDealersRequest());
   axios
-    .delete(`http://localhost:2000/api/del-dealers-services/delete/${_id}`)
+    .delete(
+      `https://wedding-web-app.herokuapp.com/api/del-dealers-services/delete/${_id}`
+    )
     .then((res) => {
       const delDealers = res.data;
       console.log(delDealers);

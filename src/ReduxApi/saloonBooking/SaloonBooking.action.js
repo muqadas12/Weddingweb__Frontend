@@ -27,7 +27,10 @@ export const setSelectedEmail = (email) => ({
 export const fetchSaloon = (payload) => (dispatch) => {
   dispatch(fetchBookSaloonRequest());
   axios
-    .post('http://localhost:2000/api/saloonBooking/saloon', payload)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/saloonBooking/saloon',
+      payload
+    )
     .then((res) => {
       const bookSaloon = res.data;
       console.log(bookSaloon, 'hiii');

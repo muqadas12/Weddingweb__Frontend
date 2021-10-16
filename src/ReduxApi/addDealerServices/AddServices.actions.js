@@ -22,7 +22,10 @@ export const fetchAddServicesFailure = (error) => ({
 export const fetchAddServices = (formData) => (dispatch) => {
   dispatch(fetchAddServicesRequest());
   axios
-    .post('http://localhost:2000/api/postdealer/post-dealers', formData)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/postdealer/post-dealers',
+      formData
+    )
     .then((res) => {
       const addservices = res.data;
       console.log(addservices, 'hiii');

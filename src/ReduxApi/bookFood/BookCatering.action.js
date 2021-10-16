@@ -23,7 +23,10 @@ export const fetchBookFoodFailure = (error) => ({
 export const fetchFoodServices = (payload) => (dispatch) => {
   dispatch(fetchBookFoodRequest());
   axios
-    .post('http://localhost:2000/api/cateringfood/booking', payload)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/cateringfood/booking',
+      payload
+    )
     .then((res) => {
       const bookFood = res.data;
       console.log(bookFood, 'hiii');

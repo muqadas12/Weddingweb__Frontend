@@ -13,7 +13,7 @@ import Loginimg from '../../Assets/images/cardlogin.jpg';
 
 function SignIn() {
   const history = useHistory();
-  const url = 'http://localhost:2000/api/users/login';
+  const url = 'https://wedding-web-app.herokuapp.com/api/users/login';
   const categoryType = useSelector((state) => state.countReducers.cat);
 
   console.log(categoryType, ' catType from signin');

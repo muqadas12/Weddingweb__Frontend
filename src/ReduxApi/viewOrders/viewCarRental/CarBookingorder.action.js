@@ -23,7 +23,7 @@ export const fetchViewCarBooking = () => (dispatch) => {
   const email = localStorage.getItem('email');
   axios
     .get(
-      `http://localhost:2000/api/carBooking/view-car-rental-orders?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/carBooking/view-car-rental-orders?email=${email}`
     )
     .then((res) => {
       const viewCarBook = res.data.data;

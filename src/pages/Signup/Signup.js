@@ -12,7 +12,7 @@ import cardImgOne from '../../Assets/images/cardImgone.jpg';
 function Signup() {
   const history = useHistory();
 
-  const url = 'http://localhost:2000/api/users/signup';
+  const url = 'https://wedding-web-app.herokuapp.com/api/users/signup';
   const [data, setData] = useState({
     name: '',
     email: '',

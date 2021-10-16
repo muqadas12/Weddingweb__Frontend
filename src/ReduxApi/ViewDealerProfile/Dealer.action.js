@@ -20,7 +20,7 @@ export const fetchDealerFailure = (error) => ({
 export const fetchDealers = () => (dispatch) => {
   dispatch(fetchDealerRequest());
   axios
-    .get('http://localhost:2000/api/users/gettingDealers')
+    .get('https://wedding-web-app.herokuapp.com/api/users/gettingDealers')
     .then((res) => {
       const dealers = res.data.dataL;
       dispatch(fetchDealerSucces(dealers));

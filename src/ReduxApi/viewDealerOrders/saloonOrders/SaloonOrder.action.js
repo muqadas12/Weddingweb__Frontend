@@ -23,7 +23,7 @@ export const fetchOrdersSaloon = () => (dispatch) => {
   dispatch(fetchOrdersaloonServiceRequest());
   axios
     .get(
-      `http://localhost:2000/api/saloonBooking/get-saloon-services?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/saloonBooking/get-saloon-services?email=${email}`
     )
     .then((res) => {
       const dealerSaloonOrders = res.data.datas;

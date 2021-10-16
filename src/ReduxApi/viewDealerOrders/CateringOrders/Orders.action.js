@@ -23,7 +23,7 @@ export const fetchOrders = () => (dispatch) => {
   dispatch(fetchOrderRequest());
   axios
     .get(
-      `http://localhost:2000/api/servicescatering/get-catering?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/servicescatering/get-catering?email=${email}`
     )
     .then((res) => {
       const orders = res.data.data;

@@ -54,7 +54,7 @@ export const fetchViewOrderStatus = (data) => (dispatch) => {
   dispatch(fetchViewOrderStatusRequest());
   axios
     .get(
-      `http://localhost:2000/api/orderstatus/get-order-status?email=${userEmail}`,
+      `https://wedding-web-app.herokuapp.com/api/orderstatus/get-order-status?email=${userEmail}`,
       data
     )
     .then((res) => {

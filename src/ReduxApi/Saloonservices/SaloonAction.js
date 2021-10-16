@@ -12,7 +12,7 @@ import {
 export const fetchServices = () => (dispatch) => {
   dispatch(fetchsaloonServiceRequest());
   axios
-    .get('http://localhost:2000/api/saloon/get-saloon-services')
+    .get('https://wedding-web-app.herokuapp.com/api/saloon/get-saloon-services')
     .then((res) => {
       const saloonser = res.data.dataSaloon;
       dispatch(fetchsaloonServiceSuccess(saloonser));

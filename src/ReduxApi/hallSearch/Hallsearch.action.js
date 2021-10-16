@@ -12,7 +12,8 @@ import {
 export const fetchHallSerach = () => (dispatch) => {
   dispatch(fetchHallSerachRequest());
   axios
-    .get('http://localhost:2000/api/gethall/get-hall-ser')
+
+    .get('https://wedding-web-app.herokuapp.com/api/gethall/get-hall-ser')
 
     .then((res) => {
       const hallSearch = res.data;

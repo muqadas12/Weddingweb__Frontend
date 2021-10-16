@@ -22,7 +22,10 @@ export const fetchhallFailure = (err) => ({
 export const fetchbookingHallServices = (payload) => (dispatch) => {
   dispatch(fetchHallrequest());
   axios
-    .post('http://localhost:2000/api/bookedhall/booking-hall', payload)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/bookedhall/booking-hall',
+      payload
+    )
     .then((res) => {
       const hallBooking = res.data;
       console.log(hallBooking, 'hiii');

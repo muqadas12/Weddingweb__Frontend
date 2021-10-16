@@ -23,7 +23,10 @@ export const fetchBookPhotographerFailure = (error) => ({
 export const fetchPhoto = (data) => (dispatch) => {
   dispatch(fetchBookPhotographerRequest());
   axios
-    .post('http://localhost:2000/api/bookingPhoto/booking', data)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/bookingPhoto/booking',
+      data
+    )
     .then((res) => {
       const bookPhotographer = res.data;
       alert('Photographer booked successfully');

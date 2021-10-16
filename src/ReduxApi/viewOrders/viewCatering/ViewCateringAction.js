@@ -23,7 +23,7 @@ export const fetchViewCatering = () => (dispatch) => {
   const email = localStorage.getItem('email');
   axios
     .get(
-      `http://localhost:2000/api/servicescatering/get-catering-customer?email=${email}`
+      `https://wedding-web-app.herokuapp.com/api/servicescatering/get-catering-customer?email=${email}`
     )
     .then((res) => {
       const viewCatering = res.data.data;

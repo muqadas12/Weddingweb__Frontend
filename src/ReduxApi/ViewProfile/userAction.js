@@ -21,7 +21,7 @@ export const fetchUsersFailure = (error) => ({
 export const fetchUsers = () => (dispatch) => {
   dispatch(fetchUsersRequest());
   axios
-    .get('http://localhost:2000/api/users/gettingusers')
+    .get('https://wedding-web-app.herokuapp.com/api/users/gettingusers')
     .then((response) => {
       // response.data is the users
       const users = response.data.dataL;

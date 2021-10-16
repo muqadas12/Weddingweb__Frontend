@@ -21,7 +21,9 @@ export const fetchallDealersFailure = (error) => ({
 export const fetchAllDealers = () => (dispatch) => {
   dispatch(fetchallDealersRequest());
   axios
-    .get('http://localhost:2000/api/getAlldealer/get-all-dealer-services')
+    .get(
+      'https://wedding-web-app.herokuapp.com/api/getAlldealer/get-all-dealer-services'
+    )
     .then((res) => {
       const viewDealers = res.data;
       console.log(viewDealers);

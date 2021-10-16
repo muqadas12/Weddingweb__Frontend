@@ -21,7 +21,10 @@ export const fetchBookCarFailure = (error) => ({
 export const fetchbookCar = (payload) => (dispatch) => {
   dispatch(fetchBookCarRequest());
   axios
-    .post('http://localhost:2000/api/carBooking//carRental', payload)
+    .post(
+      'https://wedding-web-app.herokuapp.com/api/carBooking/carRental',
+      payload
+    )
     .then((res) => {
       const bookCar = res.data;
       alert('Car booked successfully');

@@ -24,7 +24,7 @@ function ViewProfile({ userData, fetchUsers, onDelete }) {
 
   const displayInfo = () => {
     axios
-      .post('http://localhost:2000/api/users/dashboard', {
+      .post('https://wedding-web-app.herokuapp.com/api/users/dashboard', {
         email: localStorage.getItem('email'),
       })
       .then((res) => {
