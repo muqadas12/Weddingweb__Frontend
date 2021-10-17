@@ -28,7 +28,7 @@ function CheckoutForm({ price, dealer }) {
       try {
         const { id } = paymentMethod;
         const response = await axios.post(
-          'http://localhost:2000/stripe/charge',
+          'https://wedding-web-app.herokuapp.com/stripe/charge',
           {
             amount: price,
             id,

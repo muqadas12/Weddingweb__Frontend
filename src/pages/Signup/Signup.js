@@ -40,7 +40,7 @@ function Signup() {
       .then((res) => {
         // alert(`You are signUp as ${data.name}`);
         message.success(`You are signUp as ${data.name}`);
-        window.location = 'http://localhost:3000/sign-in';
+        window.location = 'https://wedding-web-app.herokuapp.com/sign-in';
 
         console.log(res);
       })
@@ -58,7 +58,7 @@ function Signup() {
 
   const autosigninHandler = () => {
     axios
-      .post('http://localhost:2000/api/users/autoSignIn', {
+      .post('https://wedding-web-app.herokuapp.com/api/users/autoSignIn', {
         email: localStorage.getItem('email'),
       })
       .then((res) => {
