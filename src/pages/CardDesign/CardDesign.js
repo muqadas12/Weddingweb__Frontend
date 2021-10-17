@@ -129,7 +129,7 @@ export class Parent extends React.Component {
             <ReactEditableSvgLabel
               onChange={this.handleChangevenue}
               x="40%"
-              y="10%"
+              y="19%"
             >
               {this.state.venue}
             </ReactEditableSvgLabel>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Button } from 'antd';
 import useRandomColor from '../../components/Hooks/useRandomColor';
-
 import aboutUsImg from '../../Assets/images/about.png';
 import './About.scss';
 
@@ -14,13 +14,13 @@ function About() {
       style={{ width: '205vh', height: '100vh', backgroundColor: `#${color}` }}
     >
       <img className="about-us-img" src={aboutUsImg} alt="aboutus" />
-      <button
+      <Button
         className="btn-color-change-custom-hook"
         type="button"
         onClick={chnageColor}
       >
         Change Bg Color
-      </button>
+      </Button>
       <p className="first-heading-about-us">Welcome to Wanclouds Weds</p>
       <p className="second-heading-about-us">
         We are glad and greatful that you are here

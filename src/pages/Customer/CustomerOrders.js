@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { Card, Spin, BackTop } from 'antd';
 import { useHistory } from 'react-router-dom';
@@ -23,7 +23,6 @@ import './CusOrder.scss';
 function CustomerOrders({
   carData,
   userData,
-  // hallOrderData,
   setSelectedEmail,
   fetchViewCatering,
   fetchViewCarBooking,
@@ -31,12 +30,12 @@ function CustomerOrders({
   fetchViewOrderStatus,
   fetchOrdersPhotography,
   fetchOrdersHall,
-  // photographyData,
   setSelectedPrice,
   setSelectedDealer,
 }) {
-  // const saloon = useSelector((state) => state.viewSaloonorder);
   const orders = useSelector((state) => state.viewStatusorder);
+  // eslint-disable-next-line no-unused-vars
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -51,18 +50,7 @@ function CustomerOrders({
     setSelectedEmail();
     setSelectedDealer();
   }, []);
-  // const bookHandler = useMemo((userData) => {
-  //   console.log('UseMemo longestWord');
-  //   setSelectedPrice(userData.price);
-  //   setSelectedDealer(userData.photographyType);
-  //   setSelectedEmail(userData.email);
-  //   console.log(setSelectedEmail(userData.email));
-  //   console.log(setSelectedDealer(userData.photographyType));
-  //   console.log(setSelectedPrice(userData.price));
 
-  //   history.push('/customer-payment');
-  // }, []);
-  // console.log(carData);
   const bookHandler = (userData) => {
     setSelectedPrice(userData.price);
     setSelectedDealer(userData.photographyType);
@@ -113,188 +101,7 @@ function CustomerOrders({
             </p>
           ))}
       </Card>
-      {/* <Card className="photography-order-customer-view">
-        {carData &&
-          carData.viewCarBook &&
-          carData.viewCarBook.map((user) => (
-            <div>
-              <p className="photography-type-order">{user.photographyType}</p>
-              <p className="photography-type-customer-select">
-                <br />
-                <p className="service-name-dealer-view-car">
-                  {' '}
-                  {user.serviceName}
-                </p>
-              </p>
-              <p className="photography-type-customer-select-price">
-                {`at Rs ${user.price}`}
-              </p>
-              <p style={{ marginLeft: '120px' }}>
-                {moment(user.functionDate).format('MMMM Do YYYY')}
-              </p>
-              <button
-                className="pay-btn-customer"
-                type="button"
-                onClick={() => bookHandler(user)}
-              >
-                pay
-              </button>
 
-              {orders &&
-                orders.viewOrderStatus &&
-                orders.viewOrderStatus.map((user) => (
-                  <p>
-                    <p>
-                      {' '}
-                      {user.orderStatus === 'Accepted' &&
-                      user.serviceName === 'Maliks Car Rentals' ? (
-                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
-                          {' '}
-                          Your order is{' '}
-                          <p style={{ color: 'green' }}>accepted</p>{' '}
-                        </p>
-                      ) : (
-                        'wait'
-                      )}{' '}
-                    </p>
-                  </p>
-                ))}
-            </div>
-          ))}
-      </Card>
-      <Card className="photography-order-customer-view">
-        {hallOrderData &&
-          hallOrderData.dealerHallOrders &&
-          hallOrderData.dealerHallOrders.map((user) => (
-            <div>
-              <p className="hall-selected-dealer-order">
-                You have selected the Hall of{' '}
-              </p>
-              <p className="photography-type-order">{user.serviceName}</p>
-
-              <p className="photography-type-customer-select-price">
-                {`at Rs ${user.price}`}
-              </p>
-              <p style={{ marginLeft: '120px' }}>
-                {moment(user.functionDate).format('MMMM Do YYYY')}
-              </p>
-              <button
-                className="pay-btn-customer"
-                type="button"
-                onClick={() => bookHandler(user)}
-              >
-                pay
-              </button>
-              {orders &&
-                orders.viewOrderStatus &&
-                orders.viewOrderStatus.map((user) => (
-                  <p>
-                    <p>
-                      {' '}
-                      {user.orderStatus === 'Accepted' ? (
-                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
-                          {' '}
-                          Your order is{' '}
-                          <p style={{ color: 'green' }}>accepted</p>{' '}
-                        </p>
-                      ) : (
-                        'wait'
-                      )}{' '}
-                    </p>
-                  </p>
-                ))}
-            </div>
-          ))}
-      </Card>
-      <Card className="photography-order-customer-view">
-        {userData &&
-          userData.viewCatering &&
-          userData.viewCatering.map((user) => (
-            <div>
-              <p className="hall-selected-dealer-order">
-                {'You have selected the Food of '}
-              </p>
-              <p className="photography-type-order">{user.serviceName}</p>
-
-              <p className="photography-type-customer-select-price">
-                {`at Rs ${user.price}`}
-              </p>
-              <p style={{ marginLeft: '120px' }}>
-                {moment(user.functionDate).format('MMMM Do YYYY')}
-              </p>
-              <button
-                className="pay-btn-customer"
-                type="button"
-                onClick={() => bookHandler(user)}
-              >
-                pay
-              </button>
-              {orders &&
-                orders.viewOrderStatus &&
-                orders.viewOrderStatus.map((user) => (
-                  <p>
-                    <p>
-                      {' '}
-                      {user.orderStatus === 'Accepted' ? (
-                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
-                          {' '}
-                          Your order is{' '}
-                          <p style={{ color: 'green' }}>accepted</p>{' '}
-                        </p>
-                      ) : (
-                        'wait'
-                      )}{' '}
-                    </p>
-                  </p>
-                ))}
-            </div>
-          ))}
-      </Card>
-
-      <Card className="photography-order-customer-view">
-        {saloon &&
-          saloon.viewSaloonorder &&
-          saloon.viewSaloonorder.map((user) => (
-            <div>
-              <p className="hall-selected-dealer-order">
-                {'You have selected the Saloon of '}
-              </p>
-              <p className="photography-type-order">{user.serviceName}</p>
-
-              <p className="photography-type-customer-select-price">
-                {`at Rs ${user.price}`}
-              </p>
-              <p style={{ marginLeft: '120px' }}>
-                {moment(user.functionDate).format('MMMM Do YYYY')}
-              </p>
-              <button
-                className="pay-btn-customer"
-                type="button"
-                onClick={() => bookHandler(user)}
-              >
-                pay
-              </button>
-              {orders &&
-                orders.viewOrderStatus &&
-                orders.viewOrderStatus.map((user) => (
-                  <p>
-                    <p>
-                      {' '}
-                      {user.orderStatus === 'Accepted' ? (
-                        <p style={{ marginLeft: '135px', marginTop: '30px' }}>
-                          {' '}
-                          Your order is{' '}
-                          <p style={{ color: 'green' }}>accepted</p>{' '}
-                        </p>
-                      ) : (
-                        'wait'
-                      )}{' '}
-                    </p>
-                  </p>
-                ))}
-            </div>
-          ))}
-      </Card> */}
       <BackTop>
         <div>
           <ToTopOutlined className="icons" />

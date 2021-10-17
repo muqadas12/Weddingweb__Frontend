@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { message } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { fetchUsers } from '../../ReduxApi/ViewProfile/userAction';
 import { deleteDealer } from '../../ReduxApi/updateProfile/userAction';
 import viewProfile from '../../Assets/images/viewProfile.jpg';
 import './viewProfile.scss';
 
 function ViewProfile({ userData, fetchUsers, onDelete }) {
+  const history = useHistory();
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -82,7 +83,10 @@ function ViewProfile({ userData, fetchUsers, onDelete }) {
           <button
             type="button"
             className="del-profile-btn"
-            onClick={() => onDelete(userInfo._id)}
+            onClick={() => {
+              onDelete(userInfo._id);
+              history.goBack();
+            }}
           >
             Delete Profile
           </button>

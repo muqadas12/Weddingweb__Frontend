@@ -38,14 +38,6 @@ const CaseStatusLaw = ({
     setSelectedPrice();
     setSelectedDealer();
     setSelectedEmail();
-    // axios
-    //   .get('http://localhost:2000/api/hall/gethalls')
-    //   .then((res) => {
-    //     setData(res.data.dataH);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   }, []);
   const bookHandler = (list) => {
     if (localStorage.getItem('token')) {

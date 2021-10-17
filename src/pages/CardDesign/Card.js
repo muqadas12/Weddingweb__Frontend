@@ -5,7 +5,7 @@ import card from '../../Assets/images/c.svg';
 function Card(props) {
   return (
     <div>
-      <svg width="990px" height="900px">
+      <svg width="1090px" height="900px">
         <image
           // xlinkHref={cardWed}
           xlinkHref={card}
