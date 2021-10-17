@@ -14,8 +14,12 @@ function About() {
       style={{ width: '205vh', height: '100vh', backgroundColor: `#${color}` }}
     >
       <img className="about-us-img" src={aboutUsImg} alt="aboutus" />
-      <button className="btn-color-change" type="button" onClick={chnageColor}>
-        Change Theme
+      <button
+        className="btn-color-change-custom-hook"
+        type="button"
+        onClick={chnageColor}
+      >
+        Change Bg Color
       </button>
       <p className="first-heading-about-us">Welcome to Wanclouds Weds</p>
       <p className="second-heading-about-us">

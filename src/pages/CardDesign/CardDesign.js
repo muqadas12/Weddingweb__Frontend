@@ -68,7 +68,9 @@ export class Parent extends React.Component {
       venue: newText2,
     });
   };
-
+  componentDidMount() {
+    return console.log('hii');
+  }
   render() {
     return (
       <div>

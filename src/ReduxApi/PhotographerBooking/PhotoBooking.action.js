@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
+
 import {
   FETCH_BOOKPHOTOGRAPHY_REQUEST,
   FETCH_BOOKPHOTOGRAPHY_SUCCESS,
@@ -29,7 +31,7 @@ export const fetchPhoto = (data) => (dispatch) => {
     )
     .then((res) => {
       const bookPhotographer = res.data;
-      alert('Photographer booked successfully');
+      message.success('Photographer booked successfully');
       dispatch(fetchBookPhotographerSucces(bookPhotographer));
     })
     .catch((error) => {

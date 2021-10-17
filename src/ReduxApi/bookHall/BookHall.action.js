@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
 import {
   FETCH_BOOKINGHALL_REQUEST,
   FETCH_BOOKINGHALL_SUCCESS,
@@ -29,7 +30,7 @@ export const fetchbookingHallServices = (payload) => (dispatch) => {
     .then((res) => {
       const hallBooking = res.data;
       console.log(hallBooking, 'hiii');
-      alert('hall booked successfully');
+      message.success('hall booked successfully');
       dispatch(fetchhallSuccess(hallBooking));
     })
     .catch((error) => {

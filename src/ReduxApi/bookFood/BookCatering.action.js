@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
 import {
   FETCH_BOOKFOOD_REQUEST,
   FETCH_BOOKFOOD_SUCCESS,
@@ -30,7 +31,7 @@ export const fetchFoodServices = (payload) => (dispatch) => {
     .then((res) => {
       const bookFood = res.data;
       console.log(bookFood, 'hiii');
-      alert('Food booked successfully');
+      message.success('Food booked successfully');
       dispatch(fetchBookFoodSucces(bookFood));
     })
     .catch((error) => {

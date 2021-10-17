@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
+
 import {
   FETCH_BOOKSALOON_REQUEST,
   FETCH_BOOKSALOON_SUCCESS,
@@ -34,7 +36,7 @@ export const fetchSaloon = (payload) => (dispatch) => {
     .then((res) => {
       const bookSaloon = res.data;
       console.log(bookSaloon, 'hiii');
-      alert('Saloon booked successfully');
+      message.success('Saloon booked successfully');
       dispatch(fetchBookSaloonSucces(bookSaloon));
     })
     .catch((error) => {

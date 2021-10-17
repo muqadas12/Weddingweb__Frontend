@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
 import {
   FETCH_ADDSERVICES_REQUEST,
   FETCH_ADDSERVICES_SUCCESS,
@@ -29,7 +30,7 @@ export const fetchAddServices = (formData) => (dispatch) => {
     .then((res) => {
       const addservices = res.data;
       console.log(addservices, 'hiii');
-      alert('service added successfully');
+      message.success('service added successfully');
       dispatch(fetchAddServicesSucces(addservices));
     })
     .catch((error) => {

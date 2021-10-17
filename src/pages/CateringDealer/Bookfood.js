@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, DatePicker, Form, Input, Select, Button, Row, Col } from 'antd';
 import { useDispatch, connect } from 'react-redux';
 import './Bookfood.scss';
+import { useHistory } from 'react-router-dom';
 import { fetchFoodServices } from '../../ReduxApi/bookFood/BookCatering.action';
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 import cateringBooking from '../../Assets/images/cateringBooking.png';
@@ -9,6 +10,7 @@ import cateringBooking from '../../Assets/images/cateringBooking.png';
 const { Option } = Select;
 
 function Bookfood({ fetchAllDealers, email, dealer, price }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -122,7 +124,11 @@ function Bookfood({ fetchAllDealers, email, dealer, price }) {
               >
                 <Input style={{ marginTop: '-20px', width: '540px' }} />
               </Form.Item>
-              <Button htmlType="submit" className="book-now-button-food">
+              <Button
+                htmlType="submit"
+                onClick={() => history.goBack()}
+                className="book-now-button-food"
+              >
                 Book Now
               </Button>
             </Form>

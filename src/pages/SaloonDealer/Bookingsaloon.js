@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Card, DatePicker, Form, Select, Button, Row, Col } from 'antd';
 import './Bookingsaloon.scss';
 import { useDispatch, connect } from 'react-redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useHistory } from 'react-router-dom';
 import { fetchSaloon } from '../../ReduxApi/saloonBooking/SaloonBooking.action';
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 
@@ -12,6 +14,7 @@ const { Option } = Select;
 
 function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // eslint-disable-next-line no-unused-vars
   const [data, setdata] = useState({
@@ -129,7 +132,11 @@ function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
                   <Option value="Shimmer Makeup">Shimmer Makeup</Option>
                 </Select>
               </Form.Item>
-              <Button htmlType="submit" className="book-now-saloon">
+              <Button
+                htmlType="submit"
+                onClick={() => history.goBack()}
+                className="book-now-saloon"
+              >
                 Book Now
               </Button>
             </Form>

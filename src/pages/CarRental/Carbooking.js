@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, connect } from 'react-redux';
 import { Card, DatePicker, Input, Form, Select, Button, Row, Col } from 'antd';
+import { useHistory } from 'react-router-dom';
 import carBooking from '../../Assets/images/carBooking.jpg';
 import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
 
@@ -12,6 +13,7 @@ import './Carbooking.scss';
 
 const { Option } = Select;
 function Carbooking({ fetchAllDealers, dealer, price, email }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const numOfPeople = useRef(null);
 
@@ -118,7 +120,11 @@ function Carbooking({ fetchAllDealers, dealer, price, email }) {
               >
                 <Input style={{ marginTop: '-15px' }} ref={numOfPeople} />
               </Form.Item>
-              <Button htmlType="submit" className="book-now-button-food">
+              <Button
+                htmlType="submit"
+                onClick={() => history.goBack()}
+                className="book-now-button-food"
+              >
                 Book Now
               </Button>
             </Form>

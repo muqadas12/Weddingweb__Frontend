@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import axios from 'axios';
+import { message } from 'antd';
+
 import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
@@ -68,7 +70,7 @@ export const deleteDealer = (_id) => (dispatch) => {
     .then((response) => {
       // response.data is the users
       const delusers = response.data;
-      alert('deleted!');
+      message.success('deleted!');
 
       dispatch(deleteUserSuccess(delusers));
     })
@@ -104,7 +106,7 @@ export const fetchupdated = (_id, userInfo) => (dispatch) => {
     .then((response) => {
       const updateUser = response.data.dataL;
       console.log(response);
-      alert('updated');
+      message.success('updated');
       dispatch(updateUserSuccess(updateUser));
     })
     .catch((error) => {

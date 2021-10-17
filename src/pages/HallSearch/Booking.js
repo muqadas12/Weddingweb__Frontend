@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, connect } from 'react-redux';
 import { Card, DatePicker, Form, Input, Select, Button } from 'antd';
+import { useHistory } from 'react-router-dom';
+
 import { fetchbookingHallServices } from '../../ReduxApi/bookHall/BookHall.action';
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 import bookingHall from '../../Assets/images/hallBook.jpg';
@@ -9,6 +11,7 @@ import './Booking.scss';
 const { Option } = Select;
 
 function Booking({ fetchAllDealers, dealer, price, email }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [] = useState({
     functionDate: '',
@@ -103,7 +106,11 @@ function Booking({ fetchAllDealers, dealer, price, email }) {
           >
             <Input className="num-people-booking-hall" />
           </Form.Item>
-          <Button htmlType="submit" className="book-now-btton-bookinghall">
+          <Button
+            htmlType="submit"
+            onClick={() => history.goBack()}
+            className="book-now-btton-bookinghall"
+          >
             Book Now
           </Button>
         </Form>

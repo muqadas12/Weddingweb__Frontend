@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import axios from 'axios';
+import { message } from 'antd';
 import {
   FETCH_BOOKCAR_REQUEST,
   FETCH_BOOKCAR_SUCCESS,
@@ -27,7 +28,7 @@ export const fetchbookCar = (payload) => (dispatch) => {
     )
     .then((res) => {
       const bookCar = res.data;
-      alert('Car booked successfully');
+      message.success('Car booked successfully');
       dispatch(fetchBookCarSucces(bookCar));
     })
     .catch((error) => {

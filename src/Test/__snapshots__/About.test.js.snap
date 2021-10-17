@@ -17,11 +17,11 @@ exports[`Testing about us page abut 1`] = `
     src="about.png"
   />
   <button
-    className="btn-color-change"
+    className="btn-color-change-custom-hook"
     onClick={[Function]}
     type="button"
   >
-    Change Theme
+    Change Bg Color
   </button>
   <p
     className="first-heading-about-us"
