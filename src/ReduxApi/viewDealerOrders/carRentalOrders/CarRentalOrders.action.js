@@ -23,7 +23,7 @@ export const fetchdealerCarOrders = () => (dispatch) => {
   dispatch(fetchCarOrderRequest());
   axios
     .get(
-      `https://wedding-web-app.herokuapp.com/api/carBooking/view-car-rental-dealer-orders?email=${email}`
+      `http://localhost:2000/api/carBooking/view-car-rental-dealer-orders?email=${email}`
     )
     .then((res) => {
       const carOrdersDealer = res.data.data;

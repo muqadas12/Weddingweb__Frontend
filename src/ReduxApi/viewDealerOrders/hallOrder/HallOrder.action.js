@@ -39,10 +39,10 @@ export const fetchOrdersDealerHall = () => (dispatch) => {
   dispatch(fetchOrderhallServiceRequest());
   axios
     .get(
-      `https://wedding-web-app.herokuapp.com/api/bookedhall//get-hall-orders-dealers?email=${email}`
+      `http://localhost:2000/api/bookedhall/get-hall-orders-dealers?email=${email}`
     )
     .then((res) => {
-      const dealerHallOrders = res.data.data;
+      const dealerHallOrders = res.data.dataH;
       console.log(dealerHallOrders);
       dispatch(fetchOrderhallServiceSucces(dealerHallOrders));
     })

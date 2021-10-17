@@ -17,6 +17,7 @@ export const fetchHallSerach = () => (dispatch) => {
 
     .then((res) => {
       const hallSearch = res.data;
+      console.log(hallSearch);
       dispatch(fetchHallSerachSuccess(hallSearch));
     })
     .catch((err) => {

@@ -26,7 +26,7 @@ export const fetchOrdersSaloon = () => (dispatch) => {
       `https://wedding-web-app.herokuapp.com/api/saloonBooking/get-saloon-services?email=${email}`
     )
     .then((res) => {
-      const dealerSaloonOrders = res.data.datas;
+      const dealerSaloonOrders = res.data.data;
       console.log(dealerSaloonOrders);
       dispatch(fetchOrdersaloonServiceSucces(dealerSaloonOrders));
     })
