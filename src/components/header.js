@@ -110,7 +110,7 @@ function header2() {
             </Link>
           </Menu.Item>
 
-          <Menu.Item key="18">
+          <Menu.Item key="18" className="btn-search-btn-menu">
             <Searchbar />
           </Menu.Item>
         </Menu>
