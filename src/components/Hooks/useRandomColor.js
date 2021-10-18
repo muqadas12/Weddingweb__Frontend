@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 
 function useRandomColor() {
   const [color, setColor] = useState();
-  const chnageColor = () => {
+  const changeColor = () => {
     setColor(Math.random().toString(16).substr(-6));
   };
   return {
     color,
-    chnageColor,
+    changeColor,
   };
 }
 export default useRandomColor;

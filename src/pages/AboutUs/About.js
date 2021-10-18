@@ -6,7 +6,7 @@ import aboutUsImg from '../../Assets/images/about.png';
 import './About.scss';
 
 function About() {
-  const { color, chnageColor } = useRandomColor();
+  const { color, changeColor } = useRandomColor();
 
   return (
     <div
@@ -17,7 +17,7 @@ function About() {
       <Button
         className="btn-color-change-custom-hook"
         type="button"
-        onClick={chnageColor}
+        onClick={changeColor}
       >
         Change Bg Color
       </Button>
