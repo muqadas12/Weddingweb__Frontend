@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import ReactEditableSvgLabel from 'react-editable-svg-label';
 import ReactToPrint from 'react-to-print';
-import Card from './Card';
+import Card from './Card.js';
 import './CardDesign.scss';
 
 function ArrestWarrant() {
