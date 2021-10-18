@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import dealerdashboardpic from '../../Assets/images/dealer.jpg';
 import './Dealer-main.scss';
 import dealerProfile from '../../Assets/images/profile.PNG';
@@ -13,9 +13,11 @@ import order from '../../Assets/images/orders.PNG';
 import logoutCustomer from '../../Assets/images/logoutCustomer.PNG';
 
 function DealerMain() {
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    window.location.href = '/sign-in';
+    history.push('/sign-in');
+    // window.location.href = '/sign-in';
   };
 
   return (

@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { Card } from 'antd';
 import Customermainpic from '../../../Assets/images/customerdashboard.jpg';
 import CustomerIcon from '../../../Assets/images/customerIcon.jpg';
@@ -12,9 +13,10 @@ import logoutCustomer from '../../../Assets/images/logoutCustomer.PNG';
 import './Customer-main.scss';
 
 function Customermain() {
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    window.location.href = '/sign-in';
+    history.push('/sign-in');
   };
 
   return (

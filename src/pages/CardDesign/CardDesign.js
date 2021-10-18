@@ -74,7 +74,7 @@ export class Parent extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ marginTop: '-396px', marginLeft: '30px' }}>
+        <div style={{ marginTop: '-408px', marginLeft: '30px' }}>
           <p className="card-fileds-edit">
             Click on each fields of Card for edit
           </p>
@@ -82,11 +82,7 @@ export class Parent extends React.Component {
           <p className="bride-name-card">Bride Name</p>
           <span className="solid">
             {' '}
-            <ReactEditableSvgLabel
-              onChange={this.handleChangeText}
-              y="95%"
-              x="40%"
-            >
+            <ReactEditableSvgLabel onChange={this.handleChangeText}>
               {this.state.bride}
             </ReactEditableSvgLabel>
           </span>
