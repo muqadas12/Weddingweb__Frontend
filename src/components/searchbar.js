@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/self-closing-comp */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './search.scss';
@@ -10,6 +12,7 @@ const Searchbar = () => {
   const onSubmitSearch = () => {
     if (state) {
       location.push(`/${state}`);
+      console.log(state);
     }
   };
   return (
