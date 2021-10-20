@@ -13,7 +13,6 @@ function SvgComponent(props) {
       height="900px"
       viewBox="0 30 564 864"
       xmlSpace="preserve"
-      {...props}
     >
       {/* <image
         // xlinkHref={cardWed}
