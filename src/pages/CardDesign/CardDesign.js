@@ -2,21 +2,28 @@
 import React, { useRef } from 'react';
 import ReactEditableSvgLabel from 'react-editable-svg-label';
 import ReactToPrint from 'react-to-print';
-import Card from './Card.js';
+// import { ReactComponent as CardSvg } from '../../logo.svg';
+import { ReactComponent as CardSvg } from '../../Assets/images/leafy.svg';
+import useFields from '../../components/Hooks/useFields';
+
+
+import { Form, Input, Button, Checkbox } from 'antd';
+
 import './CardDesign.scss';
 
 function ArrestWarrant() {
   const componentRef = useRef();
   return (
-    <div>
+    <>
+      <Parent />
       <ReactToPrint
         trigger={() => (
-          <button className="card-edit-elements">Print this out!</button>
+          <button className="card-edit-elements">Print this Card!</button>
         )}
         content={() => componentRef.current}
       />
-      <Parent ref={componentRef} />
-    </div>
+      <CardSvg style={{width:'400px',marginLeft:'30%',fontSize:'70px'}} ref={componentRef} />
+    </>
   );
 }
 export class Parent extends React.Component {
@@ -27,119 +34,163 @@ export class Parent extends React.Component {
       bride: 'Maryum',
       groom: 'Hassan',
       time: '10pm',
-      type: 'Nikah',
+      event: 'Nikah',
       gender: 'Son',
       venue: 'Sarena Hotel',
-      img: 'https://cutcraftdiy.com/wp-content/uploads/2020/07/Wedding-Monogram-SVG.jpg',
     };
   }
+  onInputchange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+     document.getElementById('my-text').textContent = event.target.value;
+     
 
-  handleChangeText = (newText) => {
-    this.setState({
-      bride: newText,
-    });
   };
-  handleChangeText2 = (newText) => {
+  onInputchanges = (event) => {
     this.setState({
-      groom: newText,
+      [event.target.name]: event.target.value,
     });
+    document.getElementById('groom').textContent = event.target.value;
+  };
+  Timechanges = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    document.getElementById('time').textContent = event.target.value;
+  };
+  Venuechanges = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    document.getElementById('venue').textContent = event.target.value;
+  };
+  Genderchanges = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    document.getElementById('gender').textContent = event.target.value;
+  };
+   Eventchanges = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    document.getElementById('event').textContent = event.target.value;
   };
 
-  handleChangeTime = (newText) => {
-    this.setState({
-      time: newText,
-    });
-  };
-
-  handleChangeType = (newText) => {
-    this.setState({
-      type: newText,
-    });
-  };
-
-  handleChangegender = (newText2) => {
-    this.setState({
-      gender: newText2,
-    });
-  };
-
-  handleChangevenue = (newText2) => {
-    this.setState({
-      venue: newText2,
-    });
-  };
-  componentDidMount() {
-    return console.log('hii');
-  }
   render() {
     return (
-      <div>
-        <div style={{ marginTop: '-408px', marginLeft: '30px' }}>
-          <p className="card-fileds-edit">
-            Click on each fields of Card for edit
-          </p>
-
-          <p className="bride-name-card">Bride Name</p>
-          <span className="solid">
-            {' '}
-            <ReactEditableSvgLabel onChange={this.handleChangeText}>
-              {this.state.bride}
-            </ReactEditableSvgLabel>
-          </span>
-          <br />
-          <br />
-          <p className="bride-name-card">Groom Name</p>
-          <span className="solid">
-            <ReactEditableSvgLabel onChange={this.handleChangeText2}>
-              {this.state.groom}
-            </ReactEditableSvgLabel>
-          </span>
-          <br />
-          <br />
-          <p className="bride-name-card">Time</p>
-          <span className="event-on-card">
-            <ReactEditableSvgLabel
-              onChange={this.handleChangeTime}
-              x="40%"
-              y="99%"
-            >
-              {this.state.time}
-            </ReactEditableSvgLabel>
-          </span>
-          <br />
-          <br />
-          <p className="bride-name-card">Event</p>
-          <span className="event-on-card">
-            <ReactEditableSvgLabel
-              onChange={this.handleChangeType}
-              x="40%"
-              y="99%"
-            >
-              {this.state.type}
-            </ReactEditableSvgLabel>
-          </span>
-          <br />
-          <br />
-          <p className="bride-name-card ">Venue</p>
-          <span className="venue-on-card">
-            <ReactEditableSvgLabel
-              onChange={this.handleChangevenue}
-              x="40%"
-              y="19%"
-            >
-              {this.state.venue}
-            </ReactEditableSvgLabel>
-          </span>
-        </div>
-        <Card
-          Bname={this.state.bride}
-          Gname={this.state.groom}
-          time={this.state.time}
-          type={this.state.type}
-          gender={this.state.gender}
-          venue={this.state.venue}
-          img={this.state.img}
-        />
+      <div style={{marginTop:"40px",marginLeft:'300px'}}>
+      <p  className="card-heading-for-field-editing">You can Edit Your Card fields here:</p>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Bridename"
+            name="bride"
+            id="my-text"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={this.onInputchange}
+              placeholder={this.state.bride}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Groomname"
+            name="groom"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              onChange={this.onInputchanges}
+              placeholder={this.state.groom}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Time"
+            name="time"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              name="time"
+              placeholder={this.state.time}
+              onChange={this.Timechanges}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Venue"
+            name="venue"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              name="venue"
+              placeholder={this.state.venue}
+              onChange={this.Venuechanges}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Gender"
+            name="gender"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              name="gender"
+              placeholder={this.state.gender}
+              onChange={this.Genderchanges}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+           <Form.Item
+            label="Event"
+            name="event"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input
+              name="event"
+              placeholder={this.state.event}
+              onChange={this.Eventchanges}
+              style={{ width: '120px' }}
+            />
+          </Form.Item>
+        </Form>
       </div>
     );
   }

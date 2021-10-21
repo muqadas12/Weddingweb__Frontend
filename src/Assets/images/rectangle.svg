@@ -1,0 +1,23 @@
+<svg width="400" height="200">
+  <rect width="400" height="200" x="0" y="0"  style="fill:rgb(50,205,50);stroke-width:3;stroke:rgb(0,0,0)" />
+<g><text id="my-text" x="57%" y="22%" >Maryum</text></g>
+<g><text x="56%" y="25%" >Weds</text></g>
+<g><text id="groom"  x="61%" y="25%"  >Hassan</text></g>
+<g><text x="50%" y="28%" >You are invited to attend the</text></g>
+
+<g><text id="event"  x="71%" y="28%"  >Nikah</text></g>
+<g><text id="event"  x="55%" y="32%"  >of my beloved</text></g>
+
+<g><text id="gender" x="66%" y="32%" >son</text></g>
+<g><text id="gender" x="57%" y="36%" >in</text></g>
+<g><text id="venue" x="59%" y="36%" >Serena Hotel</text></g>
+<g><text id="venue" x="58%" y="39%" >At</text></g>
+<g><text id="time" x="61%" y="39%" >10 Pm</text></g>
+
+
+
+
+
+</svg>
+
+

@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.b71eae9e.chunk.css",
-    "main.js": "/static/js/main.e45cfc8c.chunk.js",
-    "main.js.map": "/static/js/main.e45cfc8c.chunk.js.map",
+    "main.css": "/static/css/main.07a5c7ae.chunk.css",
+    "main.js": "/static/js/main.94310369.chunk.js",
+    "main.js.map": "/static/js/main.94310369.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a9f80a17.js",
     "runtime-main.js.map": "/static/js/runtime-main.a9f80a17.js.map",
     "static/css/2.786ae0dd.chunk.css": "/static/css/2.786ae0dd.chunk.css",
-    "static/js/2.80ee19b0.chunk.js": "/static/js/2.80ee19b0.chunk.js",
-    "static/js/2.80ee19b0.chunk.js.map": "/static/js/2.80ee19b0.chunk.js.map",
+    "static/js/2.4e3a29a2.chunk.js": "/static/js/2.4e3a29a2.chunk.js",
+    "static/js/2.4e3a29a2.chunk.js.map": "/static/js/2.4e3a29a2.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.786ae0dd.chunk.css.map": "/static/css/2.786ae0dd.chunk.css.map",
-    "static/css/main.b71eae9e.chunk.css.map": "/static/css/main.b71eae9e.chunk.css.map",
-    "static/js/2.80ee19b0.chunk.js.LICENSE.txt": "/static/js/2.80ee19b0.chunk.js.LICENSE.txt",
+    "static/css/main.07a5c7ae.chunk.css.map": "/static/css/main.07a5c7ae.chunk.css.map",
+    "static/js/2.4e3a29a2.chunk.js.LICENSE.txt": "/static/js/2.4e3a29a2.chunk.js.LICENSE.txt",
     "static/media/about.5df328ba.png": "/static/media/about.5df328ba.png",
     "static/media/addSer.126e5465.PNG": "/static/media/addSer.126e5465.PNG",
     "static/media/bill.4ab636ff.jpg": "/static/media/bill.4ab636ff.jpg",
     "static/media/bookingSaloon.88c1a63f.jpg": "/static/media/bookingSaloon.88c1a63f.jpg",
-    "static/media/c.bdb719fc.svg": "/static/media/c.bdb719fc.svg",
     "static/media/c1.23628000.jpg": "/static/media/c1.23628000.jpg",
     "static/media/c22.0762d535.jpg": "/static/media/c22.0762d535.jpg",
     "static/media/c3.e26d7766.jpg": "/static/media/c3.e26d7766.jpg",
@@ -35,6 +34,7 @@
     "static/media/fod.285e0300.jpg": "/static/media/fod.285e0300.jpg",
     "static/media/hall.45eea746.jpg": "/static/media/hall.45eea746.jpg",
     "static/media/hallBook.446a446b.jpg": "/static/media/hallBook.446a446b.jpg",
+    "static/media/leafy.912ba88a.svg": "/static/media/leafy.912ba88a.svg",
     "static/media/logoutCustomer.b349c9f4.PNG": "/static/media/logoutCustomer.b349c9f4.PNG",
     "static/media/order.7051c243.PNG": "/static/media/order.7051c243.PNG",
     "static/media/orders.171759ed.PNG": "/static/media/orders.171759ed.PNG",
@@ -60,8 +60,8 @@
   "entrypoints": [
     "static/js/runtime-main.a9f80a17.js",
     "static/css/2.786ae0dd.chunk.css",
-    "static/js/2.80ee19b0.chunk.js",
-    "static/css/main.b71eae9e.chunk.css",
-    "static/js/main.e45cfc8c.chunk.js"
+    "static/js/2.4e3a29a2.chunk.js",
+    "static/css/main.07a5c7ae.chunk.css",
+    "static/js/main.94310369.chunk.js"
   ]
 }

@@ -7,10 +7,22 @@ import carBooking from '../../Assets/images/carBooking.jpg';
 import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
 
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
-// import useFields from '../../components/Hooks/useFields';
 
 import './Carbooking.scss';
-
+/**
+ * @param {fetchAllDealers} fetchAllDealers is the acton dispatched from Dealer.action
+ * @param {dealer} is the dealer name passing as a props
+ * @param {price} is the price name passing as a props
+ * @param {email} is the email passing as a prop in CarBooking section
+ * @property {functionDate} string [functionDate]
+ * @property {functionType} string [functionType]
+ * @property {carType} string [carType]
+ * @property {serviceName} string [serviceName]
+ * @property {dealerEmail} string [dealerEmail]
+ * @property { orderStatus} string [orderStatus]
+ * @property {email} string [email]
+ * @property {price} string [price]
+ */
 const { Option } = Select;
 function Carbooking({ fetchAllDealers, dealer, price, email }) {
   const history = useHistory();
