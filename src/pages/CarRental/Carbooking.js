@@ -9,19 +9,22 @@ import { fetchbookCar } from '../../ReduxApi/carBooking/CarBooking.action';
 import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/Dealer.action';
 
 import './Carbooking.scss';
+
 /**
- * @param {fetchAllDealers} fetchAllDealers is the acton dispatched from Dealer.action
- * @param {dealer} is the dealer name passing as a props
+ * save the booking details
+ * @param {props} fetchAllDealers is the acton dispatched from Dealer.action
+ * @param {props} is the dealer name passing as a props
  * @param {price} is the price name passing as a props
  * @param {email} is the email passing as a prop in CarBooking section
- * @property {functionDate} string [functionDate]
- * @property {functionType} string [functionType]
- * @property {carType} string [carType]
- * @property {serviceName} string [serviceName]
- * @property {dealerEmail} string [dealerEmail]
- * @property { orderStatus} string [orderStatus]
- * @property {email} string [email]
- * @property {price} string [price]
+ * @property {string} string [functionDate]
+ * @property {string} string [functionType]
+ * @property {string} string [carType]
+ * @property {string} string [serviceName]
+ * @property {string} string [dealerEmail]
+ * @property {string} string [orderStatus]
+ * @property {string} string [email]
+ * @property { string} string [price]
+ * @return the booking details
  */
 const { Option } = Select;
 function Carbooking({ fetchAllDealers, dealer, price, email }) {

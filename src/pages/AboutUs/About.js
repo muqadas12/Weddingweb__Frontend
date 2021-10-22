@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Button } from 'antd';
-import useRandomColor from '../../components/Hooks/useRandomColor';
+import useRandomColor from 'use-random-background-color';
 import aboutUsImg from '../../Assets/images/about.png';
 import './About.scss';
 

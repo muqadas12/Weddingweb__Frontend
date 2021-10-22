@@ -40,7 +40,6 @@ import viewOrderStatus from '../pages/Customer/ViewOrderStatus';
 import Payment from '../pages/Customer/Payment';
 import OrderStatus from '../pages/Dealer/Dealer-Dashboard/OrderStatus';
 import AddHall from '../pages/Dealer/Dealer-Dashboard/AddHall';
-import CardDesignTem from '../pages/cardDesign/CardDesignTem';
 
 const { SubMenu } = Menu;
 const { Header, Content } = Layout;
@@ -170,7 +169,6 @@ function header2() {
               <Route path="/customer-payment" component={Payment} />
               <Route path="/order-status" component={OrderStatus} />
               <Route path="/AddHall" component={AddHall} />
-              <Route path="/CardDesignTem" component={CardDesignTem} />
 
               <Route path={['/', '/home']} component={Home} />
             </Switch>

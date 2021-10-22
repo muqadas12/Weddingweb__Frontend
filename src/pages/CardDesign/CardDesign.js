@@ -1,32 +1,31 @@
 /* eslint-disable */
 import React, { useRef } from 'react';
-import ReactEditableSvgLabel from 'react-editable-svg-label';
 import ReactToPrint from 'react-to-print';
-// import { ReactComponent as CardSvg } from '../../logo.svg';
 import { ReactComponent as CardSvg } from '../../Assets/images/leafy.svg';
-import useFields from '../../components/Hooks/useFields';
-
 
 import { Form, Input, Button, Checkbox } from 'antd';
 
 import './CardDesign.scss';
 
-function ArrestWarrant() {
+function CardPrint() {
   const componentRef = useRef();
   return (
     <>
-      <Parent />
+      <CardDesign />
       <ReactToPrint
         trigger={() => (
           <button className="card-edit-elements">Print this Card!</button>
         )}
         content={() => componentRef.current}
       />
-      <CardSvg style={{width:'400px',marginLeft:'30%',fontSize:'70px'}} ref={componentRef} />
+      <CardSvg
+        style={{ width: '400px', marginLeft: '30%', fontSize: '70px' }}
+        ref={componentRef}
+      />
     </>
   );
 }
-export class Parent extends React.Component {
+export class CardDesign extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,49 +38,20 @@ export class Parent extends React.Component {
       venue: 'Sarena Hotel',
     };
   }
+
   onInputchange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-     document.getElementById('my-text').textContent = event.target.value;
-     
-
-  };
-  onInputchanges = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-    document.getElementById('groom').textContent = event.target.value;
-  };
-  Timechanges = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-    document.getElementById('time').textContent = event.target.value;
-  };
-  Venuechanges = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-    document.getElementById('venue').textContent = event.target.value;
-  };
-  Genderchanges = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-    document.getElementById('gender').textContent = event.target.value;
-  };
-   Eventchanges = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-    document.getElementById('event').textContent = event.target.value;
+    document.getElementById(event.target.name).textContent = event.target.value;
   };
 
   render() {
     return (
-      <div style={{marginTop:"40px",marginLeft:'300px'}}>
-      <p  className="card-heading-for-field-editing">You can Edit Your Card fields here:</p>
+      <div style={{ marginTop: '40px', marginLeft: '300px' }}>
+        <p className="card-heading-for-field-editing">
+          You can Edit Your Card fields here:
+        </p>
         <Form
           name="basic"
           labelCol={{
@@ -106,6 +76,7 @@ export class Parent extends React.Component {
             ]}
           >
             <Input
+              name="bride"
               onChange={this.onInputchange}
               placeholder={this.state.bride}
               style={{ width: '120px' }}
@@ -121,7 +92,8 @@ export class Parent extends React.Component {
             ]}
           >
             <Input
-              onChange={this.onInputchanges}
+              name="groom"
+              onChange={this.onInputchange}
               placeholder={this.state.groom}
               style={{ width: '120px' }}
             />
@@ -138,7 +110,7 @@ export class Parent extends React.Component {
             <Input
               name="time"
               placeholder={this.state.time}
-              onChange={this.Timechanges}
+              onChange={this.onInputchange}
               style={{ width: '120px' }}
             />
           </Form.Item>
@@ -154,7 +126,7 @@ export class Parent extends React.Component {
             <Input
               name="venue"
               placeholder={this.state.venue}
-              onChange={this.Venuechanges}
+              onChange={this.onInputchange}
               style={{ width: '120px' }}
             />
           </Form.Item>
@@ -170,11 +142,11 @@ export class Parent extends React.Component {
             <Input
               name="gender"
               placeholder={this.state.gender}
-              onChange={this.Genderchanges}
+              onChange={this.onInputchange}
               style={{ width: '120px' }}
             />
           </Form.Item>
-           <Form.Item
+          <Form.Item
             label="Event"
             name="event"
             rules={[
@@ -186,7 +158,7 @@ export class Parent extends React.Component {
             <Input
               name="event"
               placeholder={this.state.event}
-              onChange={this.Eventchanges}
+              onChange={this.onInputchange}
               style={{ width: '120px' }}
             />
           </Form.Item>
@@ -195,4 +167,4 @@ export class Parent extends React.Component {
     );
   }
 }
-export default ArrestWarrant;
+export default CardPrint;

@@ -11,7 +11,6 @@ import { fetchAllDealers } from '../../ReduxApi/ViewDealerServices/viewDealers/D
 import bookingSaloon from '../../Assets/images/bookingSaloon.jpg';
 
 const { Option } = Select;
-
 function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
   const dispatch = useDispatch();
   const history = useHistory();

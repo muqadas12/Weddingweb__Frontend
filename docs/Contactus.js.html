@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Contactus.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My components</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#Contactus">Contactus</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>Contactus.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useRef } from 'react';
+import { Card, Form, Input, Modal } from 'antd';
+import { UserOutlined, MailOutlined, MessageOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import useFields from '../../components/Hooks/useFields';
+import './Contactus.scss';
+import contactUs from '../../Assets/images/contactUs.jpg';
+/**
+ * successfully send email to the admin
+ * @property   {string} name  name of user who is going to send email
+ * @property   {string} email Email of user who is going to send email
+ * @property   {string} message  Message why this user is sending this email
+ * @return  {string} send email to admin
+ */
+
+/**
+* handleSubmit is function which can post data (send email)
+* @param {string} e is value of input
+* @property   {string} name  name of user who is going to send email
+* @property   {string} email Email of user who is going to send email
+* @property   {string} message  Message why this user is sending this email
+*
+
+
+ */
+function Contactus() {
+  const nameRef = useRef(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [fields, handleFieldChange] = useFields({
+    name: '',
+    email: '',
+    msg: '',
+  });
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleSubmit = (e) => {
+    const dataSubmit = {
+      name: e.name,
+      email: e.email,
+      msg: e.message,
+    };
+    axios.post(
+      'https://wedding-web-app.herokuapp.com/api/email/mail',
+      dataSubmit
+    );
+  };
+  React.useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+  return (
+    &lt;div>
+      &lt;img src={contactUs} alt="contactUs" className="contactus-img" />
+      &lt;p className="contact-query" data-testid="contact-para">
+        How can i help?
+        &lt;br /> PLease fill the form for any query.
+        &lt;br />
+        Will be respond shortly
+      &lt;/p>
+      &lt;Card className="contact-card">
+        &lt;Form onFinish={handleSubmit} id="contact-form">
+          &lt;UserOutlined className="icons" />
+          Enter Name
+          &lt;Form.Item name="name">
+            &lt;Input
+              name="name"
+              id="name"
+              value={fields.name}
+              className="inputs-form"
+              onChange={() => handleFieldChange}
+              ref={nameRef}
+            />
+          &lt;/Form.Item>
+          &lt;MailOutlined className="icons" />
+          Enter Email
+          &lt;Form.Item
+            name="email"
+            rules={[
+              {
+                type: 'email',
+              },
+            ]}
+          >
+            &lt;Input
+              name="email"
+              value={fields.email}
+              onChange={() => handleFieldChange}
+              className="inputs-form"
+            />
+          &lt;/Form.Item>
+          &lt;MessageOutlined className="icons" />
+          Enter Message
+          &lt;Form.Item name="message">
+            &lt;Input.TextArea
+              name="msg"
+              value={fields.msg}
+              onChange={() => handleFieldChange}
+              className="inputs-form"
+            />
+          &lt;/Form.Item>
+          &lt;button
+            type="submit"
+            onClick={() => showModal()}
+            className="btn-submit-contact-us"
+          >
+            Send
+          &lt;/button>
+          &lt;Modal
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            &lt;p>Your email have been sent!&lt;/p>
+          &lt;/Modal>
+        &lt;/Form>
+      &lt;/Card>
+    &lt;/div>
+  );
+}
+
+export default Contactus;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

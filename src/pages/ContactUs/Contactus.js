@@ -5,7 +5,24 @@ import axios from 'axios';
 import useFields from '../../components/Hooks/useFields';
 import './Contactus.scss';
 import contactUs from '../../Assets/images/contactUs.jpg';
+/**
+ * successfully send email to the admin
+ * @property   {string} name  name of user who is going to send email
+ * @property   {string} email Email of user who is going to send email
+ * @property   {string} message  Message why this user is sending this email
+ * @return  {string} send email to admin
+ */
 
+/**
+* handleSubmit is function which can post data (send email)
+* @param {string} e is value of input
+* @property   {string} name  name of user who is going to send email
+* @property   {string} email Email of user who is going to send email
+* @property   {string} message  Message why this user is sending this email
+*
+
+
+ */
 function Contactus() {
   const nameRef = useRef(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
