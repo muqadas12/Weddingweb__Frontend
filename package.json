@@ -19,6 +19,7 @@
     "better-docs": "^2.3.2",
     "docs": "jsdoc -c ./jsdoc.json",
     "eslint-plugin-disable": "^2.0.1",
+    "history": "^5.0.1",
     "jsdoc": "^3.6.7",
     "moment": "^2.29.1",
     "parcel-bundler": "^1.12.5",

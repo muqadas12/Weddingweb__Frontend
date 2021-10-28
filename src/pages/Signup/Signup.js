@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable no-lone-blocks */
@@ -5,12 +6,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Input, Button, Checkbox, Card, message } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { FetchSignUpUser } from '../../ReduxApi/signIn/SignIn.action';
 import './Signup.scss';
 import CardForm from '../../components/Card-Forms';
 import cardImgOne from '../../Assets/images/cardImgone.jpg';
 
 function Signup() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const url = 'https://wedding-web-app.herokuapp.com/api/users/signup';
   const [data, setData] = useState({
@@ -24,30 +28,23 @@ function Signup() {
     _id: '',
   });
 
-  function submit() {
-    // dispatch(signupUser(name,email,password,role))
-    axios
-      .post(url, {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        role: data.role,
-        token: data.token,
-        phoneNumber: data.phoneNumber,
-        address: data.address,
-        _id: data._id,
-      })
-      .then((res) => {
-        // alert(`You are signUp as ${data.name}`);
-        message.success(`You are signUp as ${data.name}`);
-        window.location = 'https://wedding-web-app.herokuapp.com/sign-in';
-
-        console.log(res);
-      })
-      .catch(() => {
-        message.error('User alreay exist!.PLease signIn');
-      });
+  function addData(payload) {
+    dispatch(FetchSignUpUser(payload));
   }
+
+  function submit(e) {
+    const payload = {
+      name: e.name,
+      email: e.email,
+      password: e.password,
+      role: e.role,
+      token: e.token,
+      phoneNumber: e.phoneNumber,
+      address: e.address,
+    };
+    addData(payload);
+  }
+
   console.log(localStorage.getItem('_id'));
   function handleChange(e) {
     const newData = { ...data };

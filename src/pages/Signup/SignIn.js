@@ -1,23 +1,46 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input, Button, Checkbox, Card, message } from 'antd';
+import { FetchSignInUser } from '../../ReduxApi/signIn/SignIn.action';
+
 import CardForm from '../../components/Card-Forms';
 import Loginimg from '../../Assets/images/cardlogin.jpg';
 
+const initialstate = {
+  cat: ' ',
+};
+
+const categoryReducers = (state = initialstate, action) => {
+  switch (action.type) {
+    case 'CATEGORY':
+      return {
+        ...state,
+        cat: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
 function SignIn() {
+  const [categoryState, dispatch] = useReducer(categoryReducers, initialstate);
   const history = useHistory();
   const url = 'https://wedding-web-app.herokuapp.com/api/users/login';
-  const categoryType = useSelector((state) => state.countReducers.cat);
+  // const categoryType = useSelector((state) => state.countReducers.cat);
+  const categoryType = categoryState.cat;
 
   console.log(categoryType, ' catType from signin');
-
+  const dispatchs = useDispatch();
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -27,47 +50,30 @@ function SignIn() {
 
     login: false,
   });
+  function addSignIn(payload) {
+    dispatchs(FetchSignInUser(payload));
+  }
 
-  function submiHandler() {
-    axios
-      .post(url, {
-        email: data.email,
-        password: data.password,
-        role: data.role,
-        token: data.token,
-        _id: data._id,
-      })
-
-      .then((res) => {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('email', res.data.email);
-        localStorage.setItem('id', res.data.userId);
-        console.log(res);
-        message.success(`You are signIn as ${data.email}`);
-
-        // eslint-disable-next-line no-lone-blocks
-        {
-          categoryType === 'booked-hall'
-            ? history.push('/booking')
-            : categoryType === 'booked-photographer'
-            ? history.push('/booking-photographer')
-            : categoryType === 'booked-car'
-            ? history.push('/car-booking')
-            : categoryType === 'booked-saloon'
-            ? history.push('/booking-saloon')
-            : categoryType === 'booked-catering'
-            ? history.push('/book-catering')
-            : res.data.role === 'Dealer'
-            ? history.push('/dealer-main')
-            : history.push('/customer-main');
-        }
-        console.log(res.data.role);
-        console.log(res.data.token);
-      })
-
-      .catch(() => {
-        message.error('User doesnot exist!Please signUp');
-      });
+  function submiHandler(e) {
+    const payload = {
+      email: e.email,
+      password: e.password,
+      role: e.role,
+    };
+    {
+      categoryType === 'booked-hall'
+        ? history.push('/booking')
+        : categoryType === 'booked-photographer'
+        ? history.push('/booking-photographer')
+        : categoryType === 'booked-car'
+        ? history.push('/car-booking')
+        : categoryType === 'booked-saloon'
+        ? history.push('/booking-saloon')
+        : categoryType === 'booked-catering'
+        ? history.push('/book-catering')
+        : null;
+    }
+    addSignIn(payload);
   }
   function handleChange(e) {
     const newData = { ...data };
@@ -75,7 +81,6 @@ function SignIn() {
     setData(newData);
     console.log(newData);
   }
-  // console.log(booked, 'from catering booked');
   return (
     <div>
       <CardForm img={Loginimg} alt="alt" />

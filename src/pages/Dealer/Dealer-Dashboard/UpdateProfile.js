@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-debugger */
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { Form, Input } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -47,6 +48,7 @@ function updateProfile({ userData, onEdit }) {
   };
 
   useEffect(() => {
+    console.log('JJJ');
     displayInfo();
   }, []);
   return userData.loadin ? (
