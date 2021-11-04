@@ -1,10 +1,19 @@
-import React, { useState, useRef } from 'react';
-import { Card, Form, Input, Modal } from 'antd';
+/* eslint-disable no-unreachable */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-props-no-spreading */
+import React, {
+  useState,
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+} from 'react';
+import { Card, Form, Input, Modal, Button } from 'antd';
 import { UserOutlined, MailOutlined, MessageOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import useFields from '../../components/Hooks/useFields';
 import './Contactus.scss';
 import contactUs from '../../Assets/images/contactUs.jpg';
+import TextInput from './TextInput';
 /**
  * successfully send email to the admin
  * @property   {string} name  name of user who is going to send email
@@ -23,8 +32,11 @@ import contactUs from '../../Assets/images/contactUs.jpg';
 
 
  */
+
 function Contactus() {
-  const nameRef = useRef(null);
+  // const nameRef = useRef(null);
+  const ref = useRef(null);
+  const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [fields, handleFieldChange] = useFields({
     name: '',
@@ -53,9 +65,11 @@ function Contactus() {
       'https://wedding-web-app.herokuapp.com/api/email/mail',
       dataSubmit
     );
+    form.resetFields();
   };
-  React.useEffect(() => {
-    nameRef.current.focus();
+
+  React.useLayoutEffect(() => {
+    ref.current.focus();
   }, []);
   return (
     <div>
@@ -67,18 +81,25 @@ function Contactus() {
         Will be respond shortly
       </p>
       <Card className="contact-card">
-        <Form onFinish={handleSubmit} id="contact-form">
+        <Form onFinish={handleSubmit} id="contact-form" form={form}>
           <UserOutlined className="icons" />
           Enter Name
           <Form.Item name="name">
-            <Input
+            <TextInput
+              ref={ref}
               name="name"
               id="name"
               value={fields.name}
               className="inputs-form"
               onChange={() => handleFieldChange}
-              ref={nameRef}
             />
+            {/* <Input
+              name="name"
+              id="name"
+              value={fields.name}
+              className="inputs-form"
+              onChange={() => handleFieldChange}
+            /> */}
           </Form.Item>
           <MailOutlined className="icons" />
           Enter Email
@@ -107,13 +128,20 @@ function Contactus() {
               className="inputs-form"
             />
           </Form.Item>
-          <button
-            type="submit"
-            onClick={() => showModal()}
+          <Button
+            htmlType="submit"
+            onClick={() => {
+              // ref?.current?.focus();
+              // showModal();
+            }}
             className="btn-submit-contact-us"
           >
             Send
-          </button>
+          </Button>
+          {/* <ImperativeChildExample ref={ref} />
+          <button type="button" onClick={() => ref?.current?.focus()}>
+            Focus!
+          </button> */}
           <Modal
             visible={isModalVisible}
             onOk={handleOk}

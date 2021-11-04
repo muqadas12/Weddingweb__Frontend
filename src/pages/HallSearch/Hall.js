@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Input, Select } from 'antd';
@@ -33,7 +33,7 @@ const CaseStatusLaw = ({
   const [city, setCity] = useState('');
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchHallSerach();
     setSelectedPrice();
     setSelectedDealer();

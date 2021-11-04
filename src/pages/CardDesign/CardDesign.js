@@ -25,7 +25,9 @@ function CardPrint() {
     </>
   );
 }
-export class CardDesign extends React.Component {
+//pure component only re-render when state changes ..we use memo in functional component
+//ehnace application performance
+export class CardDesign extends React.PureComponent {
   constructor(props) {
     super(props);
 

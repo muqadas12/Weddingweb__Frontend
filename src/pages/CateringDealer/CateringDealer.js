@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 /* eslint-disable import/no-mutable-exports */
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Card, Space } from 'antd';
 import { useHistory } from 'react-router-dom';
@@ -28,21 +30,31 @@ function CateringDealer({
     fetchCatering();
   }, []);
 
-  const bookHandler = (user) => {
+  // const bookHandler = (user) => {
+  // if (localStorage.getItem('token')) {
+  //   setSelectedEmail(user.email);
+  //   setSelectedDealer(user.serviceName);
+  //   setSelectedPrice(user.price);
+
+  //   history.push('/book-catering');
+  // } else {
+  //   dispatch(myCategory('booked-catering'));
+  //   history.push('/sign-in');
+  // }
+  // };
+  const bookHandler = useCallback((user) => {
     if (localStorage.getItem('token')) {
       setSelectedEmail(user.email);
       setSelectedDealer(user.serviceName);
       setSelectedPrice(user.price);
-      // console.log(setSelectedDealer(user.serviceName));
-      // console.log(setSelectedPrice(user.price));
-      // console.log(setSelectedEmail(user.email));
+
       history.push('/book-catering');
     } else {
       dispatch(myCategory('booked-catering'));
       history.push('/sign-in');
     }
-  };
-
+    console.log('renderd');
+  }, []);
   return userData.loading ? (
     <h2>Loading....</h2>
   ) : userData.err ? (
