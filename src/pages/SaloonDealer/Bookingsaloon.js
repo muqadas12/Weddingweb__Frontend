@@ -42,6 +42,7 @@ function Bookingsaloon({ fetchAllDealers, email, dealer, price }) {
       email: localStorage.getItem('email'),
     };
     console.log('helo', e, e.functionDate._d, payload);
+    console.log('meo');
     addBookingSaloon(payload);
   }
   return (

@@ -10,8 +10,7 @@ import './CardDesign.scss';
 function CardPrint() {
   const componentRef = useRef();
   return (
-    <>
-      <CardDesign />
+    <div className="border-page">
       <ReactToPrint
         trigger={() => (
           <button className="card-edit-elements">Print this Card!</button>
@@ -19,15 +18,14 @@ function CardPrint() {
         content={() => componentRef.current}
       />
       <CardSvg
-        style={{ width: '400px', marginLeft: '30%', fontSize: '70px' }}
+        style={{ width: '400px', marginLeft: '40%', fontSize: '70px' }}
         ref={componentRef}
       />
-    </>
+      <CardDesign />
+    </div>
   );
 }
-//pure component only re-render when state changes ..we use memo in functional component
-//ehnace application performance
-export class CardDesign extends React.PureComponent {
+export class CardDesign extends React.Component {
   constructor(props) {
     super(props);
 
@@ -50,121 +48,123 @@ export class CardDesign extends React.PureComponent {
 
   render() {
     return (
-      <div style={{ marginTop: '40px', marginLeft: '300px' }}>
+      <div>
         <p className="card-heading-for-field-editing">
           You can Edit Your Card fields here:
         </p>
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Bridename"
-            name="bride"
-            id="my-text"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+        <div style={{ marginTop: '-10px', marginLeft: '-190px' }}>
+          <Form
+            name="basic"
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 16,
+            }}
+            initialValues={{
+              remember: true,
+            }}
+            autoComplete="off"
           >
-            <Input
+            <Form.Item
+              label="Bridename"
               name="bride"
-              onChange={this.onInputchange}
-              placeholder={this.state.bride}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Groomname"
-            name="groom"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
+              id="my-text"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="bride"
+                onChange={this.onInputchange}
+                placeholder={this.state.bride}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Groomname"
               name="groom"
-              onChange={this.onInputchange}
-              placeholder={this.state.groom}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Time"
-            name="time"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="groom"
+                onChange={this.onInputchange}
+                placeholder={this.state.groom}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Time"
               name="time"
-              placeholder={this.state.time}
-              onChange={this.onInputchange}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Venue"
-            name="venue"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="time"
+                placeholder={this.state.time}
+                onChange={this.onInputchange}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Venue"
               name="venue"
-              placeholder={this.state.venue}
-              onChange={this.onInputchange}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Gender"
-            name="gender"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="venue"
+                placeholder={this.state.venue}
+                onChange={this.onInputchange}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Gender"
               name="gender"
-              placeholder={this.state.gender}
-              onChange={this.onInputchange}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Event"
-            name="event"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="gender"
+                placeholder={this.state.gender}
+                onChange={this.onInputchange}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Event"
               name="event"
-              placeholder={this.state.event}
-              onChange={this.onInputchange}
-              style={{ width: '120px' }}
-            />
-          </Form.Item>
-        </Form>
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input
+                name="event"
+                placeholder={this.state.event}
+                onChange={this.onInputchange}
+                style={{ width: '120px' }}
+              />
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     );
   }

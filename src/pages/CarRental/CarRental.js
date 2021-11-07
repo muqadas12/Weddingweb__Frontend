@@ -40,19 +40,6 @@ function CarRental({
     }
   }, []);
 
-  // const [car, setBookcar] = useState(false);
-  // const bookHandler = (user) => {
-  //   if (localStorage.getItem('token')) {
-  //     setSelectedDealer(user.serviceName);
-  //     setSelectedPrice(user.price);
-  //     setSelectedEmail(user.email);
-
-  //     history.push('/car-booking');
-  //   } else {
-  //     dispatch(myCategory('booked-car'));
-  //     history.push('/sign-in');
-  //   }
-  // };
   useEffect(() => {
     fetchCarRental();
   }, []);

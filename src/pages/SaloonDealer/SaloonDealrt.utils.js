@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { Tooltip } from '@material-ui/core';
 
 export const truncateString = (str, truncateLength) => {
   if (str.length > truncateLength) {

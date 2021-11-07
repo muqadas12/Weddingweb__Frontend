@@ -15,7 +15,11 @@ function About() {
       className="bgg"
       style={{ width: '205vh', height: '100vh', backgroundColor: `#${color}` }}
     >
-      <img className="about-us-img" src={aboutUsImg} alt="aboutus" />
+      <img
+        className="about-us-img"
+        src="https://res.cloudinary.com/dpt9qa7ms/image/upload/v1635829585/new/about_xfgfok.png"
+        alt="aboutus"
+      />
       <Button
         className="btn-color-change-custom-hook"
         type="button"

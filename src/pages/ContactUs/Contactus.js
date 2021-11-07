@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import { Card, Form, Input, Modal, Button } from 'antd';
 import { UserOutlined, MailOutlined, MessageOutlined } from '@ant-design/icons';
+import { useQueryClient, useMutation } from 'react-query';
 import axios from 'axios';
 import useFields from '../../components/Hooks/useFields';
 import './Contactus.scss';
@@ -34,6 +35,7 @@ import TextInput from './TextInput';
  */
 
 function Contactus() {
+  const queryClient = useQueryClient();
   // const nameRef = useRef(null);
   const ref = useRef(null);
   const [form] = Form.useForm();
@@ -82,7 +84,7 @@ function Contactus() {
       </p>
       <Card className="contact-card">
         <Form onFinish={handleSubmit} id="contact-form" form={form}>
-          <UserOutlined className="icons" />
+          <UserOutlined className="icons-contact-us" />
           Enter Name
           <Form.Item name="name">
             <TextInput
@@ -101,7 +103,7 @@ function Contactus() {
               onChange={() => handleFieldChange}
             /> */}
           </Form.Item>
-          <MailOutlined className="icons" />
+          <MailOutlined className="icons-contact-us" />
           Enter Email
           <Form.Item
             name="email"
@@ -118,7 +120,7 @@ function Contactus() {
               className="inputs-form"
             />
           </Form.Item>
-          <MessageOutlined className="icons" />
+          <MessageOutlined className="icons-contact-us" />
           Enter Message
           <Form.Item name="message">
             <Input.TextArea

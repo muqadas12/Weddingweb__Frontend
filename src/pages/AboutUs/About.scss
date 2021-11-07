@@ -30,3 +30,23 @@
   width: '205vh';
   height: '200vh';
 }
+@media screen and (max-width: 800px) {
+  .about-us-img {
+    width: 30%;
+    margin-left: 20px;
+    margin-top: 130px;
+  }
+  .first-heading-about-us {
+    margin-left: -1020px;
+  }
+  .second-heading-about-us {
+    margin-left: -1000px;
+  }
+  .description-about-us {
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow: hidden;
+    inline-size: 150px;
+    margin-left: 190px;
+  }
+}
